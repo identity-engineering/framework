@@ -5,9 +5,10 @@ interface MassCurvatureProps {
   initialMass?: number;
 }
 
-export default function MassCurvature({ initialMass = 50 }: MassCurvatureProps) {
+export default function MassCurvature({ initialMass = 55 }: MassCurvatureProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [mass, setMass] = useState(initialMass);
+  const [isDragging, setIsDragging] = useState(false);
 
   useEffect(() => {
     if (!svgRef.current) return;
@@ -15,122 +16,165 @@ export default function MassCurvature({ initialMass = 50 }: MassCurvatureProps) 
     const svg = d3.select(svgRef.current);
     svg.selectAll('*').remove();
 
-    const width = 400;
-    const height = 320;
+    const width = 420;
+    const height = 380;
     const centerX = width / 2;
     const centerY = height / 2;
 
-    svg.attr('width', width).attr('height', height);
+    svg
+      .attr('width', width)
+      .attr('height', height)
+      .attr('viewBox', `0 0 ${width} ${height}`);
 
     // Background
     svg.append('rect')
       .attr('width', width)
       .attr('height', height)
-      .attr('fill', '#111');
+      .attr('fill', '#0a0a0a')
+      .attr('rx', 16);
 
-    // Grid lines (curved space visualization)
-    const gridGroup = svg.append('g');
+    // Subtle glow behind mass
+    const defs = svg.append('defs');
+    const glow = defs.append('filter')
+      .attr('id', 'glow')
+      .attr('x', '-50%')
+      .attr('y', '-50%')
+      .attr('width', '200%')
+      .attr('height', '200%');
 
-    const drawCurvedGrid = (currentMass: number) => {
-      gridGroup.selectAll('*').remove();
+    glow.append('feGaussianBlur')
+      .attr('stdDeviation', '8')
+      .attr('result', 'coloredBlur');
 
-      const strength = (currentMass - 20) / 80; // 0 to ~1
+    const feMerge = glow.append('feMerge');
+    feMerge.append('feMergeNode').attr('in', 'coloredBlur');
+    feMerge.append('feMergeNode').attr('in', 'SourceGraphic');
 
-      // Horizontal lines
-      for (let i = -4; i <= 4; i++) {
-        const y = centerY + i * 28;
-        const path = d3.line()
-          .x(d => d[0])
-          .y(d => {
-            const distFromCenter = Math.abs(d[0] - centerX);
-            const curve = strength * 18 * Math.sin((d[0] - centerX) / 80);
-            return y + curve * (distFromCenter / 180);
-          });
+    // === Dense Point Cloud (3D-like curved space) ===
+    const pointsGroup = svg.append('g');
 
-        gridGroup.append('path')
-          .datum(d3.range(20, width - 20, 8))
-          .attr('d', path)
-          .attr('stroke', '#333')
-          .attr('stroke-width', 1)
-          .attr('fill', 'none');
-      }
+    const numPoints = 1450;
+    const points: any[] = [];
 
-      // Vertical lines
-      for (let i = -5; i <= 5; i++) {
-        const x = centerX + i * 32;
-        const path = d3.line()
-          .x(d => {
-            const distFromCenter = Math.abs(d[1] - centerY);
-            const curve = strength * 18 * Math.sin((d[1] - centerY) / 80);
-            return x + curve * (distFromCenter / 160);
-          })
-          .y(d => d[1]);
+    // Generate points in a pseudo-3D spherical distribution
+    for (let i = 0; i < numPoints; i++) {
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(2 * Math.random() - 1);
+      const r = 38 + Math.random() * 125;
 
-        gridGroup.append('path')
-          .datum(d3.range(20, height - 20, 8))
-          .attr('d', path)
-          .attr('stroke', '#333')
-          .attr('stroke-width', 1)
-          .attr('fill', 'none');
-      }
-    };
+      const x3d = r * Math.sin(phi) * Math.cos(theta);
+      const y3d = r * Math.sin(phi) * Math.sin(theta);
+      const z3d = r * Math.cos(phi);
 
-    drawCurvedGrid(mass);
+      points.push({
+        x3d,
+        y3d,
+        z3d,
+        baseX: x3d,
+        baseY: y3d,
+        baseZ: z3d,
+      });
+    }
 
-    // Central Mass circle
-    const massGroup = svg.append('g');
+    const updateVisualization = (currentMass: number) => {
+      pointsGroup.selectAll('*').remove();
 
-    const updateMass = (currentMass: number) => {
-      massGroup.selectAll('*').remove();
+      const massFactor = (currentMass - 20) / 95; // 0 to ~1.05
+      const curvatureStrength = massFactor * 1.35;
 
-      const radius = 18 + (currentMass / 100) * 42;
-      const color = d3.interpolateRgb('#3b82f6', '#1e40af')(currentMass / 100);
+      points.forEach((p) => {
+        // Apply curvature (gravitational lensing effect)
+        const dist = Math.sqrt(p.baseX * p.baseX + p.baseY * p.baseY);
+        const curve = curvatureStrength * (dist / 90) * Math.sin(dist / 45);
 
-      massGroup.append('circle')
+        const x = centerX + p.baseX + curve * (p.baseX / (dist || 1));
+        const y = centerY + p.baseY + curve * (p.baseY / (dist || 1));
+
+        // Depth-based size and opacity for 3D feel
+        const depth = (p.baseZ + 160) / 320;
+        const size = 0.9 + depth * 2.1;
+        const opacity = 0.35 + depth * 0.55;
+
+        pointsGroup
+          .append('circle')
+          .attr('cx', x)
+          .attr('cy', y)
+          .attr('r', size)
+          .attr('fill', '#a5b4fc')
+          .attr('opacity', opacity);
+      });
+
+      // === Central Mass (beautiful glowing sphere) ===
+      const massRadius = 22 + currentMass * 0.38;
+      const massColor = d3.interpolateRgb('#3b82f6', '#1e3a8a')(Math.min(massFactor, 1));
+
+      // Outer glow
+      pointsGroup
+        .append('circle')
         .attr('cx', centerX)
         .attr('cy', centerY)
-        .attr('r', radius)
-        .attr('fill', color)
-        .attr('stroke', '#fff')
-        .attr('stroke-width', 2);
+        .attr('r', massRadius + 18)
+        .attr('fill', massColor)
+        .attr('opacity', 0.12)
+        .attr('filter', 'url(#glow)');
 
-      // Inner core
-      massGroup.append('circle')
+      // Main mass sphere
+      pointsGroup
+        .append('circle')
         .attr('cx', centerX)
         .attr('cy', centerY)
-        .attr('r', radius * 0.55)
-        .attr('fill', d3.color(color)?.brighter(1.2) as any || '#fff');
+        .attr('r', massRadius)
+        .attr('fill', massColor)
+        .attr('stroke', '#c7d2fe')
+        .attr('stroke-width', 1.5);
+
+      // Inner bright core
+      pointsGroup
+        .append('circle')
+        .attr('cx', centerX)
+        .attr('cy', centerY)
+        .attr('r', massRadius * 0.42)
+        .attr('fill', '#e0e7ff')
+        .attr('opacity', 0.9);
     };
 
-    updateMass(mass);
+    updateVisualization(mass);
 
-    // Update when mass changes
-    return () => {
-      // cleanup if needed
-    };
   }, [mass]);
 
+  // Elegant interaction - drag on the visualization to change mass
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+
+    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const percentage = Math.max(0.1, Math.min(1, x / rect.width));
+    const newMass = 22 + percentage * 95;
+    setMass(Math.round(newMass));
+  };
+
   return (
-    <div className="flex flex-col items-center">
-      <svg ref={svgRef} className="rounded-2xl" />
-      
-      <div className="mt-6 w-full max-w-[380px]">
-        <div className="flex justify-between text-sm mb-2 text-white/60">
-          <div>Low Stake</div>
-          <div>High Stake (Mass)</div>
-        </div>
-        <input
-          type="range"
-          min="20"
-          max="120"
-          step="1"
-          value={mass}
-          onChange={(e) => setMass(parseInt(e.target.value))}
-          className="w-full accent-blue-500"
+    <div className="flex flex-col items-center select-none">
+      <div 
+        className="relative cursor-col-resize"
+        onMouseDown={() => setIsDragging(true)}
+        onMouseUp={() => setIsDragging(false)}
+        onMouseLeave={() => setIsDragging(false)}
+        onMouseMove={handleMouseMove}
+      >
+        <svg 
+          ref={svgRef} 
+          className="rounded-3xl shadow-2xl" 
         />
-        <div className="text-center mt-1 text-sm font-mono text-white/70">
-          Mass: {mass}
+        
+        {/* Elegant label */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] tracking-[2px] text-white/40 font-mono pointer-events-none">
+          DRAG HORIZONTALLY TO ADJUST MASS
         </div>
+      </div>
+
+      <div className="mt-5 text-xs text-white/50 tracking-widest font-mono">
+        MASS: <span className="text-white/80 tabular-nums">{mass}</span>
       </div>
     </div>
   );

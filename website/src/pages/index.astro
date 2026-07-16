@@ -4,9 +4,9 @@ import MassCurvature from '../components/visualizations/MassCurvature';
 ---
 
 <Layout title="Identity Engineering | Physics-informed framework for human agency in the AI era">
-	<main class="max-w-5xl mx-auto px-6">
+	<main class="max-w-4xl mx-auto px-6">
 		<!-- Hero -->
-		<section class="min-h-[70vh] flex flex-col justify-center pt-16">
+		<section class="min-h-[65vh] flex flex-col justify-center pt-12">
 			<div class="max-w-3xl">
 				<h1 class="text-6xl font-bold tracking-tighter mb-6">
 					Identity as<br />
@@ -29,37 +29,42 @@ import MassCurvature from '../components/visualizations/MassCurvature';
 			</div>
 		</section>
 
-		<!-- Core Concepts -->
-		<section id="concepts" class="py-20">
-			<div class="mb-12">
+		<!-- Core Concepts - Vertical -->
+		<section id="concepts" class="py-16">
+			<div class="mb-10">
 				<h2 class="text-4xl font-semibold tracking-tight">Core Concepts</h2>
 				<p class="text-xl text-white/60 mt-3 max-w-2xl">
 					We model identity using principles from physics — making it visible, measurable, and designable.
 				</p>
 			</div>
 
-			<div class="grid md:grid-cols-2 gap-8">
+			<div class="flex flex-col gap-10">
 				<!-- Mass -->
-				<div class="border border-white/10 rounded-3xl p-8">
-					<div class="text-sm uppercase tracking-[3px] text-white/50 mb-3">01</div>
-					<h3 class="text-3xl font-semibold mb-4">Mass</h3>
-					<p class="text-white/70 text-lg mb-6">
-						The depth and substance of your personal and professional stake. Not volume, but density and weight.
-					</p>
+				<div class="border border-white/10 rounded-3xl p-10">
+					<div class="max-w-2xl">
+						<div class="text-sm uppercase tracking-[3px] text-white/50 mb-3">01</div>
+						<h3 class="text-4xl font-semibold mb-4">Mass</h3>
+						<p class="text-white/70 text-lg">
+							The depth and substance of your personal and professional stake. Not volume, but density and weight.
+						</p>
+					</div>
 					
-					<MassCurvature client:load initialMass={65} />
+					<div class="mt-8 flex justify-center">
+						<MassCurvature client:load initialMass={62} />
+					</div>
 				</div>
 
 				<!-- Curvature -->
-				<div class="border border-white/10 rounded-3xl p-8">
-					<div class="text-sm uppercase tracking-[3px] text-white/50 mb-3">02</div>
-					<h3 class="text-3xl font-semibold mb-4">Curvature</h3>
-					<p class="text-white/70 text-lg mb-6">
-						How a strong vision warps what appears possible or inevitable in your reality.
-					</p>
+				<div class="border border-white/10 rounded-3xl p-10">
+					<div class="max-w-2xl">
+						<div class="text-sm uppercase tracking-[3px] text-white/50 mb-3">02</div>
+						<h3 class="text-4xl font-semibold mb-4">Curvature</h3>
+						<p class="text-white/70 text-lg">
+							How a strong vision warps what appears possible or inevitable in your reality.
+						</p>
+					</div>
 					
-					<!-- Curvature visualization can be combined or separate later -->
-					<div class="h-80 flex items-center justify-center text-white/40 border border-white/10 rounded-2xl">
+					<div class="mt-8 h-80 flex items-center justify-center text-white/40 border border-white/10 rounded-2xl">
 						<div class="text-center">
 							<div class="text-sm mb-1">[Curvature Visualization]</div>
 							<div class="text-xs">Coming next</div>
@@ -68,13 +73,16 @@ import MassCurvature from '../components/visualizations/MassCurvature';
 				</div>
 
 				<!-- Gravitation -->
-				<div class="border border-white/10 rounded-3xl p-8">
-					<div class="text-sm uppercase tracking-[3px] text-white/50 mb-3">03</div>
-					<h3 class="text-3xl font-semibold mb-4">Gravitation</h3>
-					<p class="text-white/70 text-lg">
-						The attractive force of a coherent, owned vision. It pulls in opportunities, people, and energy.
-					</p>
-					<div class="mt-8 h-64 bg-white/5 rounded-2xl flex items-center justify-center text-white/40">
+				<div class="border border-white/10 rounded-3xl p-10">
+					<div class="max-w-2xl">
+						<div class="text-sm uppercase tracking-[3px] text-white/50 mb-3">03</div>
+						<h3 class="text-4xl font-semibold mb-4">Gravitation</h3>
+						<p class="text-white/70 text-lg">
+							The attractive force of a coherent, owned vision. It pulls in opportunities, people, and energy.
+						</p>
+					</div>
+					
+					<div class="mt-8 h-80 flex items-center justify-center text-white/40 border border-white/10 rounded-2xl">
 						<div class="text-center">
 							<div class="text-sm mb-2">[D3 Visualization]</div>
 							<div class="text-xs">Attraction of Energy & Opportunity</div>
@@ -83,13 +91,16 @@ import MassCurvature from '../components/visualizations/MassCurvature';
 				</div>
 
 				<!-- Questions as Probes -->
-				<div class="border border-white/10 rounded-3xl p-8">
-					<div class="text-sm uppercase tracking-[3px] text-white/50 mb-3">04</div>
-					<h3 class="text-3xl font-semibold mb-4">Questions as Probes</h3>
-					<p class="text-white/70 text-lg">
-						Precision tools to measure and adjust the current geometry of your identity and reality.
-					</p>
-					<div class="mt-8 h-64 bg-white/5 rounded-2xl flex items-center justify-center text-white/40">
+				<div class="border border-white/10 rounded-3xl p-10">
+					<div class="max-w-2xl">
+						<div class="text-sm uppercase tracking-[3px] text-white/50 mb-3">04</div>
+						<h3 class="text-4xl font-semibold mb-4">Questions as Probes</h3>
+						<p class="text-white/70 text-lg">
+							Precision tools to measure and adjust the current geometry of your identity and reality.
+						</p>
+					</div>
+					
+					<div class="mt-8 h-80 flex items-center justify-center text-white/40 border border-white/10 rounded-2xl">
 						<div class="text-center">
 							<div class="text-sm mb-2">[D3 Visualization]</div>
 							<div class="text-xs">Interactive Measurement</div>

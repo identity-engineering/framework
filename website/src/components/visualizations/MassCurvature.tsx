@@ -8,9 +8,21 @@ interface MassCurvatureProps {
 export default function MassCurvature({ initialMass = 55 }: MassCurvatureProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [mass, setMass] = useState(initialMass);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
-  const animationRef = useRef<number | null>(null);
-  const timeRef = useRef(0);
+
+  // Scroll-driven rotation (only when scrolling the page)
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      const progress = maxScroll > 0 ? Math.min(scrollY / maxScroll, 1) : 0;
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     if (!svgRef.current) return;
@@ -28,14 +40,12 @@ export default function MassCurvature({ initialMass = 55 }: MassCurvatureProps) 
       .attr('height', height)
       .attr('viewBox', `0 0 ${width} ${height}`);
 
-    // Background
     svg.append('rect')
       .attr('width', width)
       .attr('height', height)
       .attr('fill', '#0a0a0a')
       .attr('rx', 20);
 
-    // Glow filter
     const defs = svg.append('defs');
     const glow = defs.append('filter')
       .attr('id', 'glow')
@@ -45,7 +55,7 @@ export default function MassCurvature({ initialMass = 55 }: MassCurvatureProps) 
       .attr('height', '200%');
 
     glow.append('feGaussianBlur')
-      .attr('stdDeviation', '9')
+      .attr('stdDeviation', '8')
       .attr('result', 'coloredBlur');
 
     const feMerge = glow.append('feMerge');
@@ -54,33 +64,50 @@ export default function MassCurvature({ initialMass = 55 }: MassCurvatureProps) 
 
     const pointsGroup = svg.append('g');
 
-    const numPoints = 1650;
+    const numPoints = 1720;
     const points: any[] = [];
 
+    // Create points with emphasis on a central vertical identity stem
     for (let i = 0; i < numPoints; i++) {
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(2 * Math.random() - 1);
-      const r = 42 + Math.random() * 138;
+      const isCoreStrand = Math.random() < 0.18; // ~18% are central identity strands
 
-      const x3d = r * Math.sin(phi) * Math.cos(theta);
-      const y3d = r * Math.sin(phi) * Math.sin(theta);
-      const z3d = r * Math.cos(phi);
+      let x3d, y3d, z3d;
 
-      points.push({ x3d, y3d, z3d, baseX: x3d, baseY: y3d, baseZ: z3d });
+      if (isCoreStrand) {
+        // Central identity stem (vertical bundle)
+        x3d = (Math.random() - 0.5) * 22;
+        y3d = (Math.random() - 0.5) * 195;
+        z3d = (Math.random() - 0.5) * 18;
+      } else {
+        // Surrounding field
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.acos(2 * Math.random() - 1);
+        const r = 55 + Math.random() * 135;
+        x3d = r * Math.sin(phi) * Math.cos(theta);
+        y3d = r * Math.sin(phi) * Math.sin(theta) * 0.65;
+        z3d = r * Math.cos(phi);
+      }
+
+      points.push({ x3d, y3d, z3d, baseX: x3d, baseY: y3d, baseZ: z3d, isCoreStrand });
     }
 
-    const updateVisualization = (currentMass: number, time: number = 0) => {
+    const updateVisualization = (currentMass: number, scroll: number) => {
       pointsGroup.selectAll('*').remove();
 
       const massFactor = (currentMass - 20) / 95;
-      const curvatureStrength = massFactor * 1.4;
+      const curvatureStrength = massFactor * 1.45;
 
-      const rotation = time * 0.0008; // very slow idle rotation
+      // Scroll-driven gentle rotation (only when user scrolls)
+      const rotation = scroll * 1.8;
 
       points.forEach((p) => {
-        // Apply gentle rotation for life
-        const rotX = p.baseX * Math.cos(rotation) - p.baseZ * Math.sin(rotation) * 0.6;
-        const rotZ = p.baseX * Math.sin(rotation) * 0.6 + p.baseZ * Math.cos(rotation);
+        let rotX = p.baseX;
+        let rotZ = p.baseZ;
+
+        if (!p.isCoreStrand) {
+          rotX = p.baseX * Math.cos(rotation) - p.baseZ * Math.sin(rotation) * 0.55;
+          rotZ = p.baseX * Math.sin(rotation) * 0.55 + p.baseZ * Math.cos(rotation);
+        }
 
         const dist = Math.sqrt(rotX * rotX + p.baseY * p.baseY);
         const curve = curvatureStrength * (dist / 95) * Math.sin(dist / 48);
@@ -89,63 +116,53 @@ export default function MassCurvature({ initialMass = 55 }: MassCurvatureProps) 
         const y = centerY + p.baseY + curve * (p.baseY / (dist || 1));
 
         const depth = (rotZ + 170) / 340;
-        const size = 0.85 + depth * 2.15;
-        const opacity = 0.32 + depth * 0.58;
+        const size = p.isCoreStrand ? 1.6 : 0.8 + depth * 2.0;
+        const opacity = p.isCoreStrand ? 0.85 : 0.28 + depth * 0.6;
+        const color = p.isCoreStrand ? '#c4b5fd' : '#a5b4fc';
 
         pointsGroup
           .append('circle')
           .attr('cx', x)
           .attr('cy', y)
           .attr('r', size)
-          .attr('fill', '#a5b4fc')
+          .attr('fill', color)
           .attr('opacity', opacity);
       });
 
-      // Central glowing mass
-      const massRadius = 24 + currentMass * 0.37;
-      const massColor = d3.interpolateRgb('#3b82f6', '#1e3a8a')(Math.min(massFactor, 1));
+      // Smaller central core (identity stem top)
+      const coreRadius = 11 + currentMass * 0.18;
+      const coreColor = d3.interpolateRgb('#6366f1', '#312e81')(Math.min(massFactor, 1));
 
       pointsGroup
         .append('circle')
         .attr('cx', centerX)
-        .attr('cy', centerY)
-        .attr('r', massRadius + 22)
-        .attr('fill', massColor)
-        .attr('opacity', 0.11)
+        .attr('cy', centerY - 8)
+        .attr('r', coreRadius + 14)
+        .attr('fill', coreColor)
+        .attr('opacity', 0.09)
         .attr('filter', 'url(#glow)');
 
       pointsGroup
         .append('circle')
         .attr('cx', centerX)
-        .attr('cy', centerY)
-        .attr('r', massRadius)
-        .attr('fill', massColor)
-        .attr('stroke', '#c7d2fe')
-        .attr('stroke-width', 1.8);
+        .attr('cy', centerY - 8)
+        .attr('r', coreRadius)
+        .attr('fill', coreColor)
+        .attr('stroke', '#a5b4fc')
+        .attr('stroke-width', 1.5);
 
       pointsGroup
         .append('circle')
         .attr('cx', centerX)
-        .attr('cy', centerY)
-        .attr('r', massRadius * 0.4)
+        .attr('cy', centerY - 8)
+        .attr('r', coreRadius * 0.45)
         .attr('fill', '#e0e7ff')
-        .attr('opacity', 0.85);
+        .attr('opacity', 0.75);
     };
 
-    // Animation loop for subtle movement
-    const animate = () => {
-      timeRef.current += 16;
-      updateVisualization(mass, timeRef.current);
-      animationRef.current = requestAnimationFrame(animate);
-    };
+    updateVisualization(mass, scrollProgress);
 
-    updateVisualization(mass, 0);
-    animationRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationRef.current) cancelAnimationFrame(animationRef.current);
-    };
-  }, [mass]);
+  }, [mass, scrollProgress]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging) return;

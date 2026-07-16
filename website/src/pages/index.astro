@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import MassCurvature from '../components/visualizations/MassCurvature';
 ---
 
 <Layout title="Identity Engineering | Physics-informed framework for human agency in the AI era">
@@ -42,30 +43,26 @@ import Layout from '../layouts/Layout.astro';
 				<div class="border border-white/10 rounded-3xl p-8">
 					<div class="text-sm uppercase tracking-[3px] text-white/50 mb-3">01</div>
 					<h3 class="text-3xl font-semibold mb-4">Mass</h3>
-					<p class="text-white/70 text-lg">
+					<p class="text-white/70 text-lg mb-6">
 						The depth and substance of your personal and professional stake. Not volume, but density and weight.
 					</p>
-					<div class="mt-8 h-64 bg-white/5 rounded-2xl flex items-center justify-center text-white/40">
-						<!-- D3 Visualization: Mass -->
-						<div class="text-center">
-							<div class="text-sm mb-2">[D3 Visualization]</div>
-							<div class="text-xs">Stake Depth & Density</div>
-						</div>
-					</div>
+					
+					<MassCurvature client:load initialMass={65} />
 				</div>
 
 				<!-- Curvature -->
 				<div class="border border-white/10 rounded-3xl p-8">
 					<div class="text-sm uppercase tracking-[3px] text-white/50 mb-3">02</div>
 					<h3 class="text-3xl font-semibold mb-4">Curvature</h3>
-					<p class="text-white/70 text-lg">
+					<p class="text-white/70 text-lg mb-6">
 						How a strong vision warps what appears possible or inevitable in your reality.
 					</p>
-					<div class="mt-8 h-64 bg-white/5 rounded-2xl flex items-center justify-center text-white/40">
-						<!-- D3 Visualization: Curvature -->
+					
+					<!-- Curvature visualization can be combined or separate later -->
+					<div class="h-80 flex items-center justify-center text-white/40 border border-white/10 rounded-2xl">
 						<div class="text-center">
-							<div class="text-sm mb-2">[D3 Visualization]</div>
-							<div class="text-xs">Warping of Possibility Space</div>
+							<div class="text-sm mb-1">[Curvature Visualization]</div>
+							<div class="text-xs">Coming next</div>
 						</div>
 					</div>
 				</div>
@@ -78,7 +75,6 @@ import Layout from '../layouts/Layout.astro';
 						The attractive force of a coherent, owned vision. It pulls in opportunities, people, and energy.
 					</p>
 					<div class="mt-8 h-64 bg-white/5 rounded-2xl flex items-center justify-center text-white/40">
-						<!-- D3 Visualization: Gravitation -->
 						<div class="text-center">
 							<div class="text-sm mb-2">[D3 Visualization]</div>
 							<div class="text-xs">Attraction of Energy & Opportunity</div>
@@ -94,7 +90,6 @@ import Layout from '../layouts/Layout.astro';
 						Precision tools to measure and adjust the current geometry of your identity and reality.
 					</p>
 					<div class="mt-8 h-64 bg-white/5 rounded-2xl flex items-center justify-center text-white/40">
-						<!-- D3 Visualization: Probes -->
 						<div class="text-center">
 							<div class="text-sm mb-2">[D3 Visualization]</div>
 							<div class="text-xs">Interactive Measurement</div>

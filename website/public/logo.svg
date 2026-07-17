@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" fill="none">
+  <!-- Identity Engineering Monogram – Official Logo -->
+  <!-- Geometric primitives: I = Identity Stem / Schwerachse | three lines = Trajectories + Vision Gradient -->
+  <g fill="#0B1C2E">
+    <!-- Thick vertical Stem (I) -->
+    <rect x="28" y="20" width="36" height="160" rx="2"/>
+    
+    <!-- Three elegant trajectory curves forming the E -->
+    <!-- Top trajectory -->
+    <path d="M64 36 C 95 36, 120 40, 155 52 C 175 58, 190 68, 200 82 L 200 58 C 185 48, 165 40, 140 36 C 110 30, 85 32, 64 36 Z"/>
+    <!-- Middle trajectory -->
+    <path d="M64 92 C 100 88, 130 90, 160 100 C 180 106, 195 116, 205 130 L 205 106 C 190 96, 170 88, 145 86 C 115 82, 90 86, 64 92 Z"/>
+    <!-- Bottom trajectory -->
+    <path d="M64 148 C 95 145, 125 148, 155 160 C 175 166, 190 176, 200 190 L 200 166 C 185 156, 165 148, 140 146 C 110 142, 85 145, 64 148 Z"/>
+    
+    <!-- Closing the E bars cleanly -->
+    <rect x="155" y="36" width="45" height="28" rx="1"/>
+    <rect x="160" y="92" width="45" height="28" rx="1"/>
+    <rect x="155" y="148" width="45" height="28" rx="1"/>
+  </g>
+</svg>

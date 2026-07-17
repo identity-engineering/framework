@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Favicon version of IE Monogram – Identity Stem + Trajectories -->
+  <g fill="#0B1C2E">
+    <rect x="8" y="8" width="12" height="48" rx="1"/>
+    <path d="M20 14 C 30 13, 40 16, 48 22 L 48 16 C 40 12, 30 11, 20 14 Z"/>
+    <path d="M20 30 C 32 28, 42 30, 50 36 L 50 30 C 42 26, 32 26, 20 30 Z"/>
+    <path d="M20 46 C 30 45, 40 48, 48 54 L 48 48 C 40 44, 30 43, 20 46 Z"/>
+    <rect x="42" y="14" width="14" height="10" rx="1"/>
+    <rect x="44" y="30" width="14" height="10" rx="1"/>
+    <rect x="42" y="46" width="14" height="10" rx="1"/>
+  </g>
+</svg>

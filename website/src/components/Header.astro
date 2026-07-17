@@ -1,0 +1,45 @@
+---
+const pathname = Astro.url.pathname;
+const isActive = (path: string) => pathname === path || pathname === path + '/';
+
+const navItems = [
+  { label: 'Framework', href: '/framework' },
+  { label: 'Big Questions', href: '/big-questions' },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50">
+  <div class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+    <!-- Logo — official IE monogram (geometric I+E + trajectory swooshes) -->
+    <a href="/" class="flex items-center gap-3 group">
+      <img
+        src="/logo-dark.svg"
+        alt="Identity Engineering"
+        class="h-8 w-auto opacity-90 group-hover:opacity-100 transition"
+      />
+      <span class="text-sm font-medium tracking-tight text-white/70 group-hover:text-white transition hidden sm:inline">
+        Identity Engineering
+      </span>
+    </a>
+
+    <!-- Nav -->
+    <nav class="flex items-center gap-1">
+      {navItems.map(item => (
+        <a
+          href={item.href}
+          class:list={[
+            'px-4 py-2 rounded-full text-sm transition',
+            isActive(item.href)
+              ? 'text-white bg-white/10 border border-white/20'
+              : 'text-white/50 hover:text-white hover:bg-white/5'
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+
+  <!-- Backdrop blur gradient -->
+  <div class="absolute inset-0 -z-10 bg-gradient-to-b from-black/80 via-black/40 to-transparent backdrop-blur-sm pointer-events-none"></div>
+</header>

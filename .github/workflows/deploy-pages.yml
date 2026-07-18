@@ -48,11 +48,10 @@ jobs:
       - name: Build Astro site
         run: npm run build
 
-      # Use npx wrangler (not wrangler-action npm i into project — peer dep conflicts with Astro 7)
       - name: Deploy to Cloudflare Pages
-        run: >
-          npx --yes wrangler@4.27.0 pages deploy dist
-          --project-name=identity-engineering
-          --branch=${{ github.ref_name }}
-          --commit-hash=${{ github.sha }}
-          --commit-message=${{ github.event.head_commit.message || github.ref_name }}
+        run: |
+          npx --yes wrangler@4.27.0 pages deploy dist \
+            --project-name=identity-engineering \
+            --branch="${{ github.ref_name }}" \
+            --commit-hash="${{ github.sha }}" \
+            --commit-message="ci deploy ${{ github.sha }}"

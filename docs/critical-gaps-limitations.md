@@ -12,6 +12,31 @@ This is a living document. It will be updated as progress is made and linked bac
 
 ---
 
+## Dual Mission of the Framework (Explicitly Held)
+
+The Identity Engineering Framework **simultaneously holds both perspectives** as part of its mission — without choosing one over the other:
+
+1. **Practical Mission (Human, AI-Shift)**: Supporting humans in consciously designing their identity in the AI era. Specifically: preserving and strengthening Sameness-as-Trajectory (through transparent State Differentials and a stable Identity Stem / heavy axis) while maximizing Causal Entropy (Vision Gradient as the direction of steepest increase in future degrees of freedom). The framework serves as an Operating System for Ownership and Architect-level action.
+
+2. **Fundamental / Extended Mission (Substrate-Free)**: Modeling and defining artificial identities for the first time in order to understand what happens with intelligence in substrate-free space. This is not a replacement for the first mission but a necessary extension. When modeling the current (substrate-bound) state, considering the emerging substrate-free developments is part of a responsible, comprehensive view of identity. AI developments make this perspective not optional but almost obligatory.
+
+**Central Bridge and Hardest Work: Isomorphism**
+The productive tension between both missions makes the **isomorphism work** (clear methodological bridges between physical-mathematical concepts and identity phenomena — beyond loose metaphors) the central and most demanding long-term task of the framework. Without rigorous isomorphism the duality remains vulnerable to criticism. With good isomorphism it becomes a genuine strength: the framework can be both practically useful for humans *and* ontologically grounded for understanding new intelligence substrates.
+
+This duality will be explicitly carried through all further developments (Core Concepts, Positioning, Experiments, public artifacts) and treated not as a contradiction but as a complementary tension.
+
+---
+
+## Connection to the Earlier Reframing Question
+The gaps listed above shift in their assessment through the simultaneous holding of both missions:
+- Some gaps (e.g. Reductionism, philosophical under-determination) become more nuanced: the tension between human Sameness preservation and substrate-free modeling is productive and enriches the framework.
+- The claim of "helping everyone" remains (Mission 1) but is complemented and placed in a larger context by Mission 2.
+- Isomorphism becomes the central quality criterion and the greatest body of work.
+
+This document will be updated with any further development of the Dual Mission.
+
+---
+
 ## Acknowledged Fundamental Limitations
 
 - **Local vs. Global Validity**: The framework is primarily a *local* model with high internal coherence for specific cognitive styles and audiences (systems thinkers, individuals comfortable with physics and mathematics, high-agency profiles). It makes no claim to universal validity across all cultures, personality types, or existential situations.
@@ -28,19 +53,19 @@ This is a living document. It will be updated as progress is made and linked bac
 - **Description**: Transfer of terms such as Mass, Curvature, Gravitation, Rotation, Worldline etc. without clear isomorphism or methodological bridge to actual physics. Risk of "physics envy" or rhetorical overclaim.
 - **Impact**: Loss of credibility with physicists, philosophers of science, and analytic philosophers.
 - **Status**: Open – Active Review
-- **Comment / Mitigation**: Explicit clarification of "analogy vs. isomorphism" in Core Concepts and Positioning section. Mark mathematical formulas clearly as "inspirational formalization" until more rigorous derivations exist.
+- **Comment / Mitigation**: Explicit clarification of "analogy vs. isomorphism" in Core Concepts and Positioning section. Mark mathematical formulas clearly as "inspirational formalization" until more rigorous derivations exist. The Dual Mission makes rigorous isomorphism the central long-term task.
 
 **Gap: Reductionism (Neglect of Embodiment, Affect, Sociality, Narrativity)**
 - **Description**: Identity is strongly reduced to a geometric trajectory (State Differential + Vision Gradient). Bodily, unconscious, socially constituted, and narrative/emotional dimensions remain under-illuminated.
 - **Impact**: Can feel cold or alienating to people with trauma, complex biographies, or in crisis. Weak connection to established identity psychology and philosophy.
 - **Status**: Open – High Priority
-- **Comment**: Build explicit bridges to Narrative Identity (McAdams), Possible Selves theory, Self-Determination Theory, and Embodied Cognition. Significantly expand the interactive layer (Gravitation/Relativity).
+- **Comment**: Build explicit bridges to Narrative Identity (McAdams), Possible Selves theory, Self-Determination Theory, and Embodied Cognition. Significantly expand the interactive layer (Gravitation/Relativity). The Dual Mission requires careful handling of reductionism across both human and substrate-free domains.
 
 **Gap: Philosophical Under-determination of Personal Identity**
 - **Description**: The tension between Sameness-as-Trajectory and Causal Entropy is productive, but not yet robustly worked through against classical objections (fission/fusion cases, gradual replacement, Parfit-style arguments).
 - **Impact**: Weak defense in philosophical debates; risk in radical AI scenarios (Mind Upload).
 - **Status**: Open – Medium Priority
-- **Comment**: Add dedicated section on Personal Identity Philosophy and connect to existing literature.
+- **Comment**: Add dedicated section on Personal Identity Philosophy and connect to existing literature. The Dual Mission adds the dimension of artificial / substrate-free identity persistence.
 
 ### 2. Mathematical & Formal Gaps
 
@@ -50,7 +75,7 @@ This is a living document. It will be updated as progress is made and linked bac
   is inspiring, but the consistency term, the metric of the configuration space, and the precise operationalization of \(\nabla \mathcal{C}\) remain vague.
 - **Impact**: Can be criticized as "mathematics as decoration" rather than a genuine tool.
 - **Status**: Open – Active Work
-- **Comment**: Next step: Develop concrete models and simple simulations. Clearly label the status of the formula as "inspirational / to-be-rigorously-derived".
+- **Comment**: Next step: Develop concrete models and simple simulations. Clearly label the status of the formula as "inspirational / to-be-rigorously-derived". The Dual Mission increases the need for precision here.
 
 ### 3. Practical & Operationalization Gaps
 
@@ -80,7 +105,7 @@ This is a living document. It will be updated as progress is made and linked bac
 - **Description**: The section exists in the hub but remains weak in content.
 - **Impact**: Framework appears less differentiated and more vulnerable to criticism.
 - **Status**: Open – High Priority
-- **Comment**: Develop concrete differentiation from 4–5 relevant frameworks/theories (Narrative Identity, modern Stoicism, Self-Determination Theory, Agent Foundations in AI, etc.).
+- **Comment**: Develop concrete differentiation from 4–5 relevant frameworks/theories (Narrative Identity, modern Stoicism, Self-Determination Theory, Agent Foundations in AI, etc.), explicitly addressing the Dual Mission.
 
 **Gap: Rapid Evolution & Temporary Inconsistencies**
 - **Description**: Core Structure updates (Rotation, Time Layer) within a few days. Skill definition vs. current pages can diverge slightly.
@@ -90,30 +115,17 @@ This is a living document. It will be updated as progress is made and linked bac
 
 ---
 
-## Connection to the Reframing Question (Artificial Identities & Substrate-Free Space)
-
-If the primary focus shifts to *defining artificial identities* for the first time in order to understand what happens with intelligence in substrate-free space, several gaps would shift in emphasis:
-
-- Stronger scientific character possible (closer connection to AI research, philosophy of mind, xAI-style questions).
-- Simultaneously higher speculation risk ("first-time definition of artificial identities" is a very large claim).
-- Practical "help for humans in the AI shift" aspects would recede into the background or become a diagnostic byproduct.
-- Local validity would become even more pronounced: the project would primarily concern modeling new substrates rather than universal human self-help.
-
-This document will be updated accordingly if the reframing decision is taken.
-
----
-
 ## Next Steps (as of 18 July 2026)
 
-1. Maintain and expand this document with new insights.
-2. Flesh out the Positioning & Differentiation section with concrete contrasts.
+1. Maintain and expand this document with new insights, especially regarding the Dual Mission and Isomorphism progress.
+2. Flesh out the Positioning & Differentiation section with concrete contrasts that reflect both missions.
 3. Develop first concrete probe protocols for Questions as Probes.
 4. Clearly label mathematical formulas as inspirational and sketch initial simple models if useful.
-5. Continue public transparency: this analysis is now also available via the framework repository.
+5. Continue public transparency: this analysis is now also available via the framework repository (updates will be committed to the feature branch until merged).
 
 **Internal Links (Notion):**
 - [Core Concepts — Geometric Primitives & Causal Entropy](https://app.notion.com/p/3a05198a03258115876ddd646f7234e7)
 - [Identity Differential](https://app.notion.com/p/3a05198a0325812a85cfc0f2684edfe3)
 - [Identity Engineering Hub](https://app.notion.com/p/39f5198a032581239b75c0977f2df3c7)
 
-*Created and structured via identity-engineering skill + critical analysis (18 July 2026). Transparent publication via feature branch.*
+*Updated 18 July 2026 to explicitly reflect the Dual Mission (human practical support + substrate-free foundational modeling) and the central role of isomorphism work. Created and structured via identity-engineering skill + critical analysis.*

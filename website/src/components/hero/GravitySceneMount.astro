@@ -1,0 +1,42 @@
+---
+/**
+ * Client-only mount for GravityScene.
+ * Injects Vite React-refresh preamble before loading any .tsx (dev only).
+ */
+---
+
+<div id="gravity-scene-root" class="absolute inset-0" data-gravity-root></div>
+
+<script>
+	async function ensureReactPreamble() {
+		// @vitejs/plugin-react throws without this in dev HMR mode
+		if (import.meta.env.DEV && !window.__vite_plugin_react_preamble_installed__) {
+			try {
+				const RefreshRuntime = (await import('/@react-refresh')).default;
+				RefreshRuntime.injectIntoGlobalHook(window);
+				window.$RefreshReg$ = () => {};
+				window.$RefreshSig$ = () => (type) => type;
+				window.__vite_plugin_react_preamble_installed__ = true;
+			} catch {
+				// Production / no refresh runtime
+				window.__vite_plugin_react_preamble_installed__ = true;
+			}
+		}
+	}
+
+	async function mount() {
+		const el = document.querySelector('[data-gravity-root]');
+		if (!el || el.getAttribute('data-mounted') === '1') return;
+		el.setAttribute('data-mounted', '1');
+
+		await ensureReactPreamble();
+
+		const { createElement } = await import('react');
+		const { createRoot } = await import('react-dom/client');
+		const { default: GravityScene } = await import('./GravityScene.tsx');
+
+		createRoot(el).render(createElement(GravityScene));
+	}
+
+	mount().catch((err) => console.error('[GravitySceneMount]', err));
+</script>

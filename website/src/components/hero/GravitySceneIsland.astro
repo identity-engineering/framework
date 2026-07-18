@@ -1,0 +1,11 @@
+---
+/**
+ * Thin Astro island wrapper — keeps R3F fully client-side.
+ * Import THIS from pages instead of the .tsx directly if renderer matching fails.
+ */
+import GravityScene from './GravityScene';
+---
+
+<div class="absolute inset-0 contents-for-island">
+  <GravityScene client:only="react" />
+</div>

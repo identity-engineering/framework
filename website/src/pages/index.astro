@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import GravityScene from '../components/hero/GravityScene';
+import GravitySceneMount from '../components/hero/GravitySceneMount.astro';
 ---
 
 <Layout title="Identity Engineering">
@@ -17,7 +17,8 @@ import GravityScene from '../components/hero/GravityScene';
 			</div>
 
 			<div class="relative flex-1 min-h-[52dvh] w-full">
-				<GravityScene client:load />
+				{/* Pure client mount — bypasses Astro framework renderer for R3F */}
+				<GravitySceneMount />
 			</div>
 		</section>
 

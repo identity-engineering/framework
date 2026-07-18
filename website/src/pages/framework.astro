@@ -1,17 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import StemScrollScene from '../components/concepts/StemScrollScene';
-import MassScene from '../components/concepts/MassScene';
-import CurvatureScene from '../components/concepts/CurvatureScene';
-import RotationScene from '../components/concepts/RotationScene';
-import GravitationScene from '../components/concepts/GravitationScene';
-import ProbesScene from '../components/concepts/ProbesScene';
+import ConceptSceneMount from '../components/concepts/ConceptSceneMount.astro';
 
 /**
  * Official structure (Notion Core Concepts, 2026-07-18):
  * 1. Concepts of a Single Identity — Time, Mass, Curvature, Rotation
  * 2. Concepts of an Interactive Identity — Gravitation, Relativity
- * Disciplines removed: practice is embedded in the concepts themselves.
+ * Scenes mount client-side via ConceptSceneMount (no Astro .tsx renderer).
  */
 ---
 
@@ -83,7 +78,7 @@ import ProbesScene from '../components/concepts/ProbesScene';
 						</a>
 					</div>
 					<div class="relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f]">
-						<StemScrollScene client:visible />
+						<ConceptSceneMount scene="stem" />
 					</div>
 				</div>
 			</div>
@@ -92,7 +87,7 @@ import ProbesScene from '../components/concepts/ProbesScene';
 			<div class="max-w-6xl mx-auto px-8 py-12 md:py-16" data-concept-section>
 				<div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
 					<div class="relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f] order-2 md:order-1">
-						<MassScene client:visible />
+						<ConceptSceneMount scene="mass" />
 					</div>
 					<div class="order-1 md:order-2">
 						<div class="text-sm uppercase tracking-[4px] text-white/35 mb-3">Geometry</div>
@@ -123,7 +118,7 @@ import ProbesScene from '../components/concepts/ProbesScene';
 						</p>
 					</div>
 					<div class="relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f]">
-						<CurvatureScene client:visible />
+						<ConceptSceneMount scene="curvature" />
 					</div>
 				</div>
 			</div>
@@ -132,7 +127,7 @@ import ProbesScene from '../components/concepts/ProbesScene';
 			<div class="max-w-6xl mx-auto px-8 py-12 md:py-20" data-concept-section>
 				<div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
 					<div class="relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f] order-2 md:order-1">
-						<RotationScene client:visible />
+						<ConceptSceneMount scene="rotation" />
 					</div>
 					<div class="order-1 md:order-2">
 						<div class="text-sm uppercase tracking-[4px] text-white/35 mb-3">Dynamics</div>
@@ -177,7 +172,7 @@ import ProbesScene from '../components/concepts/ProbesScene';
 						</p>
 					</div>
 					<div class="relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f]">
-						<GravitationScene client:visible />
+						<ConceptSceneMount scene="gravitation" />
 					</div>
 				</div>
 			</div>
@@ -186,7 +181,7 @@ import ProbesScene from '../components/concepts/ProbesScene';
 			<div class="max-w-6xl mx-auto px-8 py-12 md:py-20" data-concept-section>
 				<div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
 					<div class="relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f] order-2 md:order-1">
-						<ProbesScene client:visible />
+						<ConceptSceneMount scene="probes" />
 					</div>
 					<div class="order-1 md:order-2">
 						<div class="text-sm uppercase tracking-[4px] text-white/35 mb-3">Relation</div>

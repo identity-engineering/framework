@@ -1,39 +1,59 @@
 import { useRef, useMemo } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
+import ConceptCanvas from './ConceptCanvas';
+import ScrollProgressController from './ScrollProgressController';
+import { mono, smoothstep } from './mono';
 
-function ScanBeams() {
+/**
+ * Questions as Probes — measurement state scrubbed by scroll only.
+ */
+export default function ProbesScene() {
+  const progress = useRef(0);
+
+  return (
+    <div className="w-full h-full">
+      <ConceptCanvas camera={{ position: [0, 1.5, 5], fov: 48 }}>
+        <ScrollProgressController progress={progress} />
+        <CenterProbe progress={progress} />
+        <ScanBeams progress={progress} />
+        <DataNodes progress={progress} />
+        <ConnectionWeb progress={progress} />
+      </ConceptCanvas>
+    </div>
+  );
+}
+
+function ScanBeams({ progress }: { progress: React.MutableRefObject<number> }) {
   const groupRef = useRef<THREE.Group>(null);
+  const materialsRef = useRef<THREE.MeshBasicMaterial[]>([]);
 
   const beams = useMemo(() => {
-    const arr: { angle: number; length: number; speed: number; delay: number }[] = [];
+    const arr: { angle: number; length: number; phase: number }[] = [];
     for (let i = 0; i < 8; i++) {
       arr.push({
         angle: (i / 8) * Math.PI * 2,
-        length: 3 + Math.random() * 2,
-        speed: 0.5 + Math.random() * 0.5,
-        delay: i * 0.4,
+        length: 3 + (i % 3) * 0.5,
+        phase: i / 8,
       });
     }
     return arr;
   }, []);
 
-  useFrame(({ clock }) => {
+  useFrame(() => {
     if (!groupRef.current) return;
-    const t = clock.getElapsedTime();
+    const p = progress.current;
+    const active = smoothstep(0.08, 0.45, p);
+
     groupRef.current.children.forEach((child, i) => {
       const beam = beams[i];
       if (!beam) return;
-      const progress = ((t * beam.speed + beam.delay) % 3) / 3;
-      const opacity = progress < 0.5
-        ? progress * 2
-        : (1 - progress) * 2;
-      (child as THREE.Mesh).material = new THREE.MeshBasicMaterial({
-        color: '#22d3ee',
-        transparent: true,
-        opacity: opacity * 0.3,
-      });
-      child.scale.y = 0.5 + progress * 1.5;
+      // Wave of activation around the ring as you scroll
+      const local = (p * 2.5 + beam.phase) % 1;
+      const pulse = local < 0.5 ? local * 2 : (1 - local) * 2;
+      const mat = materialsRef.current[i];
+      if (mat) mat.opacity = pulse * 0.32 * active;
+      child.scale.y = 0.35 + pulse * 1.5 * active;
     });
   });
 
@@ -49,39 +69,55 @@ function ScanBeams() {
           ]}
           rotation={[0, 0, -beam.angle + Math.PI / 2]}
         >
-          <boxGeometry args={[0.015, beam.length, 0.015]} />
-          <meshBasicMaterial color="#22d3ee" transparent opacity={0.2} />
+          <boxGeometry args={[0.012, beam.length, 0.012]} />
+          <meshBasicMaterial
+            ref={(mat) => {
+              if (mat) materialsRef.current[i] = mat;
+            }}
+            color={mono.high}
+            transparent
+            opacity={0.15}
+            depthWrite={false}
+          />
         </mesh>
       ))}
     </group>
   );
 }
 
-function DataNodes() {
+function DataNodes({ progress }: { progress: React.MutableRefObject<number> }) {
   const groupRef = useRef<THREE.Group>(null);
 
   const nodes = useMemo(() => {
-    const arr: { pos: [number, number, number]; size: number; pulseSpeed: number }[] = [];
-    for (let i = 0; i < 20; i++) {
-      const theta = Math.random() * Math.PI * 2;
-      const r = 1 + Math.random() * 3;
+    const arr: { pos: [number, number, number]; size: number; phase: number }[] =
+      [];
+    for (let i = 0; i < 18; i++) {
+      const theta = (i / 18) * Math.PI * 2 + (i % 3) * 0.2;
+      const r = 1.1 + (i % 5) * 0.45;
       arr.push({
-        pos: [Math.cos(theta) * r, (Math.random() - 0.5) * 2, Math.sin(theta) * r],
-        size: 0.04 + Math.random() * 0.06,
-        pulseSpeed: 1 + Math.random() * 2,
+        pos: [
+          Math.cos(theta) * r,
+          ((i % 7) - 3) * 0.28,
+          Math.sin(theta) * r,
+        ],
+        size: 0.035 + (i % 3) * 0.02,
+        phase: i / 18,
       });
     }
     return arr;
   }, []);
 
-  useFrame(({ clock }) => {
+  useFrame(() => {
     if (!groupRef.current) return;
-    const t = clock.getElapsedTime();
+    const p = progress.current;
+    const active = smoothstep(0.08, 0.45, p);
     groupRef.current.children.forEach((child, i) => {
       const node = nodes[i];
       if (!node) return;
-      const scale = 1 + Math.sin(t * node.pulseSpeed) * 0.3;
-      child.scale.set(scale, scale, scale);
+      // Scale peaks when scroll "hits" this node's phase
+      const hit = 1 - Math.min(1, Math.abs(p - (0.2 + node.phase * 0.55)) * 4);
+      const scale = (0.55 + hit * 0.7) * (0.4 + active * 0.6);
+      child.scale.setScalar(scale);
     });
   });
 
@@ -91,10 +127,10 @@ function DataNodes() {
         <mesh key={i} position={node.pos}>
           <octahedronGeometry args={[node.size]} />
           <meshStandardMaterial
-            color="#22d3ee"
-            emissive="#22d3ee"
-            emissiveIntensity={1}
-            roughness={0.2}
+            color={mono.high}
+            emissive={mono.white}
+            emissiveIntensity={0.7}
+            roughness={0.25}
           />
         </mesh>
       ))}
@@ -102,21 +138,30 @@ function DataNodes() {
   );
 }
 
-function ConnectionWeb() {
+function ConnectionWeb({
+  progress,
+}: {
+  progress: React.MutableRefObject<number>;
+}) {
   const ref = useRef<THREE.Group>(null);
 
   const connections = useMemo(() => {
     const pts: THREE.Vector3[] = [];
-    for (let i = 0; i < 15; i++) {
-      const theta = Math.random() * Math.PI * 2;
-      const r = 1 + Math.random() * 3;
-      pts.push(new THREE.Vector3(Math.cos(theta) * r, (Math.random() - 0.5) * 2, Math.sin(theta) * r));
+    for (let i = 0; i < 14; i++) {
+      const theta = (i / 14) * Math.PI * 2;
+      const r = 1.2 + (i % 4) * 0.5;
+      pts.push(
+        new THREE.Vector3(
+          Math.cos(theta) * r,
+          ((i % 5) - 2) * 0.3,
+          Math.sin(theta) * r
+        )
+      );
     }
-
     const lines: [THREE.Vector3, THREE.Vector3][] = [];
     for (let i = 0; i < pts.length; i++) {
       for (let j = i + 1; j < pts.length; j++) {
-        if (pts[i].distanceTo(pts[j]) < 2.5) {
+        if (pts[i].distanceTo(pts[j]) < 2.3) {
           lines.push([pts[i], pts[j]]);
         }
       }
@@ -124,8 +169,15 @@ function ConnectionWeb() {
     return lines;
   }, []);
 
-  useFrame(({ clock }) => {
-    if (ref.current) ref.current.rotation.y = clock.getElapsedTime() * 0.03;
+  useFrame(() => {
+    if (!ref.current) return;
+    const p = progress.current;
+    const active = smoothstep(0.08, 0.45, p);
+    ref.current.rotation.y = p * Math.PI * 0.8;
+    ref.current.children.forEach((child) => {
+      const mat = (child as THREE.Line).material as THREE.LineBasicMaterial;
+      mat.opacity = 0.03 + active * 0.16;
+    });
   });
 
   return (
@@ -134,7 +186,12 @@ function ConnectionWeb() {
         const geometry = new THREE.BufferGeometry().setFromPoints([a, b]);
         return (
           <line key={i} geometry={geometry}>
-            <lineBasicMaterial color="#22d3ee" transparent opacity={0.15} />
+            <lineBasicMaterial
+              color={mono.mid}
+              transparent
+              opacity={0.1}
+              depthWrite={false}
+            />
           </line>
         );
       })}
@@ -142,13 +199,23 @@ function ConnectionWeb() {
   );
 }
 
-function CenterProbe() {
+function CenterProbe({
+  progress,
+}: {
+  progress: React.MutableRefObject<number>;
+}) {
   const ref = useRef<THREE.Group>(null);
+  const matRef = useRef<THREE.MeshStandardMaterial>(null);
 
-  useFrame(({ clock }) => {
+  useFrame(() => {
+    const p = progress.current;
+    const active = smoothstep(0.08, 0.45, p);
     if (ref.current) {
-      ref.current.rotation.y = clock.getElapsedTime() * 0.3;
-      ref.current.rotation.x = Math.sin(clock.getElapsedTime() * 0.2) * 0.2;
+      ref.current.rotation.y = p * Math.PI * 2.5;
+      ref.current.rotation.x = Math.sin(p * Math.PI * 2) * 0.2;
+    }
+    if (matRef.current) {
+      matRef.current.emissiveIntensity = 0.5 + active * 1.8;
     }
   });
 
@@ -157,9 +224,10 @@ function CenterProbe() {
       <mesh>
         <octahedronGeometry args={[0.25, 0]} />
         <meshStandardMaterial
-          color="#0f172a"
-          emissive="#22d3ee"
-          emissiveIntensity={2}
+          ref={matRef}
+          color={mono.core}
+          emissive={mono.white}
+          emissiveIntensity={1}
           roughness={0}
           metalness={1}
           wireframe
@@ -167,27 +235,15 @@ function CenterProbe() {
       </mesh>
       {[0, Math.PI / 2, Math.PI].map((rot, i) => (
         <mesh key={i} rotation={[rot, rot * 0.5, 0]}>
-          <torusGeometry args={[0.5, 0.008, 8, 64]} />
-          <meshBasicMaterial color="#22d3ee" transparent opacity={0.3} />
+          <torusGeometry args={[0.5, 0.006, 8, 64]} />
+          <meshBasicMaterial
+            color={mono.high}
+            transparent
+            opacity={0.28}
+            depthWrite={false}
+          />
         </mesh>
       ))}
     </group>
-  );
-}
-
-export default function ProbesScene() {
-  return (
-    <div className="w-full h-full">
-      <Canvas camera={{ position: [0, 1.5, 5], fov: 50 }} dpr={[1, 2]} gl={{ alpha: true }}>
-        <ambientLight intensity={0.05} />
-        <pointLight position={[0, 0, 0]} intensity={1.5} color="#22d3ee" />
-        <pointLight position={[-3, 2, 2]} intensity={0.5} color="#a78bfa" />
-        <CenterProbe />
-        <ScanBeams />
-        <DataNodes />
-        <ConnectionWeb />
-        <fog attach="fog" args={['#0a0a0f', 5, 14]} />
-      </Canvas>
-    </div>
   );
 }

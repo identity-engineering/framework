@@ -1,87 +1,300 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import StemScrollScene from '../components/concepts/StemScrollScene';
+import MassScene from '../components/concepts/MassScene';
+import CurvatureScene from '../components/concepts/CurvatureScene';
+import RotationScene from '../components/concepts/RotationScene';
+import GravitationScene from '../components/concepts/GravitationScene';
+import ProbesScene from '../components/concepts/ProbesScene';
+
+/**
+ * Official Framework structure (Notion Core Concepts, 2026-07-18)
+ * with compact scroll-driven visuals beside each concept.
+ */
 ---
 
 <Layout title="Framework | Identity Engineering">
 	<main>
-		<section class="min-h-[70vh] flex flex-col justify-center pt-24 pb-16">
+		<!-- Intro -->
+		<section class="min-h-[55vh] flex flex-col justify-center pt-28 pb-16">
 			<div class="max-w-4xl mx-auto px-8">
-				<div class="text-sm uppercase tracking-[4px] text-cyan-400/70 mb-6">The Framework</div>
-				<h1 class="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.95] mb-8">
+				<div class="text-sm uppercase tracking-[4px] text-white/40 mb-6">The Framework</div>
+				<h1 class="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.95] mb-8 text-white">
 					Identity Engineering
 				</h1>
 				<p class="text-xl md:text-2xl text-white/50 font-light max-w-2xl leading-relaxed">
-					A science-grounded model for understanding and designing human identity — built on principles from physics, information theory, and systems engineering.
+					A physics- and mathematics-grounded operating system for consciously designing identity in the AI era —
+					descriptive geometry first, then interactive forces, then engineering disciplines you can practice.
 				</p>
 			</div>
 		</section>
 
-		<!-- Framework overview -->
-		<section class="py-24 border-t border-white/10">
-			<div class="max-w-4xl mx-auto px-8">
-				<div class="grid gap-20">
-
-					<!-- Identity Stem -->
-					<div>
-						<div class="text-sm uppercase tracking-[4px] text-violet-400/60 mb-4">Foundation</div>
-						<h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-							<a href="/identity-stem" class="hover:text-violet-300 transition">Identity Stem</a>
-						</h2>
-						<p class="text-lg text-white/60 leading-relaxed max-w-2xl">
-							The temporal axis of identity. Past as State Differential, Present as State, Future as Vision Gradient. The stem is the backbone from which all other properties emerge.
-						</p>
-					</div>
-
-					<!-- Mass -->
-					<div>
-						<div class="text-sm uppercase tracking-[4px] text-violet-400/60 mb-4">01</div>
-						<h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Mass</h2>
-						<p class="text-lg text-white/60 leading-relaxed max-w-2xl">
-							The depth and substance of your personal and professional stake. Not volume — but density and weight. The heavier your identity mass, the stronger your gravitational pull on reality.
-						</p>
-					</div>
-
-					<!-- Curvature -->
-					<div>
-						<div class="text-sm uppercase tracking-[4px] text-cyan-400/60 mb-4">02</div>
-						<h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Curvature</h2>
-						<p class="text-lg text-white/60 leading-relaxed max-w-2xl">
-							How a strong vision warps what appears possible or inevitable. Like mass bends spacetime, identity mass bends the fabric of your reality — pulling opportunities toward your trajectory.
-						</p>
-					</div>
-
-					<!-- Gravitation -->
-					<div>
-						<div class="text-sm uppercase tracking-[4px] text-violet-400/60 mb-4">03</div>
-						<h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Gravitation</h2>
-						<p class="text-lg text-white/60 leading-relaxed max-w-2xl">
-							The attractive force of a coherent, owned vision. It pulls in opportunities, people, and energy — not by seeking, but by the sheer presence of your designed identity field.
-						</p>
-					</div>
-
-					<!-- Questions as Probes -->
-					<div>
-						<div class="text-sm uppercase tracking-[4px] text-cyan-400/60 mb-4">04</div>
-						<h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Questions as Probes</h2>
-						<p class="text-lg text-white/60 leading-relaxed max-w-2xl">
-							Precision instruments to measure and adjust the geometry of your identity. Each question is a probe sent into your reality — returning data about where you are and what's possible.
-						</p>
-					</div>
-
+		<!-- Map -->
+		<section class="py-14 border-t border-white/10">
+			<div class="max-w-5xl mx-auto px-8">
+				<p class="text-sm uppercase tracking-[4px] text-white/40 mb-8">Structure</p>
+				<div class="grid md:grid-cols-3 gap-5">
+					<a href="#single" class="block p-5 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition">
+						<div class="text-xs text-white/35 mb-2">01</div>
+						<div class="text-lg font-semibold text-white mb-1">Single Identity</div>
+						<p class="text-sm text-white/45">Time · Mass · Curvature · Rotation</p>
+					</a>
+					<a href="#interactive" class="block p-5 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition">
+						<div class="text-xs text-white/35 mb-2">02</div>
+						<div class="text-lg font-semibold text-white mb-1">Interactive Identity</div>
+						<p class="text-sm text-white/45">Gravitation · Relativity</p>
+					</a>
+					<a href="#disciplines" class="block p-5 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition">
+						<div class="text-xs text-white/35 mb-2">03</div>
+						<div class="text-lg font-semibold text-white mb-1">Engineering Disciplines</div>
+						<p class="text-sm text-white/45">Vision · Habit · Measurement</p>
+					</a>
 				</div>
 			</div>
 		</section>
 
-		<!-- CTA -->
-		<section class="py-24 border-t border-white/10">
-			<div class="max-w-3xl mx-auto px-8 text-center">
-				<h2 class="text-3xl font-bold tracking-tight mb-4">Go deeper</h2>
-				<p class="text-lg text-white/50 mb-10">
-					Explore the frontier questions that push beyond the current framework.
+		<!-- 1. Single Identity -->
+		<section id="single" class="border-t border-white/10">
+			<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
+				<div class="text-sm uppercase tracking-[4px] text-white/40 mb-3">01 — Descriptive</div>
+				<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
+					Concepts of a Single Identity
+				</h2>
+				<p class="text-base text-white/45 leading-relaxed max-w-2xl mb-4">
+					Internal geometry and dynamics of one identity — form, substance, warp, and stability.
 				</p>
-				<a href="/big-questions" class="px-8 py-3.5 rounded-full bg-white/10 border border-white/20 text-white font-medium hover:bg-white/20 transition">
-					Big Questions →
-				</a>
+			</div>
+
+			<!-- Time / Stem — scroll-only (framework page), not hero continuous -->
+			<div class="max-w-6xl mx-auto px-8 py-12 md:py-16" data-concept-section>
+				<div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+					<div>
+						<div class="text-sm uppercase tracking-[4px] text-white/35 mb-3">Foundational</div>
+						<h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white">
+							<a href="/identity-stem" class="hover:text-white/80 transition">Time — Identity Stem</a>
+						</h3>
+						<p class="text-base text-white/55 leading-relaxed mb-4">
+							The Schwerachse exists only through State Differential (past → present) and
+							Vision Gradient (present → future). Time is the foundation that makes the stem possible.
+						</p>
+						<p class="text-sm text-white/40 leading-relaxed mb-5">
+							Scroll: fibers rise past → present → future. No mass, no spin yet — only the
+							strand of time. Sameness-as-Trajectory lives in the fibers.
+						</p>
+						<a href="/identity-stem" class="text-sm text-white/50 hover:text-white transition border-b border-white/20 hover:border-white/50 pb-0.5">
+							Deep dive →
+						</a>
+					</div>
+					<div class="relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f]">
+						<StemScrollScene client:visible />
+					</div>
+				</div>
+			</div>
+
+			<!-- Mass — scroll-driven -->
+			<div class="max-w-6xl mx-auto px-8 py-12 md:py-16" data-concept-section>
+				<div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+					<div class="relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f] order-2 md:order-1">
+						<MassScene client:visible />
+					</div>
+					<div class="order-1 md:order-2">
+						<div class="text-sm uppercase tracking-[4px] text-white/35 mb-3">Geometry</div>
+						<h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white">Mass</h3>
+						<p class="text-base text-white/55 leading-relaxed mb-4">
+							Substance and depth around the stem. Not volume — density and weight. The stake you own.
+						</p>
+						<p class="text-sm text-white/40 leading-relaxed">
+							E ≈ m c² analogy: mass as rest potential converting into agency energy under coherent
+							velocity along the stem. Scroll to densify.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Curvature — scroll-driven -->
+			<div class="max-w-6xl mx-auto px-8 py-12 md:py-16" data-concept-section>
+				<div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+					<div>
+						<div class="text-sm uppercase tracking-[4px] text-white/35 mb-3">Geometry</div>
+						<h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white">Curvature</h3>
+						<p class="text-base text-white/55 leading-relaxed mb-4">
+							Warping of possibility space from stem + mass + coherent vision —
+							what looks near, far, inevitable, or impossible.
+						</p>
+						<p class="text-sm text-white/40 leading-relaxed">
+							Shape of the distortion — not yet the pull of others. Scroll to deepen the well.
+						</p>
+					</div>
+					<div class="relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f]">
+						<CurvatureScene client:visible />
+					</div>
+				</div>
+			</div>
+
+			<!-- Rotation — dedicated gyro / Earth-spin stability visual -->
+			<div class="max-w-6xl mx-auto px-8 py-12 md:py-20" data-concept-section>
+				<div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+					<div class="relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f] order-2 md:order-1">
+						<RotationScene client:visible />
+					</div>
+					<div class="order-1 md:order-2">
+						<div class="text-sm uppercase tracking-[4px] text-white/35 mb-3">Dynamics</div>
+						<h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white">Rotation</h3>
+						<p class="text-base text-white/55 leading-relaxed mb-4">
+							Gyroscopic stability: like a spinning top or Earth on its axis —
+							angular momentum keeps the stem upright. High spin → low wobble.
+						</p>
+						<p class="text-sm text-white/40 leading-relaxed">
+							Habits and Owned Acts are the spin. Scroll: slow rotation wobbles;
+							faster spin locks the axis.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- 2. Interactive -->
+		<section id="interactive" class="border-t border-white/10">
+			<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
+				<div class="text-sm uppercase tracking-[4px] text-white/40 mb-3">02 — Interactive</div>
+				<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
+					Concepts of an Interactive Identity
+				</h2>
+				<p class="text-base text-white/45 leading-relaxed max-w-2xl">
+					Once a single geometry is strong enough, forces appear between identities.
+				</p>
+			</div>
+
+			<!-- Gravitation -->
+			<div class="max-w-6xl mx-auto px-8 py-12 md:py-16" data-concept-section>
+				<div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+					<div>
+						<div class="text-sm uppercase tracking-[4px] text-white/35 mb-3">Force</div>
+						<h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white">Gravitation</h3>
+						<p class="text-base text-white/55 leading-relaxed mb-4">
+							Attraction from the curvature of a high-mass vision —
+							the first force between two or more identities.
+						</p>
+						<p class="text-sm text-white/40 leading-relaxed">
+							Curvature is the bend; Gravitation is what is pulled in. Scroll to increase pull.
+						</p>
+					</div>
+					<div class="relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f]">
+						<GravitationScene client:visible />
+					</div>
+				</div>
+			</div>
+
+			<!-- Relativity — Probes as measurement/relation -->
+			<div class="max-w-6xl mx-auto px-8 py-12 md:py-20" data-concept-section>
+				<div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+					<div class="relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f] order-2 md:order-1">
+						<ProbesScene client:visible />
+					</div>
+					<div class="order-1 md:order-2">
+						<div class="text-sm uppercase tracking-[4px] text-white/35 mb-3">Relation</div>
+						<h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white">Relativity</h3>
+						<p class="text-base text-white/55 leading-relaxed mb-4">
+							Identity exists only in relation to another observing identity —
+							the bridge from single to interactive.
+						</p>
+						<p class="text-sm text-white/40 leading-relaxed">
+							Continuity is observed through change — especially when AI can copy and mirror.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- 3. Disciplines -->
+		<section id="disciplines" class="border-t border-white/10">
+			<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
+				<div class="text-sm uppercase tracking-[4px] text-white/40 mb-3">03 — Actionable</div>
+				<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
+					Identity Engineering Disciplines
+				</h2>
+				<p class="text-base text-white/45 leading-relaxed max-w-2xl mb-2">
+					Three practice layers in time. They turn geometry into engineering.
+				</p>
+			</div>
+
+			<div class="max-w-6xl mx-auto px-8 pb-8">
+				<div class="grid md:grid-cols-3 gap-8 mb-16">
+					<article class="border-t border-white/15 pt-6">
+						<div class="text-xs uppercase tracking-[3px] text-white/35 mb-3">Future</div>
+						<h3 class="text-xl font-bold text-white mb-3">Vision Engineering</h3>
+						<p class="text-sm text-white/50 leading-relaxed">
+							Sharpen the Vision Gradient — direction of steepest increase in Causal Entropy.
+						</p>
+					</article>
+					<article class="border-t border-white/15 pt-6">
+						<div class="text-xs uppercase tracking-[3px] text-white/35 mb-3">Present</div>
+						<h3 class="text-xl font-bold text-white mb-3">Habit Engineering</h3>
+						<p class="text-sm text-white/50 leading-relaxed">
+							Highest-leverage, lowest-stem-friction Owned Acts as tangential stabilizing force.
+						</p>
+					</article>
+					<article class="border-t border-white/15 pt-6">
+						<div class="text-xs uppercase tracking-[3px] text-white/35 mb-3">Past</div>
+						<h3 class="text-xl font-bold text-white mb-3">Measurement Engineering</h3>
+						<p class="text-sm text-white/50 leading-relaxed">
+							Calibrate geometry and dynamics — State Differential, wobble, conversion efficiency.
+						</p>
+					</article>
+				</div>
+			</div>
+
+			<!-- Measurement / Probes visual -->
+			<div class="max-w-6xl mx-auto px-8 py-12 md:py-16 pb-24" data-concept-section>
+				<div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+					<div>
+						<div class="text-sm uppercase tracking-[4px] text-white/35 mb-3">Instrument</div>
+						<h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white">Questions as Probes</h3>
+						<p class="text-base text-white/55 leading-relaxed mb-4">
+							Central tool of Measurement Engineering: precision sondes that measure geometry
+							and allow deliberate mass, curvature, and stem adjustments.
+						</p>
+						<p class="text-sm text-white/40 leading-relaxed">
+							Interface between diagnosis and intervention — not a geometric property itself.
+							Scroll to activate the scan field.
+						</p>
+					</div>
+					<div class="relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f]">
+						<ProbesScene client:visible />
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Architect -->
+		<section class="py-20 border-t border-white/10">
+			<div class="max-w-4xl mx-auto px-8">
+				<div class="text-sm uppercase tracking-[4px] text-white/40 mb-4">Shift</div>
+				<h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-white">
+					Executor → Author → Architect
+				</h2>
+				<p class="text-lg text-white/50 leading-relaxed max-w-2xl">
+					The Architect does not only shape their own stem — they build structures, tools, and language
+					so others can make their differentials transparent and their vision gradients sharp.
+				</p>
+			</div>
+		</section>
+
+		<!-- CTA -->
+		<section class="py-20 border-t border-white/10">
+			<div class="max-w-3xl mx-auto px-8 text-center">
+				<h2 class="text-3xl font-bold tracking-tight mb-4 text-white">Where the map ends</h2>
+				<p class="text-lg text-white/50 mb-10 max-w-xl mx-auto">
+					Human-scale identity is the foundation. Frontier domains remain open on purpose.
+				</p>
+				<div class="flex flex-wrap gap-4 justify-center">
+					<a href="/big-questions" class="px-8 py-3.5 rounded-full bg-white text-black font-medium hover:bg-white/90 transition">
+						Big Questions
+					</a>
+					<a href="/identity-stem" class="px-8 py-3.5 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">
+						Identity Stem
+					</a>
+				</div>
 			</div>
 		</section>
 	</main>

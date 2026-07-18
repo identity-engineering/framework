@@ -1,29 +1,47 @@
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
-import VortexField from './VortexField';
-import OrbitalRings from './OrbitalRings';
-import ParticleCloud from './ParticleCloud';
-import CoreSphere from './CoreSphere';
+import IdentityStem from './IdentityStem';
+import StemParticles from './StemParticles';
+import FitStemCamera from './FitStemCamera';
+import { useIsMobile } from './useIsMobile';
+import { STEM_CAMERA_FOV } from './stemLayout';
 
-export default function GravityScene() {
+interface Props {
+  /** Smaller particle budget for embedded / framework cards */
+  compact?: boolean;
+}
+
+/**
+ * Identity Stem stage — fills its parent container only.
+ * Camera auto-fits the stem to whatever size the stage is given by CSS.
+ */
+export default function GravityScene({ compact = false }: Props) {
+  const isMobile = useIsMobile();
+  const particleCount = isMobile ? 140 : compact ? 200 : 520;
+
   return (
-    <div className="absolute inset-0 -z-10">
+    <div className="absolute inset-0">
       <Canvas
-        camera={{ position: [0, 0, 8], fov: 60 }}
-        dpr={[1, 2]}
-        gl={{ antialias: true, alpha: true }}
+        camera={{ position: [0, 0, 8], fov: STEM_CAMERA_FOV }}
+        dpr={isMobile || compact ? [1, 1.25] : [1, 1.75]}
+        gl={{ antialias: !(isMobile || compact), alpha: true, powerPreference: 'high-performance' }}
       >
         <Suspense fallback={null}>
-          <ambientLight intensity={0.15} />
-          <pointLight position={[0, 0, 2]} intensity={1.5} color="#a78bfa" />
-          <pointLight position={[3, 2, -2]} intensity={0.8} color="#06b6d4" />
+          <color attach="background" args={['#0a0a0f']} />
+          <ambientLight intensity={0.2} />
+          <pointLight position={[0, 0, 2]} intensity={1.1} color="#ffffff" />
+          <pointLight position={[0, 2.5, 1]} intensity={0.55} color="#d4d4d8" />
+          <pointLight position={[2, -2, 3]} intensity={0.35} color="#a1a1aa" />
 
-          <CoreSphere />
-          <VortexField />
-          <OrbitalRings />
-          <ParticleCloud count={800} />
+          <FitStemCamera />
 
-          <fog attach="fog" args={['#0a0a0f', 6, 18]} />
+          {/* Stem centered at origin — framing is handled by FitStemCamera */}
+          <group>
+            <IdentityStem />
+            <StemParticles count={particleCount} />
+          </group>
+
+          <fog attach="fog" args={['#0a0a0f', 6, 20]} />
         </Suspense>
       </Canvas>
     </div>

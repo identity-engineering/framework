@@ -1,5 +1,8 @@
+# Cloudflare Pages — project config for Wrangler CLI + CI
 name = "identity-engineering"
 pages_build_output_dir = "./dist"
+compatibility_date = "2026-07-01"
 
-[build]
-command = "npm run build"
+# Production branch when deploying via CI (override with --branch for previews)
+# Local/manual: npm run deploy
+# CI: .github/workflows/deploy-pages.yml

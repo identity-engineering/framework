@@ -1,3 +1,7 @@
+import { installTimerClock } from '../../lib/installTimerClock';
+// Must run before R3F constructs THREE.Clock in its store
+installTimerClock();
+
 import { Canvas, useThree } from '@react-three/fiber';
 import { useEffect, type ReactNode } from 'react';
 import { mono } from './mono';

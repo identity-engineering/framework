@@ -1,3 +1,7 @@
+import { installTimerClock } from '../../lib/installTimerClock';
+// Must run before R3F constructs THREE.Clock in its store
+installTimerClock();
+
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
 import IdentityStem from './IdentityStem';

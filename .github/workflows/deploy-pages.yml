@@ -1,6 +1,5 @@
 # Deploy website/ to Cloudflare Pages via Wrangler.
-# Temporary: also runs on fix/three-timer-cf-pipeline for pipeline validation.
-# After green run on fix branch → switch triggers to main only.
+# Production: push to main (website/** or this workflow).
 
 name: Deploy Cloudflare Pages
 
@@ -8,7 +7,6 @@ on:
   push:
     branches:
       - main
-      - fix/three-timer-cf-pipeline
     paths:
       - 'website/**'
       - '.github/workflows/deploy-pages.yml'
@@ -52,6 +50,6 @@ jobs:
         run: |
           npx --yes wrangler@4.27.0 pages deploy dist \
             --project-name=identity-engineering \
-            --branch="${{ github.ref_name }}" \
+            --branch=main \
             --commit-hash="${{ github.sha }}" \
             --commit-message="ci deploy ${{ github.sha }}"

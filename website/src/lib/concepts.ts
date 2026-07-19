@@ -8,6 +8,7 @@ export type ConceptScene =
 	| 'curvature'
 	| 'rotation'
 	| 'gravitation'
+	| 'frequency'
 	| 'probes';
 
 export type ConceptId =
@@ -16,7 +17,8 @@ export type ConceptId =
 	| 'curvature'
 	| 'rotation'
 	| 'gravitation'
-	| 'relativity';
+	| 'relativity'
+	| 'frequency';
 
 export interface ConceptMeta {
 	id: ConceptId;
@@ -116,6 +118,20 @@ export const concepts: ConceptMeta[] = [
 		blurb:
 			'Identity exists only in relation to another observing identity. This is the bridge from single to interactive.',
 		scrollHint: 'Scroll: measurement state. Continuity is observed through change.',
+	},
+	{
+		id: 'frequency',
+		slug: 'frequency',
+		href: '/framework/frequency',
+		title: 'Frequency',
+		shortTitle: 'Frequency',
+		layer: 'interactive',
+		layerLabel: 'Interactive Identity',
+		tag: 'Dynamics',
+		scene: 'frequency',
+		blurb:
+			'Resonance behavior of identity tension fields. Alignment amplifies relational stability; mismatch produces drift and energetic loss.',
+		scrollHint: 'Scroll to sweep frequency bands and reveal resonance lock-in.',
 	},
 ];
 

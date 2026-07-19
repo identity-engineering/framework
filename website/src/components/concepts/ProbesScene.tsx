@@ -48,7 +48,7 @@ function ScanBeams({ progress }: { progress: React.MutableRefObject<number> }) {
     groupRef.current.children.forEach((child, i) => {
       const beam = beams[i];
       if (!beam) return;
-      // Wave of activation around the ring as you scroll
+      // Wave of activation around the ring as scroll advances
       const local = (p * 2.5 + beam.phase) % 1;
       const pulse = local < 0.5 ? local * 2 : (1 - local) * 2;
       const mat = materialsRef.current[i];

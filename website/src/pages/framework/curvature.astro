@@ -1,0 +1,72 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ConceptPageHero from '../../components/concepts/ConceptPageHero.astro';
+import ConceptPager from '../../components/concepts/ConceptPager.astro';
+import { getConcept } from '../../lib/concepts';
+
+const c = getConcept('curvature');
+---
+
+<Layout title={`${c.title} | Identity Engineering`}>
+	<main class="min-h-screen">
+		<ConceptPageHero
+			scene={c.scene}
+			tag={`${c.tag} · ${c.layerLabel}`}
+			title={c.title}
+			lede={c.blurb}
+			scrollHint={c.scrollHint}
+		/>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl space-y-8 text-lg leading-relaxed text-white/55">
+				<div class="mb-2 text-sm uppercase tracking-[4px] text-white/40">Definition</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					Possibility space has a geometry.
+				</h2>
+				<p>
+					<strong class="text-white/80">Curvature</strong> is the warping of what seems possible:
+					near or far, inevitable or unthinkable. It comes from stem, mass, and a coherent vision.
+					It changes the “spacetime” of options itself, before anyone else is pulled in.
+				</p>
+				<p>
+					A weak, diffuse identity leaves a nearly flat field. Every path looks equally available and equally empty.
+					A high-mass, directed stem bends the field so some trajectories feel natural and others take enormous force to enter.
+				</p>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 bg-white/[0.02] px-6 py-24">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-6 text-sm uppercase tracking-[4px] text-white/40">Distinction</div>
+				<h2 class="mb-8 text-3xl font-bold text-white md:text-4xl">Curvature ≠ Gravitation</h2>
+				<div class="grid gap-6 md:grid-cols-2">
+					<div class="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+						<div class="mb-2 text-xs uppercase tracking-[3px] text-white/35">Curvature</div>
+						<p class="text-white/60 leading-relaxed">
+							Shape of the distortion: the geometry of possibility for <em class="not-italic text-white/75">this</em> identity.
+						</p>
+					</div>
+					<div class="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+						<div class="mb-2 text-xs uppercase tracking-[3px] text-white/35">Gravitation</div>
+						<p class="text-white/60 leading-relaxed">
+							What that bend does to <em class="not-italic text-white/75">others</em>: attraction between identities.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl space-y-6 text-lg leading-relaxed text-white/55">
+				<div class="mb-2 text-sm uppercase tracking-[4px] text-white/40">Engineering</div>
+				<p>
+					<strong class="text-white/80">Engineering task:</strong> Make the well intentional.
+					If your curvature is accidental (unexamined fear, borrowed goals, reactive denseness),
+					you will systematically misread near and far, and waste force climbing the wrong slopes.
+				</p>
+			</div>
+		</section>
+
+		<ConceptPager id="curvature" />
+	</main>
+</Layout>

@@ -1,0 +1,233 @@
+---
+/**
+ * Time / Identity Stem: foundational layer (Notion Core Concepts 18.07.2026).
+ * Content aligned with Identity Differential synthesis + official structure.
+ */
+import Layout from '../../layouts/Layout.astro';
+import ConceptPageHero from '../../components/concepts/ConceptPageHero.astro';
+import ConceptPager from '../../components/concepts/ConceptPager.astro';
+import { getConcept } from '../../lib/concepts';
+
+const c = getConcept('time');
+---
+
+<Layout title={`${c.title} | Identity Engineering`}>
+	<main class="min-h-screen">
+		<ConceptPageHero
+			scene={c.scene}
+			tag={`${c.tag} · ${c.layerLabel}`}
+			title={c.title}
+			lede={c.blurb}
+			scrollHint={c.scrollHint}
+		/>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Why Time first</div>
+				<h2 class="mb-6 text-3xl font-bold tracking-tight text-white md:text-4xl">
+					The stem is a temporal object.
+				</h2>
+				<div class="space-y-5 text-lg leading-relaxed text-white/55">
+					<p>
+						<strong class="text-white/80">Time</strong> is the foundational layer, not decoration.
+						The <strong class="text-white/80">Identity Stem</strong> only exists through the integration
+						of two directed forces:
+					</p>
+					<ul class="space-y-3 pl-1">
+						<li class="flex gap-3">
+							<span class="text-cyan-400/80">←</span>
+							<span><strong class="text-white/75">State Differential</strong> (past → present): the observed derivative of change</span>
+						</li>
+						<li class="flex gap-3">
+							<span class="text-violet-400/80">→</span>
+							<span><strong class="text-white/75">Vision Gradient</strong> (present → future): the intended steepest ascent of freedom</span>
+						</li>
+					</ul>
+					<p>
+						Here we anchor the idea of <a
+							href="https://doi.org/10.1103/PhysRevLett.110.168702"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-white/75 underline decoration-white/25 underline-offset-4 hover:text-white hover:decoration-white/50 transition"
+						>causal entropic forces</a> from <a
+							href="https://www.ted.com/talks/alex_wissner_gross_a_new_equation_for_intelligence"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-white/75 underline decoration-white/25 underline-offset-4 hover:text-white hover:decoration-white/50 transition"
+						>A. D. Wissner-Gross</a> and C. E. Freer
+						(<a
+							href="https://link.aps.org/doi/10.1103/PhysRevLett.110.168702"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-white/75 underline decoration-white/25 underline-offset-4 hover:text-white hover:decoration-white/50 transition"
+						>Phys. Rev. Lett. 110, 168702, 2013</a>):
+						intelligence as the drive to keep future freedom of action open.
+						That drive shows up when you integrate the past coherently <em class="text-white/70 not-italic">and</em> open the future actively.
+						Mass, Curvature, and Rotation build on this temporal axis. They do not replace it.
+					</p>
+					<p class="text-base text-white/40">
+						Accessible overview: <a
+							href="https://physics.aps.org/articles/v6/46"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="underline decoration-white/20 underline-offset-4 hover:text-white/60 transition"
+						>Physics 6, 46 (2013)</a> on the same paper.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl space-y-28">
+				<div>
+					<div class="mb-3 text-sm uppercase tracking-[4px] text-cyan-400/70">01 · Past</div>
+					<h2 class="mb-6 text-3xl font-bold text-white md:text-4xl">State Differential</h2>
+					<p class="mb-5 text-lg leading-relaxed text-white/60">
+						The observed derivative of the state: <code class="text-violet-300">δS = dS/dt</code> (or discrete ΔS).
+						This is the causal chain of actual changes from the past up to now.
+					</p>
+					<p class="mb-5 text-lg leading-relaxed text-white/60">
+						It maximizes <strong class="text-white/80">Sameness-as-Trajectory</strong>.
+						After change, you are not recognizable from the current snapshot (that is copyable).
+						You are recognizable from the transparent history of how you moved.
+					</p>
+					<p class="text-lg leading-relaxed text-white/60">
+						<strong class="text-white/80">Engineering task:</strong> Make the State Differential transparent and owned.
+						The past is not a fixed story to defend. It is a verifiable causal chain that can still authenticate
+						the entity after radical change.
+					</p>
+				</div>
+
+				<div>
+					<div class="mb-3 text-sm uppercase tracking-[4px] text-violet-400/70">02 · Present</div>
+					<h2 class="mb-6 text-3xl font-bold text-white md:text-4xl">State</h2>
+					<p class="mb-5 text-lg leading-relaxed text-white/60">
+						<code class="text-violet-300">S(t)</code>: the high-dimensional state vector right now
+						(competencies, relationships, inner states, positions, resources…).
+					</p>
+					<p class="mb-5 text-lg leading-relaxed text-white/60">
+						The present is only the <strong class="text-white/80">current cross-section</strong> of the Stem.
+						It is where past trajectory meets future gradient. It is never the full definition of identity.
+					</p>
+					<p class="text-lg leading-relaxed text-white/60">
+						<strong class="text-white/80">State ≠ Identity.</strong>
+					</p>
+				</div>
+
+				<div>
+					<div class="mb-3 text-sm uppercase tracking-[4px] text-cyan-400/70">03 · Future</div>
+					<h2 class="mb-6 text-3xl font-bold text-white md:text-4xl">Vision Gradient</h2>
+					<p class="mb-5 text-lg leading-relaxed text-white/60">
+						<code class="text-violet-300">V ≈ ∇𝒞</code>, where 𝒞 is causal entropy:
+						a measure of future freedom of action
+						(see <a
+							href="https://doi.org/10.1103/PhysRevLett.110.168702"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-white/75 underline decoration-white/25 underline-offset-4 hover:text-white hover:decoration-white/50 transition"
+						>Wissner-Gross & Freer, 2013</a>).
+					</p>
+
+					<div class="mb-8 rounded-2xl border border-white/10 bg-white/5 p-8">
+						<h3 class="mb-4 text-xl font-semibold text-white/90">The Gradient: steepest ascent</h3>
+						<ul class="space-y-3 text-white/60">
+							<li class="flex gap-3">
+								<span class="text-violet-400">→</span>
+								<span>At every point of a landscape, the exact direction of the <strong class="text-white/80">steepest ascent</strong>.</span>
+							</li>
+							<li class="flex gap-3">
+								<span class="text-violet-400">→</span>
+								<span>Not a number. A vector: direction plus steepness.</span>
+							</li>
+							<li class="flex gap-3">
+								<span class="text-violet-400">→</span>
+								<span>Local: it leads step by step to the nearest hill (local maximum).</span>
+							</li>
+							<li class="flex gap-3">
+								<span class="text-violet-400">→</span>
+								<span>In AI, reversed (gradient descent) it minimizes error and trains models.</span>
+							</li>
+						</ul>
+					</div>
+
+					<p class="mb-5 text-lg leading-relaxed text-white/60">
+						In Identity Engineering, <strong class="text-white/80">Vision is the intended gradient of causal entropy</strong>.
+						It points where future freedom of action increases most steeply.
+					</p>
+					<p class="text-lg leading-relaxed text-white/60">
+						<strong class="text-white/80">Engineering task:</strong> Sharpen the Vision Gradient.
+						Make the direction of steepest ascent of freedom clear, strong, and owned.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 bg-white/[0.02] px-6 py-24">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-4 text-sm uppercase tracking-[4px] text-violet-400/70">Integration</div>
+				<h2 class="mb-8 text-3xl font-bold text-white md:text-4xl">The Full Stem</h2>
+
+				<p class="mb-8 text-lg leading-relaxed text-white/60">
+					Identity (the complete stem) is the <strong class="text-white/80">integrated Worldline</strong> that holds both forces in productive tension:
+				</p>
+
+				<ul class="mb-12 space-y-4 text-lg text-white/60">
+					<li class="flex gap-3">
+						<span class="text-cyan-400">←</span>
+						<span><strong class="text-white/80">Backward:</strong> State Differential → Sameness-as-Trajectory</span>
+					</li>
+					<li class="flex gap-3">
+						<span class="text-violet-400">→</span>
+						<span><strong class="text-white/80">Forward:</strong> Vision Gradient → Causal Entropy</span>
+					</li>
+				</ul>
+
+				<div class="mb-12 overflow-x-auto rounded-2xl border border-white/10 bg-black/40 p-8 font-mono text-sm text-violet-200/90">
+					I = arg max_γ [ ∫<sub>now</sub><sup>future</sup> V(γ(t)) · dγ  +  consistency with past State Differential ]
+				</div>
+
+				<p class="mb-6 text-lg leading-relaxed text-white/60">
+					The <strong class="text-white/80">Integral of the Vision</strong> is the line integral of the gradient along the trajectory:
+					the cumulative gain in future freedom of action that path actually realizes.
+				</p>
+
+				<p class="text-lg leading-relaxed text-white/60">Identity Engineering works on two primary levers:</p>
+				<ol class="ml-2 mt-4 list-inside list-decimal space-y-3 text-lg text-white/60">
+					<li>Transparency and ownership of the <strong class="text-white/80">State Differential</strong>.</li>
+					<li>Clarity and force of the <strong class="text-white/80">Vision Gradient</strong>.</li>
+				</ol>
+
+				<p class="mt-8 text-lg leading-relaxed text-white/60">
+					Rotation then stabilizes this axis. Mass gives it weight. Curvature warps possibility space around it.
+				</p>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl">
+				<h2 class="mb-8 text-3xl font-bold text-white md:text-4xl">Why this matters in the AI era</h2>
+				<p class="mb-6 text-lg leading-relaxed text-white/60">
+					Static snapshots of identity become cheap and copyable.
+					What remains authentic is the <strong class="text-white/80">signed history of differentials</strong>:
+					a chain that starts from a unique human origin and continues through freedom-maximizing updates.
+				</p>
+				<p class="text-lg leading-relaxed text-white/60">
+					Observation of change itself constitutes ongoing identity.
+					The Identity Stem is both the personal core and a foundation for future-proof, non-copyable identity systems.
+				</p>
+			</div>
+		</section>
+
+		<ConceptPager id="time" />
+	</main>
+</Layout>
+
+<style>
+	code {
+		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+		background: rgba(255, 255, 255, 0.06);
+		padding: 0.15em 0.4em;
+		border-radius: 4px;
+		font-size: 0.9em;
+	}
+</style>

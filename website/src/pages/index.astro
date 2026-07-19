@@ -17,36 +17,73 @@ import GravitySceneMount from '../components/hero/GravitySceneMount.astro';
 			</div>
 
 			<div class="relative flex-1 min-h-[52dvh] w-full">
-				{/* Pure client mount — bypasses Astro framework renderer for R3F */}
+				{/* Pure client mount: bypasses Astro framework renderer for R3F */}
 				<GravitySceneMount />
 			</div>
 		</section>
 
-		<!-- Why / Ontology -->
+		<!-- Why: necessity + two forces -->
 		<section class="py-28 md:py-36 border-t border-white/10">
 			<div class="max-w-3xl mx-auto px-8">
 				<div class="text-sm uppercase tracking-[4px] text-white/40 mb-6">Why</div>
 				<h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-8 text-white leading-[1.1]">
-					Static sameness is no longer enough.
+					This approach answers a necessity.
 				</h2>
 				<div class="space-y-6 text-lg text-white/55 leading-relaxed">
 					<p>
-						Historically, identity meant <em class="text-white/70 not-italic">identitas</em> —
-						sameness: remaining recognizable as the same over time.
-						In the AI era that kind of sameness is cheap. Systems can copy, fork, and simulate
-						“the same” at scale.
+						We built much of modern human identity on intelligence.
+						It is what many of us take ourselves to be: the one who knows, reasons, writes, decides, invents.
+						For large parts of the high-wage economy that self-image is also the job description.
+						Knowledge work is often cited around <strong class="text-white/80">two fifths of the workforce</strong> in advanced economies; for those roles the computer is usually the main tool.
 					</p>
 					<p>
-						Identity Engineering relocates sameness:
-						not in the snapshot of who you are now (copyable),
-						but in <strong class="text-white/80">Sameness-as-Trajectory</strong> —
-						the causal chain of how you change — balanced with
-						<strong class="text-white/80">Causal Entropy</strong>:
-						maximizing the quality and quantity of future freedom of action.
+						Artificial intelligence is now exceeding human performance in more and more cognitive domains.
+						That creates an economic question: why pay a human wage for work a machine does better and cheaper?
+						And a social question: what do we do when “who we are” is no longer primarily knowledge work?
+					</p>
+
+					<!-- Two forces: clear separation -->
+					<div class="my-10 grid gap-4 md:grid-cols-2">
+						<div class="rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.04] p-6">
+							<div class="mb-3 text-xs uppercase tracking-[3px] text-cyan-400/70">Force 1 · Identity</div>
+							<p class="text-base leading-relaxed text-white/70">
+								Latin <em class="text-white/90 not-italic">identitas</em> means <strong class="text-white/90">sameness</strong>: the best possible recognizability of a self across time. Who you are, as something that can still be the same after change.
+							</p>
+						</div>
+						<div class="rounded-2xl border border-violet-400/20 bg-violet-400/[0.04] p-6">
+							<div class="mb-3 text-xs uppercase tracking-[3px] text-violet-400/70">Force 2 · Intelligence</div>
+							<p class="text-base leading-relaxed text-white/70">
+								In the reading of <a href="https://doi.org/10.1103/PhysRevLett.110.168702" target="_blank" rel="noopener noreferrer" class="text-white/90 underline decoration-white/25 underline-offset-4 hover:decoration-white/50 transition">Wissner-Gross &amp; Freer</a>, intelligence is a force that acts to <strong class="text-white/90">maximize future freedom of action</strong> (causal entropy: open degrees of freedom ahead).
+							</p>
+						</div>
+					</div>
+
+					<p>
+						When intelligence scales exponentially, those two pulls no longer sit quietly side by side.
+						They start to feel like opposing forces:
+					</p>
+					<ul class="space-y-3 pl-1">
+						<li class="flex gap-3">
+							<span class="text-violet-400 shrink-0">→</span>
+							<span>
+								<strong class="text-white/80">Intelligence</strong> pulls toward a maximally free, open, diverse future: more paths, less fixed form.
+							</span>
+						</li>
+						<li class="flex gap-3">
+							<span class="text-cyan-400 shrink-0">←</span>
+							<span>
+								<strong class="text-white/80">Identity</strong> pulls toward the best possible recognizability of the self: still you, still continuous, still owned.
+							</span>
+						</li>
+					</ul>
+					<p>
+						Today we often recognize ourselves in the work we spent years building.
+						Finding an alternative is not a casual rebrand when the market stops pricing our known activity
+						at a human wage. Pure sameness freezes. Pure option-maximization dissolves.
+						The live problem is the tension between them.
 					</p>
 					<p>
-						Identity becomes a designable geometric system: a stem through time,
-						with mass, curvature, rotation — and forces that act between identities.
+						<strong class="text-white/80">Identity Engineering</strong> exists to address exactly that tension: how to keep a self recognizable while intelligence (human and artificial) multiplies future freedom, and how to turn that into practical application. <a href="/ontology" class="text-white/80 underline decoration-white/25 underline-offset-4 hover:text-white hover:decoration-white/50 transition">Ontology of Identity →</a>
 					</p>
 				</div>
 			</div>
@@ -60,7 +97,7 @@ import GravitySceneMount from '../components/hero/GravitySceneMount.astro';
 					Single identity. Then interaction.
 				</h2>
 				<p class="text-lg text-white/50 leading-relaxed max-w-2xl mb-16">
-					We describe the internal geometry of one identity first —
+					We describe the internal geometry of one identity first,
 					then the forces that appear between identities.
 					Practice is built into the concepts, not a separate layer.
 				</p>
@@ -70,8 +107,7 @@ import GravitySceneMount from '../components/hero/GravitySceneMount.astro';
 						<div class="text-xs uppercase tracking-[3px] text-white/35 mb-4">01 · Single</div>
 						<h3 class="text-xl font-semibold text-white mb-3">One identity</h3>
 						<p class="text-white/50 leading-relaxed text-base mb-4">
-							<strong class="text-white/70">Time</strong> (Identity Stem) as foundation;
-							<strong class="text-white/70"> Mass</strong>, <strong class="text-white/70">Curvature</strong>,
+							<strong class="text-white/70">Time</strong> (Identity Stem) as foundation; <strong class="text-white/70">Mass</strong>, <strong class="text-white/70">Curvature</strong>,
 							and <strong class="text-white/70">Rotation</strong> as form and stability.
 						</p>
 						<p class="text-sm text-white/35 leading-relaxed">
@@ -83,8 +119,7 @@ import GravitySceneMount from '../components/hero/GravitySceneMount.astro';
 						<div class="text-xs uppercase tracking-[3px] text-white/35 mb-4">02 · Interactive</div>
 						<h3 class="text-xl font-semibold text-white mb-3">Between identities</h3>
 						<p class="text-white/50 leading-relaxed text-base mb-4">
-							<strong class="text-white/70">Gravitation</strong> — attraction from a high-mass vision;
-							<strong class="text-white/70"> Relativity</strong> — identity only in relation to another observer.
+							<strong class="text-white/70">Gravitation:</strong> attraction from a high-mass vision. <strong class="text-white/70">Relativity:</strong> identity only in relation to another observer.
 						</p>
 						<p class="text-sm text-white/35 leading-relaxed">
 							From isolated geometry to forces in a field of others.
@@ -96,10 +131,8 @@ import GravitySceneMount from '../components/hero/GravitySceneMount.astro';
 					<a
 						href="/framework"
 						class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-white text-black font-medium hover:bg-white/90 transition"
-					>
-						Explore the Framework
-						<span class="text-black/50">→</span>
-					</a>
+					>Explore the Framework
+						<span class="text-black/50">→</span></a>
 				</div>
 			</div>
 		</section>
@@ -112,7 +145,7 @@ import GravitySceneMount from '../components/hero/GravitySceneMount.astro';
 					Executor → Author → Architect
 				</p>
 				<p class="mt-6 text-lg text-white/45 leading-relaxed max-w-xl mx-auto">
-					Not only shape your own stem — build language and structures others can use
+					Not only shape your own stem. Build language and structures others can use
 					to make differentials transparent and vision gradients sharp.
 				</p>
 			</div>
@@ -128,19 +161,17 @@ import GravitySceneMount from '../components/hero/GravitySceneMount.astro';
 				<p class="text-lg text-white/55 leading-relaxed mb-6">
 					The framework is grounded in human-scale identity: time, mass, curvature, rotation,
 					gravitation, and relativity.
-					That foundation is necessary — not sufficient for every future already becoming plausible.
+					That foundation is necessary, not sufficient for every future already becoming plausible.
 				</p>
 				<p class="text-lg text-white/55 leading-relaxed mb-12">
-					Substrate independence, collective scale, AI co-identity, and more —
+					Substrate independence, collective scale, AI co-identity, and more:
 					questions that cannot yet be fully answered, but must already be asked.
 				</p>
 				<a
 					href="/big-questions"
 					class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-white/20 text-white/80 hover:bg-white/5 hover:text-white transition"
-				>
-					Big Questions
-					<span class="text-white/40">→</span>
-				</a>
+				>Big Questions
+					<span class="text-white/40">→</span></a>
 			</div>
 		</section>
 
@@ -148,15 +179,11 @@ import GravitySceneMount from '../components/hero/GravitySceneMount.astro';
 		<section class="py-24 border-t border-white/10">
 			<div class="max-w-3xl mx-auto px-8 text-center">
 				<p class="text-xl text-white/50 mb-10 max-w-lg mx-auto">
-					The framework is open. Start with the geometry — or with the frontier.
+					The framework is open. Start with the geometry, or with the frontier.
 				</p>
 				<div class="flex flex-wrap gap-4 justify-center">
-					<a href="/framework" class="px-8 py-3.5 rounded-full bg-white text-black font-medium hover:bg-white/90 transition">
-						Framework
-					</a>
-					<a href="/big-questions" class="px-8 py-3.5 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">
-						Big Questions
-					</a>
+					<a href="/framework" class="px-8 py-3.5 rounded-full bg-white text-black font-medium hover:bg-white/90 transition">Framework</a>
+					<a href="/big-questions" class="px-8 py-3.5 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">Big Questions</a>
 				</div>
 			</div>
 		</section>

@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ConceptPageHero from '../../components/concepts/ConceptPageHero.astro';
+import ConceptPager from '../../components/concepts/ConceptPager.astro';
+import { getConcept } from '../../lib/concepts';
+
+const c = getConcept('relativity');
+---
+
+<Layout title={`${c.title} | Identity Engineering`}>
+	<main class="min-h-screen">
+		<ConceptPageHero
+			scene={c.scene}
+			tag={`${c.tag} · ${c.layerLabel}`}
+			title={c.title}
+			lede={c.blurb}
+			scrollHint={c.scrollHint}
+		/>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl space-y-8 text-lg leading-relaxed text-white/55">
+				<div class="mb-2 text-sm uppercase tracking-[4px] text-white/40">Interactive layer</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					Identity is not absolute.
+				</h2>
+				<p>
+					<strong class="text-white/80">Relativity</strong> states that identity exists only in relation to
+					another observing identity. This is the bridge from the single-identity geometry
+					(Time, Mass, Curvature, Rotation) to the interactive field.
+				</p>
+				<p>
+					Measurement and recognition are not afterthoughts. Continuity is observed through change,
+					especially when AI can copy states and mirror surfaces. What remains is the <strong class="text-white/80">differential history</strong> as seen (and contested) between observers.
+				</p>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 bg-white/[0.02] px-6 py-24">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-6 text-sm uppercase tracking-[4px] text-white/40">Implications</div>
+				<ul class="space-y-6 text-lg text-white/55">
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Observer-dependence:</strong> how your stem is read depends on the other’s frame
+						(their mass, curvature, vision).
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Mutual definition:</strong> relationships co-produce identity geometry.
+						Isolation is an idealization, not the default ontology.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">AI-era stress test:</strong> when copies are cheap, the question
+						“same as whom, for whom, under what observation?” becomes central.
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl space-y-6 text-lg leading-relaxed text-white/55">
+				<p>
+					<strong class="text-white/80">Engineering task:</strong> Design for legible differentials under observation.
+					Make the State Differential transparent enough that another identity (human or artificial)
+					can track sameness-as-trajectory without freezing you into a copyable snapshot.
+				</p>
+				<p class="text-white/40 text-base">
+					Note: Questions as Probes (measurement instruments) remain part of the broader practice layer.
+					On the website they currently share visual language with Relativity’s observational theme.
+					The interactive layer will keep evolving.
+				</p>
+			</div>
+		</section>
+
+		<ConceptPager id="relativity" />
+	</main>
+</Layout>

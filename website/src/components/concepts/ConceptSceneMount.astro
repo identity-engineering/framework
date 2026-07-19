@@ -16,19 +16,7 @@ const { scene } = Astro.props;
 ></div>
 
 <script>
-	async function ensureReactPreamble() {
-		if (import.meta.env.DEV && !window.__vite_plugin_react_preamble_installed__) {
-			try {
-				const RefreshRuntime = (await import('/@react-refresh')).default;
-				RefreshRuntime.injectIntoGlobalHook(window);
-				window.$RefreshReg$ = () => {};
-				window.$RefreshSig$ = () => (type) => type;
-				window.__vite_plugin_react_preamble_installed__ = true;
-			} catch {
-				window.__vite_plugin_react_preamble_installed__ = true;
-			}
-		}
-	}
+	import { ensureReactPreamble } from '../../lib/ensureReactPreamble';
 
 	const loaders = {
 		mass: () => import('./MassScene.tsx'),

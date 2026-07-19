@@ -8,21 +8,7 @@
 <div id="gravity-scene-root" class="absolute inset-0" data-gravity-root></div>
 
 <script>
-	async function ensureReactPreamble() {
-		// @vitejs/plugin-react throws without this in dev HMR mode
-		if (import.meta.env.DEV && !window.__vite_plugin_react_preamble_installed__) {
-			try {
-				const RefreshRuntime = (await import('/@react-refresh')).default;
-				RefreshRuntime.injectIntoGlobalHook(window);
-				window.$RefreshReg$ = () => {};
-				window.$RefreshSig$ = () => (type) => type;
-				window.__vite_plugin_react_preamble_installed__ = true;
-			} catch {
-				// Production / no refresh runtime
-				window.__vite_plugin_react_preamble_installed__ = true;
-			}
-		}
-	}
+	import { ensureReactPreamble } from '../../lib/ensureReactPreamble';
 
 	async function mount() {
 		const el = document.querySelector('[data-gravity-root]');

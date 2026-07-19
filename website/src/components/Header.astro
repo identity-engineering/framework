@@ -1,36 +1,54 @@
 ---
 const pathname = Astro.url.pathname;
-const isActive = (path: string) => pathname === path || pathname === path + '/';
+
+/**
+ * Exact match or nested path (e.g. /blog/slug, /framework/mass).
+ * Foundations also owns /ontology (conceptual core of the foundations layer).
+ */
+const isActive = (path: string) => {
+  if (path === '/foundations') {
+    return (
+      pathname === '/foundations' ||
+      pathname === '/foundations/' ||
+      pathname.startsWith('/foundations/') ||
+      pathname === '/ontology' ||
+      pathname === '/ontology/' ||
+      pathname.startsWith('/ontology/')
+    );
+  }
+  return pathname === path || pathname === path + '/' || pathname.startsWith(path + '/');
+};
 
 const navItems = [
-  { label: 'Ontology', href: '/ontology' },
+  { label: 'Foundations', href: '/foundations' },
   { label: 'Framework', href: '/framework' },
   { label: 'Gaps', href: '/critical-gaps' },
   { label: 'Big Questions', href: '/big-questions' },
+  { label: 'Blog', href: '/blog' },
 ];
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50">
-  <div class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
     <!-- Logo: official IE monogram (geometric I+E + trajectory swooshes) -->
-    <a href="/" class="flex items-center gap-3 group">
+    <a href="/" class="flex items-center gap-3 group shrink-0">
       <img
         src="/logo-dark.svg"
         alt="Identity Engineering"
         class="h-8 w-auto opacity-90 group-hover:opacity-100 transition"
       />
-      <span class="text-sm font-medium tracking-tight text-white/70 group-hover:text-white transition hidden sm:inline">
+      <span class="text-sm font-medium tracking-tight text-white/70 group-hover:text-white transition hidden md:inline">
         Identity Engineering
       </span>
     </a>
 
-    <!-- Nav -->
-    <nav class="flex items-center gap-1">
+    <!-- Nav: slightly tighter on small screens so five items still fit -->
+    <nav class="flex items-center gap-0.5 sm:gap-1 overflow-x-auto max-w-[min(100%,28rem)] sm:max-w-none">
       {navItems.map(item => (
         <a
           href={item.href}
           class:list={[
-            'px-4 py-2 rounded-full text-sm transition',
+            'px-2.5 sm:px-4 py-2 rounded-full text-xs sm:text-sm transition whitespace-nowrap',
             isActive(item.href)
               ? 'text-white bg-white/10 border border-white/20'
               : 'text-white/50 hover:text-white hover:bg-white/5'

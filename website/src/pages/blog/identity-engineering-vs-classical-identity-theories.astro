@@ -1,44 +1,102 @@
 ---
+/**
+ * Keep inline tags on one line with outer spaces (Astro whitespace).
+ * Never break before <em>/<strong>/<a> after a word: newline alone is stripped → "theEssay".
+ */
 import Layout from '../../layouts/Layout.astro';
+---
 
 <Layout title="Identity Engineering vs. Classical Identity Theories | Identity Engineering">
 	<main class="min-h-screen">
-		<!-- Header -->
-		<section class="border-b border-white/10 px-6 py-20">
+		<!-- Hero -->
+		<section class="border-b border-white/10 px-6 pt-28 pb-16">
 			<div class="mx-auto max-w-3xl">
-				<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Blog • July 2026</div>
-				<h1 class="text-5xl font-bold tracking-tighter text-white md:text-6xl">Identity Engineering vs. Classical Identity Theories</h1>
-				<p class="mt-6 text-2xl text-white/70">Locke, Hume, Erikson — and the leap to a physics-informed, designable geometry of self.</p>
-				<div class="mt-8 flex items-center gap-4 text-sm text-white/50">
-					<span>Identity Engineering Front</span>
-					<span>•</span>
+				<a
+					href="/blog"
+					class="mb-6 inline-block text-sm text-white/40 transition hover:text-white/70"
+				>
+					← Blog
+				</a>
+				<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Blog · July 2026</div>
+				<h1 class="text-5xl font-bold tracking-tighter text-white md:text-6xl leading-[0.95]">
+					Identity Engineering vs. Classical Identity Theories
+				</h1>
+				<p class="mt-6 text-xl font-light leading-relaxed text-white/50 md:text-2xl">
+					Locke, Hume, Erikson: and the leap to a physics-informed, designable geometry of self.
+				</p>
+				<div class="mt-8 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-white/45">
 					<span>12 min read</span>
+					<span aria-hidden="true">·</span>
+					<span>Positioning</span>
 				</div>
 			</div>
 		</section>
 
 		<!-- Intro -->
 		<section class="px-6 py-16">
-			<div class="mx-auto max-w-3xl text-lg leading-relaxed text-white/80">
-				<p>Every serious framework for identity in the AI era must first reckon with its philosophical predecessors. John Locke gave us consciousness as the thread of personal identity. David Hume dissolved the self into a bundle of perceptions. Erik Erikson framed identity as a lifelong psychosocial achievement forged in crisis.</p>
-				<p>These maps are powerful. They are also insufficient for a world in which identity is no longer merely discovered or developed — it can be deliberately engineered.</p>
-				<p class="font-medium text-white/90">Identity Engineering begins where classical theories end: with the recognition that identity is a geometric system whose parameters — Mass, Curvature, Gravitation, and the Identity Stem — can be measured, stressed, and intentionally reshaped to maximize causal entropy: the openness of future possible histories.</p>
+			<div class="mx-auto max-w-3xl space-y-6 text-lg leading-relaxed text-white/55">
+				<p>
+					Every serious framework for identity in the AI era must first reckon with its philosophical predecessors.
+					John Locke gave us consciousness as the thread of personal identity. David Hume dissolved the self into a
+					bundle of perceptions. Erik Erikson framed identity as a lifelong psychosocial achievement forged in crisis.
+				</p>
+				<p>
+					These maps are powerful. They are also insufficient for a world in which identity is no longer merely
+					discovered or developed; it can be deliberately engineered.
+				</p>
+				<p class="text-white/80">
+					Identity Engineering begins where classical theories end: with the recognition that identity is a geometric
+					system whose parameters (Mass, Curvature, Gravitation, and the Identity Stem) can be measured, stressed,
+					and intentionally reshaped to maximize causal entropy: the openness of future possible histories.
+				</p>
 			</div>
 		</section>
 
 		<!-- Locke -->
-		<section class="border-t border-white/10 px-6 py-16 bg-white/[0.015]">
+		<section class="border-t border-white/10 bg-white/[0.015] px-6 py-16">
 			<div class="mx-auto max-w-3xl">
-				<div class="uppercase tracking-[3px] text-xs text-white/40 mb-3">ANCHOR 01</div>
-				<h2 class="text-4xl font-bold tracking-tight text-white">John Locke: Consciousness Continuity as Proto-Trajectory</h2>
-				<div class="mt-8 space-y-6 text-lg text-white/70">
-					<p>Locke’s <em>Essay Concerning Human Understanding</em> (1689) rejects innate ideas. The mind at birth is a <em>tabula rasa</em>. All knowledge derives from sensation (external) and reflection (internal operations of the mind).</p>
-					<p>His theory of personal identity (Book II, Chapter 27) is forensic: a <strong>Person</strong> is a thinking, intelligent being that can consider itself as itself, the same thinking thing in different times and places. Personal identity consists in the <strong>sameness of consciousness</strong> — primarily sustained by memory, the capacity to extend consciousness backward to past actions and thoughts.</p>
-					<p>The Prince and the Cobbler thought experiment remains decisive: if the consciousness of a prince enters the body of a cobbler, the <em>Person</em> remains the prince, accountable for princely deeds, even though the <em>Man</em> (biological organism) is now the cobbler. Identity tracks consciousness, not substance.</p>
-					<div class="border-l-2 border-white/20 pl-6 italic text-white/60">
-						“Identity Engineering reads Locke as the first articulation of identity as trajectory rather than substance. The ‘same self’ that remembers is the earliest sketch of what we now call the Identity Stem — the coherent axis from which continuity is generated and around which future curvature can be deliberately introduced.”
+				<div class="mb-3 text-xs uppercase tracking-[3px] text-white/40">Anchor 01</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					John Locke: Consciousness Continuity as Proto-Trajectory
+				</h2>
+				<div class="mt-8 space-y-6 text-lg leading-relaxed text-white/55">
+					<p>
+						Locke’s <em class="text-white/75 not-italic">Essay Concerning Human Understanding</em> (1689) rejects innate
+						ideas. The mind at birth is a <em class="text-white/75 not-italic">tabula rasa</em>. All knowledge derives from
+						sensation (external) and reflection (internal operations of the mind).
+					</p>
+					<p>
+						His theory of personal identity (Book II, Chapter 27) is forensic: a <strong class="text-white/80">Person</strong> is
+						a thinking, intelligent being that can consider itself as itself, the same thinking thing in different times and
+						places. Personal identity consists in the <strong class="text-white/80">sameness of consciousness</strong>,
+						primarily sustained by memory, the capacity to extend consciousness backward to past actions and thoughts.
+					</p>
+					<p>
+						The Prince and the Cobbler thought experiment remains decisive: if the consciousness of a prince enters the body
+						of a cobbler, the <em class="text-white/75 not-italic">Person</em> remains the prince, accountable for princely
+						deeds, even though the <em class="text-white/75 not-italic">Man</em> (biological organism) is now the cobbler.
+						Identity tracks consciousness, not substance.
+					</p>
+					<div class="border-l-2 border-white/20 pl-6 text-white/60 italic">
+						Identity Engineering reads Locke as the first articulation of identity as trajectory rather than substance. The
+						“same self” that remembers is the earliest sketch of what we now call the Identity Stem: the coherent axis from
+						which continuity is generated and around which future curvature can be deliberately introduced.
 					</div>
-					<p><strong>Differentiation:</strong> Locke’s model is retrospective and memory-dependent. It explains accountability but offers no mechanism for actively opening new degrees of freedom. Identity Engineering adds the <strong>Vision Gradient</strong> — the prospective force that curves possibility space forward — and treats consciousness continuity as the baseline state differential that can be augmented through Questions as Probes and owned acts that increase Mass.</p>
+					<p>
+						<strong class="text-white/80">Differentiation:</strong> Locke’s model is retrospective and memory-dependent. It
+						explains accountability but offers no mechanism for actively opening new degrees of freedom. Identity Engineering
+						adds the <strong class="text-white/80">Vision Gradient</strong> (the prospective force that curves possibility
+						space forward) and treats consciousness continuity as the baseline state differential that can be augmented
+						through Questions as Probes and owned acts that increase Mass.
+					</p>
+					<p>
+						<a
+							href="/foundations/locke-personal-identity"
+							class="text-white/70 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50"
+						>
+							Full Locke reference in Foundations →
+						</a>
+					</p>
 				</div>
 			</div>
 		</section>
@@ -46,25 +104,50 @@ import Layout from '../../layouts/Layout.astro';
 		<!-- Hume -->
 		<section class="border-t border-white/10 px-6 py-16">
 			<div class="mx-auto max-w-3xl">
-				<div class="uppercase tracking-[3px] text-xs text-white/40 mb-3">ANCHOR 02</div>
-				<h2 class="text-4xl font-bold tracking-tight text-white">David Hume: The Bundle Without a Stem</h2>
-				<div class="mt-8 space-y-6 text-lg text-white/70">
-					<p>In <em>A Treatise of Human Nature</em>, Hume performs a radical empiricist reduction. When he looks inward, he finds only a bundle or collection of different perceptions — impressions and ideas — in perpetual flux. There is no simple, enduring self or substance.</p>
-					<p>Personal identity is a fiction of the imagination, constructed from relations of resemblance, contiguity, and causation among perceptions. The self is nothing but a “bundle or collection of different perceptions, which succeed each other with an inconceivable rapidity, and are in a perpetual flux and movement.”</p>
-					<p><strong>IE Contrast:</strong> Hume correctly diagnoses the absence of a Cartesian substantial self. But where he stops at dissolution, Identity Engineering introduces the <strong>Identity Stem</strong> as an engineered, high-coherence axis that can be deliberately strengthened. The bundle is real; the Stem is the designed structure that gives the bundle direction, resistance to dispersion, and gravitational pull. Hume describes the problem of fragmentation; we treat fragmentation as a starting geometry that can be recentered and curved.</p>
+				<div class="mb-3 text-xs uppercase tracking-[3px] text-white/40">Anchor 02</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					David Hume: The Bundle Without a Stem
+				</h2>
+				<div class="mt-8 space-y-6 text-lg leading-relaxed text-white/55">
+					<p>
+						In <em class="text-white/75 not-italic">A Treatise of Human Nature</em>, Hume performs a radical empiricist
+						reduction. When he looks inward, he finds only a bundle or collection of different perceptions (impressions and
+						ideas) in perpetual flux. There is no simple, enduring self or substance.
+					</p>
+					<p>
+						Personal identity is a fiction of the imagination, constructed from relations of resemblance, contiguity, and
+						causation among perceptions. The self is nothing but a “bundle or collection of different perceptions, which
+						succeed each other with an inconceivable rapidity, and are in a perpetual flux and movement.”
+					</p>
+					<p>
+						<strong class="text-white/80">IE contrast:</strong> Hume correctly diagnoses the absence of a Cartesian substantial self. But where he stops at dissolution, Identity Engineering introduces the <strong class="text-white/80">Identity Stem</strong> as an engineered, high-coherence axis that can be deliberately strengthened. The bundle is real; the Stem is the designed structure that gives the bundle direction, resistance to dispersion, and gravitational pull. Hume describes the problem of fragmentation; we treat fragmentation as a starting geometry that can be recentered and curved.
+					</p>
 				</div>
 			</div>
 		</section>
 
 		<!-- Erikson -->
-		<section class="border-t border-white/10 px-6 py-16 bg-white/[0.015]">
+		<section class="border-t border-white/10 bg-white/[0.015] px-6 py-16">
 			<div class="mx-auto max-w-3xl">
-				<div class="uppercase tracking-[3px] text-xs text-white/40 mb-3">ANCHOR 03</div>
-				<h2 class="text-4xl font-bold tracking-tight text-white">Erik Erikson: Identity as Developmental Achievement</h2>
-				<div class="mt-8 space-y-6 text-lg text-white/70">
-					<p>Erikson’s psychosocial stages place identity formation at the center of the adolescent crisis: <strong>Identity vs. Role Confusion</strong>. Identity here is a sense of sameness and continuity, achieved through exploration and commitment. Later extensions (Marcia’s identity statuses) map the space between diffusion, foreclosure, moratorium, and achievement.</p>
-					<p>Identity is forged in social context, through crises that demand resolution. It is both personal and cultural.</p>
-					<p><strong>IE Differentiation:</strong> Erikson maps the developmental terrain and the risk of incoherence. Yet the model remains largely descriptive and stage-bound. It does not provide engineering primitives for intentionally increasing the Mass of commitments, introducing deliberate Curvature through vision work, or using precise Questions as Probes to accelerate movement from diffusion toward architected identity. Identity Engineering treats the Eriksonian crisis not as a once-in-a-lifetime event but as a recurring design surface that can be entered with greater agency and geometric awareness.</p>
+				<div class="mb-3 text-xs uppercase tracking-[3px] text-white/40">Anchor 03</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					Erik Erikson: Identity as Developmental Achievement
+				</h2>
+				<div class="mt-8 space-y-6 text-lg leading-relaxed text-white/55">
+					<p>
+						Erikson’s psychosocial stages place identity formation at the center of the adolescent crisis: <strong class="text-white/80">Identity vs. Role Confusion</strong>. Identity here is a sense of sameness and continuity, achieved through exploration and commitment. Later extensions (Marcia’s identity statuses) map the space between diffusion, foreclosure, moratorium, and achievement.
+					</p>
+					<p>
+						Identity is forged in social context, through crises that demand resolution. It is both personal and cultural.
+					</p>
+					<p>
+						<strong class="text-white/80">IE differentiation:</strong> Erikson maps the developmental terrain and the risk of
+						incoherence. Yet the model remains largely descriptive and stage-bound. It does not provide engineering primitives
+						for intentionally increasing the Mass of commitments, introducing deliberate Curvature through vision work, or
+						using precise Questions as Probes to accelerate movement from diffusion toward architected identity. Identity
+						Engineering treats the Eriksonian crisis not as a once-in-a-lifetime event but as a recurring design surface that
+						can be entered with greater agency and geometric awareness.
+					</p>
 				</div>
 			</div>
 		</section>
@@ -72,17 +155,59 @@ import Layout from '../../layouts/Layout.astro';
 		<!-- The Leap -->
 		<section class="border-t border-white/10 px-6 py-20">
 			<div class="mx-auto max-w-3xl">
-				<div class="uppercase tracking-[3px] text-xs text-white/40 mb-3">THE LEAP</div>
-				<h2 class="text-4xl font-bold tracking-tight text-white">From Mapping to Engineering</h2>
-				<div class="mt-8 text-lg text-white/80 space-y-6">
-					<p>Classical theories excel at diagnosis and retrospective coherence. They chart how identity <em>has been</em> constituted. Identity Engineering asks how identity <em>can be</em> constituted — and then gives the architect tools to do so with precision.</p>
+				<div class="mb-3 text-xs uppercase tracking-[3px] text-white/40">The leap</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">From Mapping to Engineering</h2>
+				<div class="mt-8 space-y-6 text-lg leading-relaxed text-white/55">
+					<p>
+						Classical theories excel at diagnosis and retrospective coherence. They chart how identity <em class="text-white/75 not-italic">has been</em> constituted. Identity Engineering asks how identity <em class="text-white/75 not-italic">can be</em> constituted, and then gives the architect tools to do so with precision.
+					</p>
 					<ul class="space-y-4">
-						<li class="flex gap-4"><span class="font-mono text-white/40 w-8">01</span> <span><strong>Substance → Geometry:</strong> Locke’s same consciousness becomes the measurable State Differential along an Identity Stem.</span></li>
-						<li class="flex gap-4"><span class="font-mono text-white/40 w-8">02</span> <span><strong>Bundle → Structured Field:</strong> Hume’s flux is accepted, but we add designed Mass and Gravitation so the field does not dissipate.</span></li>
-						<li class="flex gap-4"><span class="font-mono text-white/40 w-8">03</span> <span><strong>Stage → Controllable Curvature:</strong> Erikson’s crises become opportunities for deliberate introduction of Vision Gradient curvature.</span></li>
+						<li class="flex gap-4">
+							<span class="w-8 shrink-0 font-mono text-white/40">01</span>
+							<span>
+								<strong class="text-white/80">Substance → Geometry:</strong> Locke’s same consciousness becomes the
+								measurable State Differential along an Identity Stem.
+							</span>
+						</li>
+						<li class="flex gap-4">
+							<span class="w-8 shrink-0 font-mono text-white/40">02</span>
+							<span>
+								<strong class="text-white/80">Bundle → Structured Field:</strong> Hume’s flux is accepted, but we add
+								designed Mass and Gravitation so the field does not dissipate.
+							</span>
+						</li>
+						<li class="flex gap-4">
+							<span class="w-8 shrink-0 font-mono text-white/40">03</span>
+							<span>
+								<strong class="text-white/80">Stage → Controllable Curvature:</strong> Erikson’s crises become
+								opportunities for deliberate introduction of Vision Gradient curvature.
+							</span>
+						</li>
 					</ul>
-					<p class="pt-4">The result is not another philosophical map. It is an <strong>operating system for identity</strong> — one that integrates the forensic accountability of Locke, the anti-substantial clarity of Hume, and the developmental honesty of Erikson, while adding the missing forward vector: conscious, physics-informed design in service of greater causal entropy.</p>
-					<p class="text-white/60 italic">This is the first public articulation of that differentiation. The Foundations section that follows deepens each historical anchor into living reference pages.</p>
+					<p>
+						The result is not another philosophical map. It is an <strong class="text-white/80">operating system for identity</strong>: one that integrates the forensic accountability of Locke, the anti-substantial clarity of Hume, and the developmental honesty of Erikson, while adding the missing forward vector: conscious, physics-informed design in service of greater causal entropy.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer nav -->
+		<section class="border-t border-white/10 px-6 py-14">
+			<div class="mx-auto flex max-w-3xl flex-col gap-4 text-sm sm:flex-row sm:items-center sm:justify-between">
+				<a href="/blog" class="text-white/50 transition hover:text-white/80">← All posts</a>
+				<div class="flex flex-wrap gap-x-6 gap-y-2">
+					<a
+						href="/foundations"
+						class="text-white/50 underline decoration-white/20 underline-offset-4 transition hover:text-white/80 hover:decoration-white/40"
+					>
+						Foundations
+					</a>
+					<a
+						href="/framework"
+						class="text-white/50 underline decoration-white/20 underline-offset-4 transition hover:text-white/80 hover:decoration-white/40"
+					>
+						Framework
+					</a>
 				</div>
 			</div>
 		</section>

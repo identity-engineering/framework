@@ -1,0 +1,42 @@
+---
+/**
+ * Site-wide footer. Contribute link opens GitHub "new issue" with page URL prefilled.
+ * Keep inline tags on one line with outer spaces (Astro whitespace).
+ */
+const pathname = Astro.url.pathname;
+const site = Astro.site ?? new URL('https://identity-engineering.org');
+const pageUrl = new URL(pathname, site).href;
+
+const issueTitle = `Comment on ${pathname === '/' ? '/' : pathname.replace(/\/$/, '') || '/'}`;
+const issueBody = [
+	'## Page',
+	'',
+	pageUrl,
+	'',
+	'## Comment / critique / contribution',
+	'',
+	'_Share your thoughts, critique, or suggested contribution for this page._',
+	'',
+].join('\n');
+
+const contributeHref = `https://github.com/identity-engineering/framework/issues/new?title=${encodeURIComponent(issueTitle)}&body=${encodeURIComponent(issueBody)}`;
+---
+
+<footer class="border-t border-white/10 mt-auto">
+	<div class="mx-auto max-w-3xl px-6 py-12 text-center">
+		<a
+			href={contributeHref}
+			target="_blank"
+			rel="noopener noreferrer"
+			class="inline-flex items-center gap-2 text-sm text-white/45 transition hover:text-white/80"
+		>
+			<span class="underline decoration-white/20 underline-offset-4 hover:decoration-white/40">
+				Comment, Criticize, Contribute to this page
+			</span>
+			<span class="text-white/30" aria-hidden="true">↗</span>
+		</a>
+		<p class="mt-3 text-xs text-white/30">
+			Opens a GitHub issue with this page linked. Login required.
+		</p>
+	</div>
+</footer>

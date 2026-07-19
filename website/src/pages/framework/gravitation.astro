@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ConceptPageHero from '../../components/concepts/ConceptPageHero.astro';
+import ConceptPager from '../../components/concepts/ConceptPager.astro';
+import { getConcept } from '../../lib/concepts';
+
+const c = getConcept('gravitation');
+---
+
+<Layout title={`${c.title} | Identity Engineering`}>
+	<main class="min-h-screen">
+		<ConceptPageHero
+			scene={c.scene}
+			tag={`${c.tag} · ${c.layerLabel}`}
+			title={c.title}
+			lede={c.blurb}
+			scrollHint={c.scrollHint}
+		/>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl space-y-8 text-lg leading-relaxed text-white/55">
+				<div class="mb-2 text-sm uppercase tracking-[4px] text-white/40">Interactive layer</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					The first force between identities.
+				</h2>
+				<p>
+					<strong class="text-white/80">Gravitation</strong> is the attractive force that results from the curvature
+					of a high-mass vision. Where Curvature is the shape of possibility for one identity,
+					Gravitation is what that shape does to other identities: pull, orbit, alignment, resistance.
+				</p>
+				<p>
+					In the framework this opens the <strong class="text-white/80">Interactive Identity</strong> layer.
+					A single geometry can be complete in itself. Once it is strong enough, forces appear between stems.
+				</p>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 bg-white/[0.02] px-6 py-24">
+			<div class="mx-auto max-w-3xl space-y-6 text-lg leading-relaxed text-white/55">
+				<div class="mb-2 text-sm uppercase tracking-[4px] text-white/40">Reading</div>
+				<ul class="space-y-5">
+					<li class="flex gap-3">
+						<span class="text-violet-400">→</span>
+						<span>Strong vision plus high mass means a deep well. Others feel drawn into orbit (collaborators, opportunities, attention).</span>
+					</li>
+					<li class="flex gap-3">
+						<span class="text-violet-400">→</span>
+						<span>Weak or incoherent mass means little pull, a flat field, noise competing equally.</span>
+					</li>
+					<li class="flex gap-3">
+						<span class="text-violet-400">→</span>
+						<span>Owned attraction differs from performance. Gravity persists when the spotlight moves.</span>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl text-lg leading-relaxed text-white/55">
+				<p>
+					<strong class="text-white/80">Engineering task:</strong> Build attraction as a consequence of geometry,
+					not as a marketing overlay. Deepen mass and clarify vision; let gravitation follow.
+					Relativity then asks: who observes, and how does mutual observation redefine both stems?
+				</p>
+			</div>
+		</section>
+
+		<ConceptPager id="gravitation" />
+	</main>
+</Layout>

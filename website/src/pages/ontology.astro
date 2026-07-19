@@ -1,0 +1,335 @@
+---
+/**
+ * Ontology of Identity: etymology, classical limits, what we add, how the framework processes it.
+ */
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Ontology of Identity | Identity Engineering">
+	<main class="min-h-screen">
+		<!-- Header -->
+		<section class="border-b border-white/10 px-6 pt-28 pb-16">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Foundations</div>
+				<h1 class="mb-6 text-5xl font-bold tracking-tighter text-white md:text-6xl leading-[0.95]">
+					Ontology of Identity
+				</h1>
+				<p class="max-w-2xl text-xl font-light leading-relaxed text-white/50">
+					Two forces, kept distinct: identity as sameness, intelligence as the drive to open future freedom.
+					Identity Engineering works the tension between them.
+				</p>
+			</div>
+		</section>
+
+		<!-- 0. Two forces -->
+		<section id="two-forces" class="border-b border-white/10 bg-white/[0.02] px-6 py-24">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Core distinction</div>
+				<h2 class="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">
+					Not one concept. Two forces.
+				</h2>
+				<div class="space-y-6 text-lg leading-relaxed text-white/55">
+					<p>
+						It is easy to blend “who I am” and “how smart / capable / free I become” into one vague package.
+						They are not the same thing. They pull in different directions.
+					</p>
+					<div class="grid gap-4 md:grid-cols-2">
+						<div class="rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.04] p-6">
+							<div class="mb-3 text-xs uppercase tracking-[3px] text-cyan-400/70">Identity</div>
+							<p class="text-base leading-relaxed text-white/70">
+								<strong class="text-white/90">identitas = sameness.</strong> The force that seeks the best possible recognizability of a self:
+								still this entity, still continuous, still owned.
+							</p>
+						</div>
+						<div class="rounded-2xl border border-violet-400/20 bg-violet-400/[0.04] p-6">
+							<div class="mb-3 text-xs uppercase tracking-[3px] text-violet-400/70">Intelligence</div>
+							<p class="text-base leading-relaxed text-white/70">
+								<strong class="text-white/90">A force toward future freedom.</strong> In Wissner-Gross’s causal-entropic reading, intelligence acts to maximize
+								future degrees of freedom: open paths, not a fixed form.
+							</p>
+						</div>
+					</div>
+					<p>
+						When intelligence grows exponentially (human tools + artificial systems),
+						the tension sharpens. Intelligence pulls into a maximally free and diverse future.
+						Identity pulls into the best possible recognizability of the self.
+						Neither force is “wrong.” Unmanaged, they fight:
+						freeze into sameness, or dissolve into option-maximization.
+					</p>
+					<p>
+						<strong class="text-white/80">Identity Engineering</strong> is the discipline that addresses
+						exactly this tension: keep the self legible while expanding causal entropy,
+						and turn that into geometry you can work with.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- 1. Etymology -->
+		<section id="etymology" class="border-b border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-4 text-sm uppercase tracking-[4px] text-cyan-400/70">01 · Word</div>
+				<h2 class="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">
+					Etymology: identitas = sameness
+				</h2>
+				<div class="space-y-6 text-lg leading-relaxed text-white/55">
+					<p>
+						English <em class="text-white/75 not-italic">identity</em> enters via French <em class="text-white/75 not-italic">identité</em>, from Medieval Latin <strong class="text-white/80">identitas</strong>: “sameness.”
+						The root is classical Latin <strong class="text-white/80">idem</strong>, “the same.”
+						The abstract noun was shaped to render Greek philosophical language for “being the same”
+						(related to ταὐτότης, <em class="text-white/70 not-italic">tautotēs</em>).
+					</p>
+					<p>
+						So the first meaning is not career, personality brand, or social profile.
+						It is not intelligence, skill, or optionality.
+						It is a logical and metaphysical relation: a thing is the same as itself, and not another.
+					</p>
+					<p>
+						That already includes more than “looks similar.” Philosophy distinguishes at least:
+					</p>
+					<ul class="space-y-4 pl-1">
+						<li class="flex gap-3">
+							<span class="text-violet-400 shrink-0">→</span>
+							<span>
+								<strong class="text-white/80">Numerical identity:</strong> one and the same entity,
+								not two copies that merely resemble each other.
+							</span>
+						</li>
+						<li class="flex gap-3">
+							<span class="text-violet-400 shrink-0">→</span>
+							<span>
+								<strong class="text-white/80">Qualitative identity:</strong> sharing properties
+								(two bikes can be “the same model”).
+							</span>
+						</li>
+						<li class="flex gap-3">
+							<span class="text-violet-400 shrink-0">→</span>
+							<span>
+								<strong class="text-white/80">Diachronic identity:</strong> remaining the same <em class="text-white/70 not-italic">across time</em>, despite change
+								(the classical problem of personal identity).
+							</span>
+						</li>
+						<li class="flex gap-3">
+							<span class="text-violet-400 shrink-0">→</span>
+							<span>
+								<strong class="text-white/80">Self-sameness / being this and not that:</strong> the condition of being itself rather than something else
+								(not only continuity, but non-substitution).
+							</span>
+						</li>
+					</ul>
+					<p>
+						Everyday language collapses these into one word. For engineering work we have to open them again.
+						Otherwise “identity” becomes either a frozen snapshot or a marketing surface.
+					</p>
+					<p class="text-base text-white/40">
+						Useful references: <a href="https://www.etymonline.com/word/identity" target="_blank" rel="noopener noreferrer" class="underline decoration-white/20 underline-offset-4 hover:text-white/60 transition">Etymonline: identity</a> · <a href="https://en.wikipedia.org/wiki/Identity_(philosophy)" target="_blank" rel="noopener noreferrer" class="underline decoration-white/20 underline-offset-4 hover:text-white/60 transition">Identity (philosophy)</a> · <a href="https://plato.stanford.edu/entries/identity-time/" target="_blank" rel="noopener noreferrer" class="underline decoration-white/20 underline-offset-4 hover:text-white/60 transition">SEP: Identity Over Time</a> · <a href="https://iep.utm.edu/person-i/" target="_blank" rel="noopener noreferrer" class="underline decoration-white/20 underline-offset-4 hover:text-white/60 transition">IEP: Personal Identity</a>
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- 2. What classical sameness covers -->
+		<section id="classical" class="border-b border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-4 text-sm uppercase tracking-[4px] text-cyan-400/70">02 · Scope</div>
+				<h2 class="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">
+					What classical identity actually covers
+				</h2>
+				<div class="space-y-6 text-lg leading-relaxed text-white/55">
+					<p>
+						At its best, classical identity answers: <em class="text-white/75 not-italic">is this still the same entity?</em> It gives criteria for persistence: body, memory, consciousness, narrative, soul, organism, psychological continuity.
+						Debates differ on the criterion. They agree on the problem: change without loss of the subject.
+					</p>
+					<p>
+						In modern life we operationalized that answer through work and competence.
+						We recognize ourselves in what we can do, what we have trained for, and what the market pays us to be.
+						“I am a researcher / lawyer / designer / analyst” is not only a job title.
+						It is a compressed identity claim: sameness secured by skill and role.
+					</p>
+					<p>
+						That claim worked while human cognitive labor remained scarce and hard to substitute.
+						It does not automatically survive when machines produce better, cheaper cognitive output
+						on the same tasks.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- 3. Why insufficient now -->
+		<section id="limits" class="border-b border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-4 text-sm uppercase tracking-[4px] text-cyan-400/70">03 · Break</div>
+				<h2 class="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">
+					Why sameness alone is not enough now
+				</h2>
+				<div class="space-y-6 text-lg leading-relaxed text-white/55">
+					<p>
+						If identity is only “remaining the same,” then radical economic and cognitive change looks like pure threat:
+						lose the role, lose the self. That freezes people into defending a snapshot the market is already discarding.
+					</p>
+					<p>
+						Worse: AI makes <em class="text-white/75 not-italic">qualitative</em> sameness cheap.
+						A system can look like you, write like you, answer like you, and simulate the surface of competence.
+						Snapshot-based recognition no longer authenticates a person.
+					</p>
+					<p>
+						Classical identity theory still matters for continuity questions
+						(Ship of Theseus, mind upload, gradual replacement).
+						It does not, by itself, tell you how to act when the environment rewards a different future geometry.
+						It has no native concept for <strong class="text-white/80">maximizing the quality and quantity of future freedom of action</strong> while remaining recognizable as a trajectory.
+					</p>
+					<p>
+						That is the gap. Without a second force, “protect identity” collapses into nostalgia or denial.
+						Without continuity, “reinvent yourself” collapses into erasure.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- 4. Intelligence / causal entropy (kept separate from identity) -->
+		<section id="causal-entropy" class="border-b border-white/10 bg-white/[0.02] px-6 py-24">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-4 text-sm uppercase tracking-[4px] text-violet-400/70">04 · The other force</div>
+				<h2 class="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">
+					Intelligence is not identity
+				</h2>
+				<div class="space-y-6 text-lg leading-relaxed text-white/55">
+					<p>
+						<a
+							href="https://doi.org/10.1103/PhysRevLett.110.168702"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-white/80 underline decoration-white/25 underline-offset-4 hover:text-white hover:decoration-white/50 transition"
+						>Wissner-Gross & Freer (2013)</a> formalize <strong class="text-white/80">causal entropic forces</strong>:
+						a system can be driven so as to keep future path options open.
+						In their public framing, <a
+							href="https://www.ted.com/talks/alex_wissner_gross_a_new_equation_for_intelligence"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-white/80 underline decoration-white/25 underline-offset-4 hover:text-white hover:decoration-white/50 transition"
+						>intelligence is a force that maximizes future freedom of action</a> (see also <a
+							href="https://physics.aps.org/articles/v6/46"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-white/80 underline decoration-white/25 underline-offset-4 hover:text-white hover:decoration-white/50 transition"
+						>Physics 6, 46</a>).
+					</p>
+					<p>
+						That claim is about <em class="text-white/75 not-italic">intelligence</em>, not about sameness.
+						It names a forward pull: more degrees of freedom ahead, a richer set of possible futures.
+						When that force scales (tools, markets, AI), it challenges identity hard:
+						the freer and more diverse the future becomes, the harder pure sameness is to hold.
+					</p>
+					<p>
+						We do <strong class="text-white/80">not</strong> redefine identity as causal entropy.
+						We put the two forces in relation:
+					</p>
+					<div class="rounded-2xl border border-white/10 bg-black/30 p-6 md:p-8">
+						<ul class="space-y-4 text-white/60">
+							<li class="flex gap-3">
+								<span class="text-cyan-400">←</span>
+								<span>
+									<strong class="text-white/80">Identity force (sameness):</strong> State Differential → Sameness-as-Trajectory.
+									Best possible recognizability of the self across change.
+								</span>
+							</li>
+							<li class="flex gap-3">
+								<span class="text-violet-400">→</span>
+								<span>
+									<strong class="text-white/80">Intelligence force (freedom):</strong> Vision Gradient → Causal Entropy.
+									Direction of steepest ascent of future freedom of action.
+								</span>
+							</li>
+						</ul>
+						<p class="mt-6 text-white/55 leading-relaxed">
+							The <strong class="text-white/80">Identity Stem</strong> is where that tension is held:
+							an integrated trajectory, not a snapshot and not pure option-maxing.
+							See <a href="/framework/time" class="text-white/80 underline decoration-white/25 underline-offset-4 hover:text-white transition">Time · Identity Stem</a>.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- 5. How framework processes -->
+		<section id="framework" class="border-b border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-4 text-sm uppercase tracking-[4px] text-violet-400/70">05 · Processing</div>
+				<h2 class="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">
+					How the framework processes this
+				</h2>
+				<p class="mb-10 text-lg leading-relaxed text-white/55">
+					Ontology becomes geometry. Each concept is a handle on the problem classical sameness left open.
+				</p>
+
+				<div class="space-y-5">
+					<a href="/framework/time" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/25 hover:bg-white/[0.04]"><div class="mb-1 text-xs uppercase tracking-[3px] text-white/35">Foundational</div>
+						<div class="mb-2 text-xl font-semibold text-white group-hover:text-white/90">Time · Identity Stem →</div>
+						<p class="text-white/50 leading-relaxed">
+							Past = State Differential, Present = State, Future = Vision Gradient.
+							The stem is the worldline that integrates sameness and freedom.
+						</p></a>
+					<a href="/framework/mass" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/25 hover:bg-white/[0.04]"><div class="mb-1 text-xs uppercase tracking-[3px] text-white/35">Geometry</div>
+						<div class="mb-2 text-xl font-semibold text-white group-hover:text-white/90">Mass →</div>
+						<p class="text-white/50 leading-relaxed">
+							Owned stake and density around the stem. What still has weight when a role evaporates.
+						</p></a>
+					<a href="/framework/curvature" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/25 hover:bg-white/[0.04]"><div class="mb-1 text-xs uppercase tracking-[3px] text-white/35">Geometry</div>
+						<div class="mb-2 text-xl font-semibold text-white group-hover:text-white/90">Curvature →</div>
+						<p class="text-white/50 leading-relaxed">
+							How vision and mass warp what looks possible. Near, far, inevitable, unthinkable.
+						</p></a>
+					<a href="/framework/rotation" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/25 hover:bg-white/[0.04]"><div class="mb-1 text-xs uppercase tracking-[3px] text-white/35">Dynamics</div>
+						<div class="mb-2 text-xl font-semibold text-white group-hover:text-white/90">Rotation →</div>
+						<p class="text-white/50 leading-relaxed">
+							Stability under change: habits as tangential force, low wobble under load.
+						</p></a>
+					<a href="/framework/gravitation" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/25 hover:bg-white/[0.04]"><div class="mb-1 text-xs uppercase tracking-[3px] text-white/35">Interactive</div>
+						<div class="mb-2 text-xl font-semibold text-white group-hover:text-white/90">Gravitation →</div>
+						<p class="text-white/50 leading-relaxed">
+							Attraction between identities. Why some futures pull collaborators and opportunity.
+						</p></a>
+					<a href="/framework/relativity" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/25 hover:bg-white/[0.04]"><div class="mb-1 text-xs uppercase tracking-[3px] text-white/35">Interactive</div>
+						<div class="mb-2 text-xl font-semibold text-white group-hover:text-white/90">Relativity →</div>
+						<p class="text-white/50 leading-relaxed">
+							Identity under observation. Continuity as legible differential history, not a copyable surface.
+						</p></a>
+				</div>
+
+				<p class="mt-12 text-lg leading-relaxed text-white/55">
+					Full map: <a href="/framework" class="text-white/80 underline decoration-white/25 underline-offset-4 hover:text-white transition">Framework overview</a>.
+					Open frontier: <a href="/big-questions" class="text-white/80 underline decoration-white/25 underline-offset-4 hover:text-white transition">Big Questions</a>.
+				</p>
+			</div>
+		</section>
+
+		<!-- 6. Mission close -->
+		<section class="px-6 py-24">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Mission</div>
+				<h2 class="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">
+					Address the tension
+				</h2>
+				<div class="space-y-6 text-lg leading-relaxed text-white/55">
+					<p>
+						People say “think big” when they talk about AI.
+						They rarely say what that means for a person who still has to stay someone.
+					</p>
+					<p>
+						<strong class="text-white/80">Thinking big</strong> without identity is pure expansion of options. <strong class="text-white/80">Identity</strong> without intelligence-force is pure defense of the past.
+						The work is neither: hold both pulls so a free future remains <em class="text-white/75 not-italic">yours</em>.
+					</p>
+					<p>
+						Identity Engineering’s mission is to address that tension and translate it into practical geometry:
+						stems you can stabilize, mass you can own, gradients you can sharpen.
+					</p>
+				</div>
+
+				<div class="mt-14 flex flex-wrap gap-4">
+					<a href="/framework/time" class="rounded-full bg-white px-8 py-3.5 font-medium text-black transition hover:bg-white/90">Start with Time</a>
+					<a href="/" class="rounded-full border border-white/20 px-8 py-3.5 text-white/70 transition hover:bg-white/5">← Home</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>

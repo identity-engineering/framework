@@ -1,0 +1,71 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ConceptPageHero from '../../components/concepts/ConceptPageHero.astro';
+import ConceptPager from '../../components/concepts/ConceptPager.astro';
+import { getConcept } from '../../lib/concepts';
+
+const c = getConcept('rotation');
+---
+
+<Layout title={`${c.title} | Identity Engineering`}>
+	<main class="min-h-screen">
+		<ConceptPageHero
+			scene={c.scene}
+			tag={`${c.tag} · ${c.layerLabel}`}
+			title={c.title}
+			lede={c.blurb}
+			scrollHint={c.scrollHint}
+		/>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl space-y-8 text-lg leading-relaxed text-white/55">
+				<div class="mb-2 text-sm uppercase tracking-[4px] text-white/40">Definition</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					Stability through spin.
+				</h2>
+				<p>
+					<strong class="text-white/80">Rotation</strong> is the gyroscopic stabilization of the Identity Stem.
+					Like a spinning top or Earth on its axis: angular momentum keeps the stem upright.
+					High coherent spin means low wobble. Slow, incoherent motion means precession and collapse under small torques.
+				</p>
+				<p>
+					The framework includes a <strong class="text-white/80">tangential stabilizing force</strong>:
+					habits and stem-coherent Owned Acts that act optimally relative to the axis.
+					They maximize stability and structured substance growth without destabilizing the stem.
+				</p>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 bg-white/[0.02] px-6 py-24">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-6 text-sm uppercase tracking-[4px] text-white/40">Mechanics</div>
+				<ul class="space-y-6 text-lg text-white/55">
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Axis:</strong> the Identity Stem (Time layer). Rotation does not invent the axis; it stabilizes it.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Spin:</strong> coherent, repeated motion around that axis (practice, rhythm, ritualized commitment).
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Tangential force:</strong> habits that feed substance into the system without lateral thrashing.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Wobble:</strong> quality metric for how much the stem precesses under load.
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl text-lg leading-relaxed text-white/55">
+				<p>
+					<strong class="text-white/80">Engineering task:</strong> Increase productive spin and reduce thrash.
+					Not every motion is good. Only rotation that is coherent with State Differential and Vision Gradient
+					builds gyroscopic stability worth having.
+				</p>
+			</div>
+		</section>
+
+		<ConceptPager id="rotation" />
+	</main>
+</Layout>

@@ -1,0 +1,59 @@
+---
+/**
+ * Full-viewport sticky hero with scroll-scrubbed concept scene.
+ * Outer section is tall so progress 0→1 maps to scrolling through it.
+ */
+import ConceptSceneMount from './ConceptSceneMount.astro';
+import type { ConceptScene } from '../../lib/concepts';
+
+interface Props {
+	scene: ConceptScene;
+	tag: string;
+	title: string;
+	lede: string;
+	scrollHint: string;
+	/** Viewport-heights of the scroll track (default 1.8) */
+	trackVh?: number;
+}
+
+const { scene, tag, title, lede, scrollHint, trackVh = 1.85 } = Astro.props;
+---
+
+<section
+	class="relative w-full"
+	style={`height: ${trackVh * 100}vh;`}
+	data-concept-section
+>
+	<div class="sticky top-0 h-[100dvh] w-full overflow-hidden bg-[#0a0a0f]">
+		<!-- Full-bleed scene -->
+		<div class="absolute inset-0">
+			<ConceptSceneMount scene={scene} />
+		</div>
+
+		<!-- Soft vignette for text legibility -->
+		<div
+			class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/55 via-transparent to-black/70"
+			aria-hidden="true"
+		></div>
+		<div
+			class="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0a0a0f] via-[#0a0a0f]/60 to-transparent"
+			aria-hidden="true"
+		></div>
+
+		<!-- Title stack -->
+		<div class="relative z-10 flex h-full flex-col justify-end px-6 pb-16 pt-28 md:px-10 md:pb-20">
+			<div class="mx-auto w-full max-w-4xl">
+				<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">{tag}</div>
+				<h1 class="mb-5 text-5xl font-bold tracking-tighter text-white md:text-7xl leading-[0.95]">
+					{title}
+				</h1>
+				<p class="mb-6 max-w-2xl text-lg font-light leading-relaxed text-white/55 md:text-xl">
+					{lede}
+				</p>
+				<p class="text-xs uppercase tracking-[3px] text-white/30">
+					{scrollHint}
+				</p>
+			</div>
+		</div>
+	</div>
+</section>

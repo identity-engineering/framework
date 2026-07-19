@@ -3,6 +3,7 @@ const pathname = Astro.url.pathname;
 const isActive = (path: string) => pathname === path || pathname === path + '/';
 
 const navItems = [
+  { label: 'Ontology', href: '/ontology' },
   { label: 'Framework', href: '/framework' },
   { label: 'Big Questions', href: '/big-questions' },
 ];
@@ -10,7 +11,7 @@ const navItems = [
 
 <header class="fixed top-0 left-0 right-0 z-50">
   <div class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
-    <!-- Logo — official IE monogram (geometric I+E + trajectory swooshes) -->
+    <!-- Logo: official IE monogram (geometric I+E + trajectory swooshes) -->
     <a href="/" class="flex items-center gap-3 group">
       <img
         src="/logo-dark.svg"

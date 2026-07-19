@@ -1,0 +1,79 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ConceptPageHero from '../../components/concepts/ConceptPageHero.astro';
+import ConceptPager from '../../components/concepts/ConceptPager.astro';
+import { getConcept } from '../../lib/concepts';
+
+const c = getConcept('mass');
+---
+
+<Layout title={`${c.title} | Identity Engineering`}>
+	<main class="min-h-screen">
+		<ConceptPageHero
+			scene={c.scene}
+			tag={`${c.tag} · ${c.layerLabel}`}
+			title={c.title}
+			lede={c.blurb}
+			scrollHint={c.scrollHint}
+		/>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl space-y-8 text-lg leading-relaxed text-white/55">
+				<div class="mb-2 text-sm uppercase tracking-[4px] text-white/40">Definition</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">Density, not volume.</h2>
+				<p>
+					<strong class="text-white/80">Mass</strong> is the substance and depth that builds around the Identity Stem.
+					It is not how much surface you occupy. It is how much stake you actually own:
+					commitment with weight, history, and resistance to casual displacement.
+				</p>
+				<p>
+					In the framework, Mass also carries a relativistic analogy:
+					mass as rest potential that can convert into real agency energy under <strong class="text-white/80">coherent velocity along the stem</strong> (<code class="text-violet-300">E ≈ m c²</code> as inspirational formalization, not a physics claim).
+					High mass without direction is inertia. Mass with coherent motion becomes force.
+				</p>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 bg-white/[0.02] px-6 py-24">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-6 text-sm uppercase tracking-[4px] text-white/40">Engineering</div>
+				<h2 class="mb-8 text-3xl font-bold text-white md:text-4xl">What you work on</h2>
+				<ul class="space-y-6 text-lg text-white/55">
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Owned stake:</strong> depth you can defend without performance.
+						What would still pull if applause vanished?
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Density over spread:</strong> fewer domains with real weight beat
+						many thin affiliations.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Conversion:</strong> convert rest mass into agency by moving
+						coherently along the stem (State Differential and Vision Gradient aligned).
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl text-lg leading-relaxed text-white/55">
+				<p>
+					Mass alone does not define identity. It gives the stem inertia and pull.
+					Curvature warps possibility space around that weight. Gravitation is what others feel as attraction.
+				</p>
+			</div>
+		</section>
+
+		<ConceptPager id="mass" />
+	</main>
+</Layout>
+
+<style>
+	code {
+		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+		background: rgba(255, 255, 255, 0.06);
+		padding: 0.15em 0.4em;
+		border-radius: 4px;
+		font-size: 0.9em;
+	}
+</style>

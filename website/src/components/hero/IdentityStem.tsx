@@ -3,7 +3,7 @@ import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { gaussianEnvelope } from './gaussian';
 
-/** Monochrome hero palette — black / white / grays only */
+/** Monochrome hero palette: black / white / grays only */
 const C = {
   white: '#f5f5f5',
   high: '#d4d4d8',
@@ -15,7 +15,7 @@ const C = {
 } as const;
 
 /**
- * Identity Stem / Schwerachse
+ * Identity Stem
  * Past (below) → Present / Mass core (center) → Future (above).
  * Substance follows a Gaussian bell around the present.
  * Vision gradient ∇𝒞 emanates from the present core upward.
@@ -241,7 +241,7 @@ function GaussianMassShell() {
 }
 
 /**
- * Vision Gradient ∇𝒞 — from present core upward only.
+ * Vision Gradient ∇𝒞: from present core upward only.
  * Monochrome: brighter white near core, softer gray as it opens.
  */
 function VisionGradient() {

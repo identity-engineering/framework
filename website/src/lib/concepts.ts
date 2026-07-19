@@ -18,7 +18,9 @@ export type ConceptId =
 	| 'rotation'
 	| 'gravitation'
 	| 'relativity'
-	| 'frequency';
+	| 'frequency'
+	| 'damping'
+	| 'emergent';
 
 export interface ConceptMeta {
 	id: ConceptId;
@@ -26,7 +28,7 @@ export interface ConceptMeta {
 	href: string;
 	title: string;
 	shortTitle: string;
-	layer: 'single' | 'interactive';
+	layer: 'single' | 'interactive' | 'collective';
 	layerLabel: string;
 	tag: string;
 	scene: ConceptScene;
@@ -132,6 +134,34 @@ export const concepts: ConceptMeta[] = [
 		blurb:
 			'Resonance behavior of identity tension fields. Alignment amplifies relational stability; mismatch produces drift and energetic loss.',
 		scrollHint: 'Scroll to sweep frequency bands and reveal resonance lock-in.',
+	},
+	{
+		id: 'emergent',
+		slug: 'emergent',
+		href: '/framework/emergent',
+		title: 'Emergent Identity',
+		shortTitle: 'Emergent',
+		layer: 'collective',
+		layerLabel: 'Collective Identity',
+		tag: 'Collective',
+		scene: 'gravitation',
+		blurb:
+			'When many identities interact long enough, a new coherent whole begins to form with its own persistence, memory, and trajectory.',
+		scrollHint: 'Scroll to see many identities cohere into one collective trajectory.',
+	},
+	{
+		id: 'damping',
+		slug: 'damping',
+		href: '/framework/damping',
+		title: 'Damping',
+		shortTitle: 'Damping',
+		layer: 'collective',
+		layerLabel: 'Collective Identity',
+		tag: 'Protection',
+		scene: 'frequency',
+		blurb:
+			'Collective self-protection that calms destructive oscillations, reduces volatility, and preserves coherence across the whole system.',
+		scrollHint: 'Scroll to see oscillations damped into stable collective order.',
 	},
 ];
 

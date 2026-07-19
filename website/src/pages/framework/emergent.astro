@@ -1,0 +1,65 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ConceptPageHero from '../../components/concepts/ConceptPageHero.astro';
+import ConceptPager from '../../components/concepts/ConceptPager.astro';
+import { getConcept } from '../../lib/concepts';
+
+const c = getConcept('emergent');
+---
+
+<Layout title={`${c.title} | Identity Engineering`}>
+	<main class="min-h-screen">
+		<ConceptPageHero
+			scene={c.scene}
+			tag={`${c.tag} · ${c.layerLabel}`}
+			title={c.title}
+			lede={c.blurb}
+			scrollHint={c.scrollHint}
+		/>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl space-y-8 text-lg leading-relaxed text-white/55">
+				<div class="mb-2 text-sm uppercase tracking-[4px] text-white/40">Definition</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					How many become one.
+				</h2>
+				<p>
+					An <strong class="text-white/80">emergent identity</strong> arises when a sufficient number of individual identities interact intensively over time through shared ideas, repeated practices, mutual dependencies, and common tension fields.
+				</p>
+				<p>
+					At a certain threshold, new stable patterns form that are not reducible to any single participant. These patterns develop their own persistence, their own memory (institutions, laws, culture, infrastructure), and their own tension continuum. The collective begins to behave as if it has its own Identity Stem — a recognizable trajectory that persists across changes in its members.
+				</p>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 bg-white/[0.02] px-6 py-24">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-6 text-sm uppercase tracking-[4px] text-white/40">Mechanics</div>
+				<ul class="space-y-6 text-lg text-white/55">
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Threshold of emergence:</strong> Intensive, sustained interaction + shared tension + need for coherence under perturbation.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">New Tension Continuum:</strong> The collective develops its own high-dimensional tension field with characteristic frequencies and damping requirements.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Dissipative nature:</strong> Maintaining collective coherence requires continuous energy expenditure (laws, norms, institutions, enforcement).
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Higher-order Sameness:</strong> The collective develops its own recognizable trajectory that persists beyond changes in individual members.
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl text-lg leading-relaxed text-white/55">
+				<p>
+					<strong class="text-white/80">Engineering implication:</strong> Once a collective has crossed the threshold into emergent identity, it begins to develop its own protective and steering mechanisms — most notably higher-order damping — to preserve its coherence while attempting to maintain or expand its range of future possibilities.
+				</p>
+			</div>
+		</section>
+
+		<ConceptPager id="emergent" />
+	</main>
+</Layout>

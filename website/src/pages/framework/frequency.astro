@@ -1,0 +1,72 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ConceptPageHero from '../../components/concepts/ConceptPageHero.astro';
+import ConceptPager from '../../components/concepts/ConceptPager.astro';
+import { getConcept } from '../../lib/concepts';
+
+const c = getConcept('frequency');
+---
+
+<Layout title={`${c.title} | Identity Engineering`}>
+	<main class="min-h-screen">
+		<ConceptPageHero
+			scene={c.scene}
+			tag={`${c.tag} · ${c.layerLabel}`}
+			title={c.title}
+			lede={c.blurb}
+			scrollHint={c.scrollHint}
+		/>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl space-y-8 text-lg leading-relaxed text-white/55">
+				<div class="mb-2 text-sm uppercase tracking-[4px] text-white/40">Definition</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					The dynamic state of the tension continuum.
+				</h2>
+				<p>
+					<strong class="text-white/80">Frequency</strong> is the engineering descriptor of the high-dimensional tension continuum in which identities exist. It captures the spectrum of characteristic oscillation frequencies, damping ratios and resonance conditions that determine how an identity’s internal tension field behaves over time.
+				</p>
+				<p>
+					Where Rotation describes gyroscopic self-stability of the stem, Frequency describes the full dynamic behaviour of the tension field — how it oscillates, couples with other fields, dissipates energy and maintains or loses coherence under external forces.
+				</p>
+				</div>
+		</section>
+
+		<section class="border-t border-white/10 bg-white/[0.02] px-6 py-24">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-6 text-sm uppercase tracking-[4px] text-white/40">Mechanics</div>
+				<ul class="space-y-6 text-lg text-white/55">
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Tension field:</strong> The high-dimensional continuum of internal stress and deflection an identity is permanently exposed to.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Frequency spectrum:</strong> The characteristic rates at which tension oscillates and changes within the field.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Resonance:</strong> Frequency matching between identities or between an identity and idea-clusters that produces mutual amplification.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Damping:</strong> The rate at which tension oscillations decay. Controls energy dissipation and modal stability.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Regulatory Damping:</strong> External, high-dimensional damping applied by governance or regulation. Aims to preserve identity coherence and optimise its tension modes.
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl text-lg leading-relaxed text-white/55">
+				<p>
+					<strong class="text-white/80">Engineering work:</strong> Shape internal Frequency and respond intelligently to external regulatory damping.
+					Increase productive resonance, reduce destructive energy loss, and maintain coherent high-entropy modes in the tension continuum.
+				</p>
+				<p>
+					Damping is not merely friction. In the right measure it is the mechanism that allows resolved inner tension (free energy) to be efficiently converted into Mass-building motion without chaotic dissipation or rigidification.
+				</p>
+			</div>
+		</section>
+
+		<ConceptPager id="frequency" />
+	</main>
+</Layout>

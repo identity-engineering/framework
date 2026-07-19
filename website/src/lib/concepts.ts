@@ -58,7 +58,7 @@ export const concepts: ConceptMeta[] = [
 		tag: 'Geometry',
 		scene: 'mass',
 		blurb:
-			'Substance and depth built around the stem. Not volume: density and weight. The stake you own.',
+			'Substance and depth built around the stem. Not volume: density and weight. The stake we own.',
 		scrollHint: 'Scroll to densify. Rest potential becomes agency under coherent velocity.',
 	},
 	{

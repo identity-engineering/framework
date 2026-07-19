@@ -1,245 +1,317 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+// @ts-nocheck
+import { useMemo, useRef } from 'react';
+import { useFrame } from '@react-three/fiber';
+import * as THREE from 'three';
+import ConceptCanvas from './ConceptCanvas';
+import ScrollProgressController from './ScrollProgressController';
+import { mono, smoothstep } from './mono';
 
-function clamp01(value: number): number {
-  return Math.max(0, Math.min(1, value));
-}
+type ProgressRef = Readonly<{ progress: React.RefObject<number> }>;
 
-function polar(radius: number, angle: number) {
-  return {
-    x: 50 + Math.cos(angle) * radius,
-    y: 50 + Math.sin(angle) * radius,
-  };
-}
-
-function buildShellPath(radius: number, depth: number, progress: number, phase: number) {
-  const pts: string[] = [];
-  const distortion = 0.42 + progress * 2.5 * depth;
-  const wobble = progress * Math.PI * (2.2 + depth * 0.9) + phase;
-  const ripple = progress * Math.PI * (4.1 + depth * 0.6) - phase * 0.55;
-
-  for (let deg = 0; deg <= 360; deg += 8) {
-    const t = (deg * Math.PI) / 180;
-    const localR =
-      radius +
-      Math.sin(t * (3.0 + depth) + wobble) * distortion +
-      Math.sin(t * (5.2 + depth * 0.6) - ripple) * distortion * 0.45;
-    const p = polar(localR, t);
-    pts.push(`${p.x.toFixed(2)},${p.y.toFixed(2)}`);
-  }
-
-  return `M ${pts.join(' L ')} Z`;
-}
-
-function buildFilamentPoints(angle: number, length: number, progress: number, phase: number) {
-  const pts: string[] = [];
-  const bendScale = 0.18 + progress * 0.42;
-  const lock = 0.14 + progress * 0.72;
-
-  for (let i = 0; i <= 10; i++) {
-    const t = i / 10;
-    const radius = length * t;
-    const bend = Math.sin(t * Math.PI * (1.6 + lock) + progress * Math.PI * 2.4 + phase) * bendScale * t;
-    const off = Math.cos(t * Math.PI * (2.1 + lock * 0.5) - phase) * bendScale * 0.45;
-    const p = polar(radius, angle);
-    const x = p.x + Math.cos(angle + Math.PI / 2) * bend + Math.cos(angle) * off;
-    const y = p.y + Math.sin(angle + Math.PI / 2) * bend + Math.sin(angle) * off;
-    pts.push(`${x.toFixed(2)},${y.toFixed(2)}`);
-  }
-
-  return pts.join(' ');
-}
-
+/**
+ * Frequency — filigree, scroll-scrubbed identity frequency field.
+ * Visual logic:
+ * - A coherent identity core in the center.
+ * - Multiple thin spectral shells that deform with scroll progress.
+ * - Fine filaments and particles expressing multidimensional tension distortion.
+ */
 export default function FrequencyScene() {
-  const rootRef = useRef<HTMLDivElement>(null);
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    let frame = 0;
-
-    const update = () => {
-      frame = 0;
-      const root = rootRef.current;
-      if (!root) return;
-      const rect = root.getBoundingClientRect();
-      const vh = window.innerHeight || 1;
-      const start = vh * 0.92;
-      const end = -rect.height * 0.35;
-      const raw = (start - rect.top) / (start - end);
-      setProgress(clamp01(raw));
-    };
-
-    const onScrollOrResize = () => {
-      if (!frame) frame = window.requestAnimationFrame(update);
-    };
-
-    update();
-    window.addEventListener('scroll', onScrollOrResize, { passive: true });
-    window.addEventListener('resize', onScrollOrResize);
-
-    return () => {
-      if (frame) window.cancelAnimationFrame(frame);
-      window.removeEventListener('scroll', onScrollOrResize);
-      window.removeEventListener('resize', onScrollOrResize);
-    };
-  }, []);
-
-  const shells = useMemo(
-    () => [
-      { key: 's1', radius: 10.5, depth: 0.35, phase: 0.2, opacity: 0.18 },
-      { key: 's2', radius: 15.6, depth: 0.52, phase: 0.9, opacity: 0.22 },
-      { key: 's3', radius: 21.4, depth: 0.72, phase: 1.4, opacity: 0.28 },
-      { key: 's4', radius: 28.2, depth: 0.92, phase: 2.1, opacity: 0.3 },
-      { key: 's5', radius: 36.5, depth: 1.1, phase: 2.8, opacity: 0.24 },
-    ],
-    []
-  );
-
-  const filaments = useMemo(
-    () => [
-      { key: 'f1', angle: 0.1, length: 39, phase: 0.1 },
-      { key: 'f2', angle: 0.46, length: 37, phase: 0.8 },
-      { key: 'f3', angle: 0.89, length: 41, phase: 1.4 },
-      { key: 'f4', angle: 1.38, length: 38, phase: 2.1 },
-      { key: 'f5', angle: 1.95, length: 40, phase: 2.7 },
-      { key: 'f6', angle: 2.42, length: 36, phase: 3.2 },
-      { key: 'f7', angle: 2.84, length: 39, phase: 3.7 },
-      { key: 'f8', angle: 3.32, length: 37, phase: 4.2 },
-      { key: 'f9', angle: 3.82, length: 41, phase: 4.8 },
-      { key: 'f10', angle: 4.26, length: 38, phase: 5.3 },
-      { key: 'f11', angle: 4.76, length: 40, phase: 5.8 },
-      { key: 'f12', angle: 5.31, length: 36, phase: 6.2 },
-    ],
-    []
-  );
-
-  const particles = useMemo(
-    () => [
-      { key: 'p1', a: 0.18, r: 22 },
-      { key: 'p2', a: 0.78, r: 26 },
-      { key: 'p3', a: 1.32, r: 19 },
-      { key: 'p4', a: 1.88, r: 30 },
-      { key: 'p5', a: 2.42, r: 23 },
-      { key: 'p6', a: 3.06, r: 28 },
-      { key: 'p7', a: 3.62, r: 25 },
-      { key: 'p8', a: 4.18, r: 31 },
-      { key: 'p9', a: 4.76, r: 20 },
-      { key: 'p10', a: 5.34, r: 27 },
-      { key: 'p11', a: 5.94, r: 24 },
-    ],
-    []
-  );
-
-  const lock = smoothstep(0.18, 0.84, progress);
-  const coreScale = 0.95 + lock * 0.14;
-  const coreSpin = progress * 10;
-  const coreRise = Math.sin(progress * Math.PI * 3.2) * 0.35 * lock;
+  const progress = useRef(0);
 
   return (
-    <div ref={rootRef} className="frequency-scene" data-progress={progress.toFixed(3)}>
-      <style>{`
-        .frequency-scene {
-          position: absolute;
-          inset: 0;
-          overflow: hidden;
-          background:
-            radial-gradient(circle at 50% 50%, rgba(245,245,245,0.08), rgba(10,10,15,0.96) 64%),
-            linear-gradient(180deg, rgba(161,161,170,0.06), rgba(10,10,15,0.9));
-        }
-        .frequency-svg {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-        }
-        .frequency-label {
-          position: absolute;
-          right: 10px;
-          bottom: 8px;
-          color: rgba(212, 212, 216, 0.5);
-          font-size: 10px;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-        }
-      `}</style>
-
-      <svg className="frequency-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-        <defs>
-          <radialGradient id="freq-core-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="rgba(245,245,245,0.82)" />
-            <stop offset="35%" stopColor="rgba(212,212,216,0.3)" />
-            <stop offset="100%" stopColor="rgba(10,10,15,0)" />
-          </radialGradient>
-          <linearGradient id="freq-stroke" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="rgba(161,161,170,0.06)" />
-            <stop offset="50%" stopColor="rgba(245,245,245,0.5)" />
-            <stop offset="100%" stopColor="rgba(161,161,170,0.06)" />
-          </linearGradient>
-        </defs>
-
-        <g transform={`translate(50 ${50 + coreRise}) rotate(${coreSpin} 50 50) scale(${coreScale})`}>
-          <ellipse cx="50" cy="50" rx="3.8" ry="3.2" fill="url(#freq-core-glow)" opacity={0.95} />
-          <path
-            d="M 50 46.6 L 53.8 50 L 50 53.4 L 46.2 50 Z"
-            fill="rgba(245,245,245,0.9)"
-            opacity={0.82 + lock * 0.16}
-          />
-          <circle cx="50" cy="50" r={1.05 + lock * 0.22} fill="rgba(245,245,245,0.98)" opacity={0.88} />
-          <path
-            d={`M 50 43.6 L 53.6 50 L 50 56.4 L 46.4 50 Z`}
-            fill="none"
-            stroke="rgba(245,245,245,0.8)"
-            strokeWidth="0.32"
-            opacity={0.34 + lock * 0.28}
-          />
-        </g>
-
-        {shells.map((shell) => (
-          <path
-            key={shell.key}
-            d={buildShellPath(shell.radius, shell.depth, progress, shell.phase)}
-            fill="none"
-            stroke="url(#freq-stroke)"
-            strokeWidth={0.26 + shell.depth * 0.1}
-            strokeOpacity={shell.opacity + lock * 0.08}
-          />
-        ))}
-
-        {filaments.map((filament, index) => {
-          const waviness = 0.16 + lock * 0.42;
-          const bend = Math.sin(progress * Math.PI * (2.1 + index * 0.04) + filament.phase) * waviness;
-          return (
-            <polyline
-              key={filament.key}
-              points={buildFilamentPoints(filament.angle + bend * 0.08, filament.length, progress, filament.phase)}
-              fill="none"
-              stroke="rgba(212,212,216,0.36)"
-              strokeWidth={0.16 + lock * 0.08}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              opacity={0.14 + lock * 0.16}
-            />
-          );
-        })}
-
-        {particles.map((particle, i) => {
-          const theta = particle.a + progress * (0.8 + i * 0.03);
-          const drift = particle.r + Math.sin(progress * Math.PI * (2.2 + i * 0.11)) * (0.7 + lock * 1.3);
-          const p = polar(drift, theta);
-          return (
-            <circle
-              key={particle.key}
-              cx={p.x}
-              cy={p.y}
-              r={0.22 + lock * 0.18 + (i % 3) * 0.03}
-              fill="rgba(245,245,245,0.84)"
-              opacity={0.24 + lock * 0.42}
-            />
-          );
-        })}
-      </svg>
-
-      <div className="frequency-label">inner tension continuum</div>
+    <div className="w-full h-full">
+      <ConceptCanvas camera={{ position: [0, 1.9, 6.2], fov: 47 }} fogFar={16}>
+        <ScrollProgressController progress={progress} />
+        <IdentityCore progress={progress} />
+        <FrequencyShells progress={progress} />
+        <SpectralFilaments progress={progress} />
+        <TensionParticles progress={progress} />
+      </ConceptCanvas>
     </div>
+  );
+}
+
+function IdentityCore({ progress }: ProgressRef) {
+  const coreRef = useRef<THREE.Mesh>(null);
+  const coreMatRef = useRef<THREE.MeshStandardMaterial>(null);
+  const stemRef = useRef<THREE.Mesh>(null);
+
+  useFrame((state) => {
+    const p = progress.current;
+    const lock = smoothstep(0.18, 0.82, p);
+    const t = state.clock.elapsedTime;
+    const micro = 0.008 + lock * 0.01;
+
+    if (coreRef.current) {
+      coreRef.current.rotation.y = p * Math.PI * 0.85;
+      coreRef.current.rotation.x = Math.sin(t * 2.6) * micro;
+      coreRef.current.rotation.z = Math.cos(t * 2.1) * micro * 0.9;
+      coreRef.current.position.y = Math.sin(t * 3.1) * micro * 1.2;
+      const s = 0.9 + lock * 0.24;
+      coreRef.current.scale.setScalar(s);
+    }
+
+    if (stemRef.current) {
+      stemRef.current.scale.y = 0.8 + lock * 0.5;
+      stemRef.current.position.y = -0.05 + lock * 0.08;
+    }
+
+    if (coreMatRef.current) {
+      coreMatRef.current.emissiveIntensity = 0.45 + lock * 1.35;
+    }
+  });
+
+  return (
+    <group>
+      <mesh ref={coreRef}>
+        <octahedronGeometry args={[0.21, 0]} />
+        <meshStandardMaterial
+          ref={coreMatRef}
+          color={mono.core}
+          emissive={mono.white}
+          emissiveIntensity={0.8}
+          roughness={0.02}
+          metalness={1}
+          wireframe
+        />
+      </mesh>
+
+      <mesh ref={stemRef} position={[0, -0.05, 0]}>
+        <cylinderGeometry args={[0.012, 0.012, 0.72, 12]} />
+        <meshBasicMaterial color={mono.high} transparent opacity={0.32} depthWrite={false} />
+      </mesh>
+
+      <mesh rotation={[Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[0.42, 0.006, 8, 96]} />
+        <meshBasicMaterial color={mono.high} transparent opacity={0.24} depthWrite={false} />
+      </mesh>
+    </group>
+  );
+}
+
+function FrequencyShells({ progress }: ProgressRef) {
+  const groupRef = useRef<THREE.Group>(null);
+
+  const shells = useMemo(() => {
+    const shellData: { radius: number; depth: number; phase: number }[] = [];
+    for (let i = 0; i < 7; i++) {
+      shellData.push({
+        radius: 0.62 + i * 0.36,
+        depth: 0.35 + i * 0.13,
+        phase: i * 0.49,
+      });
+    }
+    return shellData;
+  }, []);
+
+  const baseAngles = useMemo(() => {
+    const arr: number[] = [];
+    for (let a = 0; a < 360; a += 6) arr.push((a * Math.PI) / 180);
+    return arr;
+  }, []);
+
+  useFrame(() => {
+    if (!groupRef.current) return;
+    const p = progress.current;
+    const lock = smoothstep(0.18, 0.84, p);
+
+    groupRef.current.rotation.y = p * Math.PI * 0.75;
+    groupRef.current.rotation.x = (p - 0.5) * 0.18;
+
+    groupRef.current.children.forEach((child, i) => {
+      const shell = shells[i];
+      if (!shell) return;
+
+      const line = child as THREE.LineLoop;
+      const geometry = line.geometry;
+      const pos = geometry.attributes.position as THREE.BufferAttribute;
+
+      const amp = (0.03 + lock * 0.22) * shell.depth;
+      const phaseA = p * Math.PI * (2.6 + shell.depth * 1.2) + shell.phase;
+      const phaseB = p * Math.PI * (4.2 + shell.depth * 0.8) - shell.phase * 0.7;
+
+      for (let j = 0; j < baseAngles.length; j++) {
+        const t = baseAngles[j];
+
+        const localR =
+          shell.radius +
+          Math.sin(t * (3.1 + shell.depth) + phaseA) * amp +
+          Math.sin(t * (5.2 + shell.depth * 0.6) - phaseB) * amp * 0.5;
+
+        const x = Math.cos(t) * localR;
+        const z = Math.sin(t) * localR;
+        const y =
+          Math.sin(t * (2.4 + shell.depth * 0.5) + phaseB) * amp * 0.75 +
+          Math.cos(t * 4.0 - phaseA) * amp * 0.35;
+
+        pos.setXYZ(j, x, y, z);
+      }
+
+      pos.needsUpdate = true;
+      geometry.computeBoundingSphere();
+
+      const mat = line.material as THREE.LineBasicMaterial;
+      mat.opacity = 0.07 + lock * 0.2 + (i / shells.length) * 0.05;
+    });
+  });
+
+  return (
+    <group ref={groupRef}>
+      {shells.map((shell, i) => {
+        const points = baseAngles.map((t) => new THREE.Vector3(Math.cos(t) * shell.radius, 0, Math.sin(t) * shell.radius));
+        const geometry = new THREE.BufferGeometry().setFromPoints(points);
+
+        return (
+          <lineLoop key={`shell-${i}-${shell.radius.toFixed(2)}`} geometry={geometry}>
+            <lineBasicMaterial
+              color={i % 2 === 0 ? mono.high : mono.mid}
+              transparent
+              opacity={0.16}
+              depthWrite={false}
+            />
+          </lineLoop>
+        );
+      })}
+    </group>
+  );
+}
+
+function SpectralFilaments({ progress }: ProgressRef) {
+  const groupRef = useRef<THREE.Group>(null);
+
+  const filaments = useMemo(() => {
+    const arr: { angle: number; spread: number; phase: number; length: number }[] = [];
+    for (let i = 0; i < 22; i++) {
+      arr.push({
+        angle: (i / 22) * Math.PI * 2,
+        spread: 0.08 + (i % 4) * 0.03,
+        phase: i * 0.37,
+        length: 1.4 + (i % 5) * 0.34,
+      });
+    }
+    return arr;
+  }, []);
+
+  useFrame(() => {
+    if (!groupRef.current) return;
+    const p = progress.current;
+    const lock = smoothstep(0.2, 0.86, p);
+
+    groupRef.current.rotation.y = p * Math.PI * 0.62;
+
+    groupRef.current.children.forEach((child, i) => {
+      const f = filaments[i];
+      if (!f) return;
+
+      const line = child as THREE.Line;
+      const geometry = line.geometry;
+      const pos = geometry.attributes.position as THREE.BufferAttribute;
+
+      for (let k = 0; k < 14; k++) {
+        const t = k / 13;
+        const bend = Math.sin(t * Math.PI * (1.6 + f.spread * 8) + p * Math.PI * 2.5 + f.phase) * (0.08 + lock * 0.2);
+        const radial = f.length * t;
+
+        const x = Math.cos(f.angle) * radial + Math.cos(f.angle + Math.PI / 2) * bend;
+        const z = Math.sin(f.angle) * radial + Math.sin(f.angle + Math.PI / 2) * bend;
+        const y = (t - 0.5) * f.spread * (0.9 + lock * 1.2);
+
+        pos.setXYZ(k, x, y, z);
+      }
+
+      pos.needsUpdate = true;
+      geometry.computeBoundingSphere();
+
+      const mat = line.material as THREE.LineBasicMaterial;
+      mat.opacity = 0.05 + lock * 0.16;
+    });
+  });
+
+  return (
+    <group ref={groupRef}>
+      {filaments.map((f, i) => {
+        const points = Array.from({ length: 14 }, (_, k) => {
+          const t = k / 13;
+          return new THREE.Vector3(Math.cos(f.angle) * f.length * t, 0, Math.sin(f.angle) * f.length * t);
+        });
+        const geometry = new THREE.BufferGeometry().setFromPoints(points);
+
+        return (
+          <line key={`filament-${i}-${f.phase.toFixed(2)}`} geometry={geometry}>
+            <lineBasicMaterial color={mono.mid} transparent opacity={0.12} depthWrite={false} />
+          </line>
+        );
+      })}
+    </group>
+  );
+}
+
+function TensionParticles({ progress }: ProgressRef) {
+  const ref = useRef<THREE.Points>(null);
+
+  const { positions, phases } = useMemo(() => {
+    const count = 220;
+    const pos = new Float32Array(count * 3);
+    const ph = new Float32Array(count);
+
+    for (let i = 0; i < count; i++) {
+      const theta = Math.random() * Math.PI * 2;
+      const r = 0.75 + Math.random() * 2.7;
+      const y = (Math.random() - 0.5) * 1.9;
+
+      pos[i * 3] = Math.cos(theta) * r;
+      pos[i * 3 + 1] = y;
+      pos[i * 3 + 2] = Math.sin(theta) * r;
+      ph[i] = Math.random() * Math.PI * 2;
+    }
+
+    return { positions: pos, phases: ph };
+  }, []);
+
+  useFrame(() => {
+    if (!ref.current) return;
+    const p = progress.current;
+    const lock = smoothstep(0.18, 0.88, p);
+
+    const geo = ref.current.geometry;
+    const pos = geo.attributes.position as THREE.BufferAttribute;
+
+    for (let i = 0; i < pos.count; i++) {
+      const x0 = positions[i * 3];
+      const y0 = positions[i * 3 + 1];
+      const z0 = positions[i * 3 + 2];
+      const phase = phases[i];
+
+      const sway = Math.sin(phase + p * Math.PI * 3.1 + i * 0.03) * (0.03 + lock * 0.09);
+      const pull = 1 + Math.sin(phase + p * Math.PI * 1.2) * (0.02 + lock * 0.06);
+
+      pos.setXYZ(i, x0 * pull + sway, y0 + sway * 0.7, z0 * pull - sway * 0.6);
+    }
+
+    pos.needsUpdate = true;
+
+    const mat = ref.current.material as THREE.PointsMaterial;
+    mat.opacity = 0.12 + lock * 0.24;
+  });
+
+  return (
+    <points ref={ref}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          array={positions}
+          count={positions.length / 3}
+          itemSize={3}
+        />
+      </bufferGeometry>
+      <pointsMaterial
+        color={mono.high}
+        size={0.02}
+        sizeAttenuation
+        transparent
+        opacity={0.22}
+        depthWrite={false}
+      />
+    </points>
   );
 }

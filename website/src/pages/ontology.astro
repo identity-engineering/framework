@@ -10,7 +10,13 @@ import Layout from '../layouts/Layout.astro';
 		<!-- Header -->
 		<section class="border-b border-white/10 px-6 pt-28 pb-16">
 			<div class="mx-auto max-w-3xl">
-				<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Foundations</div>
+				<a
+					href="/foundations"
+					class="mb-6 inline-block text-sm text-white/40 transition hover:text-white/70"
+				>
+					← Foundations
+				</a>
+				<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Foundations · Conceptual core</div>
 				<h1 class="mb-6 text-5xl font-bold tracking-tighter text-white md:text-6xl leading-[0.95]">
 					Ontology of Identity
 				</h1>
@@ -327,8 +333,8 @@ import Layout from '../layouts/Layout.astro';
 
 				<div class="mt-14 flex flex-wrap gap-4">
 					<a href="/framework/time" class="rounded-full bg-white px-8 py-3.5 font-medium text-black transition hover:bg-white/90">Start with Time</a>
+					<a href="/foundations" class="rounded-full border border-white/20 px-8 py-3.5 text-white/70 transition hover:bg-white/5">← Foundations</a>
 					<a href="/critical-gaps" class="rounded-full border border-white/20 px-8 py-3.5 text-white/70 transition hover:bg-white/5">Critical Gaps</a>
-					<a href="/" class="rounded-full border border-white/20 px-8 py-3.5 text-white/70 transition hover:bg-white/5">← Home</a>
 				</div>
 			</div>
 		</section>

@@ -1,0 +1,68 @@
+---
+/**
+ * Blog hub: public essays and field notes that articulate Identity Engineering
+ * against classical theories and emerging practice.
+ */
+import Layout from '../../layouts/Layout.astro';
+
+const posts = [
+	{
+		href: '/blog/identity-engineering-vs-classical-identity-theories',
+		date: 'July 2026',
+		readTime: '12 min',
+		title: 'Identity Engineering vs. Classical Identity Theories',
+		excerpt:
+			'Locke, Hume, Erikson: and the leap from retrospective maps to a physics-informed, designable geometry of self.',
+	},
+];
+---
+
+<Layout title="Blog | Identity Engineering">
+	<main class="min-h-screen">
+		<section class="border-b border-white/10 px-6 pt-28 pb-16">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Blog</div>
+				<h1 class="text-5xl font-bold tracking-tighter text-white md:text-6xl leading-[0.95]">
+					Public writing
+				</h1>
+				<p class="mt-6 max-w-2xl text-xl font-light leading-relaxed text-white/50">
+					Essays that position the framework, deepen its historical anchors, and make the engineering leap legible.
+				</p>
+			</div>
+		</section>
+
+		<section class="px-6 py-16">
+			<div class="mx-auto max-w-3xl space-y-8">
+				{
+					posts.map((post) => (
+						<a
+							href={post.href}
+							class="group block border-l border-white/15 pl-6 transition-colors hover:border-white/40"
+						>
+							<div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-white/40">
+								<span>{post.date}</span>
+								<span aria-hidden="true">·</span>
+								<span>{post.readTime} read</span>
+							</div>
+							<h2 class="mt-2 text-2xl font-semibold tracking-tight text-white transition group-hover:text-white/90 md:text-3xl">
+								{post.title}
+								<span class="ml-2 inline-block text-white/30 transition group-hover:translate-x-0.5 group-hover:text-white/60">
+									→
+								</span>
+							</h2>
+							<p class="mt-3 text-lg leading-relaxed text-white/55">{post.excerpt}</p>
+						</a>
+					))
+				}
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-14">
+			<div class="mx-auto max-w-3xl text-sm text-white/45">
+				<p>
+					Historical deep-dives live in <a href="/foundations" class="text-white/70 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Foundations</a>. These are living reference pages for the anchors named in these essays.
+				</p>
+			</div>
+		</section>
+	</main>
+</Layout>

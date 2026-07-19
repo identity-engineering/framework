@@ -1,0 +1,128 @@
+---
+/**
+ * Foundations hub: conceptual core (ontology) + historical anchors
+ * (classical identity theories). Ontology lives at /ontology for stable URLs
+ * but belongs structurally under this layer.
+ */
+import Layout from '../../layouts/Layout.astro';
+
+const core = [
+	{
+		href: '/ontology',
+		meta: 'Conceptual core',
+		title: 'Ontology of Identity',
+		blurb:
+			'Two forces, kept distinct: identity as sameness, intelligence as the drive to open future freedom. The tension Identity Engineering works.',
+	},
+];
+
+const historical = [
+	{
+		href: '/foundations/locke-personal-identity',
+		meta: 'John Locke · 1689',
+		title: 'Consciousness Continuity as Proto-Trajectory',
+		blurb: 'The forensic root of personal identity and the earliest sketch of the Identity Stem.',
+	},
+];
+---
+
+<Layout title="Foundations | Identity Engineering">
+	<main class="min-h-screen">
+		<section class="border-b border-white/10 px-6 pt-28 pb-16">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Foundations</div>
+				<h1 class="text-5xl font-bold tracking-tighter text-white md:text-6xl leading-[0.95]">
+					Where the framework stands
+				</h1>
+				<p class="mt-6 max-w-2xl text-xl font-light leading-relaxed text-white/50">
+					Conceptual core and historical anchors: the ground under Identity Engineering, and the clear line to
+					what we deliberately add.
+				</p>
+			</div>
+		</section>
+
+		<section class="px-6 py-16">
+			<div class="mx-auto max-w-3xl space-y-6 text-lg leading-relaxed text-white/55">
+				<p>
+					<strong class="text-white/80">Foundations</strong> is the base layer of the public site: our own ontology of
+					identity, plus rigorous engagement with classical and contemporary identity concepts from other thinkers.
+					Essays that compare or position live on the <a href="/blog" class="text-white/80 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Blog</a>; durable reference pages for those concepts live here.
+				</p>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 bg-white/[0.015] px-6 py-16">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-8 text-sm uppercase tracking-[4px] text-white/40">Conceptual core</div>
+				<div class="space-y-8">
+					{
+						core.map((item) => (
+							<a
+								href={item.href}
+								class="group block border-l border-cyan-400/30 pl-6 transition-colors hover:border-cyan-400/60"
+							>
+								<div class="text-sm text-white/40">{item.meta}</div>
+								<div class="mt-1 text-2xl font-semibold tracking-tight text-white transition group-hover:text-white/90">
+									{item.title}
+									<span class="ml-2 inline-block text-white/30 transition group-hover:translate-x-0.5 group-hover:text-white/60">
+										→
+									</span>
+								</div>
+								<div class="mt-2 text-white/55">{item.blurb}</div>
+							</a>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-16">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-8 text-sm uppercase tracking-[4px] text-white/40">Historical &amp; conceptual anchors</div>
+				<p class="mb-8 text-base leading-relaxed text-white/50">
+					Existing identity concepts from other authors, kept intact, then mapped onto the geometric primitives of
+					the framework.
+				</p>
+				<div class="space-y-8">
+					{
+						historical.map((a) => (
+							<a
+								href={a.href}
+								class="group block border-l border-white/15 pl-6 transition-colors hover:border-white/40"
+							>
+								<div class="text-sm text-white/40">{a.meta}</div>
+								<div class="mt-1 text-2xl font-semibold tracking-tight text-white transition group-hover:text-white/90">
+									{a.title}
+									<span class="ml-2 inline-block text-white/30 transition group-hover:translate-x-0.5 group-hover:text-white/60">
+										→
+									</span>
+								</div>
+								<div class="mt-2 text-white/55">{a.blurb}</div>
+							</a>
+						))
+					}
+				</div>
+				<p class="mt-10 text-sm text-white/45">
+					Further anchors (Hume, Erikson, Parfit, Ricœur, and others) will land here as the field analysis deepens.
+				</p>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-14">
+			<div class="mx-auto flex max-w-3xl flex-wrap gap-x-6 gap-y-2 text-sm">
+				<a
+					href="/framework"
+					class="text-white/50 underline decoration-white/20 underline-offset-4 transition hover:text-white/80 hover:decoration-white/40"
+				>
+					Framework →
+				</a>
+				<a
+					href="/blog"
+					class="text-white/50 underline decoration-white/20 underline-offset-4 transition hover:text-white/80 hover:decoration-white/40"
+				>
+					Blog →
+				</a>
+			</div>
+		</section>
+	</main>
+</Layout>

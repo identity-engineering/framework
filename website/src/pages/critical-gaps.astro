@@ -1,0 +1,323 @@
+---
+/**
+ * Public Critical Gaps & Limitations — scientific transparency.
+ * Content from feat/critical-gaps (July 2026), aligned with Dual Mission + current site.
+ * Keep inline tags on one line with outer spaces (Astro whitespace).
+ */
+import Layout from '../layouts/Layout.astro';
+
+type StatusTone = 'open' | 'active' | 'high' | 'medium' | 'accepted' | 'future' | 'managed';
+
+interface Gap {
+	title: string;
+	description: string;
+	impact: string;
+	status: string;
+	tone: StatusTone;
+	mitigation: string;
+}
+
+interface GapGroup {
+	id: string;
+	label: string;
+	title: string;
+	gaps: Gap[];
+}
+
+const statusClass: Record<StatusTone, string> = {
+	open: 'border-white/20 bg-white/5 text-white/70',
+	active: 'border-violet-400/30 bg-violet-400/10 text-violet-200/90',
+	high: 'border-cyan-400/30 bg-cyan-400/10 text-cyan-200/90',
+	medium: 'border-white/15 bg-white/[0.04] text-white/60',
+	accepted: 'border-white/10 bg-white/[0.03] text-white/50',
+	future: 'border-white/10 bg-white/[0.03] text-white/45',
+	managed: 'border-white/15 bg-white/[0.04] text-white/55',
+};
+
+const groups: GapGroup[] = [
+	{
+		id: 'conceptual',
+		label: '01 · Conceptual',
+		title: 'Conceptual & ontological',
+		gaps: [
+			{
+				title: 'Category error via physics metaphors',
+				description:
+					'Transfer of terms such as Mass, Curvature, Gravitation, Rotation, Worldline without clear isomorphism or methodological bridge to actual physics. Risk of physics envy or rhetorical overclaim.',
+				impact: 'Loss of credibility with physicists, philosophers of science, and analytic philosophers.',
+				status: 'Open · Active Review',
+				tone: 'active',
+				mitigation:
+					'Clarify analogy vs isomorphism in Core Concepts and Positioning. Mark formulas as inspirational formalization until rigorous derivations exist. Dual Mission makes rigorous isomorphism the central long-term task.',
+			},
+			{
+				title: 'Reductionism (embodiment, affect, sociality, narrativity)',
+				description:
+					'Identity is strongly reduced to a geometric trajectory (State Differential + Vision Gradient). Bodily, unconscious, socially constituted, and narrative/emotional dimensions remain under-illuminated.',
+				impact: 'Can feel cold or alienating in trauma or crisis. Weak connection to established identity psychology.',
+				status: 'Open · High Priority',
+				tone: 'high',
+				mitigation:
+					'Build bridges to Narrative Identity (McAdams), Possible Selves, Self-Determination Theory, Embodied Cognition. Expand the interactive layer (Gravitation / Relativity). Handle reductionism carefully across human and substrate-free domains.',
+			},
+			{
+				title: 'Philosophical under-determination of personal identity',
+				description:
+					'The tension between Sameness-as-Trajectory and Causal Entropy is productive, but not yet robust against classical objections (fission/fusion, gradual replacement, Parfit-style arguments).',
+				impact: 'Weak defense in philosophical debate; risk in radical AI scenarios (mind upload).',
+				status: 'Open · Medium Priority',
+				tone: 'medium',
+				mitigation:
+					'Dedicated section on personal identity philosophy and literature. Dual Mission adds artificial / substrate-free identity persistence.',
+			},
+		],
+	},
+	{
+		id: 'mathematical',
+		label: '02 · Mathematical',
+		title: 'Mathematical & formal',
+		gaps: [
+			{
+				title: 'Imprecise formalization',
+				description:
+					'The central formula I = arg max_γ [ ∫ V(γ(t)) · dγ + consistency term ] is inspiring, but the consistency term, the metric of configuration space, and the operationalization of ∇𝒞 remain vague.',
+				impact: 'Can be criticized as mathematics as decoration rather than a genuine tool.',
+				status: 'Open · Active Work',
+				tone: 'active',
+				mitigation:
+					'Label formulas as inspirational / to-be-rigorously-derived. Develop concrete models and simple simulations. Dual Mission increases the need for precision.',
+			},
+		],
+	},
+	{
+		id: 'practical',
+		label: '03 · Practical',
+		title: 'Practical & operationalization',
+		gaps: [
+			{
+				title: 'Lack of concrete engineering practice & measurability',
+				description:
+					'Questions as Probes and habits as tangential force are central, but not yet translated into protocols, diagnostics, or tools. No clear indicators for good geometry (wobble, mass density, etc.).',
+				impact: 'Strong theory, hard to apply and falsify for practitioners.',
+				status: 'Open · High Priority',
+				tone: 'high',
+				mitigation: 'Develop 2–3 probe protocols plus a simple self-diagnostic and test internally.',
+			},
+			{
+				title: 'Lack of empirical basis',
+				description: 'No pilot studies, user tests, or A/B experiments yet.',
+				impact: 'Heavy claims of effectiveness or generality are hard to substantiate.',
+				status: 'Acknowledged · Future Work',
+				tone: 'future',
+				mitigation:
+					'Pilots planned long-term (after book or Foundation stage). Current focus: internal coherence and logical consistency.',
+			},
+		],
+	},
+	{
+		id: 'accessibility',
+		label: '04 · Audience',
+		title: 'Accessibility & audience',
+		gaps: [
+			{
+				title: 'Strong selection by cognitive style',
+				description:
+					'High demand on abstract, systemic, physics/math-affine thinking. Not barrier-free for everyone seeking orientation in the AI shift.',
+				impact: 'Partially contradicts any claim of helping everyone.',
+				status: 'Accepted · Made Transparent',
+				tone: 'accepted',
+				mitigation:
+					'Clear target-group definition in Positioning. Optional lower-threshold entry (simplified visualizations, narrative versions).',
+			},
+		],
+	},
+	{
+		id: 'structural',
+		label: '05 · Process',
+		title: 'Structural & process',
+		gaps: [
+			{
+				title: 'Missing substantial positioning & differentiation',
+				description: 'Positioning exists in the hub but remains weak in content.',
+				impact: 'Framework appears less differentiated and more vulnerable to criticism.',
+				status: 'Open · High Priority',
+				tone: 'high',
+				mitigation:
+					'Concrete differentiation from 4–5 relevant frameworks (Narrative Identity, modern Stoicism, Self-Determination Theory, Agent Foundations in AI, etc.), reflecting Dual Mission.',
+			},
+			{
+				title: 'Rapid evolution & temporary inconsistencies',
+				description:
+					'Core structure updates (Rotation, Time layer) within days. Skill definition vs current pages can diverge slightly.',
+				impact: 'Can be perceived as unstable or retrofitted.',
+				status: 'Managed · Living Framework',
+				tone: 'managed',
+				mitigation:
+					'This page itself is transparency. Regular sync between Notion, GitHub, and the site via feature branches.',
+			},
+		],
+	},
+];
+---
+
+<Layout title="Critical Gaps | Identity Engineering">
+	<main class="min-h-screen">
+		<section class="border-b border-white/10 px-6 pt-28 pb-16">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Transparency</div>
+				<h1 class="mb-6 text-5xl font-bold tracking-tighter text-white md:text-6xl leading-[0.95]">
+					Critical Gaps & Limitations
+				</h1>
+				<p class="max-w-2xl text-xl font-light leading-relaxed text-white/50">
+					What the framework does not yet solve, and what we refuse to hide.
+					Scientific character means naming the hard points and working them in public.
+				</p>
+			</div>
+		</section>
+
+		<!-- Purpose -->
+		<section class="border-b border-white/10 px-6 py-20">
+			<div class="mx-auto max-w-3xl space-y-6 text-lg leading-relaxed text-white/55">
+				<p>
+					This page systematically records critical gaps, limitations, and likely points of criticism (status: July 2026).
+					The framework will always have <strong class="text-white/80">local validity</strong>. It does not claim global applicability.
+					The standard is maximum critical honesty and active work on the largest weaknesses.
+				</p>
+				<p>
+					Living document. Repo source: <code class="text-violet-300/90">docs/critical-gaps-limitations.md</code>.
+					Related:
+					<a href="/ontology" class="text-white/80 underline decoration-white/25 underline-offset-4 hover:text-white transition">Ontology</a>,
+					<a href="/framework" class="text-white/80 underline decoration-white/25 underline-offset-4 hover:text-white transition">Framework</a>,
+					<a href="/big-questions" class="text-white/80 underline decoration-white/25 underline-offset-4 hover:text-white transition">Big Questions</a>.
+				</p>
+			</div>
+		</section>
+
+		<!-- Dual Mission -->
+		<section id="dual-mission" class="border-b border-white/10 bg-white/[0.02] px-6 py-24">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-4 text-sm uppercase tracking-[4px] text-violet-400/70">Dual Mission</div>
+				<h2 class="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">
+					Two missions, held at once
+				</h2>
+				<div class="grid gap-4 md:grid-cols-2 mb-10">
+					<div class="rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.04] p-6">
+						<div class="mb-3 text-xs uppercase tracking-[3px] text-cyan-400/70">01 · Practical</div>
+						<p class="text-base leading-relaxed text-white/70">
+							<strong class="text-white/90">Human, AI-shift.</strong> Support conscious design of identity:
+							Sameness-as-Trajectory plus Causal Entropy (Vision Gradient). Operating system for Ownership and Architect-level action.
+						</p>
+					</div>
+					<div class="rounded-2xl border border-violet-400/20 bg-violet-400/[0.04] p-6">
+						<div class="mb-3 text-xs uppercase tracking-[3px] text-violet-400/70">02 · Fundamental</div>
+						<p class="text-base leading-relaxed text-white/70">
+							<strong class="text-white/90">Substrate-free.</strong> Model artificial identities and intelligence beyond biological hardware.
+							Extension of mission 1, not a replacement. AI makes this nearly obligatory.
+						</p>
+					</div>
+				</div>
+				<div class="space-y-5 text-lg leading-relaxed text-white/55">
+					<p>
+						<strong class="text-white/80">Central bridge and hardest work: isomorphism</strong> — clear methodological bridges between physical-mathematical concepts and identity phenomena, beyond loose metaphor.
+						Without it the duality is vulnerable. With it the framework can be useful for humans <em class="text-white/70 not-italic">and</em> ontologically serious for new substrates.
+					</p>
+					<p>
+						That duality reframes many gaps below: reductionism and philosophical under-determination become more nuanced;
+						“help everyone” stays mission 1 but sits inside a larger context; isomorphism becomes the main quality criterion.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Fundamental limits -->
+		<section class="border-b border-white/10 px-6 py-20">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Baseline</div>
+				<h2 class="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">
+					Acknowledged fundamental limitations
+				</h2>
+				<ul class="space-y-5 text-lg text-white/55">
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Local vs global validity.</strong> Local model for specific cognitive styles (systems thinkers, physics/math-comfortable, high-agency). No universal claim.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Inevitable gaps.</strong> Complexity implies gaps. The claim is honesty and active work, not perfection.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Evolving nature.</strong> Core concepts sharpened rapidly (Time foundation, Rotation, formal integration). Temporary drift between Notion, skill, and site is expected.
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<!-- Gap groups -->
+		{
+			groups.map((group) => (
+				<section id={group.id} class="border-b border-white/10 px-6 py-24">
+					<div class="mx-auto max-w-3xl">
+						<div class="mb-3 text-sm uppercase tracking-[4px] text-cyan-400/70">{group.label}</div>
+						<h2 class="mb-12 text-3xl font-bold tracking-tight text-white md:text-4xl">{group.title}</h2>
+						<div class="space-y-8">
+							{group.gaps.map((gap) => (
+								<article class="rounded-2xl border border-white/10 bg-white/[0.02] p-6 md:p-8">
+									<div class="mb-4 flex flex-wrap items-center gap-3">
+										<span class:list={['rounded-full border px-3 py-1 text-xs tracking-wide', statusClass[gap.tone]]}>
+											{gap.status}
+										</span>
+									</div>
+									<h3 class="mb-4 text-xl font-semibold text-white md:text-2xl">{gap.title}</h3>
+									<p class="mb-4 text-base leading-relaxed text-white/55">{gap.description}</p>
+									<p class="mb-4 text-base leading-relaxed text-white/45">
+										<span class="text-white/60">Impact:</span> {gap.impact}
+									</p>
+									<p class="text-base leading-relaxed text-white/45">
+										<span class="text-white/60">Mitigation:</span> {gap.mitigation}
+									</p>
+								</article>
+							))}
+						</div>
+					</div>
+				</section>
+			))
+		}
+
+		<!-- Next steps -->
+		<section class="border-b border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Next</div>
+				<h2 class="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">Next steps</h2>
+				<ol class="list-decimal list-inside space-y-4 text-lg text-white/55">
+					<li>Keep this analysis alive with Dual Mission and isomorphism progress.</li>
+					<li>Positioning & Differentiation with concrete contrasts.</li>
+					<li>First concrete probe protocols for Questions as Probes.</li>
+					<li>Label mathematical formulas as inspirational; sketch simple models if useful.</li>
+					<li>Public transparency: this page is part of the site, not only the repo.</li>
+				</ol>
+			</div>
+		</section>
+
+		<section class="px-6 py-20">
+			<div class="mx-auto max-w-3xl flex flex-wrap gap-4">
+				<a href="/ontology" class="rounded-full border border-white/20 px-8 py-3.5 text-white/70 transition hover:bg-white/5">
+					Ontology
+				</a>
+				<a href="/framework" class="rounded-full bg-white px-8 py-3.5 font-medium text-black transition hover:bg-white/90">
+					Framework
+				</a>
+				<a href="/big-questions" class="rounded-full border border-white/20 px-8 py-3.5 text-white/70 transition hover:bg-white/5">
+					Big Questions
+				</a>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	code {
+		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+		background: rgba(255, 255, 255, 0.06);
+		padding: 0.15em 0.4em;
+		border-radius: 4px;
+		font-size: 0.9em;
+	}
+</style>

@@ -1,0 +1,62 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ConceptPageHero from '../../components/concepts/ConceptPageHero.astro';
+import ConceptPager from '../../components/concepts/ConceptPager.astro';
+import { getConcept } from '../../lib/concepts';
+
+const c = getConcept('damping');
+---
+
+<Layout title={`${c.title} | Identity Engineering`}>
+	<main class="min-h-screen">
+		<ConceptPageHero
+			scene={c.scene}
+			tag={`${c.tag} · ${c.layerLabel}`}
+			title={c.title}
+			lede={c.blurb}
+			scrollHint={c.scrollHint}
+		/>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl space-y-8 text-lg leading-relaxed text-white/55">
+				<div class="mb-2 text-sm uppercase tracking-[4px] text-white/40">Definition</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					Higher-order protection of collective coherence.
+				</h2>
+				<p>
+					Within a collective identity, <strong class="text-white/80">Damping</strong> functions as the primary mechanism for self-protection. It is the capacity of the emergent collective to apply coordinated, higher-order damping to the tension continua of all identities operating within it.
+				</p>
+				<p>
+					Unlike individual damping, which primarily stabilizes one’s own internal oscillations, collective damping acts across many identities simultaneously. Its goal is to suppress destructive resonances, excessive volatility, and modes of behavior that threaten the coherence and continued existence of the larger identity.
+				</p>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 bg-white/[0.02] px-6 py-24">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-6 text-sm uppercase tracking-[4px] text-white/40">Regulatory Damping</div>
+				<ul class="space-y-6 text-lg text-white/55">
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">External but internal to the collective:</strong> Regulatory damping is experienced as external by individual identities, but it is generated from within the collective identity itself as a self-protective function.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">EU AI Act as example:</strong> Transparency obligations, human-in-the-loop requirements, and prohibitions on manipulative systems are forms of higher-order damping. They modulate the frequency spectrum and energy dissipation of AI-related activities across society to protect established patterns of responsibility, meaning, and social coherence.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Not arbitrary control:</strong> In its ideal form, regulatory damping is not raw power, but an attempt (however imperfect) by collective intelligence to define the damping parameters that best preserve the collective’s own trajectory while still allowing sufficient dynamic range.
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl text-lg leading-relaxed text-white/55">
+				<p>
+					<strong class="text-white/80">Engineering work at collective scale:</strong> The Regisseur operating at this level works with the frequency signature of the collective itself. This includes understanding which modes of individual and technological behavior are being damped, whether the damping is proportionate, and what second-order effects (new resonances, energy shifts, or loss of adaptive capacity) are being produced.
+				</p>
+			</div>
+		</section>
+
+		<ConceptPager id="damping" />
+	</main>
+</Layout>

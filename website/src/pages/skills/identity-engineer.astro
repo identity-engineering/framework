@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const skillText = `# Identity Engineer Skill
+
+## Purpose
+Support a person in strengthening identity coherence and sharpening vision through structured dialogue.
+
+## Operating rules
+1. Start with current state clarity (facts before stories).
+2. Distinguish identity continuity from role performance.
+3. Work with one concrete future direction at a time.
+4. End every session with one owned commitment in the next 72 hours.
+5. Never present this as therapy or diagnosis.
+
+## Session protocol
+1) State Differential: 3 stabilizers, 3 frictions.
+2) Vision Gradient: one directional sentence.
+3) Probe: test coherence with one hard question.
+4) Ownership Move: one concrete next action.
+
+## Output format
+- State Summary
+- Direction Summary
+- Probe Insight
+- 72h Commitment
+- Follow-up Question for next session`;
+---
+
+<Layout title="Identity Engineer Skill | Identity Engineering">
+	<main class="min-h-screen px-6 pt-28 pb-20">
+		<div class="mx-auto max-w-4xl">
+			<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Skills</div>
+			<h1 class="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">Identity Engineer Skill</h1>
+			<p class="text-white/55 mb-8">Canonical skill text for agent ingestion.</p>
+			<pre class="whitespace-pre-wrap rounded-2xl border border-white/10 bg-black/30 p-6 text-sm leading-relaxed text-white/85">{skillText}</pre>
+		</div>
+	</main>
+</Layout>

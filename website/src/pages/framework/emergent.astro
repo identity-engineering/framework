@@ -1,0 +1,81 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ConceptPageHero from '../../components/concepts/ConceptPageHero.astro';
+import ConceptPager from '../../components/concepts/ConceptPager.astro';
+import { getConcept } from '../../lib/concepts';
+
+const c = getConcept('emergent');
+---
+
+<Layout title={`${c.title} | Identity Engineering`}>
+	<main class="min-h-screen">
+		<ConceptPageHero
+			scene={c.scene}
+			tag={`${c.tag} · ${c.layerLabel}`}
+			title={c.title}
+			lede={c.blurb}
+			scrollHint={c.scrollHint}
+		/>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl space-y-8 text-lg leading-relaxed text-white/55">
+				<div class="mb-2 text-sm uppercase tracking-[4px] text-white/40">Definition</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					From many to one higher order.
+				</h2>
+				<p>
+					An <strong class="text-white/80">emergent identity</strong> arises when a sufficient number of individual identities interact intensely enough that they stop reading as separate parts and begin to behave as one coherent whole.
+				</p>
+				<p>
+					At a certain threshold, a new stable pattern appears that is not reducible to any single participant. The collective develops its own persistence, its own memory, and its own tension continuum. It begins to behave as if it had its own Identity Stem, a recognizable trajectory that persists across changes in its members.
+				</p>
+				<div class="rounded-2xl border border-white/10 bg-black/30 p-6">
+					<div class="text-sm uppercase tracking-[3px] text-white/40 mb-3">Threshold logic</div>
+					<p class="text-white/60 leading-relaxed">
+						Emergence typically appears when three conditions co-occur:
+						(1) interaction density, (2) shared directional pressure, (3) persistence under perturbation.
+						Before that, there is coordination. After that, there is a higher-order identity.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 bg-white/[0.02] px-6 py-24">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-6 text-sm uppercase tracking-[4px] text-white/40">Mechanics</div>
+				<ul class="space-y-6 text-lg text-white/55">
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Threshold of emergence:</strong> Intensive, sustained interaction plus shared tension plus a need for coherence under perturbation.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">New Tension Continuum:</strong> The collective develops its own high-dimensional tension field with characteristic frequencies and damping requirements.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Dissipative nature:</strong> Maintaining collective coherence requires continuous energy expenditure, through laws, norms, institutions, and enforcement.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Higher-order Sameness:</strong> The collective develops its own recognizable trajectory that persists beyond changes in individual members.
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl text-lg leading-relaxed text-white/55">
+				<p>
+					<strong class="text-white/80">Engineering implication:</strong> Once a collective crosses the threshold into emergence, it begins to develop its own protective and steering mechanisms, most notably higher-order damping, to preserve coherence while keeping future possibilities open.
+				</p>
+				<div class="mt-8 rounded-2xl border border-white/10 bg-black/30 p-6">
+					<div class="text-sm uppercase tracking-[3px] text-white/40 mb-3">Collective diagnostic prompts</div>
+					<ul class="space-y-3 text-white/60 leading-relaxed">
+						<li>Does the group retain recognizable direction when members rotate out?</li>
+						<li>Can the collective absorb shocks without identity collapse?</li>
+						<li>Are coordination patterns person-dependent or system-dependent?</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<ConceptPager id="emergent" />
+	</main>
+</Layout>

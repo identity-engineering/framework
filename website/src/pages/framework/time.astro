@@ -183,7 +183,14 @@ const c = getConcept('time');
 				</ul>
 
 				<div class="mb-12 overflow-x-auto rounded-2xl border border-white/10 bg-black/40 p-8 font-mono text-sm text-violet-200/90">
-					I = arg max_γ [ ∫<sub>now</sub><sup>future</sup> V(γ(t)) · dγ  +  consistency with past State Differential ]
+					I = arg max_γ [ ∫<sub>now</sub><sup>future</sup> V(γ(t)) · dγ  +  λ · Coh(γ, δS<sub>past</sub>) ]
+				</div>
+
+				<div class="mb-10 rounded-2xl border border-white/10 bg-black/30 p-6 text-base leading-relaxed text-white/60">
+					<div class="mb-3 text-sm uppercase tracking-[3px] text-white/40">Formula status</div>
+					This expression is a <strong class="text-white/80">conceptual framework formalization</strong>.
+					It defines design intent and variable roles, not a validated physical identity equation.
+					<code class="text-violet-300">λ</code> controls the trade-off between forward freedom gain and coherence with past differential history.
 				</div>
 
 				<p class="mb-6 text-lg leading-relaxed text-white/60">

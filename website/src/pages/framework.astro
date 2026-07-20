@@ -6,12 +6,14 @@ import { concepts } from '../lib/concepts';
 /**
  * Official structure (Notion Core Concepts, 2026-07-18):
  * 1. Concepts of a Single Identity: Time, Mass, Curvature, Rotation
- * 2. Concepts of an Interactive Identity: Gravitation, Relativity
+ * 2. Concepts of an Interactive Identity: Gravitation, Relativity, Frequency
+ * 3. Concepts of a Collective Identity: Emergent Identity, Damping
  * Each concept links to a deep-dive page with full-viewport scroll animation.
  */
 
 const single = concepts.filter((c) => c.layer === 'single');
 const interactive = concepts.filter((c) => c.layer === 'interactive');
+const collective = concepts.filter((c) => c.layer === 'collective');
 ---
 
 <Layout title="Framework | Identity Engineering">
@@ -23,25 +25,18 @@ const interactive = concepts.filter((c) => c.layer === 'interactive');
 					Identity Engineering
 				</h1>
 				<p class="text-xl md:text-2xl text-white/50 font-light max-w-2xl leading-relaxed">
-					A physics- and mathematics-grounded operating system for consciously designing identity in the AI era.
-					First the geometry of a single identity, then the forces between identities.
+					A physics- and mathematics-inspired framework for consciously designing identity in the AI era.
+					From the geometry of a single identity, to forces between identities, to emergent collective identity.
 				</p>
-			</div>
-		</section>
-
-		<section class="py-14 border-t border-white/10">
-			<div class="max-w-5xl mx-auto px-8">
-				<p class="text-sm uppercase tracking-[4px] text-white/40 mb-8">Structure</p>
-				<div class="grid md:grid-cols-2 gap-5">
-					<a href="#single" class="block p-5 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition"><div class="text-xs text-white/35 mb-2">01</div>
-						<div class="text-lg font-semibold text-white mb-1">Single Identity</div>
-						<p class="text-sm text-white/45">Time · Mass · Curvature · Rotation</p></a>
-					<a href="#interactive" class="block p-5 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition"><div class="text-xs text-white/35 mb-2">02</div>
-						<div class="text-lg font-semibold text-white mb-1">Interactive Identity</div>
-						<p class="text-sm text-white/45">Gravitation · Relativity</p></a>
+				<div class="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-4 max-w-2xl">
+					<p class="text-sm text-white/60 leading-relaxed">
+						This framework serves systems-thinking individuals and teams with enough decision latitude to make consequential identity choices.
+						It is not a universal model for every life context.
+					</p>
 				</div>
 			</div>
 		</section>
+
 
 		<section id="single" class="border-t border-white/10">
 			<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
@@ -136,17 +131,50 @@ const interactive = concepts.filter((c) => c.layer === 'interactive');
 			}
 		</section>
 
-		<section class="py-20 border-t border-white/10">
-			<div class="max-w-4xl mx-auto px-8">
-				<div class="text-sm uppercase tracking-[4px] text-white/40 mb-4">Shift</div>
-				<h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-white">
-					Executor → Author → Architect
+		<section id="collective" class="border-t border-white/10">
+			<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
+				<div class="text-sm uppercase tracking-[4px] text-white/40 mb-3">03</div>
+				<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
+					Concepts of a Collective Identity
 				</h2>
-				<p class="text-lg text-white/50 leading-relaxed max-w-2xl">
-					The Architect does not only shape their own stem. They build structures, tools, and language
-					so others can make their differentials transparent and their vision gradients sharp.
+				<p class="text-base text-white/45 leading-relaxed max-w-2xl">
+					When identities stay coupled long enough, a higher-order identity emerges with its own persistence and damping.
 				</p>
 			</div>
+
+			{
+				collective.map((c, i) => {
+					const reverse = i % 2 === 1;
+					return (
+						<a
+							href={c.href}
+							class="group block max-w-6xl mx-auto px-8 py-12 md:py-16 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 rounded-sm"
+							data-concept-section
+						><div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+								<div class:list={[reverse && 'order-1 md:order-2']}>
+									<div class="text-sm uppercase tracking-[4px] text-white/35 mb-3">{c.tag}</div>
+									<h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white group-hover:text-white/85 transition">
+										{c.title}
+										<span class="ml-2 inline-block text-white/30 transition group-hover:translate-x-1 group-hover:text-white/60">→</span>
+									</h3>
+									<p class="text-base text-white/55 leading-relaxed mb-4">{c.blurb}</p>
+									<p class="text-sm text-white/40 leading-relaxed mb-5">{c.scrollHint}</p>
+									<span class="text-sm text-white/50 group-hover:text-white transition border-b border-white/20 group-hover:border-white/50 pb-0.5">
+										Open concept
+									</span>
+								</div>
+								<div
+									class:list={[
+										'relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f] transition group-hover:border-white/25',
+										reverse && 'order-2 md:order-1',
+									]}
+								>
+									<ConceptSceneMount scene={c.scene} />
+								</div>
+							</div></a>
+					);
+				})
+			}
 		</section>
 
 		<section class="py-20 border-t border-white/10">

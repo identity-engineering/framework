@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const skillText = `# Identity Engineer Contributor Skill
+
+## Purpose
+Guide contributors to improve Identity Engineering content with clarity, rigor, and boundary discipline.
+
+## Contribution rules
+1. Preserve distinction: core source theory vs IE interpretation vs IE additions.
+2. Mark claims as conceptual, formal, or empirical where relevant.
+3. Avoid overclaim language (no universal framing, no pseudo-certainty).
+4. Keep analogies explicit as analogies unless formal mapping exists.
+5. Maintain public transparency on open gaps and limitations.
+
+## Review checklist
+- Is the original source theory represented fairly?
+- Is IE inspiration clearly separated from IE additions?
+- Are scope and non-use boundaries visible?
+- Is wording precise and non-guru-like?
+- Are references and links present where needed?
+
+## Output format
+- Proposed change
+- Why it improves rigor
+- Scope/boundary impact
+- Suggested follow-up edits`;
+---
+
+<Layout title="Identity Engineer Contributor Skill | Identity Engineering">
+	<main class="min-h-screen px-6 pt-28 pb-20">
+		<div class="mx-auto max-w-4xl">
+			<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Skills</div>
+			<h1 class="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">Identity Engineer Contributor Skill</h1>
+			<p class="text-white/55 mb-8">Canonical contributor skill text for agent ingestion.</p>
+			<pre class="whitespace-pre-wrap rounded-2xl border border-white/10 bg-black/30 p-6 text-sm leading-relaxed text-white/85">{skillText}</pre>
+		</div>
+	</main>
+</Layout>

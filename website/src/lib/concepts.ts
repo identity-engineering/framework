@@ -8,6 +8,9 @@ export type ConceptScene =
 	| 'curvature'
 	| 'rotation'
 	| 'gravitation'
+	| 'frequency'
+	| 'damping'
+	| 'emergence'
 	| 'probes';
 
 export type ConceptId =
@@ -16,7 +19,10 @@ export type ConceptId =
 	| 'curvature'
 	| 'rotation'
 	| 'gravitation'
-	| 'relativity';
+	| 'relativity'
+	| 'frequency'
+	| 'damping'
+	| 'emergent';
 
 export interface ConceptMeta {
 	id: ConceptId;
@@ -24,7 +30,7 @@ export interface ConceptMeta {
 	href: string;
 	title: string;
 	shortTitle: string;
-	layer: 'single' | 'interactive';
+	layer: 'single' | 'interactive' | 'collective';
 	layerLabel: string;
 	tag: string;
 	scene: ConceptScene;
@@ -116,6 +122,48 @@ export const concepts: ConceptMeta[] = [
 		blurb:
 			'Identity exists only in relation to another observing identity. This is the bridge from single to interactive.',
 		scrollHint: 'Scroll: measurement state. Continuity is observed through change.',
+	},
+	{
+		id: 'frequency',
+		slug: 'frequency',
+		href: '/framework/frequency',
+		title: 'Frequency',
+		shortTitle: 'Frequency',
+		layer: 'interactive',
+		layerLabel: 'Interactive Identity',
+		tag: 'Dynamics',
+		scene: 'frequency',
+		blurb:
+			'Resonance behavior of identity tension fields. Alignment amplifies relational stability; mismatch produces drift and energetic loss.',
+		scrollHint: 'Scroll to sweep frequency bands and reveal resonance lock-in.',
+	},
+	{
+		id: 'emergent',
+		slug: 'emergent',
+		href: '/framework/emergent',
+		title: 'Emergence',
+		shortTitle: 'Emergence',
+		layer: 'collective',
+		layerLabel: 'Collective Identity',
+		tag: 'Collective',
+		scene: 'emergence',
+		blurb:
+			'When many identities interact long enough, a new coherent whole begins to form with its own persistence, memory, and trajectory.',
+		scrollHint: 'Scroll to see many identities cohere into one collective trajectory.',
+	},
+	{
+		id: 'damping',
+		slug: 'damping',
+		href: '/framework/damping',
+		title: 'Damping',
+		shortTitle: 'Damping',
+		layer: 'collective',
+		layerLabel: 'Collective Identity',
+		tag: 'Protection',
+		scene: 'damping',
+		blurb:
+			'Collective self-protection that calms destructive oscillations, reduces volatility, and preserves coherence across the whole system.',
+		scrollHint: 'Scroll to see oscillations damped into stable collective order.',
 	},
 ];
 

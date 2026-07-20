@@ -4,7 +4,7 @@
  * Injects Vite React-refresh preamble before loading any .tsx (dev only).
  */
 interface Props {
-	scene: 'mass' | 'curvature' | 'rotation' | 'gravitation' | 'probes' | 'stem';
+	scene: 'mass' | 'curvature' | 'rotation' | 'gravitation' | 'frequency' | 'damping' | 'emergence' | 'probes' | 'stem';
 }
 
 const { scene } = Astro.props;
@@ -23,6 +23,9 @@ const { scene } = Astro.props;
 		curvature: () => import('./CurvatureScene.tsx'),
 		rotation: () => import('./RotationScene.tsx'),
 		gravitation: () => import('./GravitationScene.tsx'),
+		frequency: () => import('./FrequencyScene.tsx'),
+		damping: () => import('./DampingScene.tsx'),
+		emergence: () => import('./EmergenceScene.tsx'),
 		probes: () => import('./ProbesScene.tsx'),
 		stem: () => import('./StemScrollScene.tsx'),
 	};

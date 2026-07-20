@@ -96,20 +96,31 @@ function TimerClockConstructor(this: unknown, autoStart = true) {
 }
 
 let installed = false;
+const INSTALL_SENTINEL = Symbol.for('identity-engineering.installTimerClock');
 
 /** Idempotent: swap THREE.Clock for Timer-backed implementation. Call before first Canvas. */
 export function installTimerClock(): void {
-  if (installed) return;
-  installed = true;
+  if (installed || (globalThis as { [INSTALL_SENTINEL]?: boolean })[INSTALL_SENTINEL]) return;
 
   try {
-    Object.defineProperty(THREE, 'Clock', {
+    const descriptor = Object.getOwnPropertyDescriptor(THREE, 'Clock');
+    if (descriptor?.configurable === false) {
+      installed = true;
+      (globalThis as { [INSTALL_SENTINEL]?: boolean })[INSTALL_SENTINEL] = true;
+      return;
+    }
+
+    Object.defineProperty(THREE as unknown as object, 'Clock', {
       configurable: true,
       enumerable: true,
       writable: true,
       value: TimerClockConstructor,
     });
+    installed = true;
+    (globalThis as { [INSTALL_SENTINEL]?: boolean })[INSTALL_SENTINEL] = true;
   } catch (err) {
     console.warn('[installTimerClock] could not replace THREE.Clock', err);
+    installed = true;
+    (globalThis as { [INSTALL_SENTINEL]?: boolean })[INSTALL_SENTINEL] = true;
   }
 }

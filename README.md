@@ -1,6 +1,6 @@
 # Identity Engineering
 
-**A physics-informed, engineering-driven framework for consciously designing and augmenting human identity and agency in the AI era.**
+**A science-inspired framework with practical engineering focus for shaping conscious identities and agency in the AI era.**
 
 > Open • Scientific • Actionable
 
@@ -8,9 +8,9 @@
 
 ## What is Identity Engineering?
 
-Identity Engineering combines insights from physics (particularly General Relativity analogies and causal entropy maximization) with practical engineering principles to help individuals and organizations **consciously shape, strengthen, and augment their identity**.
+Identity Engineering combines ideas from philosophy of personal identity, systems thinking, and physics-inspired analogies (especially causal entropy framing) with practical engineering methods to help individuals and organizations **consciously shape, strengthen, and augment their identity**.
 
-It treats identity not as something fixed or purely psychological, but as a **dynamic, designable system** with measurable properties:
+It treats identity not as something fixed or purely psychological, but as a **dynamic, designable framework** with practical working primitives:
 
 - **Mass** → Depth and substance of your personal/professional stake
 - **Curvature** → How your vision warps what seems possible
@@ -18,6 +18,16 @@ It treats identity not as something fixed or purely psychological, but as a **dy
 - **Questions as Probes** → Tools to measure and adjust the geometry of your identity
 
 The core dynamic is **maximizing causal entropy** — increasing the number and quality of future paths available to you and the systems you influence.
+
+## Disciplinary stance
+
+At its core, Identity Engineering is **philosophical-conceptual work** (personal identity, continuity, agency) translated into an actionable framework.
+
+- It is **not** a claim to have discovered a new natural science.
+- It is **not** metaphysical guru language or self-help absolutism.
+- It is a transparent attempt to derive useful, testable working concepts from existing sciences and philosophical traditions.
+
+Where claims are conceptual vs formal vs empirical, we aim to label that explicitly.
 
 ## The Spirit Behind This Work
 

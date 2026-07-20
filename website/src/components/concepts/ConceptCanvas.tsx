@@ -1,9 +1,10 @@
+/* @jsxRuntime classic */
 import { installTimerClock } from '../../lib/installTimerClock';
 // Must run before R3F constructs THREE.Clock in its store
 installTimerClock();
 
+import React, { useEffect, type ReactNode } from 'react';
 import { Canvas, useThree } from '@react-three/fiber';
-import { useEffect, type ReactNode } from 'react';
 import { mono } from './mono';
 
 interface Props {

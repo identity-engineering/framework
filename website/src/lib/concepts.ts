@@ -9,6 +9,7 @@ export type ConceptScene =
 	| 'rotation'
 	| 'gravitation'
 	| 'frequency'
+	| 'emergence'
 	| 'probes';
 
 export type ConceptId =
@@ -139,12 +140,12 @@ export const concepts: ConceptMeta[] = [
 		id: 'emergent',
 		slug: 'emergent',
 		href: '/framework/emergent',
-		title: 'Emergent Identity',
-		shortTitle: 'Emergent',
+		title: 'Emergence',
+		shortTitle: 'Emergence',
 		layer: 'collective',
 		layerLabel: 'Collective Identity',
 		tag: 'Collective',
-		scene: 'gravitation',
+		scene: 'emergence',
 		blurb:
 			'When many identities interact long enough, a new coherent whole begins to form with its own persistence, memory, and trajectory.',
 		scrollHint: 'Scroll to see many identities cohere into one collective trajectory.',

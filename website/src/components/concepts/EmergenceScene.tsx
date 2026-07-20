@@ -238,7 +238,7 @@ export default function EmergenceScene() {
 				})}
 			</svg>
 
-			<div className="emergence-label">collective coherence</div>
+			<div className="emergence-label" aria-hidden="true"></div>
 		</div>
 	);
 }

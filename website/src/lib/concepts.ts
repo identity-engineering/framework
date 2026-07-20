@@ -9,6 +9,7 @@ export type ConceptScene =
 	| 'rotation'
 	| 'gravitation'
 	| 'frequency'
+	| 'damping'
 	| 'emergence'
 	| 'probes';
 
@@ -159,7 +160,7 @@ export const concepts: ConceptMeta[] = [
 		layer: 'collective',
 		layerLabel: 'Collective Identity',
 		tag: 'Protection',
-		scene: 'frequency',
+		scene: 'damping',
 		blurb:
 			'Collective self-protection that calms destructive oscillations, reduces volatility, and preserves coherence across the whole system.',
 		scrollHint: 'Scroll to see oscillations damped into stable collective order.',

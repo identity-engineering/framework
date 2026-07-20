@@ -227,16 +227,6 @@ function SingleIdentityRotor({ progress }: ProgressRef) {
         </group>
       </group>
 
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.55, 0]}>
-        <ringGeometry args={[0.34, 1.58, 68]} />
-        <meshBasicMaterial
-          color={mono.dim}
-          transparent
-          opacity={0.22}
-          side={THREE.DoubleSide}
-          depthWrite={false}
-        />
-      </mesh>
     </group>
   );
 }

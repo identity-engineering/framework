@@ -1,0 +1,233 @@
+---
+/**
+ * Keep inline tags on one line with outer spaces (Astro whitespace).
+ * Never break before <em>/<strong>/<a> after a word.
+ */
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Foundations Overview | Identity Engineering">
+	<main class="min-h-screen">
+		<section class="border-b border-white/10 px-6 pt-28 pb-16">
+			<div class="mx-auto max-w-4xl">
+				<a href="/foundations" class="mb-6 inline-block text-sm text-white/40 transition hover:text-white/70">
+					← Foundations
+				</a>
+				<div class="text-sm uppercase tracking-[4px] text-white/40">Foundations</div>
+				<h1 class="mt-3 text-5xl font-bold tracking-tighter leading-[0.95] text-white md:text-6xl">
+					Complete Overview
+				</h1>
+				<p class="mt-6 max-w-3xl text-xl font-light leading-relaxed text-white/50">
+					A structured map of the historical and conceptual anchors. The pages first present each thinker in their own terms and then show, carefully, how those ideas can inform Identity Engineering.
+				</p>
+			</div>
+		</section>
+
+		<section class="px-6 py-16">
+			<div class="mx-auto max-w-4xl space-y-16">
+
+				<!-- Classical Roots -->
+				<div>
+					<div class="mb-6 flex items-center gap-4">
+						<div class="text-sm uppercase tracking-[4px] text-white/40">Classical Roots</div>
+						<div class="h-px flex-1 bg-white/10"></div>
+					</div>
+					<div class="grid gap-6 md:grid-cols-2">
+						<a href="/foundations/plato-harmony-of-the-soul" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/30">
+							<div class="text-sm text-white/40">Plato · c. 380 BCE</div>
+							<div class="mt-2 text-2xl font-semibold tracking-tight text-white">Harmony of the Soul</div>
+							<div class="mt-3 text-white/55">The tripartite soul, justice as inner order, recollection, and ascent to the Good. Read first as Plato, then as a foundation for Identity Engineering.</div>
+						</a>
+						<a href="/foundations/aristotle-eudaimonia-and-telos" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/30">
+							<div class="text-sm text-white/40">Aristotle · 4th century BCE</div>
+							<div class="mt-2 text-2xl font-semibold tracking-tight text-white">Eudaimonia and Telos</div>
+							<div class="mt-3 text-white/55">Eudaimonia as flourishing through virtue, practical wisdom, and life in community. Read with Aristotle’s own methodology first.</div>
+						</a>
+					</div>
+				</div>
+
+				<!-- Stoic Practice -->
+				<div>
+					<div class="mb-6 flex items-center gap-4">
+						<div class="text-sm uppercase tracking-[4px] text-white/40">Stoic Practice</div>
+						<div class="h-px flex-1 bg-white/10"></div>
+					</div>
+					<div class="grid gap-6 md:grid-cols-3">
+						<a href="/foundations/marcus-aurelius-self-mastery" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/30">
+							<div class="text-sm text-white/40">Marcus Aurelius · 2nd century CE</div>
+							<div class="mt-2 text-xl font-semibold tracking-tight text-white">Self-Mastery</div>
+							<div class="mt-2 text-sm text-white/55">Daily practice of the dichotomy of control and shaping character under pressure.</div>
+						</a>
+						<a href="/foundations/epictetus-dichotomy-of-control" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/30">
+							<div class="text-sm text-white/40">Epictetus · 1st–2nd century CE</div>
+							<div class="mt-2 text-xl font-semibold tracking-tight text-white">Dichotomy of Control</div>
+							<div class="mt-2 text-sm text-white/55">Radical focus on what is in our power as the path to inner freedom.</div>
+						</a>
+						<a href="/foundations/seneca-practical-stoicism" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/30">
+							<div class="text-sm text-white/40">Seneca · 1st century CE</div>
+							<div class="mt-2 text-xl font-semibold tracking-tight text-white">Practical Stoicism</div>
+							<div class="mt-2 text-sm text-white/55">Emotional regulation, wise use of time, and tranquility amid power and complexity.</div>
+						</a>
+					</div>
+				</div>
+
+				<!-- East Asian Cultivation -->
+				<div>
+					<div class="mb-6 flex items-center gap-4">
+						<div class="text-sm uppercase tracking-[4px] text-white/40">East Asian Cultivation</div>
+						<div class="h-px flex-1 bg-white/10"></div>
+					</div>
+					<a href="/foundations/confucius-self-cultivation" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/30">
+						<div class="text-sm text-white/40">Confucius · 6th–5th century BCE</div>
+						<div class="mt-2 text-2xl font-semibold tracking-tight text-white">Self-Cultivation and the Exemplary Person</div>
+						<div class="mt-3 text-white/55">Deliberate formation of character through ritual, relationships, and repeated practice. The <em class="text-white/75 not-italic">jūnzǐ</em> as ideal of coherent personhood.</div>
+					</a>
+				</div>
+
+				<!-- Vitalist & Affirmative Turn -->
+				<div>
+					<div class="mb-6 flex items-center gap-4">
+						<div class="text-sm uppercase tracking-[4px] text-white/40">Vitalist &amp; Affirmative Turn</div>
+						<div class="h-px flex-1 bg-white/10"></div>
+					</div>
+					<div class="grid gap-6 md:grid-cols-2">
+						<a href="/foundations/schopenhauer-will-and-transcendence" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/30">
+							<div class="text-sm text-white/40">Arthur Schopenhauer · 1818/1844</div>
+							<div class="mt-2 text-2xl font-semibold tracking-tight text-white">The World as Will</div>
+							<div class="mt-3 text-white/55">The blind driving force, suffering, aesthetic distance, and the affirmative turn toward self-overcoming and transcendence.</div>
+						</a>
+						<a href="/foundations/nietzsche-self-overcoming" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/30">
+							<div class="text-sm text-white/40">Friedrich Nietzsche · 1880s</div>
+							<div class="mt-2 text-2xl font-semibold tracking-tight text-white">Self-Overcoming as Causal Entropy Maximization</div>
+							<div class="mt-3 text-white/55">The vitalistic root of active identity design: the affirmative drive to maximize future causal histories through self-overcoming and the Eternal Recurrence as test.</div>
+						</a>
+					</div>
+				</div>
+
+				<!-- Modern Critique & Construction -->
+				<div>
+					<div class="mb-6 flex items-center gap-4">
+						<div class="text-sm uppercase tracking-[4px] text-white/40">Modern Critique &amp; Construction</div>
+						<div class="h-px flex-1 bg-white/10"></div>
+					</div>
+					<div class="grid gap-6 md:grid-cols-2">
+						<a href="/foundations/locke-personal-identity" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/30">
+							<div class="text-sm text-white/40">John Locke · 1689</div>
+							<div class="mt-2 text-xl font-semibold tracking-tight text-white">Consciousness Continuity</div>
+							<div class="mt-2 text-sm text-white/55">The forensic root of personal identity and the earliest sketch of the Identity Stem.</div>
+						</a>
+						<a href="/foundations/hume-bundle-self" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/30">
+							<div class="text-sm text-white/40">David Hume · 1739–40</div>
+							<div class="mt-2 text-xl font-semibold tracking-tight text-white">The Bundle Self</div>
+							<div class="mt-2 text-sm text-white/55">Radical dissolution of any enduring self; identity as associative fiction.</div>
+						</a>
+						<a href="/foundations/parfit-psychological-continuity" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/30">
+							<div class="text-sm text-white/40">Derek Parfit · 1984</div>
+							<div class="mt-2 text-xl font-semibold tracking-tight text-white">Psychological Continuity</div>
+							<div class="mt-2 text-sm text-white/55">Reductionist view: what matters is Relation R, not strict personal identity.</div>
+						</a>
+						<a href="/foundations/dennett-narrative-self-and-multiple-drafts" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/30">
+							<div class="text-sm text-white/40">Daniel Dennett · 1991</div>
+							<div class="mt-2 text-xl font-semibold tracking-tight text-white">Narrative Self</div>
+							<div class="mt-2 text-sm text-white/55">The self as a center of narrative gravity emerging from multiple parallel processes.</div>
+						</a>
+						<a href="/foundations/ricoeur-narrative-identity" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/30">
+							<div class="text-sm text-white/40">Paul Ricœur · 1990</div>
+							<div class="mt-2 text-xl font-semibold tracking-tight text-white">Narrative Identity</div>
+							<div class="mt-2 text-sm text-white/55">The self constituted through the stories we tell; idem vs. ipse dialectic.</div>
+						</a>
+					</div>
+				</div>
+
+				<!-- Depth, Existence & Development -->
+				<div>
+					<div class="mb-6 flex items-center gap-4">
+						<div class="text-sm uppercase tracking-[4px] text-white/40">Depth, Existence &amp; Development</div>
+						<div class="h-px flex-1 bg-white/10"></div>
+					</div>
+					<div class="grid gap-6 md:grid-cols-2">
+						<a href="/foundations/jung-individuation-and-shadow" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/30">
+							<div class="text-sm text-white/40">C. G. Jung · 20th century</div>
+							<div class="mt-2 text-xl font-semibold tracking-tight text-white">Individuation &amp; Shadow</div>
+							<div class="mt-2 text-sm text-white/55">Conscious integration of unconscious contents toward wholeness of the Self.</div>
+						</a>
+						<a href="/foundations/sartre-existence-precedes-essence" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/30">
+							<div class="text-sm text-white/40">Jean-Paul Sartre · 20th century</div>
+							<div class="mt-2 text-xl font-semibold tracking-tight text-white">Existence Precedes Essence</div>
+							<div class="mt-2 text-sm text-white/55">Radical freedom and responsibility; identity created through choices and projects.</div>
+						</a>
+						<a href="/foundations/heidegger-authenticity-and-being-towards-death" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/30">
+							<div class="text-sm text-white/40">Martin Heidegger · 20th century</div>
+							<div class="mt-2 text-xl font-semibold tracking-tight text-white">Authenticity &amp; Being-towards-Death</div>
+							<div class="mt-2 text-sm text-white/55">Thrownness, resoluteness, and owning one's existence in the face of finitude.</div>
+						</a>
+						<a href="/foundations/erikson-identity-crisis-and-stages" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/30">
+							<div class="text-sm text-white/40">Erik Erikson · 20th century</div>
+							<div class="mt-2 text-xl font-semibold tracking-tight text-white">Identity Crisis &amp; Stages</div>
+							<div class="mt-2 text-sm text-white/55">Lifespan development through normative psychosocial crises and stage-specific tasks.</div>
+						</a>
+					</div>
+				</div>
+
+				<!-- Embodied, Extended & Predictive -->
+				<div>
+					<div class="mb-6 flex items-center gap-4">
+						<div class="text-sm uppercase tracking-[4px] text-white/40">Embodied, Extended &amp; Predictive</div>
+						<div class="h-px flex-1 bg-white/10"></div>
+					</div>
+					<div class="grid gap-6 md:grid-cols-2">
+						<a href="/foundations/clark-extended-self-and-predictive-processing" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/30">
+							<div class="text-sm text-white/40">Andy Clark · 1990s–2010s</div>
+							<div class="mt-2 text-xl font-semibold tracking-tight text-white">Extended Mind &amp; Predictive Processing</div>
+							<div class="mt-2 text-sm text-white/55">Mind and self extend into body, tools, and environment; cognition as continuous prediction and error minimization.</div>
+						</a>
+						<a href="/foundations/metzinger-phenomenal-self-model" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/30">
+							<div class="text-sm text-white/40">Thomas Metzinger · 2003</div>
+							<div class="mt-2 text-xl font-semibold tracking-tight text-white">Phenomenal Self-Model</div>
+							<div class="mt-2 text-sm text-white/55">The self as a transparent virtual model generated by the brain; can be made visible and redesigned.</div>
+						</a>
+					</div>
+				</div>
+
+				<!-- Scientific Grounding -->
+				<div>
+					<div class="mb-6 flex items-center gap-4">
+						<div class="text-sm uppercase tracking-[4px] text-white/40">Scientific Grounding</div>
+						<div class="h-px flex-1 bg-white/10"></div>
+					</div>
+					<a href="/foundations/wissner-gross-causal-entropic-forces" class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/30">
+						<div class="text-sm text-white/40">Alexander Wissner-Gross · 2013</div>
+						<div class="mt-2 text-2xl font-semibold tracking-tight text-white">Causal Entropic Forces</div>
+						<div class="mt-3 text-white/55">A physics-grounded proposal that intelligent systems act to preserve and expand future causal options. A key scientific inspiration for Identity Engineering’s core telos.</div>
+					</a>
+				</div>
+
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 bg-white/[0.015] px-6 py-16">
+			<div class="mx-auto max-w-4xl">
+				<div class="mb-8 text-sm uppercase tracking-[4px] text-white/40">How these anchors inform Identity Engineering</div>
+				<div class="prose prose-invert max-w-none text-white/55">
+					<p>The Foundations series maps a continuous philosophical and scientific conversation about what identity is and how it can be worked with. Each page aims to preserve the thinker’s own terms first, then derive a careful Identity Engineering reading. From Plato’s ordered soul and Aristotle’s telos, through the Stoic discipline of focusing on what is in our power and Confucian self-cultivation, to the modern dissolution (Hume, Parfit) and reconstruction (Dennett, Ricœur, Clark, Metzinger) of the self, a clear line emerges:</p>
+					<ul class="mt-4 space-y-2">
+						<li>Identity is not a fixed substance to be discovered, but something that can be deliberately shaped.</li>
+						<li>Practice, narrative, judgment, relational embedding, and vital affirmation are powerful levers for that shaping.</li>
+						<li>The highest form of identity work maximizes future causal options and inner coherence simultaneously.</li>
+					</ul>
+					<p class="mt-4">Wissner-Gross supplies a physics-grounded theoretical proposal that inspires this project: intelligent systems act to keep future histories open. Identity Engineering draws on that as a structuring analogy and long-term aspiration, while Nietzsche provides the affirmative, vitalistic drive to act on it. Whether the analogy can be made into a rigorous isomorphism is one of IE's named open questions.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-14">
+			<div class="mx-auto flex max-w-4xl flex-col gap-4 text-sm sm:flex-row sm:items-center sm:justify-between">
+				<a href="/foundations" class="text-white/50 transition hover:text-white/80">← All foundations</a>
+				<div class="flex flex-wrap gap-x-6 gap-y-2">
+					<a href="/ontology" class="text-white/50 underline decoration-white/20 underline-offset-4 transition hover:text-white/80 hover:decoration-white/40">Ontology</a>
+					<a href="/framework" class="text-white/50 underline decoration-white/20 underline-offset-4 transition hover:text-white/80 hover:decoration-white/40">Framework</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>

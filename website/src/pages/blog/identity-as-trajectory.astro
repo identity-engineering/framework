@@ -71,7 +71,7 @@ import Layout from '../../layouts/Layout.astro';
 			<div class="mx-auto max-w-3xl">
 				<div class="mb-3 text-xs uppercase tracking-[3px] text-white/40">02 · Two Directed Forces</div>
 				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
-					State Differential and Vision Gradient
+					State Differential and Future Force
 				</h2>
 				<div class="mt-8 space-y-6 text-lg leading-relaxed text-white/55">
 					<p>
@@ -80,15 +80,15 @@ import Layout from '../../layouts/Layout.astro';
 					<div class="rounded-2xl border border-white/10 bg-black/30 p-6 space-y-4">
 						<p>
 							<strong class="text-cyan-300/90">State Differential</strong> (past → present): the observed derivative of change.
-							<code class="text-violet-300">δS ≈ dS/dt</code> (or its discrete analogue). This is the transparent causal history of how the system actually moved. It is what remains after the surface state is copied: the signed chain of owned transitions.
+							<code class="text-violet-300">δx = dx/dt</code> (or its discrete analogue). This is the transparent causal history of how the system actually moved. By itself it is not yet a force term; it is the historical baseline that makes Sameness-as-Trajectory observable.
 						</p>
 						<p>
-							<strong class="text-violet-300/90">Vision Gradient</strong> (present → future): the intended steepest ascent of causal entropy.
-							<code class="text-violet-300">V ≈ ∇𝒞</code>, where 𝒞 measures future freedom of action. This is not a static goal list. It is a local direction of maximum option-opening.
+							<strong class="text-violet-300/90">Future force</strong> (present → future): the intended steepest ascent of future option value.
+							<code class="text-violet-300">F<sub>future</sub> = T<sub>F</sub> ∇S<sub>τ</sub></code>, where S<sub>τ</sub> is causal path entropy (a measure of future freedom of action). This is not a static goal list. It is a local direction of maximum option-opening.
 						</p>
 					</div>
 					<p>
-						The State Differential maximizes <strong class="text-white/80">Sameness-as-Trajectory</strong>: recognizability through the history of change rather than through the current snapshot. The Vision Gradient maximizes causal entropy: the openness of future possible histories, following the physical reading of intelligence advanced by Wissner-Gross & Freer.
+						The State Differential maximizes <strong class="text-white/80">Sameness-as-Trajectory</strong>: recognizability through the history of change rather than through the current snapshot. The future force maximizes causal entropy: the openness of future possible histories, following the physical reading of intelligence advanced by Wissner-Gross & Freer (treated as a strong scientific inspiration, not a settled universal law).
 					</p>
 					<p>
 						Identity is neither the past alone nor the future alone. It is the curve that keeps both forces in productive tension.
@@ -101,31 +101,39 @@ import Layout from '../../layouts/Layout.astro';
 			<div class="mx-auto max-w-3xl">
 				<div class="mb-3 text-xs uppercase tracking-[3px] text-white/40">03 · Formal Core</div>
 				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
-					The Worldline
+					The Worldline and Stem Force
 				</h2>
 				<div class="mt-8 space-y-6 text-lg leading-relaxed text-white/55">
 					<p>
 						We can write the design intent of an Identity Stem as the trajectory γ that maximizes a joint objective:
 					</p>
-					<div class="overflow-x-auto rounded-2xl border border-white/10 bg-black/40 p-8 font-mono text-sm text-violet-200/90 leading-relaxed">
-						I = arg max_γ [ ∫<sub>now</sub><sup>future</sup> V(γ(t)) · dγ  +  λ · Coh(γ, δS<sub>past</sub>) ]
+					<div class="overflow-x-auto rounded-2xl border border-white/10 bg-black/40 p-6 font-mono text-sm text-violet-200/90">
+						<span class="inline-block whitespace-nowrap">γ* = arg max<sub>γ∈Γ(x)</sub> [ T<sub>F</sub> · O<sub>τ</sub>(γ)  −  λ · D<sub>id</sub>(γ, h<sub>t</sub>) ]</span>
 					</div>
+					<p class="text-sm leading-relaxed text-white/45">
+						<strong class="text-white/65">In plain words:</strong> The chosen path γ* is the path that maximizes two competing parts together: first, T<sub>F</sub> · O<sub>τ</sub>(γ) (future option gain scaled by the future-force strength T<sub>F</sub>), and second, a subtraction term λ · D<sub>id</sub>(γ, h<sub>t</sub>) (identity drift cost scaled by the trade-off parameter λ).
+					</p>
+					<div class="overflow-x-auto rounded-2xl border border-white/10 bg-black/40 p-6 font-mono text-sm text-violet-200/90">
+						<span class="inline-block whitespace-nowrap">F<sub>stem</sub> = T<sub>F</sub> · ∇O<sub>τ</sub>  −  λ · ∇D<sub>id</sub></span>
+					</div>
+					<p class="text-sm leading-relaxed text-white/45">
+						<strong class="text-white/65">In plain words:</strong> The total stem force F<sub>stem</sub> equals the future-opening push T<sub>F</sub> · ∇O<sub>τ</sub> minus the identity-protection pullback λ · ∇D<sub>id</sub>. The final direction is literally the sum of one term that opens future options and one opposing term that limits identity drift.
+					</p>
 					<div class="rounded-2xl border border-white/10 bg-black/30 p-6 text-base leading-relaxed text-white/60">
 						<div class="mb-3 text-sm uppercase tracking-[3px] text-white/40">Status of the expression</div>
 						This is a <strong class="text-white/80">conceptual formalization</strong> of design intent, not a claimed physical law of identity.
-						The first term rewards paths that realize steep gains in future freedom of action.
-						The second term rewards coherence with the owned past differential (λ trades the two).
-						The point is operational: it makes the two levers explicit and measurable in principle.
+						O<sub>τ</sub> is future option value, D<sub>id</sub> is identity deviation from trajectory coherence, and λ controls the trade-off.
+						The key move is object consistency: both terms are scalar objectives over trajectories, so their gradients can appear as comparable generalized forces.
 					</div>
 					<p>
-						The line integral of the Vision Gradient along the actual path is the cumulative freedom that path realizes. Engineering work therefore concentrates on two primary levers:
+						Engineering work therefore concentrates on two primary levers:
 					</p>
 					<ol class="ml-2 list-inside list-decimal space-y-3">
-						<li>Make the <strong class="text-white/80">State Differential</strong> transparent and owned — so the past authenticates rather than merely narrates.</li>
-						<li>Sharpen and force the <strong class="text-white/80">Vision Gradient</strong> — so the direction of steepest freedom gain is clear enough to curve possibility space.</li>
+						<li>Make the historical trajectory explicit enough to compute meaningful <strong class="text-white/80">identity deviation</strong>.</li>
+						<li>Sharpen future option value so the <strong class="text-white/80">vision force</strong> is not vague aspiration.</li>
 					</ol>
 					<p>
-						Once the axis is defined this way, the remaining primitives become operable. <a href="/framework/mass" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Mass</a> densifies stake around the stem. <a href="/framework/curvature" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Curvature</a> warps the reachable set. <a href="/framework/rotation" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Rotation</a> supplies gyroscopic stability so habits reinforce rather than wobble the axis. <a href="/framework/gravitation" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Gravitation</a> appears when other identities feel the pull of a high-mass, coherent trajectory.
+						Once the axis is defined this way, the remaining primitives become operable. <a href="/framework/mass" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Mass</a> densifies stake around the stem. <a href="/framework/curvature" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Curvature</a> warps the reachable set. <a href="/framework/rotation" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Rotation</a> supplies gyroscopic stability so habits reinforce rather than wobble the axis. <a href="/framework/gravitation" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Gravitation</a> appears when other identities feel the pull of a high-mass, coherent trajectory. The local dynamics of the tension continuum that these forces produce in the Now are treated under <a href="/framework/frequency" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Frequency</a>.
 					</p>
 				</div>
 			</div>
@@ -182,7 +190,7 @@ import Layout from '../../layouts/Layout.astro';
 						Sameness-as-Trajectory supplies that core. It is continuous with Locke’s continuity insight, responds to Hume’s dissolution without stopping at it, and gives Erikson’s developmental crises an explicit geometric operator. At the same time it remains open to the Big Questions: substrate independence, collective scale, recursive self-modification, and thermodynamic limits all become questions about how the Worldline is defined, signed, and continued under new constraints.
 					</p>
 					<p>
-						The formalization is deliberately provisional. λ, the coherence functional, and the precise measure of causal entropy are open parameters. That openness is a feature: it invites better measurement, better probes, and better collective contribution while keeping the architectural claim stable — identity is the trajectory that balances owned past change with directed future freedom.
+						The formalization is deliberately provisional. λ, the precise measure of option value, and the identity-deviation functional are open parameters. That openness is a feature: it invites better measurement, better probes, and better collective contribution while keeping the architectural claim stable — identity is the trajectory that balances owned past change with directed future freedom.
 					</p>
 				</div>
 			</div>
@@ -203,6 +211,10 @@ import Layout from '../../layouts/Layout.astro';
 						<li class="flex gap-3">
 							<span class="text-white/40">→</span>
 							<span><a href="/framework/time" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Time: Identity Stem</a> — full geometric and formal development</span>
+						</li>
+						<li class="flex gap-3">
+							<span class="text-white/40">→</span>
+							<span><a href="/framework/frequency" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Frequency</a> — local tension continuum, stress-tensor dynamics and decision modulation in the Now</span>
 						</li>
 						<li class="flex gap-3">
 							<span class="text-white/40">→</span>
@@ -243,6 +255,7 @@ import Layout from '../../layouts/Layout.astro';
 				<a href="/blog" class="text-white/50 transition hover:text-white/80">← All posts</a>
 				<div class="flex flex-wrap gap-x-6 gap-y-2">
 					<a href="/framework/time" class="text-white/50 underline decoration-white/20 underline-offset-4 transition hover:text-white/80 hover:decoration-white/40">Time · Identity Stem</a>
+					<a href="/framework/frequency" class="text-white/50 underline decoration-white/20 underline-offset-4 transition hover:text-white/80 hover:decoration-white/40">Frequency</a>
 					<a href="/framework" class="text-white/50 underline decoration-white/20 underline-offset-4 transition hover:text-white/80 hover:decoration-white/40">Framework</a>
 				</div>
 			</div>

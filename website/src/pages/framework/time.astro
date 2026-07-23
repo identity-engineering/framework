@@ -82,8 +82,13 @@ const c = getConcept('time');
 				<div>
 					<div class="mb-3 text-sm uppercase tracking-[4px] text-cyan-400/70">01 · Past</div>
 					<h2 class="mb-6 text-3xl font-bold text-white md:text-4xl">State Differential</h2>
+					<div class="mb-3 overflow-x-auto rounded-xl border border-white/10 bg-black/30 p-4 font-mono text-violet-200/90">
+						<span class="inline-block whitespace-nowrap">δx = dx/dt</span>
+					</div>
+					<p class="mb-5 text-sm leading-relaxed text-white/45">
+						<strong class="text-white/65">In plain words:</strong> This says "how fast my state is changing right now." It is the slope of your real history.
+					</p>
 					<p class="mb-5 text-lg leading-relaxed text-white/60">
-						The observed derivative of the state: <code class="text-violet-300">δx = dx/dt</code> (or discrete Δx).
 						This is the causal chain of actual changes from the past up to now.
 					</p>
 					<p class="mb-5 text-lg leading-relaxed text-white/60">
@@ -102,8 +107,14 @@ const c = getConcept('time');
 				<div>
 					<div class="mb-3 text-sm uppercase tracking-[4px] text-violet-400/70">02 · Present</div>
 					<h2 class="mb-6 text-3xl font-bold text-white md:text-4xl">State</h2>
+					<div class="mb-3 overflow-x-auto rounded-xl border border-white/10 bg-black/30 p-4 font-mono text-violet-200/90">
+						<span class="inline-block whitespace-nowrap">x(t)</span>
+					</div>
+					<p class="mb-5 text-sm leading-relaxed text-white/45">
+						<strong class="text-white/65">In plain words:</strong> This is your full current snapshot at time <em class="text-white/60 not-italic">t</em>.
+					</p>
 					<p class="mb-5 text-lg leading-relaxed text-white/60">
-						<code class="text-violet-300">x(t)</code>: the high-dimensional state vector right now
+						The high-dimensional state vector right now
 						(competencies, relationships, inner states, positions, resources…).
 					</p>
 					<p class="mb-5 text-lg leading-relaxed text-white/60">
@@ -118,8 +129,14 @@ const c = getConcept('time');
 				<div>
 					<div class="mb-3 text-sm uppercase tracking-[4px] text-cyan-400/70">03 · Future</div>
 					<h2 class="mb-6 text-3xl font-bold text-white md:text-4xl">Vision Gradient</h2>
+					<div class="mb-3 overflow-x-auto rounded-xl border border-white/10 bg-black/30 p-4 font-mono text-violet-200/90">
+						<span class="inline-block whitespace-nowrap">F<sub>future</sub> = T<sub>F</sub> ∇S<sub>τ</sub></span>
+					</div>
+					<p class="mb-5 text-sm leading-relaxed text-white/45">
+						<strong class="text-white/65">In plain words:</strong> Future intelligence acts like a push toward states that keep more meaningful options open.
+					</p>
 					<p class="mb-5 text-lg leading-relaxed text-white/60">
-						<code class="text-violet-300">F<sub>future</sub> = T<sub>F</sub> ∇S<sub>τ</sub></code>, where <code class="text-violet-300">S<sub>τ</sub></code> is causal path entropy:
+						Here, <code class="text-violet-300">S<sub>τ</sub></code> is causal path entropy,
 						a measure of future freedom of action
 						(see <a
 							href="https://doi.org/10.1103/PhysRevLett.110.168702"
@@ -183,11 +200,19 @@ const c = getConcept('time');
 					</li>
 				</ul>
 
-				<div class="mb-12 overflow-x-auto rounded-2xl border border-white/10 bg-black/40 p-8 font-mono text-sm text-violet-200/90">
-					γ* = arg max<sub>γ∈Γ(x)</sub> [ T<sub>F</sub> · O<sub>τ</sub>(γ)  -  λ · D<sub>id</sub>(γ, h<sub>t</sub>) ]
-					
-					F<sub>stem</sub> = T<sub>F</sub> · ∇O<sub>τ</sub>  -  λ · ∇D<sub>id</sub>
+				<div class="mb-4 overflow-x-auto rounded-2xl border border-white/10 bg-black/40 p-6 font-mono text-sm text-violet-200/90">
+					<span class="inline-block whitespace-nowrap">γ* = arg max<sub>γ∈Γ(x)</sub> [ T<sub>F</sub> · O<sub>τ</sub>(γ)  -  λ · D<sub>id</sub>(γ, h<sub>t</sub>) ]</span>
 				</div>
+				<p class="mb-8 text-sm leading-relaxed text-white/45">
+					<strong class="text-white/65">In plain words:</strong> Choose the future path that gives the best freedom gain without drifting too far from who you are in a traceable way.
+				</p>
+
+				<div class="mb-4 overflow-x-auto rounded-2xl border border-white/10 bg-black/40 p-6 font-mono text-sm text-violet-200/90">
+					<span class="inline-block whitespace-nowrap">F<sub>stem</sub> = T<sub>F</sub> · ∇O<sub>τ</sub>  -  λ · ∇D<sub>id</sub></span>
+				</div>
+				<p class="mb-10 text-sm leading-relaxed text-white/45">
+					<strong class="text-white/65">In plain words:</strong> The stem force is "future-opening push" minus "identity-drift pullback".
+				</p>
 
 				<div class="mb-10 rounded-2xl border border-white/10 bg-black/30 p-6 text-base leading-relaxed text-white/60">
 					<div class="mb-3 text-sm uppercase tracking-[3px] text-white/40">Formula status</div>

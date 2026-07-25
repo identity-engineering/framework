@@ -82,12 +82,18 @@ const c = getConcept('time');
 				<div>
 					<div class="mb-3 text-sm uppercase tracking-[4px] text-cyan-400/70">01 · Past</div>
 					<h2 class="mb-6 text-3xl font-bold text-white md:text-4xl">State Differential</h2>
+					<div class="mb-3 overflow-x-auto rounded-xl border border-white/10 bg-black/30 p-4 font-mono text-violet-200/90">
+						<span class="inline-block whitespace-nowrap">δx = dx/dt</span>
+					</div>
+					<p class="mb-5 text-sm leading-relaxed text-white/45">
+						<strong class="text-white/65">In plain words:</strong> This says "how fast my state is changing right now." It is the slope of your real history.
+					</p>
 					<p class="mb-5 text-lg leading-relaxed text-white/60">
-						The observed derivative of the state: <code class="text-violet-300">δS = dS/dt</code> (or discrete ΔS).
 						This is the causal chain of actual changes from the past up to now.
 					</p>
 					<p class="mb-5 text-lg leading-relaxed text-white/60">
-						It maximizes <strong class="text-white/80">Sameness-as-Trajectory</strong>.
+						By itself, this is not yet a force term.
+						It is the historical baseline that makes <strong class="text-white/80">Sameness-as-Trajectory</strong> observable.
 						After change, we are not recognizable from the current snapshot (that is copyable).
 						We are recognizable from the transparent history of how we moved.
 					</p>
@@ -101,8 +107,14 @@ const c = getConcept('time');
 				<div>
 					<div class="mb-3 text-sm uppercase tracking-[4px] text-violet-400/70">02 · Present</div>
 					<h2 class="mb-6 text-3xl font-bold text-white md:text-4xl">State</h2>
+					<div class="mb-3 overflow-x-auto rounded-xl border border-white/10 bg-black/30 p-4 font-mono text-violet-200/90">
+						<span class="inline-block whitespace-nowrap">x(t)</span>
+					</div>
+					<p class="mb-5 text-sm leading-relaxed text-white/45">
+						<strong class="text-white/65">In plain words:</strong> This is your full current snapshot at time <em class="text-white/60 not-italic">t</em>.
+					</p>
 					<p class="mb-5 text-lg leading-relaxed text-white/60">
-						<code class="text-violet-300">S(t)</code>: the high-dimensional state vector right now
+						The high-dimensional state vector right now
 						(competencies, relationships, inner states, positions, resources…).
 					</p>
 					<p class="mb-5 text-lg leading-relaxed text-white/60">
@@ -117,8 +129,14 @@ const c = getConcept('time');
 				<div>
 					<div class="mb-3 text-sm uppercase tracking-[4px] text-cyan-400/70">03 · Future</div>
 					<h2 class="mb-6 text-3xl font-bold text-white md:text-4xl">Vision Gradient</h2>
+					<div class="mb-3 overflow-x-auto rounded-xl border border-white/10 bg-black/30 p-4 font-mono text-violet-200/90">
+						<span class="inline-block whitespace-nowrap">F<sub>future</sub> = T<sub>F</sub> ∇S<sub>τ</sub></span>
+					</div>
+					<p class="mb-5 text-sm leading-relaxed text-white/45">
+						<strong class="text-white/65">In plain words:</strong> Future intelligence acts like a push toward states that keep more meaningful options open.
+					</p>
 					<p class="mb-5 text-lg leading-relaxed text-white/60">
-						<code class="text-violet-300">V ≈ ∇𝒞</code>, where 𝒞 is causal entropy:
+						Here, <code class="text-violet-300">S<sub>τ</sub></code> is causal path entropy,
 						a measure of future freedom of action
 						(see <a
 							href="https://doi.org/10.1103/PhysRevLett.110.168702"
@@ -151,8 +169,8 @@ const c = getConcept('time');
 					</div>
 
 					<p class="mb-5 text-lg leading-relaxed text-white/60">
-						In Identity Engineering, <strong class="text-white/80">Vision is the intended gradient of causal entropy</strong>.
-						It points where future freedom of action increases most steeply.
+						In Identity Engineering, <strong class="text-white/80">Vision is the intended ascent of future option value</strong>.
+						Wissner-Gross gives one formal candidate for this ascent, but not a settled universal law.
 					</p>
 					<p class="text-lg leading-relaxed text-white/60">
 						<strong class="text-white/80">Engineering work:</strong> Sharpen the Vision Gradient.
@@ -174,39 +192,50 @@ const c = getConcept('time');
 				<ul class="mb-12 space-y-4 text-lg text-white/60">
 					<li class="flex gap-3">
 						<span class="text-cyan-400">←</span>
-						<span><strong class="text-white/80">Backward:</strong> State Differential → Sameness-as-Trajectory</span>
+						<span><strong class="text-white/80">Backward:</strong> historical trajectory constrains identity deviation</span>
 					</li>
 					<li class="flex gap-3">
 						<span class="text-violet-400">→</span>
-						<span><strong class="text-white/80">Forward:</strong> Vision Gradient → Causal Entropy</span>
+						<span><strong class="text-white/80">Forward:</strong> future force expands reachable option space</span>
 					</li>
 				</ul>
 
-				<div class="mb-12 overflow-x-auto rounded-2xl border border-white/10 bg-black/40 p-8 font-mono text-sm text-violet-200/90">
-					I = arg max_γ [ ∫<sub>now</sub><sup>future</sup> V(γ(t)) · dγ  +  λ · Coh(γ, δS<sub>past</sub>) ]
+				<div class="mb-4 overflow-x-auto rounded-2xl border border-white/10 bg-black/40 p-6 font-mono text-sm text-violet-200/90">
+					<span class="inline-block whitespace-nowrap">γ* = arg max<sub>γ∈Γ(x)</sub> [ T<sub>F</sub> · O<sub>τ</sub>(γ)  -  λ · D<sub>id</sub>(γ, h<sub>t</sub>) ]</span>
 				</div>
+				<p class="mb-8 text-sm leading-relaxed text-white/45">
+					<strong class="text-white/65">In plain words:</strong> The chosen path <code class="text-violet-300">γ*</code> is the path that maximizes two competing parts together: first, <code class="text-violet-300">T<sub>F</sub> · O<sub>τ</sub>(γ)</code> (future option gain scaled by the future-force strength <code class="text-violet-300">T<sub>F</sub></code>), and second, a subtraction term <code class="text-violet-300">λ · D<sub>id</sub>(γ, h<sub>t</sub>)</code> (identity drift cost scaled by the trade-off parameter <code class="text-violet-300">λ</code>).
+				</p>
+
+				<div class="mb-4 overflow-x-auto rounded-2xl border border-white/10 bg-black/40 p-6 font-mono text-sm text-violet-200/90">
+					<span class="inline-block whitespace-nowrap">F<sub>stem</sub> = T<sub>F</sub> · ∇O<sub>τ</sub>  -  λ · ∇D<sub>id</sub></span>
+				</div>
+				<p class="mb-10 text-sm leading-relaxed text-white/45">
+					<strong class="text-white/65">In plain words:</strong> The total stem force <code class="text-violet-300">F<sub>stem</sub></code> equals the future-opening push <code class="text-violet-300">T<sub>F</sub> · ∇O<sub>τ</sub></code> minus the identity-protection pullback <code class="text-violet-300">λ · ∇D<sub>id</sub></code>. So the final direction is literally the sum of one term that opens future options and one opposing term that limits identity drift.
+				</p>
 
 				<div class="mb-10 rounded-2xl border border-white/10 bg-black/30 p-6 text-base leading-relaxed text-white/60">
 					<div class="mb-3 text-sm uppercase tracking-[3px] text-white/40">Formula status</div>
 					This expression is a <strong class="text-white/80">conceptual framework formalization</strong>.
-					It defines design intent and variable roles, not a validated physical identity equation.
-					<code class="text-violet-300">λ</code> controls the trade-off between forward freedom gain and coherence with past differential history.
+					It defines variable roles and design intent, not a validated physical identity law.
+					<code class="text-violet-300">O<sub>τ</sub></code> is future option value, <code class="text-violet-300">D<sub>id</sub></code> is identity deviation from trajectory coherence, and <code class="text-violet-300">λ</code> controls the trade-off.
 				</div>
 
 				<p class="mb-6 text-lg leading-relaxed text-white/60">
-					The <strong class="text-white/80">Integral of the Vision</strong> is the line integral of the gradient along the trajectory:
-					the cumulative gain in future freedom of action that path actually realizes.
+					The key move is object consistency: both terms are scalar objectives over trajectories,
+					so their gradients can appear as comparable generalized forces.
 				</p>
 
 				<p class="text-lg leading-relaxed text-white/60">Identity Engineering works on two primary levers:</p>
 				<ol class="ml-2 mt-4 list-inside list-decimal space-y-3 text-lg text-white/60">
-					<li>Transparency and ownership of the <strong class="text-white/80">State Differential</strong>.</li>
-					<li>Clarity and force of the <strong class="text-white/80">Vision Gradient</strong>.</li>
+					<li>Make the historical trajectory explicit enough to compute meaningful <strong class="text-white/80">identity deviation</strong>.</li>
+					<li>Sharpen future option value so the <strong class="text-white/80">vision force</strong> is not vague aspiration.</li>
 				</ol>
 
 				<p class="mt-8 text-lg leading-relaxed text-white/60">
 					Rotation then stabilizes this axis. Mass gives it weight. Curvature warps possibility space around it.
 				</p>
+
 			</div>
 		</section>
 
@@ -222,6 +251,35 @@ const c = getConcept('time');
 					Observation of change itself constitutes ongoing identity.
 					The Identity Stem is both the personal core and a foundation for future-proof, non-copyable identity systems.
 				</p>
+
+				<div class="mt-10 rounded-2xl border border-violet-400/20 bg-violet-400/[0.05] p-6 text-base leading-relaxed text-white/60">
+					<div class="mb-3 text-sm uppercase tracking-[3px] text-violet-300/80">System implication under intelligence scaling</div>
+					<p class="mb-4">
+						If intelligence capacity scales sharply, <code class="text-violet-300">O<sub>τ</sub></code> rises and often steepens.
+						That means the forward term can dominate by default.
+					</p>
+					<p class="mb-4">
+						Then the system reacts in one of three ways:
+					</p>
+					<ul class="list-disc space-y-2 pl-5">
+						<li>
+							<strong class="text-white/80">If the identity-weight parameter λ is too low:</strong> identity dissolves into pure option-chasing.
+							You gain reach, but lose recognizability, authorship continuity, and ownership.
+						</li>
+						<li>
+							<strong class="text-white/80">If the identity-weight parameter λ is too high:</strong> identity freezes into defensive sameness.
+							You preserve continuity, but miss new viable futures.
+						</li>
+						<li>
+							<strong class="text-white/80">If the identity-weight parameter λ is well calibrated:</strong> identity becomes a dynamic regulator.
+							It does not block intelligence growth, it shapes growth into a trajectory that protects ownership.
+						</li>
+					</ul>
+					<p class="mt-4">
+						So in an AI-intense era, identity is no longer a static label.
+						It becomes a control parameter that decides whether scaled intelligence produces coherent evolution, stable ownership, or self-erasure.
+					</p>
+				</div>
 			</div>
 		</section>
 

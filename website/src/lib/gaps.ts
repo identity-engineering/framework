@@ -164,12 +164,20 @@ export async function fetchGapIssues(): Promise<GapIssue[]> {
 }
 
 export function gapsForPage(gaps: GapIssue[], pageSlug: string): GapIssue[] {
-	return gaps.filter((g) => g.state === 'open' && g.pages.includes(pageSlug));
+	return gaps
+		.filter((g) => g.state === 'open' && g.pages.includes(pageSlug))
+		.sort((a, b) => {
+			// Newest activity first for "last N" previews
+			const tb = Date.parse(b.updatedAt) - Date.parse(a.updatedAt);
+			if (tb !== 0) return tb;
+			return b.number - a.number;
+		});
 }
 
-/** Open gaps matching any of the given page:* slugs (deduped by issue number). */
+/** @deprecated Prefer gapsForPage with a single unique page slug. */
 export function gapsForPages(gaps: GapIssue[], pageSlugs: string[]): GapIssue[] {
 	if (pageSlugs.length === 0) return [];
+	if (pageSlugs.length === 1) return gapsForPage(gaps, pageSlugs[0]);
 	const want = new Set(pageSlugs);
 	const seen = new Set<number>();
 	const out: GapIssue[] = [];
@@ -180,6 +188,11 @@ export function gapsForPages(gaps: GapIssue[], pageSlugs: string[]): GapIssue[] 
 		seen.add(g.number);
 		out.push(g);
 	}
+	out.sort((a, b) => {
+		const tb = Date.parse(b.updatedAt) - Date.parse(a.updatedAt);
+		if (tb !== 0) return tb;
+		return b.number - a.number;
+	});
 	return out;
 }
 
@@ -200,43 +213,58 @@ export function publicGaps(gaps: GapIssue[]): GapIssue[] {
 }
 
 /**
- * Map a site pathname to GitHub `page:*` label slugs for GapsSection.
- * Returns `null` when the section should be hidden (e.g. /critical-gaps is the full list).
- * Align with docs/gaps-system/SKILL.md page taxonomy.
+ * Exactly one GitHub `page:*` slug per site URL. No parent/subpage bundling.
+ * If a gap is relevant to several pages, the issue must carry multiple `page:*` labels.
+ * Returns `null` when GapsSection should be hidden.
+ *
+ * Convention: path segment that uniquely identifies the page
+ *   /framework/time → time
+ *   /foundations/locke-personal-identity → locke-personal-identity
+ *   /blog/particles-of-identity → particles-of-identity
+ *   / → home
  */
-export function resolveGapsPageSlugs(pathname: string): string[] | null {
-	const p = (pathname.replace(/\/+$/, '') || '/') as string;
+export function resolveGapsPageSlug(pathname: string): string | null {
+	const p = pathname.replace(/\/+$/, '') || '/';
 
-	// Full gaps catalogue lives on this page; no nested section.
 	if (p === '/critical-gaps') return null;
 
-	// Framework concept pages: /framework/time → time
-	const concept = p.match(/^\/framework\/([^/]+)$/);
-	if (concept) {
-		const id = concept[1];
-		// emergent.astro is the Emergence concept; labels may use either
-		if (id === 'emergent') return ['emergent', 'framework'];
-		return [id];
+	if (p === '/') return 'home';
+
+	// Single unique segment for known hubs and leaves
+	const segments = p.split('/').filter(Boolean);
+	if (segments.length === 0) return 'home';
+
+	// /framework → framework; /framework/time → time
+	if (segments[0] === 'framework') {
+		return segments[1] ?? 'framework';
 	}
 
-	if (p === '/framework') return ['framework'];
-	if (p === '/method') return ['method'];
-	if (p === '/ontology' || p === '/foundations' || p.startsWith('/foundations/')) {
-		return ['foundations'];
+	// /foundations → foundations; /foundations/<slug> → <slug> (unique leaf)
+	if (segments[0] === 'foundations') {
+		return segments[1] ?? 'foundations';
 	}
 
-	// Blog / essay surfaces with stable page labels
-	if (p.includes('particles-of-identity') || p.includes('energy-forms-of-identity')) {
-		return ['particles', 'space'];
+	// /blog → blog; /blog/<slug> → <slug>
+	if (segments[0] === 'blog') {
+		return segments[1] ?? 'blog';
 	}
-	if (p.includes('ownership')) return ['ownership'];
 
-	if (p === '/blog' || p.startsWith('/blog/')) return ['framework'];
-	if (p === '/big-questions') return ['framework'];
-	if (p === '/' || p === '/identity-stem') return ['framework', 'time'];
-	if (p.startsWith('/skills/')) return ['method', 'framework'];
+	// /skills/<name> → skills-<name> (avoid colliding with other leaves)
+	if (segments[0] === 'skills') {
+		return segments[1] ? `skills-${segments[1]}` : 'skills';
+	}
 
-	// Fallback: last path segment as potential page:* label
-	const last = p.split('/').filter(Boolean).pop();
-	return last ? [last] : ['framework'];
+	// Everything else: last segment only (ontology, method, big-questions, identity-stem, …)
+	return segments[segments.length - 1] ?? null;
+}
+
+/** @deprecated Use resolveGapsPageSlug (one label per page). */
+export function resolveGapsPageSlugs(pathname: string): string[] | null {
+	const slug = resolveGapsPageSlug(pathname);
+	return slug ? [slug] : null;
+}
+
+/** Deep-link to the gaps catalogue filtered to one page label. */
+export function gapsCatalogueHref(pageSlug: string): string {
+	return `/critical-gaps?page=${encodeURIComponent(pageSlug)}#gap-list`;
 }

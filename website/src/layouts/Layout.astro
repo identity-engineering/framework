@@ -1,30 +1,30 @@
 ---
 /**
  * Site chrome: header, page slot, automatic per-page GapsSection, footer.
- * Gaps resolve via GitHub page:* labels from the current path (see lib/gaps.ts).
+ * One unique page:* slug per URL (see resolveGapsPageSlug in lib/gaps.ts).
  */
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import GapsSection from '../components/GapsSection.astro';
-import { resolveGapsPageSlugs } from '../lib/gaps';
+import { resolveGapsPageSlug } from '../lib/gaps';
 
 interface Props {
 	title: string;
 	/**
 	 * Per-page gaps control:
-	 * - omit: auto from URL → page:* labels
-	 * - string | string[]: force those slugs
-	 * - false: hide GapsSection (rare; /critical-gaps auto-hides)
+	 * - omit: auto from URL (single unique page:* slug)
+	 * - string: force that slug
+	 * - false: hide GapsSection
 	 */
-	gaps?: string | string[] | false;
+	gaps?: string | false;
 }
 
 const { title, gaps } = Astro.props;
 
-const gapsSlugs: string[] | null = (() => {
+const gapsSlug: string | null = (() => {
 	if (gaps === false) return null;
-	if (gaps !== undefined) return Array.isArray(gaps) ? gaps : [gaps];
-	return resolveGapsPageSlugs(Astro.url.pathname);
+	if (typeof gaps === 'string') return gaps;
+	return resolveGapsPageSlug(Astro.url.pathname);
 })();
 ---
 
@@ -42,7 +42,7 @@ const gapsSlugs: string[] | null = (() => {
 		<Header />
 		<div class="flex-1">
 			<slot />
-			{gapsSlugs && gapsSlugs.length > 0 && <GapsSection page={gapsSlugs} />}
+			{gapsSlug && <GapsSection page={gapsSlug} />}
 		</div>
 		<Footer />
 	</body>

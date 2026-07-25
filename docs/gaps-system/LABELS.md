@@ -24,22 +24,38 @@ Create these labels in the repo (color suggestions optional).
 
 ## Page
 
-| Name | Description |
-|------|-------------|
-| `page:time` | Maps to /framework/time |
-| `page:mass` | Maps to /framework/mass |
-| `page:curvature` | Maps to /framework/curvature |
-| `page:rotation` | Maps to /framework/rotation |
-| `page:gravitation` | Maps to /framework/gravitation |
-| `page:frequency` | Maps to /framework/frequency |
-| `page:relativity` | Maps to /framework/relativity |
-| `page:particles` | Maps to particles surfaces |
-| `page:space` | Maps to space surfaces |
-| `page:ownership` | Maps to ownership surfaces |
-| `page:framework` | Maps to /framework |
-| `page:foundations` | Maps to /foundations |
-| `page:method` | Maps to /method |
+**One unique `page:*` label per site URL.** Do not reuse a parent hub label for every child page. If a gap is relevant to several pages, put **multiple** `page:*` labels on the same issue.
+
+Slug = unique path leaf (or hub name). Website mapping: `resolveGapsPageSlug()` in `website/src/lib/gaps.ts`.
+
+| Name | Site URL |
+|------|----------|
+| `page:home` | `/` |
+| `page:framework` | `/framework` |
+| `page:time` | `/framework/time` |
+| `page:mass` | `/framework/mass` |
+| `page:curvature` | `/framework/curvature` |
+| `page:rotation` | `/framework/rotation` |
+| `page:gravitation` | `/framework/gravitation` |
+| `page:frequency` | `/framework/frequency` |
+| `page:relativity` | `/framework/relativity` |
+| `page:emergent` | `/framework/emergent` |
+| `page:damping` | `/framework/damping` |
+| `page:foundations` | `/foundations` (hub only) |
+| `page:locke-personal-identity` | `/foundations/locke-personal-identity` (example leaf) |
+| `page:ontology` | `/ontology` |
+| `page:method` | `/method` |
+| `page:blog` | `/blog` |
+| `page:particles-of-identity` | `/blog/particles-of-identity` |
+| `page:ownership-as-relative-jurisdiction` | `/blog/ownership-as-relative-jurisdiction` |
+| `page:energy-forms-of-identity` | `/blog/energy-forms-of-identity` |
+| `page:big-questions` | `/big-questions` |
+| `page:identity-stem` | `/identity-stem` |
 | `page:critical-gaps` | About the gaps system itself |
+
+Create additional `page:<leaf-slug>` labels as new public pages ship. Prefer the path leaf over a shared parent label.
+
+Legacy short labels still in use on some issues (`page:ownership`, `page:particles`, `page:space`): migrate to path-unique slugs when touching those issues, or dual-label during transition.
 
 ## Priority
 

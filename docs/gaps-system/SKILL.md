@@ -56,24 +56,26 @@ Add new `area:*` labels only when a stable category is needed repeatedly.
 
 ### Page mapping (where the gap appears on the site)
 
-| Label | Site surface |
-|-------|----------------|
+**Rule: one unique `page:*` slug per site URL.** No bundling of subpages under a parent label (e.g. do not put every Foundations thinker under only `page:foundations`). If a gap applies to several pages, the issue must carry **multiple** `page:*` labels.
+
+Canonical resolver: `resolveGapsPageSlug(pathname)` in `website/src/lib/gaps.ts`.
+
+Examples:
+
+| Label | Site URL |
+|-------|----------|
+| `page:home` | `/` |
 | `page:time` | `/framework/time` |
 | `page:mass` | `/framework/mass` |
-| `page:curvature` | `/framework/curvature` |
-| `page:rotation` | `/framework/rotation` |
-| `page:gravitation` | `/framework/gravitation` |
-| `page:frequency` | `/framework/frequency` |
-| `page:relativity` | `/framework/relativity` |
-| `page:particles` | Particles / Space surfaces |
-| `page:space` | Space surfaces |
-| `page:ownership` | Ownership surfaces |
-| `page:framework` | `/framework` hub |
-| `page:foundations` | `/foundations` |
+| `page:framework` | `/framework` hub only |
+| `page:foundations` | `/foundations` hub only |
+| `page:locke-personal-identity` | `/foundations/locke-personal-identity` |
+| `page:particles-of-identity` | `/blog/particles-of-identity` |
+| `page:ownership-as-relative-jurisdiction` | `/blog/ownership-as-relative-jurisdiction` |
 | `page:method` | `/method` |
-| `page:critical-gaps` | Only if the gap is about the gaps system itself |
+| `page:critical-gaps` | Gaps system itself |
 
-An issue may have **multiple** `page:*` labels.
+See [LABELS.md](./LABELS.md) for the full list and migration notes.
 
 ### Priority
 
@@ -139,11 +141,15 @@ Title = short gap name in English.
 
 - Rendered automatically by `website/src/layouts/Layout.astro` on every page (except `/critical-gaps`).
 - Component: `website/src/components/GapsSection.astro`
-- Path → `page:*` mapping: `resolveGapsPageSlugs()` in `website/src/lib/gaps.ts` (e.g. `/framework/time` → `time`, `/foundations/*` → `foundations`).
-- Override per page: `<Layout gaps="slug">` or `gaps={['a','b']}` or `gaps={false}` to hide.
-- Shows open issues whose `page:*` labels intersect the resolved slugs.
-- Compact list: title, priority badge, page labels, link to issue
-- Empty state: short note + propose link + expected `page:` labels
+- Path → **one** `page:*` slug via `resolveGapsPageSlug()` (e.g. `/framework/time` → `time`, `/foundations/locke-…` → `locke-personal-identity`).
+- Override: `<Layout gaps="slug">` or `gaps={false}` to hide.
+- Preview: last **3** open gaps (by updatedAt). **More** reveals **+10**. **Show all on Gaps page** → `/critical-gaps?page=<slug>#gap-list`.
+- Empty state: exact label name + propose link.
+
+### Gaps catalogue filters
+
+- `/critical-gaps` uses dropdowns: state, page, priority, area, status, type.
+- Query string sync: `?page=time&priority=high` (deep links from per-page section).
 
 ### Fetch / performance
 

@@ -1,7 +1,9 @@
 ---
 /**
  * Critical Gaps: live from GitHub issues (label:gap).
+ * Filters: professional dropdowns + URL query (?page=&priority=&area=&status=&type=&state=)
  * See docs/gaps-system/SKILL.md
+ * Keep inline tags on one line with outer spaces (Astro whitespace).
  */
 import Layout from '../layouts/Layout.astro';
 import {
@@ -17,8 +19,18 @@ const all = publicGaps(await fetchGapIssues());
 const open = openGaps(all);
 const closed = all.filter((g) => g.state === 'closed');
 
-const areas = [...new Set(open.map((g) => g.area).filter(Boolean))] as string[];
+const areas = [...new Set(all.map((g) => g.area).filter(Boolean))] as string[];
+areas.sort();
+const pages = [...new Set(all.flatMap((g) => g.pages))].filter(Boolean).sort();
+const statuses = [...new Set(all.map((g) => g.status).filter(Boolean))] as string[];
+statuses.sort();
 const priorities = ['high', 'medium', 'low'];
+const types = [
+	{ value: '', label: 'All types' },
+	{ value: 'big-gap', label: 'Big gaps' },
+	{ value: 'sub-gap', label: 'Sub-gaps' },
+	{ value: 'none', label: 'Untyped' },
+];
 
 function badgeClass(g: GapIssue): string {
 	if (g.status === 'accepted') return 'border-white/10 bg-white/[0.03] text-white/50';
@@ -39,9 +51,13 @@ function badgeText(g: GapIssue): string {
 	if (g.type === 'big-gap') parts.push('big gap');
 	return parts.join(' · ');
 }
+
+const selectClass =
+	'w-full rounded-xl border border-white/15 bg-black/40 px-3 py-2.5 text-sm text-white/85 outline-none transition focus:border-white/35 focus:ring-1 focus:ring-white/20';
+const labelClass = 'mb-1.5 block text-xs uppercase tracking-[2px] text-white/40';
 ---
 
-<Layout title="Critical Gaps | Identity Engineering">
+<Layout title="Critical Gaps | Identity Engineering" gaps={false}>
 	<main class="min-h-screen">
 		<section class="border-b border-white/10 px-6 pt-28 pb-16">
 			<div class="mx-auto max-w-3xl">
@@ -76,12 +92,13 @@ function badgeText(g: GapIssue): string {
 		<section class="border-b border-white/10 px-6 py-16">
 			<div class="mx-auto max-w-3xl space-y-6 text-lg leading-relaxed text-white/55">
 				<p>
-					Gaps are the single source of truth for framework limitations.
-					Closed issues are resolved gaps. The history stays public.
-					See <a href="https://github.com/identity-engineering/framework/blob/main/docs/gaps-system/SKILL.md" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white" target="_blank" rel="noopener noreferrer">gaps system docs</a>.
+					Gaps are the single source of truth for framework limitations. Closed issues are resolved gaps. The history stays public. See <a href="https://github.com/identity-engineering/framework/blob/main/docs/gaps-system/SKILL.md" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white" target="_blank" rel="noopener noreferrer">gaps system docs</a>.
 				</p>
 				<p>
 					Related: <a href="/foundations" class="text-white/80 underline decoration-white/25 underline-offset-4 hover:text-white transition">Foundations</a>, <a href="/framework" class="text-white/80 underline decoration-white/25 underline-offset-4 hover:text-white transition">Framework</a>, <a href="/big-questions" class="text-white/80 underline decoration-white/25 underline-offset-4 hover:text-white transition">Big Questions</a>.
+				</p>
+				<p class="text-base text-white/45">
+					Each site page maps to exactly one <code class="text-white/55">page:*</code> label. Gaps that span several pages carry multiple page labels on the issue.
 				</p>
 			</div>
 		</section>
@@ -96,30 +113,30 @@ function badgeText(g: GapIssue): string {
 					<div class="rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.04] p-6">
 						<div class="mb-3 text-xs uppercase tracking-[3px] text-cyan-400/70">01 · Practical</div>
 						<p class="text-base leading-relaxed text-white/70">
-							<strong class="text-white/90">Human, AI-shift.</strong> Support conscious design of identity:
-							Sameness-as-Trajectory plus Causal Entropy. Framework for Ownership and Architect-level action.
+							<strong class="text-white/90">Human, AI-shift.</strong> Support conscious design of identity: Sameness-as-Trajectory plus Causal Entropy. Framework for Ownership and Architect-level action.
 						</p>
 					</div>
 					<div class="rounded-2xl border border-violet-400/20 bg-violet-400/[0.04] p-6">
 						<div class="mb-3 text-xs uppercase tracking-[3px] text-violet-400/70">02 · Fundamental</div>
 						<p class="text-base leading-relaxed text-white/70">
-							<strong class="text-white/90">Substrate-free.</strong> Model artificial identities beyond biological hardware.
-							Extension of mission 1, not a replacement.
+							<strong class="text-white/90">Substrate-free.</strong> Model artificial identities beyond biological hardware. Extension of mission 1, not a replacement.
 						</p>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- Filters + list -->
 		<section class="border-b border-white/10 px-6 py-16" id="gap-list">
 			<div class="mx-auto max-w-3xl">
 				<div class="mb-8 flex flex-wrap items-end justify-between gap-4">
 					<div>
 						<div class="mb-2 text-sm uppercase tracking-[4px] text-cyan-400/70">Live from GitHub</div>
 						<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
-							{open.length} open · {closed.length} resolved
+							<span data-gap-count-open>{open.length}</span> open · <span data-gap-count-closed>{closed.length}</span> resolved
 						</h2>
+						<p class="mt-2 text-sm text-white/40" data-gap-filter-summary>
+							Showing open gaps
+						</p>
 					</div>
 				</div>
 
@@ -131,51 +148,84 @@ function badgeText(g: GapIssue): string {
 						</p>
 					) : (
 						<>
-							<div class="mb-10 flex flex-wrap gap-2" id="gap-filters" data-filter-root>
-								<button
-									type="button"
-									data-filter="all"
-									class="gap-filter-btn rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs text-white"
-								>
-									All open
-								</button>
-								<button
-									type="button"
-									data-filter="big"
-									class="gap-filter-btn rounded-full border border-white/15 px-3 py-1 text-xs text-white/60 transition hover:border-white/30"
-								>
-									Big gaps
-								</button>
-								{
-									priorities.map((p) => (
-										<button
-											type="button"
-											data-filter={`priority:${p}`}
-											class="gap-filter-btn rounded-full border border-white/15 px-3 py-1 text-xs text-white/60 transition hover:border-white/30"
-										>
-											{p}
-										</button>
-									))
-								}
-								{
-									areas.map((a) => (
-										<button
-											type="button"
-											data-filter={`area:${a}`}
-											class="gap-filter-btn rounded-full border border-white/15 px-3 py-1 text-xs text-white/60 transition hover:border-white/30"
-										>
-											{a}
-										</button>
-									))
-								}
-								<button
-									type="button"
-									data-filter="closed"
-									class="gap-filter-btn rounded-full border border-white/15 px-3 py-1 text-xs text-white/60 transition hover:border-white/30"
-								>
-									Resolved
-								</button>
-							</div>
+							<form
+								id="gap-filters"
+								class="mb-10 grid gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-5 sm:grid-cols-2 lg:grid-cols-3"
+								data-filter-root
+							>
+								<div>
+									<label for="gap-filter-state" class={labelClass}>State</label>
+									<select id="gap-filter-state" name="state" class={selectClass} data-filter-key="state">
+										<option value="open">Open</option>
+										<option value="closed">Resolved</option>
+										<option value="all">All</option>
+									</select>
+								</div>
+								<div>
+									<label for="gap-filter-page" class={labelClass}>Page</label>
+									<select id="gap-filter-page" name="page" class={selectClass} data-filter-key="page">
+										<option value="">All pages</option>
+										{pages.map((pg) => (
+											<option value={pg}>page:{pg}</option>
+										))}
+									</select>
+								</div>
+								<div>
+									<label for="gap-filter-priority" class={labelClass}>Priority</label>
+									<select id="gap-filter-priority" name="priority" class={selectClass} data-filter-key="priority">
+										<option value="">All priorities</option>
+										{priorities.map((p) => (
+											<option value={p}>{p}</option>
+										))}
+									</select>
+								</div>
+								<div>
+									<label for="gap-filter-area" class={labelClass}>Area</label>
+									<select id="gap-filter-area" name="area" class={selectClass} data-filter-key="area">
+										<option value="">All areas</option>
+										{areas.map((a) => (
+											<option value={a}>{a}</option>
+										))}
+									</select>
+								</div>
+								<div>
+									<label for="gap-filter-status" class={labelClass}>Status</label>
+									<select id="gap-filter-status" name="status" class={selectClass} data-filter-key="status">
+										<option value="">All statuses</option>
+										{statuses.map((s) => (
+											<option value={s}>{s}</option>
+										))}
+									</select>
+								</div>
+								<div>
+									<label for="gap-filter-type" class={labelClass}>Type</label>
+									<select id="gap-filter-type" name="type" class={selectClass} data-filter-key="type">
+										{types.map((t) => (
+											<option value={t.value}>{t.label}</option>
+										))}
+									</select>
+								</div>
+								<div class="flex flex-wrap items-end gap-3 sm:col-span-2 lg:col-span-3">
+									<button
+										type="button"
+										data-filter-reset
+										class="rounded-full border border-white/15 px-4 py-2 text-sm text-white/60 transition hover:border-white/30 hover:text-white/85"
+									>
+										Reset filters
+									</button>
+									<a
+										href={`${GITHUB_ISSUES_URL}?q=is%3Aissue+label%3Agap`}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="text-sm text-white/45 underline decoration-white/20 underline-offset-4 transition hover:text-white/70"
+										data-github-filtered
+									>
+										Open filtered view on GitHub →
+									</a>
+								</div>
+							</form>
+
+							<p class="mb-6 text-sm text-white/40" data-gap-visible-count></p>
 
 							<div class="space-y-6" id="gap-cards">
 								{
@@ -187,6 +237,7 @@ function badgeText(g: GapIssue): string {
 											data-area={g.area ?? ''}
 											data-type={g.type ?? ''}
 											data-status={g.status ?? ''}
+											data-pages={g.pages.join(',')}
 										>
 											<div class="mb-4 flex flex-wrap items-center gap-3">
 												<span class:list={['rounded-full border px-3 py-1 text-xs tracking-wide', badgeClass(g)]}>
@@ -197,6 +248,13 @@ function badgeText(g: GapIssue): string {
 													g.area && (
 														<span class="text-xs text-white/40">{g.area}</span>
 													)
+												}
+												{
+													g.pages.map((pg) => (
+														<span class="rounded-full border border-white/10 px-2 py-0.5 text-xs text-white/40">
+															page:{pg}
+														</span>
+													))
 												}
 											</div>
 											<h3 class="mb-3 text-xl font-semibold text-white md:text-2xl">
@@ -242,6 +300,13 @@ function badgeText(g: GapIssue): string {
 									))
 								}
 							</div>
+
+							<p class="mt-10 hidden text-base text-white/45" data-gap-empty>
+								No gaps match these filters.
+								<button type="button" data-filter-reset class="underline decoration-white/25 underline-offset-4 hover:text-white/70">
+									Reset filters
+								</button>
+							</p>
 						</>
 					)
 				}
@@ -265,45 +330,135 @@ function badgeText(g: GapIssue): string {
 </Layout>
 
 <script>
-	const root = document.querySelector('[data-filter-root]');
-	const cards = Array.from(document.querySelectorAll('.gap-card')) as HTMLElement[];
-	const buttons = Array.from(document.querySelectorAll('.gap-filter-btn')) as HTMLButtonElement[];
+	type Filters = {
+		state: string;
+		page: string;
+		priority: string;
+		area: string;
+		status: string;
+		type: string;
+	};
 
-	function apply(filter: string) {
-		buttons.forEach((b) => {
-			const active = b.dataset.filter === filter;
-			b.classList.toggle('border-white/25', active);
-			b.classList.toggle('bg-white/10', active);
-			b.classList.toggle('text-white', active);
-			b.classList.toggle('border-white/15', !active);
-			b.classList.toggle('text-white/60', !active);
-		});
+	const form = document.querySelector<HTMLFormElement>('#gap-filters');
+	const cards = Array.from(document.querySelectorAll<HTMLElement>('.gap-card'));
+	const summary = document.querySelector<HTMLElement>('[data-gap-filter-summary]');
+	const visibleCount = document.querySelector<HTMLElement>('[data-gap-visible-count]');
+	const emptyEl = document.querySelector<HTMLElement>('[data-gap-empty]');
+	const ghLink = document.querySelector<HTMLAnchorElement>('[data-github-filtered]');
 
-		cards.forEach((card) => {
-			const state = card.dataset.state ?? '';
-			const priority = card.dataset.priority ?? '';
-			const area = card.dataset.area ?? '';
-			const type = card.dataset.type ?? '';
-			let show = true;
-
-			if (filter === 'all') show = state === 'open';
-			else if (filter === 'closed') show = state === 'closed';
-			else if (filter === 'big') show = state === 'open' && type === 'big-gap';
-			else if (filter.startsWith('priority:'))
-				show = state === 'open' && priority === filter.slice('priority:'.length);
-			else if (filter.startsWith('area:'))
-				show = state === 'open' && area === filter.slice('area:'.length);
-
-			card.style.display = show ? '' : 'none';
-		});
+	function readFilters(): Filters {
+		const fd = new FormData(form ?? undefined);
+		return {
+			state: String(fd.get('state') || 'open'),
+			page: String(fd.get('page') || ''),
+			priority: String(fd.get('priority') || ''),
+			area: String(fd.get('area') || ''),
+			status: String(fd.get('status') || ''),
+			type: String(fd.get('type') || ''),
+		};
 	}
 
-	root?.addEventListener('click', (e) => {
-		const t = e.target as HTMLElement | null;
-		const btn = t?.closest?.('[data-filter]') as HTMLElement | null;
-		if (!btn?.dataset.filter) return;
-		apply(btn.dataset.filter);
+	function writeUrl(f: Filters) {
+		const url = new URL(window.location.href);
+		const keys: (keyof Filters)[] = ['state', 'page', 'priority', 'area', 'status', 'type'];
+		for (const k of keys) {
+			const v = f[k];
+			if (!v || (k === 'state' && v === 'open')) url.searchParams.delete(k);
+			else url.searchParams.set(k, v);
+		}
+		history.replaceState({}, '', url.toString());
+	}
+
+	function applyFromUrl() {
+		if (!form) return;
+		const params = new URLSearchParams(window.location.search);
+		const map: Record<string, string> = {
+			state: params.get('state') || 'open',
+			page: params.get('page') || '',
+			priority: params.get('priority') || '',
+			area: params.get('area') || '',
+			status: params.get('status') || '',
+			type: params.get('type') || '',
+		};
+		for (const [k, v] of Object.entries(map)) {
+			const el = form.elements.namedItem(k) as HTMLSelectElement | null;
+			if (el) el.value = v;
+		}
+	}
+
+	function matches(card: HTMLElement, f: Filters): boolean {
+		const state = card.dataset.state ?? '';
+		const priority = card.dataset.priority ?? '';
+		const area = card.dataset.area ?? '';
+		const status = card.dataset.status ?? '';
+		const type = card.dataset.type ?? '';
+		const pages = (card.dataset.pages ?? '').split(',').filter(Boolean);
+
+		if (f.state === 'open' && state !== 'open') return false;
+		if (f.state === 'closed' && state !== 'closed') return false;
+		if (f.priority && priority !== f.priority) return false;
+		if (f.area && area !== f.area) return false;
+		if (f.status && status !== f.status) return false;
+		if (f.page && !pages.includes(f.page)) return false;
+		if (f.type === 'big-gap' && type !== 'big-gap') return false;
+		if (f.type === 'sub-gap' && type !== 'sub-gap') return false;
+		if (f.type === 'none' && type) return false;
+		return true;
+	}
+
+	function apply() {
+		const f = readFilters();
+		let n = 0;
+		cards.forEach((card) => {
+			const show = matches(card, f);
+			card.style.display = show ? '' : 'none';
+			if (show) n += 1;
+		});
+
+		const bits: string[] = [];
+		if (f.state === 'open') bits.push('open');
+		else if (f.state === 'closed') bits.push('resolved');
+		else bits.push('all states');
+		if (f.page) bits.push(`page:${f.page}`);
+		if (f.priority) bits.push(f.priority);
+		if (f.area) bits.push(f.area);
+		if (f.status) bits.push(f.status);
+		if (f.type === 'big-gap') bits.push('big gaps');
+		if (f.type === 'sub-gap') bits.push('sub-gaps');
+		if (f.type === 'none') bits.push('untyped');
+		if (summary) summary.textContent = `Filter: ${bits.join(' · ')}`;
+		if (visibleCount) visibleCount.textContent = `${n} gap${n === 1 ? '' : 's'} shown`;
+		if (emptyEl) emptyEl.classList.toggle('hidden', n > 0);
+
+		if (ghLink) {
+			const q = ['is:issue', 'label:gap'];
+			if (f.state === 'open') q.push('is:open');
+			if (f.state === 'closed') q.push('is:closed');
+			if (f.page) q.push(`label:page:${f.page}`);
+			if (f.priority) q.push(`label:priority:${f.priority}`);
+			if (f.area) q.push(`label:area:${f.area}`);
+			if (f.status) q.push(`label:status:${f.status}`);
+			if (f.type === 'big-gap') q.push('label:type:big-gap');
+			if (f.type === 'sub-gap') q.push('label:type:sub-gap');
+			ghLink.href = `https://github.com/identity-engineering/framework/issues?q=${encodeURIComponent(q.join(' '))}`;
+		}
+
+		writeUrl(f);
+	}
+
+	function reset() {
+		if (!form) return;
+		form.reset();
+		const state = form.elements.namedItem('state') as HTMLSelectElement | null;
+		if (state) state.value = 'open';
+		apply();
+	}
+
+	form?.addEventListener('change', apply);
+	document.querySelectorAll('[data-filter-reset]').forEach((btn) => {
+		btn.addEventListener('click', reset);
 	});
 
-	apply('all');
+	applyFromUrl();
+	apply();
 </script>

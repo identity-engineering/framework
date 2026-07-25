@@ -135,12 +135,15 @@ Title = short gap name in English.
 - CTA **Propose a gap** → GitHub issue template with `gap` pre-applied
 - Resolved view: `is:closed label:gap`
 
-### Per-page gaps section
+### Per-page gaps section (site-wide)
 
-- Component receives a page slug (e.g. `time`)
-- Fetch: `label:gap label:page:<slug> state:open`
-- Compact list: title, priority badge, link to issue
-- Empty state: short note + propose link
+- Rendered automatically by `website/src/layouts/Layout.astro` on every page (except `/critical-gaps`).
+- Component: `website/src/components/GapsSection.astro`
+- Path → `page:*` mapping: `resolveGapsPageSlugs()` in `website/src/lib/gaps.ts` (e.g. `/framework/time` → `time`, `/foundations/*` → `foundations`).
+- Override per page: `<Layout gaps="slug">` or `gaps={['a','b']}` or `gaps={false}` to hide.
+- Shows open issues whose `page:*` labels intersect the resolved slugs.
+- Compact list: title, priority badge, page labels, link to issue
+- Empty state: short note + propose link + expected `page:` labels
 
 ### Fetch / performance
 

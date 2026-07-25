@@ -167,6 +167,22 @@ export function gapsForPage(gaps: GapIssue[], pageSlug: string): GapIssue[] {
 	return gaps.filter((g) => g.state === 'open' && g.pages.includes(pageSlug));
 }
 
+/** Open gaps matching any of the given page:* slugs (deduped by issue number). */
+export function gapsForPages(gaps: GapIssue[], pageSlugs: string[]): GapIssue[] {
+	if (pageSlugs.length === 0) return [];
+	const want = new Set(pageSlugs);
+	const seen = new Set<number>();
+	const out: GapIssue[] = [];
+	for (const g of gaps) {
+		if (g.state !== 'open') continue;
+		if (!g.pages.some((p) => want.has(p))) continue;
+		if (seen.has(g.number)) continue;
+		seen.add(g.number);
+		out.push(g);
+	}
+	return out;
+}
+
 export function bigGaps(gaps: GapIssue[]): GapIssue[] {
 	return gaps.filter((g) => g.type === 'big-gap');
 }
@@ -181,4 +197,46 @@ export function openGaps(gaps: GapIssue[]): GapIssue[] {
  */
 export function publicGaps(gaps: GapIssue[]): GapIssue[] {
 	return gaps.filter((g) => !g.title.toLowerCase().startsWith('chore:'));
+}
+
+/**
+ * Map a site pathname to GitHub `page:*` label slugs for GapsSection.
+ * Returns `null` when the section should be hidden (e.g. /critical-gaps is the full list).
+ * Align with docs/gaps-system/SKILL.md page taxonomy.
+ */
+export function resolveGapsPageSlugs(pathname: string): string[] | null {
+	const p = (pathname.replace(/\/+$/, '') || '/') as string;
+
+	// Full gaps catalogue lives on this page; no nested section.
+	if (p === '/critical-gaps') return null;
+
+	// Framework concept pages: /framework/time → time
+	const concept = p.match(/^\/framework\/([^/]+)$/);
+	if (concept) {
+		const id = concept[1];
+		// emergent.astro is the Emergence concept; labels may use either
+		if (id === 'emergent') return ['emergent', 'framework'];
+		return [id];
+	}
+
+	if (p === '/framework') return ['framework'];
+	if (p === '/method') return ['method'];
+	if (p === '/ontology' || p === '/foundations' || p.startsWith('/foundations/')) {
+		return ['foundations'];
+	}
+
+	// Blog / essay surfaces with stable page labels
+	if (p.includes('particles-of-identity') || p.includes('energy-forms-of-identity')) {
+		return ['particles', 'space'];
+	}
+	if (p.includes('ownership')) return ['ownership'];
+
+	if (p === '/blog' || p.startsWith('/blog/')) return ['framework'];
+	if (p === '/big-questions') return ['framework'];
+	if (p === '/' || p === '/identity-stem') return ['framework', 'time'];
+	if (p.startsWith('/skills/')) return ['method', 'framework'];
+
+	// Fallback: last path segment as potential page:* label
+	const last = p.split('/').filter(Boolean).pop();
+	return last ? [last] : ['framework'];
 }

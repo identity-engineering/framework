@@ -1,12 +1,31 @@
 ---
+/**
+ * Site chrome: header, page slot, automatic per-page GapsSection, footer.
+ * Gaps resolve via GitHub page:* labels from the current path (see lib/gaps.ts).
+ */
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import GapsSection from '../components/GapsSection.astro';
+import { resolveGapsPageSlugs } from '../lib/gaps';
 
 interface Props {
 	title: string;
+	/**
+	 * Per-page gaps control:
+	 * - omit: auto from URL → page:* labels
+	 * - string | string[]: force those slugs
+	 * - false: hide GapsSection (rare; /critical-gaps auto-hides)
+	 */
+	gaps?: string | string[] | false;
 }
 
-const { title } = Astro.props;
+const { title, gaps } = Astro.props;
+
+const gapsSlugs: string[] | null = (() => {
+	if (gaps === false) return null;
+	if (gaps !== undefined) return Array.isArray(gaps) ? gaps : [gaps];
+	return resolveGapsPageSlugs(Astro.url.pathname);
+})();
 ---
 
 <!doctype html>
@@ -23,6 +42,7 @@ const { title } = Astro.props;
 		<Header />
 		<div class="flex-1">
 			<slot />
+			{gapsSlugs && gapsSlugs.length > 0 && <GapsSection page={gapsSlugs} />}
 		</div>
 		<Footer />
 	</body>

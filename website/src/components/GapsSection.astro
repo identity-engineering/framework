@@ -1,0 +1,100 @@
+---
+/**
+ * Compact open gaps for a framework page (label:page:<slug>).
+ */
+import { fetchGapIssues, gapsForPage, publicGaps, PROPOSE_GAP_URL, GITHUB_ISSUES_URL } from '../lib/gaps';
+
+interface Props {
+	page: string;
+	title?: string;
+}
+
+const { page, title = 'Open gaps on this page' } = Astro.props;
+const all = publicGaps(await fetchGapIssues());
+const gaps = gapsForPage(all, page);
+---
+
+<section class="border-t border-white/10 px-6 py-16" data-gaps-page={page}>
+	<div class="mx-auto max-w-3xl">
+		<div class="mb-3 flex flex-wrap items-center justify-between gap-3">
+			<div class="text-xs uppercase tracking-[3px] text-white/40">{title}</div>
+			<a
+				href="/critical-gaps"
+				class="text-sm text-white/45 underline decoration-white/20 underline-offset-4 transition hover:text-white/70 hover:decoration-white/40"
+			>
+				All gaps →
+			</a>
+		</div>
+
+		{
+			gaps.length === 0 ? (
+				<p class="text-base leading-relaxed text-white/45">
+					No open gaps mapped to this page.
+					<a
+						href={PROPOSE_GAP_URL}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-white/60 underline decoration-white/20 underline-offset-4 transition hover:text-white/80"
+					>
+						Propose a gap
+					</a>
+				</p>
+			) : (
+				<ul class="space-y-4">
+					{
+						gaps.map((g) => (
+							<li class="rounded-xl border border-white/10 bg-white/[0.02] p-4">
+								<div class="mb-2 flex flex-wrap items-center gap-2">
+									{
+										g.priority && (
+											<span class="rounded-full border border-white/15 px-2 py-0.5 text-xs text-white/55">
+												{g.priority}
+											</span>
+										)
+									}
+									<span class="text-xs text-white/35">#{g.number}</span>
+								</div>
+								<a
+									href={g.htmlUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="text-base font-medium text-white/85 transition hover:text-white"
+								>
+									{g.title}
+								</a>
+								{
+									g.description && (
+										<p class="mt-2 line-clamp-2 text-sm leading-relaxed text-white/45">
+											{g.description}
+										</p>
+									)
+								}
+							</li>
+						))
+					}
+				</ul>
+			)
+		}
+
+		<p class="mt-6 text-sm text-white/40">
+			Gaps are public GitHub issues.
+			<a
+				href={PROPOSE_GAP_URL}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="underline decoration-white/20 underline-offset-4 transition hover:text-white/60"
+			>
+				Propose a gap
+			</a>
+			·
+			<a
+				href={`${GITHUB_ISSUES_URL}?q=is%3Aissue+label%3Agap`}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="underline decoration-white/20 underline-offset-4 transition hover:text-white/60"
+			>
+				On GitHub
+			</a>
+		</p>
+	</div>
+</section>

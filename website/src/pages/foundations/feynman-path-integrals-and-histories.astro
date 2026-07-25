@@ -1,0 +1,116 @@
+---
+/**
+ * Keep inline tags on one line with outer spaces (Astro whitespace).
+ * Never break before <em>/<strong>/<a> after a word.
+ */
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Richard Feynman: Path Integrals and Sum over Histories | Foundations | Identity Engineering">
+	<main class="min-h-screen">
+		<section class="border-b border-white/10 px-6 pt-28 pb-16">
+			<div class="mx-auto max-w-3xl">
+				<a href="/foundations" class="mb-6 inline-block text-sm text-white/40 transition hover:text-white/70">
+					← Foundations
+				</a>
+				<div class="text-sm uppercase tracking-[4px] text-white/40">Foundations · Richard Feynman</div>
+				<h1 class="mt-3 text-5xl font-bold tracking-tighter leading-[0.95] text-white md:text-6xl">
+					Path Integrals and Sum over Histories
+				</h1>
+				<p class="mt-6 max-w-2xl text-xl font-light leading-relaxed text-white/50">
+					The amplitude for a particle to go from one point to another is the sum over all possible paths, each weighted by the action. The deepest physical language for the Identity Stem as a selected Worldline among many possible trajectories.
+				</p>
+			</div>
+		</section>
+
+		<section class="px-6 py-16">
+			<div class="mx-auto max-w-3xl space-y-12 text-lg leading-relaxed text-white/55">
+				<div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-base leading-relaxed text-white/60">
+					<strong class="text-white/80">Reading protocol on this page:</strong> First Feynman in his own terms. Then inspirations for Identity Engineering. Then additions from Identity Engineering perspective. The purpose here is not to describe Feynman in his full being, but to distill the essential stance relevant to identity and learn from him within this framework. That is not a claim to devalue his work or to say it would be invalid when read on its own terms.
+				</div>
+
+				<div>
+					<div class="mb-3 text-sm uppercase tracking-[4px] text-white/40">1 · Space-Time Approach to Non-Relativistic Quantum Mechanics (1948)</div>
+					<p>
+						Richard Feynman (1918–1988) reformulated quantum mechanics so that the probability amplitude for a transition is obtained by summing contributions from every conceivable path connecting the initial and final configurations. Each path contributes a phase factor <em class="not-italic">e<sup>iS/ℏ</sup></em>, where <em class="not-italic">S</em> is the classical action of that path.
+					</p>
+					<p class="mt-4">
+						The formulation was published as <a href="https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.20.367" target="_blank" rel="noopener noreferrer" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50"><em class="not-italic">Space-Time Approach to Non-Relativistic Quantum Mechanics</em></a> (Reviews of Modern Physics, 1948). It recovers the Schrödinger equation in the continuum limit and makes the classical limit transparent: when actions are large compared with ℏ, neighboring paths interfere destructively except near the stationary-action path (the classical trajectory).
+					</p>
+					<p class="mt-4">
+						The same idea extends to quantum field theory (Feynman path integrals over field configurations) and remains one of the standard calculational and conceptual frameworks of modern physics.
+					</p>
+				</div>
+
+				<div>
+					<div class="mb-3 text-sm uppercase tracking-[4px] text-white/40">2 · Core apparatus (Feynman)</div>
+					<div class="mb-4 rounded-xl border border-white/10 bg-black/20 p-4 text-sm text-white/60">
+						<strong class="text-white/80">Core apparatus:</strong> sum over all possible paths / histories; each history weighted by a phase depending on its action; classical path recovered as the stationary-action contribution in the classical limit; path integral as both computational tool and conceptual picture of quantum dynamics.
+					</div>
+					<p>
+						Instead of evolving a wave function in time, one asks: given an initial point (or configuration), what is the amplitude to arrive at a final point? The answer is the coherent sum over every continuous history that connects them. The “real” classical trajectory is the one that survives the interference of the many nearby alternatives.
+					</p>
+				</div>
+
+				<div>
+					<div class="mb-3 text-sm uppercase tracking-[4px] text-white/40">3 · Relevance for Identity Engineering</div>
+					<div class="mb-4 rounded-xl border border-cyan-400/20 bg-cyan-400/[0.04] p-4 text-sm text-white/65">
+						<strong class="text-white/80">Inspiration from Feynman:</strong> a trajectory is not given a priori; it is selected (or weighted) among a space of possible histories. The classical Worldline is the stationary path that emerges from the interference / selection among many alternatives.
+					</div>
+					<div class="mb-4 rounded-xl border border-violet-400/20 bg-violet-400/[0.04] p-4 text-sm text-white/65">
+						<strong class="text-white/80">IE additions:</strong> the Identity Stem as a selected Worldline γ* among the set of possible trajectories Γ(x); State Differential + Vision Gradient as the two contributions that together define the effective “action” whose stationary path is the coherent identity trajectory; causal path entropy / future option value as a term that weights paths according to the freedom they leave open.
+					</div>
+					<ul class="space-y-4">
+						<li>
+							<strong class="text-white/80">Identity Stem as selected Worldline:</strong> The Time layer already formalizes the stem as the path γ* that maximizes a combination of future option value and identity-coherence (see the conceptual formula on the Time page). Feynman’s path-integral picture supplies the deeper physical intuition: identity is not a pre-existing line; it is the path that survives among many possible histories under the relevant weighting.
+						</li>
+						<li>
+							<strong class="text-white/80">Possible futures as the path measure:</strong> Causal Entropic Forces and the Vision Gradient can be read as contributions that weight paths according to the future freedom they preserve. Paths that close options too early receive lower weight; paths that keep high causal entropy remain competitive.
+						</li>
+						<li>
+							<strong class="text-white/80">Engineering consequence:</strong> Making the historical trajectory (State Differential) explicit is analogous to fixing the past boundary of the path integral. Sharpening the Vision Gradient is analogous to defining the weighting functional that selects among future continuations. The resulting stem is the effective classical path that emerges.
+						</li>
+						<li>
+							<strong class="text-white/80">Non-copyability:</strong> A static snapshot is one configuration. A coherent path integral over a unique history is far harder to forge, because the amplitude depends on the entire sequence of intermediate states and the actions associated with them.
+						</li>
+					</ul>
+					<p class="mt-6">
+						<strong class="text-white/80">Differentiation:</strong> Feynman supplies the sum-over-histories ontology. Identity Engineering uses that ontology to ground the Identity Stem as a selected Worldline rather than a static substance or a pure narrative. The mapping remains isomorphy work: the concrete weighting functional of identity dynamics is still under construction; the structural parallel (trajectory selected among many possible paths) is the working insight.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 bg-white/[0.015] px-6 py-16">
+			<div class="mx-auto max-w-3xl space-y-8 text-lg leading-relaxed text-white/55">
+				<div>
+					<div class="mb-2 text-sm uppercase tracking-[4px] text-white/40">Sources</div>
+					<ul class="space-y-2 text-base text-white/50">
+						<li>
+							Primary: R. P. Feynman, <a href="https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.20.367" target="_blank" rel="noopener noreferrer" class="text-white/70 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50"><em class="not-italic">Space-Time Approach to Non-Relativistic Quantum Mechanics</em></a>, Reviews of Modern Physics 20, 367 (1948).
+						</li>
+						<li>
+							Standard textbook presentations of the path-integral formulation in quantum mechanics and quantum field theory.
+						</li>
+					</ul>
+				</div>
+				<div>
+					<div class="mb-2 text-sm uppercase tracking-[4px] text-white/40">Related</div>
+					<p>
+						Feynman is the sum-over-histories root for the Identity Stem as a selected Worldline. See <a href="/framework/time" class="text-white/80 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Time (Identity Stem)</a>. For the geometric Worldline language see Einstein (once public). For the statistical-mechanical background of many micro-histories see Boltzmann (once public). For the future-freedom weighting see <a href="/foundations/wissner-gross-causal-entropic-forces" class="text-white/80 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Wissner-Gross</a>.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-14">
+			<div class="mx-auto flex max-w-3xl flex-col gap-4 text-sm sm:flex-row sm:items-center sm:justify-between">
+				<a href="/foundations" class="text-white/50 transition hover:text-white/80">← All foundations</a>
+				<div class="flex flex-wrap gap-x-6 gap-y-2">
+					<a href="/framework/time" class="text-white/50 underline decoration-white/20 underline-offset-4 transition hover:text-white/80 hover:decoration-white/40">Time</a>
+					<a href="/foundations/wissner-gross-causal-entropic-forces" class="text-white/50 underline decoration-white/20 underline-offset-4 transition hover:text-white/80 hover:decoration-white/40">Wissner-Gross</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>

@@ -13,6 +13,7 @@ We are building this as an **open, adoptable framework**. Contributions of all k
 ### 2. Critical Gaps (limitations)
 - Framework gaps are **public GitHub issues** labeled `gap`
 - Use the **Framework Gap** issue template
+- **Write issues in English** (title, body, resolution comments)
 - Rules and labels: [`docs/gaps-system/`](./docs/gaps-system/)
 - Philosophy: every gap is solvable (or explicitly accepted); nothing important stays hidden
 

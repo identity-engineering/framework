@@ -15,6 +15,13 @@ description: Public Critical Gaps system for Identity Engineering. Every gap is 
 
 Single source of truth = GitHub Issues. The website **displays** gaps; it does not store them as static content.
 
+## Language (mandatory)
+
+- **All gap issues are written in English** — title, body, and follow-up comments that document resolution.
+- Labels stay in the canonical English form (`gap`, `area:conceptual`, `page:time`, …).
+- Rationale: public international readership, one searchable corpus, consistent website embedding.
+- Private ideation may be German in Notion or chat; once a gap is filed on GitHub, switch to English.
+
 ## When to use this skill
 
 - Creating or updating a framework gap
@@ -108,7 +115,7 @@ Use GitHub **state** for solved vs open:
 
 ## Issue body structure
 
-Use the Gap issue template (`.github/ISSUE_TEMPLATE/gap.yml`). Minimum sections:
+Use the Gap issue template (`.github/ISSUE_TEMPLATE/gap.yml`). **English only.** Minimum sections:
 
 1. **Description** — what is missing or weak
 2. **Impact** — what breaks or loses credibility if unaddressed
@@ -116,7 +123,7 @@ Use the Gap issue template (`.github/ISSUE_TEMPLATE/gap.yml`). Minimum sections:
 4. **Related pages** — site paths or concepts (optional if `page:*` labels suffice)
 5. **Dual Mission** — human / substrate-free / both (optional if `scope:*` set)
 
-Title = short gap name (same style as former static gap titles).
+Title = short gap name in English.
 
 ## Website rules
 
@@ -150,10 +157,10 @@ Title = short gap name (same style as former static gap titles).
 ## Creating a new gap (agent or human)
 
 1. Check existing issues for `label:gap` duplicates
-2. Open issue with template + labels: `gap`, one `area:*`, one `priority:*`, relevant `page:*`, optional `type:big-gap`, optional `scope:*`, optional `status:*`
-3. Write Description / Impact / Mitigation
+2. Open issue **in English** with template + labels: `gap`, one `area:*`, one `priority:*`, relevant `page:*`, optional `type:big-gap`, optional `scope:*`, optional `status:*`
+3. Write Description / Impact / Mitigation in English
 4. Link related PRs or docs in comments as work proceeds
-5. Close the issue when the gap is resolved; summarize resolution in a final comment
+5. Close the issue when the gap is resolved; summarize resolution in a final English comment
 
 ## Migration
 

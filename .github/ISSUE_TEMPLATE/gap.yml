@@ -1,5 +1,5 @@
 name: Framework Gap
-description: Propose or document a critical gap or limitation in Identity Engineering
+description: Propose or document a critical gap or limitation in Identity Engineering (English only)
 title: "[Gap] "
 labels: ["gap"]
 body:
@@ -7,13 +7,14 @@ body:
     attributes:
       value: |
         Gaps are public and treated as solvable (or explicitly accepted limitations).
+        **Write the entire issue in English** (title, description, impact, mitigation).
         See `docs/gaps-system/SKILL.md` for labels and rules.
 
   - type: textarea
     id: description
     attributes:
       label: Description
-      description: What is missing, weak, or under-specified?
+      description: What is missing, weak, or under-specified? (English)
       placeholder: Clear statement of the gap…
     validations:
       required: true
@@ -22,7 +23,7 @@ body:
     id: impact
     attributes:
       label: Impact
-      description: What fails, loses credibility, or stays blocked if this gap remains?
+      description: What fails, loses credibility, or stays blocked if this gap remains? (English)
     validations:
       required: true
 
@@ -30,7 +31,7 @@ body:
     id: mitigation
     attributes:
       label: Mitigation / path forward
-      description: Concrete next steps, even if long-term. Partial paths are fine.
+      description: Concrete next steps, even if long-term. Partial paths are fine. (English)
     validations:
       required: true
 

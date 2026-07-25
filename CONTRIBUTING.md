@@ -10,16 +10,22 @@ We are building this as an **open, adoptable framework**. Contributions of all k
 - Open an issue with the label `feedback` or `idea`
 - Join the discussion on how to improve the framework
 
-### 2. Content & Documentation
+### 2. Critical Gaps (limitations)
+- Framework gaps are **public GitHub issues** labeled `gap`
+- Use the **Framework Gap** issue template
+- Rules and labels: [`docs/gaps-system/`](./docs/gaps-system/)
+- Philosophy: every gap is solvable (or explicitly accepted); nothing important stays hidden
+
+### 3. Content & Documentation
 - Improve explanations in `/content`
 - Add practical examples
 - Help with the mapping to existing theories (Wissner-Gross, Friston, etc.)
 
-### 3. Code & Website
+### 4. Code & Website
 - Work on the website in `/website`
 - Improve structure, performance, or accessibility
 
-### 4. Reporting Issues
+### 5. Reporting Issues
 Please use the issue templates when available.
 
 ## Development Setup

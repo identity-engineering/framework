@@ -6,6 +6,7 @@
 import Layout from '../../layouts/Layout.astro';
 import ConceptPageHero from '../../components/concepts/ConceptPageHero.astro';
 import ConceptPager from '../../components/concepts/ConceptPager.astro';
+import GapsSection from '../../components/GapsSection.astro';
 import { getConcept } from '../../lib/concepts';
 
 const c = getConcept('time');
@@ -283,6 +284,7 @@ const c = getConcept('time');
 			</div>
 		</section>
 
+		<GapsSection page="time" />
 		<ConceptPager id="time" />
 	</main>
 </Layout>

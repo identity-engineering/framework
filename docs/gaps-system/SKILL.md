@@ -17,7 +17,7 @@ Single source of truth = GitHub Issues. The website **displays** gaps; it does n
 
 ## Language (mandatory)
 
-- **All gap issues are written in English** — title, body, and follow-up comments that document resolution.
+- **All gap issues are written in English**: title, body, and follow-up comments that document resolution.
 - Labels stay in the canonical English form (`gap`, `area:conceptual`, `page:time`, …).
 - Rationale: public international readership, one searchable corpus, consistent website embedding.
 - Private ideation may be German in Notion or chat; once a gap is filed on GitHub, switch to English.
@@ -117,11 +117,11 @@ Use GitHub **state** for solved vs open:
 
 Use the Gap issue template (`.github/ISSUE_TEMPLATE/gap.yml`). **English only.** Minimum sections:
 
-1. **Description** — what is missing or weak
-2. **Impact** — what breaks or loses credibility if unaddressed
-3. **Mitigation / path** — concrete next moves (even if long-term)
-4. **Related pages** — site paths or concepts (optional if `page:*` labels suffice)
-5. **Dual Mission** — human / substrate-free / both (optional if `scope:*` set)
+1. **Description**: what is missing or weak
+2. **Impact**: what breaks or loses credibility if unaddressed
+3. **Mitigation / path**: concrete next moves (even if long-term)
+4. **Related pages**: site paths or concepts (optional if `page:*` labels suffice)
+5. **Dual Mission**: human / substrate-free / both (optional if `scope:*` set)
 
 Title = short gap name in English.
 

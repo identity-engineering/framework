@@ -2,7 +2,7 @@
 
 Thank you for your interest in contributing to Identity Engineering!
 
-We are building this as an **open, adoptable framework**. Contributions of all kinds are welcome — from feedback and ideas to content, examples, and code.
+We are building this as an **open, adoptable framework**. Contributions of all kinds are welcome  -  from feedback and ideas to content, examples, and code.
 
 ## How to Contribute
 

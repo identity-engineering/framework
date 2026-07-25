@@ -8,12 +8,12 @@ Replace the hardcoded gap list in `website/src/pages/critical-gaps.astro` with l
 
 ## Principles
 
-1. **Content parity first** — every current static gap becomes an issue before the page goes live on issues-only data.
-2. **Labels before UI** — taxonomy and template exist before bulk creation.
-3. **No sub-issues** — use `type:big-gap` for major themes; link related issues in the body.
-4. **One-way cutover** — after verification, remove static gap arrays from the Astro page.
+1. **Content parity first**: every current static gap becomes an issue before the page goes live on issues-only data.
+2. **Labels before UI**: taxonomy and template exist before bulk creation.
+3. **No sub-issues**: use `type:big-gap` for major themes; link related issues in the body.
+4. **One-way cutover**: after verification, remove static gap arrays from the Astro page.
 
-## Phase 0 — Prep (this PR)
+## Phase 0: Prep (this PR)
 
 - [x] Document system in `docs/gaps-system/SKILL.md`
 - [x] Canonical labels in `docs/gaps-system/LABELS.md`
@@ -22,13 +22,13 @@ Replace the hardcoded gap list in `website/src/pages/critical-gaps.astro` with l
 - [ ] Create all labels in the GitHub repo UI (or API)
 - [ ] Confirm CONTRIBUTING.md points to gap template
 
-## Phase 1 — Create labels in GitHub
+## Phase 1: Create labels in GitHub
 
 Create every label listed in `LABELS.md`.
 
 Suggested order: `gap` → areas → priorities → statuses → types → scopes → pages.
 
-## Phase 2 — Map static gaps → issues
+## Phase 2: Map static gaps → issues
 
 Source: `website/src/pages/critical-gaps.astro` (groups array).
 
@@ -79,7 +79,7 @@ Mark thematic, high-impact items as `type:big-gap`. Initial candidates:
 | Ownership definition | `page:ownership`, `page:time`, `page:framework` |
 | Physics metaphors / isomorphism | `page:framework`, `page:foundations` |
 | Formalization / force-object mismatch | `page:time`, `page:framework` |
-| Probes / method maturity | `page:method`, `page:practical` if exists — use `page:method` |
+| Probes / method maturity | `page:method`, `page:practical` if exists: use `page:method` |
 | Embodiment | `page:framework`, `page:foundations` |
 | Relational / collective | `page:gravitation`, `page:framework` |
 | Wissner-Gross dependency | `page:foundations`, `page:framework` |
@@ -90,7 +90,7 @@ Refine page labels when per-page sections ship.
 
 Default `scope:dual` unless clearly human-only or substrate-only.
 
-## Phase 3 — Inventory checklist
+## Phase 3: Inventory checklist
 
 After creation, verify:
 
@@ -102,7 +102,7 @@ After creation, verify:
 
 Export a simple table (issue number → old title) into a comment on a tracking issue titled `chore: gaps migration tracker` with labels `gap` + `page:critical-gaps` + `status:managed`.
 
-## Phase 4 — Website fetch layer
+## Phase 4: Website fetch layer
 
 1. Add a small module to list issues by label (GitHub REST Search or list issues).
 2. Rebuild `/critical-gaps` to render from issues (open by default; filters client or server side).
@@ -112,14 +112,14 @@ Export a simple table (issue number → old title) into a comment on a tracking 
 
 Keep static content as fallback behind a flag until Phase 5.
 
-## Phase 5 — Cutover
+## Phase 5: Cutover
 
 1. Compare side-by-side static vs live for one release candidate.
 2. Remove `groups` array and static gap UI from `critical-gaps.astro`.
 3. Document in CHANGELOG / site note: "Critical Gaps are now tracked as GitHub issues."
 4. Close the migration tracker issue with a summary.
 
-## Phase 6 — Hygiene (ongoing)
+## Phase 6: Hygiene (ongoing)
 
 - New gaps only via template
 - Close issues when resolved; short resolution comment required

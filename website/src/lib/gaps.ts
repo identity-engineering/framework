@@ -1,5 +1,5 @@
 /**
- * Critical Gaps — live from GitHub issues (label:gap).
+ * Critical Gaps: live from GitHub issues (label:gap).
  * Build-time fetch; public repo, no token required for read.
  * See docs/gaps-system/SKILL.md
  */
@@ -58,13 +58,40 @@ function pickAllPrefixed(names: string[], prefix: string): string[] {
 	return names.filter((n) => n.startsWith(prefix)).map((n) => n.slice(prefix.length));
 }
 
+/**
+ * Extract a markdown section. Supports ## and ### (GitHub issue forms use ###).
+ */
 function section(body: string, heading: string): string {
+	const escaped = heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 	const re = new RegExp(
-		`##\\s+${heading}\\s*\\n([\\s\\S]*?)(?=\\n##\\s+|$)`,
+		`#{2,6}\\s+${escaped}\\s*\\n([\\s\\S]*?)(?=\\n#{2,6}\\s+|$)`,
 		'i',
 	);
 	const m = body.match(re);
 	return m ? m[1].trim() : '';
+}
+
+/** Strip light markdown so issue bodies do not leak `**bold**` into public HTML. */
+function plainText(md: string): string {
+	return md
+		.replace(/\*\*([^*]+)\*\*/g, '$1')
+		.replace(/(^|[^*])\*([^*]+)\*(?!\*)/g, '$1$2')
+		.replace(/`([^`]+)`/g, '$1')
+		.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+		.replace(/\s+/g, ' ')
+		.trim();
+}
+
+/** First paragraph or short lead for card previews when sections are missing. */
+function leadSnippet(body: string, max = 280): string {
+	const text = body
+		.replace(/^#{1,6}\s+.*$/gm, '')
+		.replace(/\r\n/g, '\n')
+		.trim();
+	const para = text.split(/\n\s*\n/)[0] ?? text;
+	const flat = plainText(para);
+	if (flat.length <= max) return flat;
+	return flat.slice(0, max - 1).trimEnd() + '…';
 }
 
 function normalizeIssue(raw: GhIssue): GapIssue | null {
@@ -73,15 +100,18 @@ function normalizeIssue(raw: GhIssue): GapIssue | null {
 	if (!names.includes('gap')) return null;
 
 	const body = raw.body ?? '';
+	const description = plainText(section(body, 'Description') || leadSnippet(body));
 	return {
 		number: raw.number,
-		title: raw.title.replace(/^\\[Gap\\]\\s*/i, ''),
+		title: raw.title.replace(/^\[Gap\]\s*/i, ''),
 		htmlUrl: raw.html_url,
 		state: raw.state === 'closed' ? 'closed' : 'open',
 		body,
-		description: section(body, 'Description') || body.slice(0, 280),
-		impact: section(body, 'Impact'),
-		mitigation: section(body, 'Mitigation / path forward') || section(body, 'Mitigation'),
+		description,
+		impact: plainText(section(body, 'Impact')),
+		mitigation: plainText(
+			section(body, 'Mitigation / path forward') || section(body, 'Mitigation'),
+		),
 		labels: names,
 		area: pickPrefixed(names, 'area:'),
 		priority: pickPrefixed(names, 'priority:'),
@@ -145,11 +175,10 @@ export function openGaps(gaps: GapIssue[]): GapIssue[] {
 	return gaps.filter((g) => g.state === 'open');
 }
 
-/** Exclude migration tracker and pure chore issues from public lists if desired */
+/**
+ * Public website lists: exclude chore / internal tracker issues.
+ * Title prefix "chore:" is the stable filter (no hard-coded issue numbers).
+ */
 export function publicGaps(gaps: GapIssue[]): GapIssue[] {
-	return gaps.filter(
-		(g) =>
-			!g.title.toLowerCase().startsWith('chore:') &&
-			g.number !== 43,
-	);
+	return gaps.filter((g) => !g.title.toLowerCase().startsWith('chore:'));
 }

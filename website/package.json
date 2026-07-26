@@ -28,5 +28,9 @@
   "devDependencies": {
     "@astrojs/tailwind": "^6.0.2",
     "tailwindcss": "^3.4.10"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "fsevents@2.3.3": true
   }
 }

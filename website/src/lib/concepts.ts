@@ -1,8 +1,10 @@
 /**
- * Official Framework structure (Notion Core Concepts, 2026-07-18).
- * Single Identity → Interactive Identity.
+ * Official Framework structure (Notion Core Concepts, 2026-07-18),
+ * extended with Space as working foundational layer (2026-07-25).
+ * Single Identity → Interactive Identity → Collective Identity.
  */
 export type ConceptScene =
+	| 'space'
 	| 'stem'
 	| 'mass'
 	| 'curvature'
@@ -14,6 +16,7 @@ export type ConceptScene =
 	| 'probes';
 
 export type ConceptId =
+	| 'space'
 	| 'time'
 	| 'mass'
 	| 'curvature'
@@ -39,6 +42,20 @@ export interface ConceptMeta {
 }
 
 export const concepts: ConceptMeta[] = [
+	{
+		id: 'space',
+		slug: 'space',
+		href: '/framework/space',
+		title: 'Space',
+		shortTitle: 'Space',
+		layer: 'single',
+		layerLabel: 'Single Identity',
+		tag: 'Foundational',
+		scene: 'space',
+		blurb:
+			'Relational order of relative positions. The arena in which degrees of freedom are born, before Time draws the Stem.',
+		scrollHint: 'Scroll: dots appear; relative distances become visible.',
+	},
 	{
 		id: 'time',
 		slug: 'time',

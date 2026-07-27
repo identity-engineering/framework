@@ -1,0 +1,162 @@
+---
+/**
+ * Space — working definition of the foundational relational layer.
+ * Hierarchy proposal: Space → Particles → Time → Mass.
+ * Formal metric still open (Critical Gap #44).
+ */
+import Layout from '../../layouts/Layout.astro';
+import ConceptPageHero from '../../components/concepts/ConceptPageHero.astro';
+import ConceptPager from '../../components/concepts/ConceptPager.astro';
+import { getConcept } from '../../lib/concepts';
+
+const c = getConcept('space');
+---
+
+<Layout title={`${c.title} | Identity Engineering`}>
+	<main class="min-h-screen">
+		<ConceptPageHero
+			scene={c.scene}
+			tag={`${c.tag} · ${c.layerLabel}`}
+			title={c.title}
+			lede={c.blurb}
+			scrollHint={c.scrollHint}
+		/>
+
+		<section class="border-t border-white/10 px-6 py-16">
+			<div class="mx-auto max-w-3xl">
+				<div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-base leading-relaxed text-white/60">
+					<strong class="text-white/80">Status:</strong> Working definition. Space is entering the public Framework as the proposed foundational layer.
+					Dimensionality and metric remain open work
+					(<a
+						href="https://github.com/identity-engineering/framework/issues/44"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50"
+					>Critical Gap #44</a>).
+					Physics supplies structural isomorphies, not settled identity laws.
+				</div>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl space-y-8 text-lg leading-relaxed text-white/55">
+				<div class="mb-2 text-sm uppercase tracking-[4px] text-white/40">Definition</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					The order of relative positions
+				</h2>
+				<p>
+					<strong class="text-white/80">Space</strong> is the order of possible relative positions: the relational arena in which fundamental degrees of freedom are born.
+					In the relational tradition (<a
+						href="/foundations/leibniz-relational-space"
+						class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50"
+					>Leibniz</a>), space is not a container and not a substance.
+					It is the system of relations, above all relative distances, that can hold between entities.
+				</p>
+				<p>
+					With Space the first freedoms appear: freedom with respect to position and relative distance.
+					Constraints and forces later reduce those freedoms and produce bound states.
+					But the freedom itself is born with Space.
+				</p>
+				<p>
+					This is why Space sits before Time in the proposed hierarchy.
+					At a single moment the Identity Stem is not yet a line. It is an arrangement of bound degrees of freedom.
+					Only motion through succession turns those dots into worldlines, and the bundle of worldlines into the Stem.
+				</p>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 bg-white/[0.02] px-6 py-24">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-6 text-sm uppercase tracking-[4px] text-white/40">Hierarchy</div>
+				<h2 class="mb-8 text-3xl font-bold text-white md:text-4xl">Space → Particles → Time → Mass</h2>
+				<ol class="space-y-6 text-lg text-white/55 list-decimal list-inside">
+					<li>
+						<strong class="text-white/85">Space:</strong> order of relative positions; birth of degrees of freedom.
+					</li>
+					<li>
+						<strong class="text-white/85">Particles:</strong> bound configurations under Strong Binding and Charge (see <a href="/blog/particles-of-identity" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Particles of Identity</a>).
+					</li>
+					<li>
+						<strong class="text-white/85">Time:</strong> motion of bound configurations; each traces a worldline; the bundle is the Identity Stem.
+					</li>
+					<li>
+						<strong class="text-white/85">Mass:</strong> densification of stake around the already moving Stem.
+					</li>
+				</ol>
+				<p class="mt-8 text-lg leading-relaxed text-white/55">
+					This order is a pedagogical and engineering order of primitives.
+					It is not a denial of spacetime physics. See also the open anchor work on Einstein / spacetime
+					(<a
+						href="https://github.com/identity-engineering/framework/issues/49"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50"
+					>Gap #49</a>).
+				</p>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-6 text-sm uppercase tracking-[4px] text-white/40">Engineering</div>
+				<h2 class="mb-8 text-3xl font-bold text-white md:text-4xl">What we work on</h2>
+				<ul class="space-y-6 text-lg text-white/55">
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Degrees of freedom:</strong> which relative positions and distances are still free, and which are already constrained.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Relational arena:</strong> identity aspects exist in relation, not in an empty absolute container.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Binding readiness:</strong> Space is the condition for Particles. Without relative position, Strong Binding and Charge have nothing to act on.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Ownership link:</strong> Ownership as relative Access and Jurisdiction is a profile of degrees of freedom with respect to a configuration. Space is the geometric base of that profile.
+					</li>
+				</ul>
+
+				<div class="mt-10 rounded-2xl border border-white/10 bg-black/30 p-6">
+					<div class="text-sm uppercase tracking-[3px] text-white/40 mb-3">Quick self-check</div>
+					<ul class="space-y-3 text-white/60 leading-relaxed">
+						<li>Which dimensions of my current arrangement still feel free to move?</li>
+						<li>Which relative distances are fixed by habit, jurisdiction, or fear?</li>
+						<li>Where is the configuration too rigid, or too diffuse to hold a Stem?</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 bg-white/[0.02] px-6 py-24">
+			<div class="mx-auto max-w-3xl text-lg leading-relaxed text-white/55">
+				<p>
+					Space alone does not define identity. It is the arena.
+					Particles bind inside it. Time draws the Stem. Mass densifies stake around that motion.
+					Curvature then warps what looks near or far inside the possibility field that sits on this geometry.
+				</p>
+				<p class="mt-6">
+					Open formal work:
+					<a
+						href="https://github.com/identity-engineering/framework/issues/44"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50"
+					>metric and dimensionality (#44)</a>,
+					<a
+						href="https://github.com/identity-engineering/framework/issues/45"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50"
+					>Space vs Possibility Space (#45)</a>,
+					<a
+						href="https://github.com/identity-engineering/framework/issues/47"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50"
+					>Space probes (#47)</a>.
+				</p>
+			</div>
+		</section>
+
+		<ConceptPager id="space" />
+	</main>
+</Layout>

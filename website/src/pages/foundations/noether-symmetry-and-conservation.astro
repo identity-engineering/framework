@@ -1,0 +1,117 @@
+---
+/**
+ * Keep inline tags on one line with outer spaces (Astro whitespace).
+ * Never break before <em>/<strong>/<a> after a word.
+ */
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Emmy Noether: Symmetry and Conservation Laws | Foundations | Identity Engineering">
+	<main class="min-h-screen">
+		<section class="border-b border-white/10 px-6 pt-28 pb-16">
+			<div class="mx-auto max-w-3xl">
+				<a href="/foundations" class="mb-6 inline-block text-sm text-white/40 transition hover:text-white/70">
+					← Foundations
+				</a>
+				<div class="text-sm uppercase tracking-[4px] text-white/40">Foundations · Emmy Noether</div>
+				<h1 class="mt-3 text-5xl font-bold tracking-tighter leading-[0.95] text-white md:text-6xl">
+					Symmetry and Conservation Laws
+				</h1>
+				<p class="mt-6 max-w-2xl text-xl font-light leading-relaxed text-white/50">
+					The deep link between continuous symmetries and conserved quantities: the mathematical root that turns Rotation, Mass and Stem-invariants from descriptions into consequences of symmetry.
+				</p>
+			</div>
+		</section>
+
+		<section class="px-6 py-16">
+			<div class="mx-auto max-w-3xl space-y-12 text-lg leading-relaxed text-white/55">
+				<div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-base leading-relaxed text-white/60">
+					<strong class="text-white/80">Reading protocol on this page:</strong> First Noether in her own terms. Then inspirations for Identity Engineering. Then additions from Identity Engineering perspective. The purpose here is not to describe Noether in her full being, but to distill the essential stance relevant to identity and learn from her within this framework. That is not a claim to devalue her work or to say it would be invalid when read on its own terms.
+				</div>
+
+				<div>
+					<div class="mb-3 text-sm uppercase tracking-[4px] text-white/40">1 · Invariant Variational Problems (1918)</div>
+					<p>
+						Emmy Noether (1882–1935) proved in 1918 that every continuous symmetry of the action of a physical system corresponds to a conservation law. The paper <a href="https://arxiv.org/abs/physics/0503066" target="_blank" rel="noopener noreferrer" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50"><em class="not-italic">Invariant Variational Problems</em></a> (Göttingische Nachrichten, 1918; Tavel translation) contains two theorems. The first links global continuous symmetries to conserved currents. The second addresses local (gauge) symmetries and their more subtle consequences for conservation.
+					</p>
+					<p class="mt-4">
+						The result was motivated by the energy problem in general relativity and by Hilbert’s request, but its scope is universal: any differentiable symmetry of the Lagrangian yields a conserved quantity. Time-translation symmetry yields energy conservation; spatial translation yields momentum conservation; rotational symmetry yields angular-momentum conservation.
+					</p>
+					<p class="mt-4">
+						English translations of the 1918 paper exist (notably Tavel’s). The theorems remain a cornerstone of theoretical physics and of the modern understanding of what makes a physical quantity "fundamental".
+					</p>
+				</div>
+
+				<div>
+					<div class="mb-3 text-sm uppercase tracking-[4px] text-white/40">2 · Core apparatus (Noether)</div>
+					<div class="mb-4 rounded-xl border border-white/10 bg-black/20 p-4 text-sm text-white/60">
+						<strong class="text-white/80">Core apparatus:</strong> continuous (differentiable) symmetries of the action; one-to-one correspondence with conserved currents / quantities; global vs local symmetries; angular momentum as the conserved quantity associated with rotational invariance; energy as the conserved quantity associated with time-translation invariance.
+					</div>
+					<p>
+						Noether’s insight reverses the usual pedagogical order. One does not first postulate conservation laws and then look for symmetries. The symmetries of the dynamical law are primary; the conservation laws are their necessary consequence.
+					</p>
+				</div>
+
+				<div>
+					<div class="mb-3 text-sm uppercase tracking-[4px] text-white/40">3 · Relevance for Identity Engineering</div>
+					<div class="mb-4 rounded-xl border border-cyan-400/20 bg-cyan-400/[0.04] p-4 text-sm text-white/65">
+						<strong class="text-white/80">Inspiration from Noether:</strong> conserved quantities are not arbitrary; they arise from symmetries of the underlying dynamics. Angular momentum (Rotation) and other Stem-invariants can be understood as consequences of symmetry rather than as free parameters.
+					</div>
+					<div class="mb-4 rounded-xl border border-violet-400/20 bg-violet-400/[0.04] p-4 text-sm text-white/65">
+						<strong class="text-white/80">IE additions:</strong> Rotation as the conserved angular-momentum analogue of the Identity Stem; Stem-coherence as a candidate symmetry whose associated conserved quantity is recognizability / authorship continuity; Ownership and relative Jurisdiction as possible further invariants under transformations of the identity geometry.
+					</div>
+					<ul class="space-y-4">
+						<li>
+							<strong class="text-white/80">Rotation / angular momentum:</strong> In physics, rotational invariance of the dynamics yields conservation of angular momentum. In Identity Engineering the gyroscopic stability of the Stem is the corresponding phenomenon: coherent spin around the axis resists external torque. See <a href="/framework/rotation" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Rotation</a>.
+						</li>
+						<li>
+							<strong class="text-white/80">Symmetry of the Stem:</strong> If the dynamics that generate the Identity Stem are invariant under certain transformations (e.g. re-parametrizations of the trajectory that preserve State Differential + Vision Gradient alignment), then quantities associated with those symmetries become conserved. Recognizability and authorship continuity become candidates for such conserved quantities.
+						</li>
+						<li>
+							<strong class="text-white/80">Engineering consequence:</strong> Instead of treating Rotation or Mass as free design parameters, one can ask which symmetries of the identity dynamics one wishes to protect. The corresponding conservation laws then become the invariants that the engineering practice must maintain under stress.
+						</li>
+						<li>
+							<strong class="text-white/80">Ownership and relative Jurisdiction:</strong> Later layers (Ownership as relative degrees of freedom) may also be read through a Noether lens: what remains invariant under changes of access or substrate. This remains a working direction, not a settled claim.
+						</li>
+					</ul>
+					<p class="mt-6">
+						<strong class="text-white/80">Differentiation:</strong> Noether supplies the meta-principle that turns conserved quantities into consequences of symmetry. Identity Engineering uses that principle to ground Rotation and Stem-invariants, while remaining explicit that the mapping is isomorphy work. The concrete symmetries of identity dynamics are still under construction; the theorem itself is the structural warrant that such invariants are not arbitrary.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 bg-white/[0.015] px-6 py-16">
+			<div class="mx-auto max-w-3xl space-y-8 text-lg leading-relaxed text-white/55">
+				<div>
+					<div class="mb-2 text-sm uppercase tracking-[4px] text-white/40">Sources</div>
+					<ul class="space-y-2 text-base text-white/50">
+						<li>
+							Primary: Emmy Noether, <a href="https://arxiv.org/abs/physics/0503066" target="_blank" rel="noopener noreferrer" class="text-white/70 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50"><em class="not-italic">Invariant Variational Problems</em></a> (1918), English translation by M. A. Tavel, via arXiv.
+						</li>
+						<li>
+							Overview: <a href="https://plato.stanford.edu/entries/symmetry-breaking/" target="_blank" rel="noopener noreferrer" class="text-white/70 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">SEP: Symmetry and Symmetry Breaking</a>.
+						</li>
+					</ul>
+				</div>
+				<div>
+					<div class="mb-2 text-sm uppercase tracking-[4px] text-white/40">Related</div>
+					<p>
+						Noether is the structural root for the conserved character of Rotation and for the idea that Stem-invariants arise from symmetries rather than from stipulation. See <a href="/framework/rotation" class="text-white/80 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Rotation</a>, <a href="/framework/time" class="text-white/80 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Time (Identity Stem)</a> and <a href="/framework/mass" class="text-white/80 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Mass</a>. For the geometric side of the same layer see <a href="/foundations/einstein-relativity-spacetime-geometry" class="text-white/80 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Einstein</a> (once public).
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-14">
+			<div class="mx-auto flex max-w-3xl flex-col gap-4 text-sm sm:flex-row sm:items-center sm:justify-between">
+				<a href="/foundations" class="text-white/50 transition hover:text-white/80">← All foundations</a>
+				<div class="flex flex-wrap gap-x-6 gap-y-2">
+					<a href="/framework/rotation" class="text-white/50 underline decoration-white/20 underline-offset-4 transition hover:text-white/80 hover:decoration-white/40">Rotation</a>
+					<a href="/framework/time" class="text-white/50 underline decoration-white/20 underline-offset-4 transition hover:text-white/80 hover:decoration-white/40">Time</a>
+					<a href="/framework/mass" class="text-white/50 underline decoration-white/20 underline-offset-4 transition hover:text-white/80 hover:decoration-white/40">Mass</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>

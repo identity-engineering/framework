@@ -1,0 +1,195 @@
+---
+/**
+ * Per-page open gaps (exactly one page:* label for this URL).
+ * Preview: last 3 · More: +10 · Show all → /critical-gaps?page=<slug>
+ * Keep inline tags on one line with outer spaces (Astro whitespace).
+ */
+import {
+	fetchGapIssues,
+	gapsForPage,
+	publicGaps,
+	resolveGapsPageSlug,
+	gapsCatalogueHref,
+	PROPOSE_GAP_URL,
+	GITHUB_ISSUES_URL,
+} from '../lib/gaps';
+
+interface Props {
+	/** Unique page:* slug. Omit to derive from the current path. */
+	page?: string;
+	title?: string;
+}
+
+const INITIAL = 3;
+const MORE_STEP = 10;
+
+const { page: pageProp, title = 'Open gaps on this page' } = Astro.props;
+const pageSlug = pageProp ?? resolveGapsPageSlug(Astro.url.pathname);
+
+const all = publicGaps(await fetchGapIssues());
+const gaps = pageSlug ? gapsForPage(all, pageSlug) : [];
+const catalogueHref = pageSlug ? gapsCatalogueHref(pageSlug) : '/critical-gaps';
+---
+
+{
+	pageSlug && (
+		<section
+			class="border-t border-white/10 px-6 py-16"
+			data-gaps-page={pageSlug}
+			data-gaps-initial={INITIAL}
+			data-gaps-step={MORE_STEP}
+		>
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-3 flex flex-wrap items-center justify-between gap-3">
+					<div>
+						<div class="text-xs uppercase tracking-[3px] text-white/40">{title}</div>
+						<div class="mt-1 text-xs text-white/30">
+							page:{pageSlug}
+							{gaps.length > 0 && (
+								<span class="text-white/25"> · {gaps.length} open</span>
+							)}
+						</div>
+					</div>
+					<a
+						href={catalogueHref}
+						class="text-sm text-white/45 underline decoration-white/20 underline-offset-4 transition hover:text-white/70 hover:decoration-white/40"
+					>
+						All gaps for this page →
+					</a>
+				</div>
+
+				{
+					gaps.length === 0 ? (
+						<p class="text-base leading-relaxed text-white/45">
+							No open gaps with label <code class="text-white/55">page:{pageSlug}</code> yet. Issues relevant here need that exact label (add more <code class="text-white/55">page:*</code> labels if the gap spans several pages).
+							<a
+								href={PROPOSE_GAP_URL}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="text-white/60 underline decoration-white/20 underline-offset-4 transition hover:text-white/80"
+							>
+								Propose a gap
+							</a>
+						</p>
+					) : (
+						<>
+							<ul class="space-y-4" data-gaps-list>
+								{
+									gaps.map((g, i) => (
+										<li
+											class="gap-preview-item rounded-xl border border-white/10 bg-white/[0.02] p-4"
+											data-gap-index={i}
+											hidden={i >= INITIAL}
+										>
+											<div class="mb-2 flex flex-wrap items-center gap-2">
+												{
+													g.priority && (
+														<span class="rounded-full border border-white/15 px-2 py-0.5 text-xs text-white/55">
+															{g.priority}
+														</span>
+													)
+												}
+												<span class="text-xs text-white/35">#{g.number}</span>
+											</div>
+											<a
+												href={g.htmlUrl}
+												target="_blank"
+												rel="noopener noreferrer"
+												class="text-base font-medium text-white/85 transition hover:text-white"
+											>
+												{g.title}
+											</a>
+											{
+												g.description && (
+													<p class="mt-2 line-clamp-2 text-sm leading-relaxed text-white/45">
+														{g.description}
+													</p>
+												)
+											}
+										</li>
+									))
+								}
+							</ul>
+
+							<div class="mt-6 flex flex-wrap items-center gap-3" data-gaps-actions>
+								{
+									gaps.length > INITIAL && (
+										<button
+											type="button"
+											data-gaps-more
+											class="rounded-full border border-white/20 px-4 py-2 text-sm text-white/75 transition hover:border-white/35 hover:bg-white/5 hover:text-white"
+										>
+											More (+{Math.min(MORE_STEP, gaps.length - INITIAL)})
+										</button>
+									)
+								}
+								<a
+									href={catalogueHref}
+									class="rounded-full border border-white/15 px-4 py-2 text-sm text-white/60 transition hover:border-white/30 hover:text-white/85"
+								>
+									Show all on Gaps page
+								</a>
+							</div>
+						</>
+					)
+				}
+
+				<p class="mt-6 text-sm text-white/40">
+					Gaps are public GitHub issues.
+					<a
+						href={PROPOSE_GAP_URL}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="underline decoration-white/20 underline-offset-4 transition hover:text-white/60"
+					>
+						Propose a gap
+					</a>
+					{' · '}
+					<a
+						href={`${GITHUB_ISSUES_URL}?q=is%3Aissue+label%3Agap+label%3Apage%3A${encodeURIComponent(pageSlug)}`}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="underline decoration-white/20 underline-offset-4 transition hover:text-white/60"
+					>
+						On GitHub
+					</a>
+				</p>
+			</div>
+		</section>
+	)
+}
+
+<script>
+	function initGapsPreview(root: HTMLElement) {
+		const initial = Number(root.dataset.gapsInitial ?? 3);
+		const step = Number(root.dataset.gapsStep ?? 10);
+		const items = Array.from(root.querySelectorAll<HTMLElement>('.gap-preview-item'));
+		const moreBtn = root.querySelector<HTMLButtonElement>('[data-gaps-more]');
+		if (!moreBtn || items.length <= initial) return;
+
+		let visible = initial;
+
+		function render() {
+			items.forEach((el, i) => {
+				el.hidden = i >= visible;
+			});
+			const remaining = items.length - visible;
+			if (remaining <= 0) {
+				moreBtn!.hidden = true;
+				return;
+			}
+			moreBtn!.hidden = false;
+			const n = Math.min(step, remaining);
+			moreBtn!.textContent = `More (+${n})`;
+		}
+
+		moreBtn.addEventListener('click', () => {
+			visible = Math.min(items.length, visible + step);
+			render();
+		});
+
+		render();
+	}
+
+	document.querySelectorAll<HTMLElement>('[data-gaps-page]').forEach(initGapsPreview);
+</script>

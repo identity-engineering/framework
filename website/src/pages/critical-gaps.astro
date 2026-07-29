@@ -1,247 +1,63 @@
 ---
 /**
- * Public Critical Gaps & Limitations: scientific transparency.
- * Content from feat/critical-gaps (July 2026), aligned with Dual Mission + current site.
+ * Critical Gaps: live from GitHub issues (label:gap).
+ * Filters: professional dropdowns + URL query (?page=&priority=&area=&status=&type=&state=)
+ * See docs/gaps-system/SKILL.md
  * Keep inline tags on one line with outer spaces (Astro whitespace).
  */
 import Layout from '../layouts/Layout.astro';
+import {
+	fetchGapIssues,
+	publicGaps,
+	openGaps,
+	PROPOSE_GAP_URL,
+	GITHUB_ISSUES_URL,
+	type GapIssue,
+} from '../lib/gaps';
 
-type StatusTone = 'open' | 'active' | 'high' | 'medium' | 'accepted' | 'future' | 'managed';
+const all = publicGaps(await fetchGapIssues());
+const open = openGaps(all);
+const closed = all.filter((g) => g.state === 'closed');
 
-interface Gap {
-	title: string;
-	description: string;
-	impact: string;
-	status: string;
-	tone: StatusTone;
-	mitigation: string;
-}
-
-interface GapGroup {
-	id: string;
-	label: string;
-	title: string;
-	gaps: Gap[];
-}
-
-const statusClass: Record<StatusTone, string> = {
-	open: 'border-white/20 bg-white/5 text-white/70',
-	active: 'border-violet-400/30 bg-violet-400/10 text-violet-200/90',
-	high: 'border-cyan-400/30 bg-cyan-400/10 text-cyan-200/90',
-	medium: 'border-white/15 bg-white/[0.04] text-white/60',
-	accepted: 'border-white/10 bg-white/[0.03] text-white/50',
-	future: 'border-white/10 bg-white/[0.03] text-white/45',
-	managed: 'border-white/15 bg-white/[0.04] text-white/55',
-};
-
-const groups: GapGroup[] = [
-	{
-		id: 'conceptual',
-		label: '01 · Conceptual',
-		title: 'Conceptual & ontological',
-		gaps: [
-			{
-				title: 'Category error via physics metaphors',
-				description:
-					'Transfer of terms such as Mass, Curvature, Gravitation, Rotation, Worldline without clear isomorphism or methodological bridge to actual physics. Risk of physics envy or rhetorical overclaim.',
-				impact: 'Loss of credibility with physicists, philosophers of science, and analytic philosophers.',
-				status: 'Open · Active Review',
-				tone: 'active',
-				mitigation:
-					'Clarify analogy vs isomorphism in Core Concepts and Positioning. Mark formulas as inspirational formalization until rigorous derivations exist. Dual Mission makes rigorous isomorphism the central long-term task.',
-			},
-			{
-				title: 'Reductionism (embodiment, affect, sociality, narrativity)',
-				description:
-					'Identity is strongly reduced to a geometric trajectory (State Differential + Vision Gradient). Bodily, unconscious, socially constituted, and narrative/emotional dimensions remain under-illuminated.',
-				impact: 'Can feel cold or alienating in trauma or crisis. Weak connection to established identity psychology.',
-				status: 'Open · High Priority',
-				tone: 'high',
-				mitigation:
-					'Build bridges to Narrative Identity (McAdams), Possible Selves, Self-Determination Theory, Embodied Cognition. Expand the interactive layer (Gravitation / Relativity). Handle reductionism carefully across human and substrate-free domains.',
-			},
-			{
-				title: 'Philosophical under-determination of personal identity',
-				description:
-					'The tension between Sameness-as-Trajectory and Causal Entropy is productive, but not yet robust against classical objections (fission/fusion, gradual replacement, Parfit-style arguments).',
-				impact: 'Weak defense in philosophical debate; risk in radical AI scenarios (mind upload).',
-				status: 'Open · Medium Priority',
-				tone: 'medium',
-				mitigation:
-					'Dedicated section on personal identity philosophy and literature. Dual Mission adds artificial / substrate-free identity persistence.',
-			},
-			{
-				title: 'Embodied identity as unmodeled dimension',
-				description:
-					'IE models identity as a geometric trajectory that can in principle detach from biological substrate. This leaves the embodied dimension under-specified: how trauma, chronic illness, disability, physical exhaustion, or hormonal change shape identity geometry is not accounted for. Clark\'s extended mind and Metzinger\'s PSM both ground identity in bodily self-modeling — that grounding is absent from the current framework.',
-				impact: 'Framework can feel disembodied or inapplicable to people whose identity is shaped by somatic experience. Risk of inadvertently modeling identity as purely cognitive.',
-				status: 'Open · High Priority',
-				tone: 'high',
-				mitigation:
-					'Introduce an Embodiment dimension to the framework — not as a separate module but as a constraint on geometric work: the body is the primary carrier of identity geometry, not a replaceable substrate. Engage Clark (Extended Mind) and Metzinger (PSM) more directly on this.',
-			},
-			{
-				title: 'Relational and collective identity (individual geometry only)',
-				description:
-					'The framework treats identity as an individual geometric project. Confucius, Aristotle (zoon politikon), Erikson (psychosocial), and Sartre (intersubjectivity) all point to identity as constitutively relational and culturally embedded. IE currently has no concept for how collective identity, shared narratives, or relational roles shape and constrain individual geometry.',
-				impact: 'Framework is weaker for people who experience their identity primarily through family, community, culture, or collective belonging. Misses a major dimension of how identity actually forms.',
-				status: 'Open · Medium Priority',
-				tone: 'medium',
-				mitigation:
-					'Develop a relational layer: how the Stem is shaped by and accountable to webs of relationship, not only individual vision. Gravitation partially covers this (attracting others) but the reverse — being shaped by others\' gravity — is not modeled.',
-			},
-			{
-				title: 'Non-linear trajectory: regression, fragmentation, dissolution',
-				description:
-					'IE models identity as a trajectory that can be improved through deliberate design. But identity development is not linear: Erikson shows earlier crises resurface, Jung describes regression as part of individuation, Metzinger documents clinical dissolution of the PSM. The framework has no explicit model for regression, fragmentation, or the healthy working-through of identity breakdown.',
-				impact: 'Framework is best-suited for people in stable development or deliberate growth; it has limited vocabulary for crisis, breakdown, or recovery arcs.',
-				status: 'Open · Medium Priority',
-				tone: 'medium',
-				mitigation:
-					'Add explicit treatment of non-linear trajectory: what does a fragmented or regressed Stem look like geometrically, and what does recovery mean in those terms? This would strengthen the framework\'s utility in transition, crisis, and recovery contexts.',
-			},
-			{
-				title: 'Representation and definition of ownership in the framework',
-				description:
-					'Ownership is increasingly used as a central promise, but it is not yet defined as a formal concept. The framework lacks a clear distinction between continuity, authorship, accountability, and legal or social ownership. As a result, "protects ownership" can sound intuitive while remaining under-specified in model terms.',
-				impact: 'Without a precise ownership model, core claims can appear rhetorically strong but analytically weak, especially when identity is transformed by high AI leverage.',
-				status: 'Open · High Priority',
-				tone: 'high',
-				mitigation:
-					'Define ownership explicitly as a multi-layer construct: authorship continuity (who shaped the trajectory), accountability continuity (who is responsible for outcomes), and recognizability continuity (which trajectory remains attributable). Then map each layer to measurable indicators in Time, Rotation, and Relativity.',
-			},
-			{
-				title: 'Dependency on a single contested scientific foundation (Wissner-Gross)',
-				description:
-					'The causal entropic forces proposal (Wissner-Gross & Freer, PRL 2013) is cited as the scientific grounding for IE\'s core telos of maximizing future causal options. This is a single theoretical paper whose scientific reception is mixed. Grounding an identity framework on one contested physics paper is a credibility risk — the analogy is productive but the isomorphism remains unestablished.',
-				impact: 'If the Causal Entropic Forces thesis is superseded or broadly rejected, the scientific legitimacy framing of IE is vulnerable. Also risks "physics envy" criticism from analytic philosophers.',
-				status: 'Open · Active Review',
-				tone: 'active',
-				mitigation:
-					'Reframe Wissner-Gross as one of several scientific inspirations, not the single foundation. Develop a multi-source scientific grounding (predictive processing / active inference from Clark/Friston, PSM theory from Metzinger, CEF from Wissner-Gross) and be explicit that the telos is a normative design goal, not a derived physical law.',
-			},
-		],
-	},
-	{
-		id: 'mathematical',
-		label: '02 · Mathematical',
-		title: 'Mathematical & formal',
-		gaps: [
-			{
-				title: 'Imprecise formalization',
-				description:
-					'The central formula I = arg max_γ [ ∫ V(γ(t)) · dγ + consistency term ] is inspiring, but the consistency term, the metric of configuration space, and the operationalization of ∇𝒞 remain vague.',
-				impact: 'Can be criticized as mathematics as decoration rather than a genuine tool.',
-				status: 'Open · Active Work',
-				tone: 'active',
-				mitigation:
-					'Label formulas as inspirational / to-be-rigorously-derived. Develop concrete models and simple simulations. Dual Mission increases the need for precision.',
-			},
-			{
-				title: 'Force-object mismatch and hidden double counting',
-				description:
-					'In several drafts, past dynamics (dx/dt) were treated as if they were directly comparable to future force terms (T∇Sτ). This mixes object types (trajectory derivative versus gradient-derived force). Some KL-regularized variants also risk counting entropy-like effects twice and conflating historical probability with personal identity continuity.',
-				impact: 'Creates avoidable mathematical criticism and can undermine trust among technically trained readers.',
-				status: 'Open · Active Review',
-				tone: 'active',
-				mitigation:
-					'Use one coherent variational template: γ* = arg max[future option value − identity deviation], then derive both force terms as gradients of scalar objectives. Keep causal entropy as one candidate for future option value and state the epistemic status explicitly.',
-			},
-		],
-	},
-	{
-		id: 'practical',
-		label: '03 · Practical',
-		title: 'Practical & operationalization',
-		gaps: [
-			{
-				title: 'Lack of concrete engineering practice & measurability',
-				description:
-					'Questions as Probes and habits as tangential force are central, but not yet translated into protocols, diagnostics, or tools. No clear indicators for good geometry (wobble, mass density, etc.).',
-				impact: 'Strong theory, hard to apply and falsify for practitioners.',
-				status: 'Open · High Priority',
-				tone: 'high',
-				mitigation: 'Develop 2–3 probe protocols plus a simple self-diagnostic and test internally.',
-			},
-			{
-				title: 'Lack of empirical basis',
-				description: 'No pilot studies, user tests, or A/B experiments yet.',
-				impact: 'Heavy claims of effectiveness or generality are hard to substantiate.',
-				status: 'Acknowledged · Future Work',
-				tone: 'future',
-				mitigation:
-					'Pilots planned long-term (after book or Foundation stage). Current focus: internal coherence and logical consistency.',
-			},
-			{
-				title: 'Method maturity gap (30-minute starter not standardized)',
-				description:
-					'A first practical workflow can already be run, but the method is not yet standardized as a reproducible 30-minute protocol for external users.',
-				impact: 'Interest is high, but onboarding quality and outcomes vary by facilitator and context.',
-				status: 'Open · High Priority',
-				tone: 'high',
-				mitigation:
-					'Publish a compact method page with a baseline 30-minute protocol (orientation, mapping, probe, commitment). Then iterate with field feedback and optional AI coach skills.',
-			},
-		],
-	},
-	{
-		id: 'accessibility',
-		label: '04 · Audience',
-		title: 'Accessibility & audience',
-		gaps: [
-			{
-				title: 'Strong selection by cognitive style',
-				description:
-					'High demand on abstract, systemic, physics/math-affine thinking. Not barrier-free for everyone seeking orientation in the AI shift.',
-				impact: 'Partially contradicts any claim of helping everyone.',
-				status: 'Accepted · Made Transparent',
-				tone: 'accepted',
-				mitigation:
-					'Clear target-group definition in Positioning. Optional lower-threshold entry (simplified visualizations, narrative versions).',
-			},
-		],
-	},
-	{
-		id: 'structural',
-		label: '05 · Process',
-		title: 'Structural & process',
-		gaps: [
-			{
-				title: 'Missing substantial positioning & differentiation',
-				description: 'Positioning exists in the hub but remains weak in content.',
-				impact: 'Framework appears less differentiated and more vulnerable to criticism.',
-				status: 'Open · High Priority',
-				tone: 'high',
-				mitigation:
-					'Concrete differentiation from 4–5 relevant frameworks (Narrative Identity, modern Stoicism, Self-Determination Theory, Agent Foundations in AI, etc.), reflecting Dual Mission.',
-			},
-			{
-				title: 'Boundary conditions and misuse governance not yet formalized',
-				description:
-					'Clear non-use contexts and misuse safeguards are not yet consolidated into one explicit governance statement.',
-				impact:
-					'Can create confusion in sensitive contexts and opens room for self-help overreach or manipulative application narratives.',
-				status: 'Open · Medium Priority',
-				tone: 'medium',
-				mitigation:
-					'Add a concise public disclaimer with boundary conditions: this framework does not replace therapy/clinical care, is not universal, and should not be used for coercive identity shaping.',
-			},
-			{
-				title: 'Rapid evolution & temporary inconsistencies',
-				description:
-					'Core structure updates (Rotation, Time layer) within days. Skill definition vs current pages can diverge slightly.',
-				impact: 'Can be perceived as unstable or retrofitted.',
-				status: 'Managed · Living Framework',
-				tone: 'managed',
-				mitigation:
-					'This page itself is transparency. Regular sync between Notion, GitHub, and the site via feature branches.',
-			},
-		],
-	},
+const areas = [...new Set(all.map((g) => g.area).filter(Boolean))] as string[];
+areas.sort();
+const pages = [...new Set(all.flatMap((g) => g.pages))].filter(Boolean).sort();
+const statuses = [...new Set(all.map((g) => g.status).filter(Boolean))] as string[];
+statuses.sort();
+const priorities = ['high', 'medium', 'low'];
+const types = [
+	{ value: '', label: 'All types' },
+	{ value: 'big-gap', label: 'Big gaps' },
+	{ value: 'sub-gap', label: 'Sub-gaps' },
+	{ value: 'none', label: 'Untyped' },
 ];
+
+function badgeClass(g: GapIssue): string {
+	if (g.status === 'accepted') return 'border-white/10 bg-white/[0.03] text-white/50';
+	if (g.status === 'future') return 'border-white/10 bg-white/[0.03] text-white/45';
+	if (g.status === 'managed') return 'border-white/15 bg-white/[0.04] text-white/55';
+	if (g.status === 'active-review') return 'border-violet-400/30 bg-violet-400/10 text-violet-200/90';
+	if (g.priority === 'high') return 'border-cyan-400/30 bg-cyan-400/10 text-cyan-200/90';
+	if (g.priority === 'medium') return 'border-white/15 bg-white/[0.04] text-white/60';
+	return 'border-white/20 bg-white/5 text-white/70';
+}
+
+function badgeText(g: GapIssue): string {
+	const parts: string[] = [];
+	if (g.state === 'closed') parts.push('Resolved');
+	else parts.push('Open');
+	if (g.priority) parts.push(g.priority);
+	if (g.status) parts.push(g.status);
+	if (g.type === 'big-gap') parts.push('big gap');
+	return parts.join(' · ');
+}
+
+const selectClass =
+	'w-full rounded-xl border border-white/15 bg-black/40 px-3 py-2.5 text-sm text-white/85 outline-none transition focus:border-white/35 focus:ring-1 focus:ring-white/20';
+const labelClass = 'mb-1.5 block text-xs uppercase tracking-[2px] text-white/40';
 ---
 
-<Layout title="Critical Gaps | Identity Engineering">
+<Layout title="Critical Gaps | Identity Engineering" gaps={false}>
 	<main class="min-h-screen">
 		<section class="border-b border-white/10 px-6 pt-28 pb-16">
 			<div class="mx-auto max-w-3xl">
@@ -250,126 +66,250 @@ const groups: GapGroup[] = [
 					Critical Gaps & Limitations
 				</h1>
 				<p class="max-w-2xl text-xl font-light leading-relaxed text-white/50">
-					What the framework does not yet solve, and what we refuse to hide.
-					Scientific character means naming the hard points and working them in public.
+					Every gap is a public GitHub issue. Solvable, discussable, and never hidden.
 				</p>
+				<div class="mt-8 flex flex-wrap gap-3">
+					<a
+						href={PROPOSE_GAP_URL}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="rounded-full bg-white px-6 py-2.5 text-sm font-medium text-black transition hover:bg-white/90"
+					>
+						Propose a gap
+					</a>
+					<a
+						href={`${GITHUB_ISSUES_URL}?q=is%3Aissue+label%3Agap`}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="rounded-full border border-white/20 px-6 py-2.5 text-sm text-white/70 transition hover:bg-white/5"
+					>
+						View on GitHub
+					</a>
+				</div>
 			</div>
 		</section>
 
-		<!-- Purpose -->
-		<section class="border-b border-white/10 px-6 py-20">
+		<section class="border-b border-white/10 px-6 py-16">
 			<div class="mx-auto max-w-3xl space-y-6 text-lg leading-relaxed text-white/55">
 				<p>
-					This page systematically records critical gaps, limitations, and likely points of criticism (status: July 2026).
-					The framework will always have <strong class="text-white/80">local validity</strong>. It does not claim global applicability.
-					The standard is maximum critical honesty and active work on the largest weaknesses.
+					Gaps are the single source of truth for framework limitations. Closed issues are resolved gaps. The history stays public. See <a href="https://github.com/identity-engineering/framework/blob/main/docs/gaps-system/SKILL.md" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white" target="_blank" rel="noopener noreferrer">gaps system docs</a>.
 				</p>
 				<p>
 					Related: <a href="/foundations" class="text-white/80 underline decoration-white/25 underline-offset-4 hover:text-white transition">Foundations</a>, <a href="/framework" class="text-white/80 underline decoration-white/25 underline-offset-4 hover:text-white transition">Framework</a>, <a href="/big-questions" class="text-white/80 underline decoration-white/25 underline-offset-4 hover:text-white transition">Big Questions</a>.
 				</p>
+				<p class="text-base text-white/45">
+					Each site page maps to exactly one <code class="text-white/55">page:*</code> label. Gaps that span several pages carry multiple page labels on the issue.
+				</p>
 			</div>
 		</section>
 
-		<!-- Dual Mission -->
-		<section id="dual-mission" class="border-b border-white/10 bg-white/[0.02] px-6 py-24">
+		<section id="dual-mission" class="border-b border-white/10 bg-white/[0.02] px-6 py-20">
 			<div class="mx-auto max-w-3xl">
 				<div class="mb-4 text-sm uppercase tracking-[4px] text-violet-400/70">Dual Mission</div>
 				<h2 class="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">
 					Two missions, held at once
 				</h2>
-				<div class="grid gap-4 md:grid-cols-2 mb-10">
+				<div class="grid gap-4 md:grid-cols-2 mb-8">
 					<div class="rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.04] p-6">
 						<div class="mb-3 text-xs uppercase tracking-[3px] text-cyan-400/70">01 · Practical</div>
 						<p class="text-base leading-relaxed text-white/70">
-							<strong class="text-white/90">Human, AI-shift.</strong> Support conscious design of identity:
-							Sameness-as-Trajectory plus Causal Entropy (Vision Gradient). Framework for Ownership and Architect-level action.
+							<strong class="text-white/90">Human, AI-shift.</strong> Support conscious design of identity: Sameness-as-Trajectory plus Causal Entropy. Framework for Ownership and Architect-level action.
 						</p>
 					</div>
 					<div class="rounded-2xl border border-violet-400/20 bg-violet-400/[0.04] p-6">
 						<div class="mb-3 text-xs uppercase tracking-[3px] text-violet-400/70">02 · Fundamental</div>
 						<p class="text-base leading-relaxed text-white/70">
-							<strong class="text-white/90">Substrate-free.</strong> Model artificial identities and intelligence beyond biological hardware.
-							Extension of mission 1, not a replacement. AI makes this nearly obligatory.
+							<strong class="text-white/90">Substrate-free.</strong> Model artificial identities beyond biological hardware. Extension of mission 1, not a replacement.
 						</p>
 					</div>
 				</div>
-				<div class="space-y-5 text-lg leading-relaxed text-white/55">
-					<p>
-						<strong class="text-white/80">Central bridge and hardest work: isomorphism</strong>: clear methodological bridges between physical-mathematical concepts and identity phenomena, beyond loose metaphor.
-						Without it the duality is vulnerable. With it the framework can be useful for humans <em class="text-white/70 not-italic">and</em> ontologically serious for new substrates.
-					</p>
-					<p>
-						That duality reframes many gaps below: reductionism and philosophical under-determination become more nuanced;
-						“help everyone” stays mission 1 but sits inside a larger context; isomorphism becomes the main quality criterion.
-					</p>
-				</div>
 			</div>
 		</section>
 
-		<!-- Fundamental limits -->
-		<section class="border-b border-white/10 px-6 py-20">
+		<section class="border-b border-white/10 px-6 py-16" id="gap-list">
 			<div class="mx-auto max-w-3xl">
-				<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Baseline</div>
-				<h2 class="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">
-					Acknowledged fundamental limitations
-				</h2>
-				<ul class="space-y-5 text-lg text-white/55">
-					<li class="border-l border-white/15 pl-5">
-						<strong class="text-white/80">Local vs global validity.</strong> Local model for specific cognitive styles (systems thinkers, physics/math-comfortable, high-agency). No universal claim.
-					</li>
-					<li class="border-l border-white/15 pl-5">
-						<strong class="text-white/80">Inevitable gaps.</strong> Complexity implies gaps. The claim is honesty and active work, not perfection.
-					</li>
-					<li class="border-l border-white/15 pl-5">
-						<strong class="text-white/80">Evolving nature.</strong> Core concepts sharpened rapidly (Time foundation, Rotation, formal integration). Temporary drift between Notion, skill, and site is expected.
-					</li>
-				</ul>
-			</div>
-		</section>
-
-		<!-- Gap groups -->
-		{
-			groups.map((group) => (
-				<section id={group.id} class="border-b border-white/10 px-6 py-24">
-					<div class="mx-auto max-w-3xl">
-						<div class="mb-3 text-sm uppercase tracking-[4px] text-cyan-400/70">{group.label}</div>
-						<h2 class="mb-12 text-3xl font-bold tracking-tight text-white md:text-4xl">{group.title}</h2>
-						<div class="space-y-8">
-							{group.gaps.map((gap) => (
-								<article class="rounded-2xl border border-white/10 bg-white/[0.02] p-6 md:p-8">
-									<div class="mb-4 flex flex-wrap items-center gap-3">
-										<span class:list={['rounded-full border px-3 py-1 text-xs tracking-wide', statusClass[gap.tone]]}>
-											{gap.status}
-										</span>
-									</div>
-									<h3 class="mb-4 text-xl font-semibold text-white md:text-2xl">{gap.title}</h3>
-									<p class="mb-4 text-base leading-relaxed text-white/55">{gap.description}</p>
-									<p class="mb-4 text-base leading-relaxed text-white/45">
-										<span class="text-white/60">Impact:</span> {gap.impact}
-									</p>
-									<p class="text-base leading-relaxed text-white/45">
-										<span class="text-white/60">Mitigation:</span> {gap.mitigation}
-									</p>
-								</article>
-							))}
-						</div>
+				<div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+					<div>
+						<div class="mb-2 text-sm uppercase tracking-[4px] text-cyan-400/70">Live from GitHub</div>
+						<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+							<span data-gap-count-open>{open.length}</span> open · <span data-gap-count-closed>{closed.length}</span> resolved
+						</h2>
+						<p class="mt-2 text-sm text-white/40" data-gap-filter-summary>
+							Showing open gaps
+						</p>
 					</div>
-				</section>
-			))
-		}
+				</div>
 
-		<!-- Next steps -->
-		<section class="border-b border-white/10 px-6 py-24">
-			<div class="mx-auto max-w-3xl">
-				<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Next</div>
-				<h2 class="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">Next steps</h2>
-				<ol class="list-decimal list-inside space-y-4 text-lg text-white/55">
-					<li>Keep this analysis alive with Dual Mission and isomorphism progress.</li>
-					<li>Positioning & Differentiation with concrete contrasts.</li>
-					<li>First concrete probe protocols for Questions as Probes.</li>
-					<li>Label mathematical formulas as inspirational; sketch simple models if useful.</li>
-					<li>Public transparency: this page is part of the site, not only the repo.</li>
-				</ol>
+				{
+					all.length === 0 ? (
+						<p class="text-lg text-white/50">
+							Could not load gaps from GitHub right now.
+							<a href={`${GITHUB_ISSUES_URL}?q=is%3Aissue+label%3Agap`} class="underline" target="_blank" rel="noopener noreferrer">Open issues on GitHub</a>.
+						</p>
+					) : (
+						<>
+							<form
+								id="gap-filters"
+								class="mb-10 grid gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-5 sm:grid-cols-2 lg:grid-cols-3"
+								data-filter-root
+							>
+								<div>
+									<label for="gap-filter-state" class={labelClass}>State</label>
+									<select id="gap-filter-state" name="state" class={selectClass} data-filter-key="state">
+										<option value="open">Open</option>
+										<option value="closed">Resolved</option>
+										<option value="all">All</option>
+									</select>
+								</div>
+								<div>
+									<label for="gap-filter-page" class={labelClass}>Page</label>
+									<select id="gap-filter-page" name="page" class={selectClass} data-filter-key="page">
+										<option value="">All pages</option>
+										{pages.map((pg) => (
+											<option value={pg}>page:{pg}</option>
+										))}
+									</select>
+								</div>
+								<div>
+									<label for="gap-filter-priority" class={labelClass}>Priority</label>
+									<select id="gap-filter-priority" name="priority" class={selectClass} data-filter-key="priority">
+										<option value="">All priorities</option>
+										{priorities.map((p) => (
+											<option value={p}>{p}</option>
+										))}
+									</select>
+								</div>
+								<div>
+									<label for="gap-filter-area" class={labelClass}>Area</label>
+									<select id="gap-filter-area" name="area" class={selectClass} data-filter-key="area">
+										<option value="">All areas</option>
+										{areas.map((a) => (
+											<option value={a}>{a}</option>
+										))}
+									</select>
+								</div>
+								<div>
+									<label for="gap-filter-status" class={labelClass}>Status</label>
+									<select id="gap-filter-status" name="status" class={selectClass} data-filter-key="status">
+										<option value="">All statuses</option>
+										{statuses.map((s) => (
+											<option value={s}>{s}</option>
+										))}
+									</select>
+								</div>
+								<div>
+									<label for="gap-filter-type" class={labelClass}>Type</label>
+									<select id="gap-filter-type" name="type" class={selectClass} data-filter-key="type">
+										{types.map((t) => (
+											<option value={t.value}>{t.label}</option>
+										))}
+									</select>
+								</div>
+								<div class="flex flex-wrap items-end gap-3 sm:col-span-2 lg:col-span-3">
+									<button
+										type="button"
+										data-filter-reset
+										class="rounded-full border border-white/15 px-4 py-2 text-sm text-white/60 transition hover:border-white/30 hover:text-white/85"
+									>
+										Reset filters
+									</button>
+									<a
+										href={`${GITHUB_ISSUES_URL}?q=is%3Aissue+label%3Agap`}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="text-sm text-white/45 underline decoration-white/20 underline-offset-4 transition hover:text-white/70"
+										data-github-filtered
+									>
+										Open filtered view on GitHub →
+									</a>
+								</div>
+							</form>
+
+							<p class="mb-6 text-sm text-white/40" data-gap-visible-count></p>
+
+							<div class="space-y-6" id="gap-cards">
+								{
+									all.map((g) => (
+										<article
+											class="gap-card rounded-2xl border border-white/10 bg-white/[0.02] p-6 md:p-8"
+											data-state={g.state}
+											data-priority={g.priority ?? ''}
+											data-area={g.area ?? ''}
+											data-type={g.type ?? ''}
+											data-status={g.status ?? ''}
+											data-pages={g.pages.join(',')}
+										>
+											<div class="mb-4 flex flex-wrap items-center gap-3">
+												<span class:list={['rounded-full border px-3 py-1 text-xs tracking-wide', badgeClass(g)]}>
+													{badgeText(g)}
+												</span>
+												<span class="text-xs text-white/35">#{g.number}</span>
+												{
+													g.area && (
+														<span class="text-xs text-white/40">{g.area}</span>
+													)
+												}
+												{
+													g.pages.map((pg) => (
+														<span class="rounded-full border border-white/10 px-2 py-0.5 text-xs text-white/40">
+															page:{pg}
+														</span>
+													))
+												}
+											</div>
+											<h3 class="mb-3 text-xl font-semibold text-white md:text-2xl">
+												<a
+													href={g.htmlUrl}
+													target="_blank"
+													rel="noopener noreferrer"
+													class="transition hover:text-white/90"
+												>
+													{g.title}
+												</a>
+											</h3>
+											{
+												g.description && (
+													<p class="mb-4 text-base leading-relaxed text-white/55">{g.description}</p>
+												)
+											}
+											{
+												g.impact && (
+													<p class="mb-3 text-base leading-relaxed text-white/45">
+														<span class="text-white/60">Impact:</span> {g.impact}
+													</p>
+												)
+											}
+											{
+												g.mitigation && (
+													<p class="text-base leading-relaxed text-white/45">
+														<span class="text-white/60">Mitigation:</span> {g.mitigation}
+													</p>
+												)
+											}
+											<p class="mt-4">
+												<a
+													href={g.htmlUrl}
+													target="_blank"
+													rel="noopener noreferrer"
+													class="text-sm text-white/50 underline decoration-white/20 underline-offset-4 transition hover:text-white/80"
+												>
+													Discuss on GitHub →
+												</a>
+											</p>
+										</article>
+									))
+								}
+							</div>
+
+							<p class="mt-10 hidden text-base text-white/45" data-gap-empty>
+								No gaps match these filters.
+								<button type="button" data-filter-reset class="underline decoration-white/25 underline-offset-4 hover:text-white/70">
+									Reset filters
+								</button>
+							</p>
+						</>
+					)
+				}
 			</div>
 		</section>
 
@@ -389,12 +329,136 @@ const groups: GapGroup[] = [
 	</main>
 </Layout>
 
-<style>
-	code {
-		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-		background: rgba(255, 255, 255, 0.06);
-		padding: 0.15em 0.4em;
-		border-radius: 4px;
-		font-size: 0.9em;
+<script>
+	type Filters = {
+		state: string;
+		page: string;
+		priority: string;
+		area: string;
+		status: string;
+		type: string;
+	};
+
+	const form = document.querySelector<HTMLFormElement>('#gap-filters');
+	const cards = Array.from(document.querySelectorAll<HTMLElement>('.gap-card'));
+	const summary = document.querySelector<HTMLElement>('[data-gap-filter-summary]');
+	const visibleCount = document.querySelector<HTMLElement>('[data-gap-visible-count]');
+	const emptyEl = document.querySelector<HTMLElement>('[data-gap-empty]');
+	const ghLink = document.querySelector<HTMLAnchorElement>('[data-github-filtered]');
+
+	function readFilters(): Filters {
+		const fd = new FormData(form ?? undefined);
+		return {
+			state: String(fd.get('state') || 'open'),
+			page: String(fd.get('page') || ''),
+			priority: String(fd.get('priority') || ''),
+			area: String(fd.get('area') || ''),
+			status: String(fd.get('status') || ''),
+			type: String(fd.get('type') || ''),
+		};
 	}
-</style>
+
+	function writeUrl(f: Filters) {
+		const url = new URL(window.location.href);
+		const keys: (keyof Filters)[] = ['state', 'page', 'priority', 'area', 'status', 'type'];
+		for (const k of keys) {
+			const v = f[k];
+			if (!v || (k === 'state' && v === 'open')) url.searchParams.delete(k);
+			else url.searchParams.set(k, v);
+		}
+		history.replaceState({}, '', url.toString());
+	}
+
+	function applyFromUrl() {
+		if (!form) return;
+		const params = new URLSearchParams(window.location.search);
+		const map: Record<string, string> = {
+			state: params.get('state') || 'open',
+			page: params.get('page') || '',
+			priority: params.get('priority') || '',
+			area: params.get('area') || '',
+			status: params.get('status') || '',
+			type: params.get('type') || '',
+		};
+		for (const [k, v] of Object.entries(map)) {
+			const el = form.elements.namedItem(k) as HTMLSelectElement | null;
+			if (el) el.value = v;
+		}
+	}
+
+	function matches(card: HTMLElement, f: Filters): boolean {
+		const state = card.dataset.state ?? '';
+		const priority = card.dataset.priority ?? '';
+		const area = card.dataset.area ?? '';
+		const status = card.dataset.status ?? '';
+		const type = card.dataset.type ?? '';
+		const pages = (card.dataset.pages ?? '').split(',').filter(Boolean);
+
+		if (f.state === 'open' && state !== 'open') return false;
+		if (f.state === 'closed' && state !== 'closed') return false;
+		if (f.priority && priority !== f.priority) return false;
+		if (f.area && area !== f.area) return false;
+		if (f.status && status !== f.status) return false;
+		if (f.page && !pages.includes(f.page)) return false;
+		if (f.type === 'big-gap' && type !== 'big-gap') return false;
+		if (f.type === 'sub-gap' && type !== 'sub-gap') return false;
+		if (f.type === 'none' && type) return false;
+		return true;
+	}
+
+	function apply() {
+		const f = readFilters();
+		let n = 0;
+		cards.forEach((card) => {
+			const show = matches(card, f);
+			card.style.display = show ? '' : 'none';
+			if (show) n += 1;
+		});
+
+		const bits: string[] = [];
+		if (f.state === 'open') bits.push('open');
+		else if (f.state === 'closed') bits.push('resolved');
+		else bits.push('all states');
+		if (f.page) bits.push(`page:${f.page}`);
+		if (f.priority) bits.push(f.priority);
+		if (f.area) bits.push(f.area);
+		if (f.status) bits.push(f.status);
+		if (f.type === 'big-gap') bits.push('big gaps');
+		if (f.type === 'sub-gap') bits.push('sub-gaps');
+		if (f.type === 'none') bits.push('untyped');
+		if (summary) summary.textContent = `Filter: ${bits.join(' · ')}`;
+		if (visibleCount) visibleCount.textContent = `${n} gap${n === 1 ? '' : 's'} shown`;
+		if (emptyEl) emptyEl.classList.toggle('hidden', n > 0);
+
+		if (ghLink) {
+			const q = ['is:issue', 'label:gap'];
+			if (f.state === 'open') q.push('is:open');
+			if (f.state === 'closed') q.push('is:closed');
+			if (f.page) q.push(`label:page:${f.page}`);
+			if (f.priority) q.push(`label:priority:${f.priority}`);
+			if (f.area) q.push(`label:area:${f.area}`);
+			if (f.status) q.push(`label:status:${f.status}`);
+			if (f.type === 'big-gap') q.push('label:type:big-gap');
+			if (f.type === 'sub-gap') q.push('label:type:sub-gap');
+			ghLink.href = `https://github.com/identity-engineering/framework/issues?q=${encodeURIComponent(q.join(' '))}`;
+		}
+
+		writeUrl(f);
+	}
+
+	function reset() {
+		if (!form) return;
+		form.reset();
+		const state = form.elements.namedItem('state') as HTMLSelectElement | null;
+		if (state) state.value = 'open';
+		apply();
+	}
+
+	form?.addEventListener('change', apply);
+	document.querySelectorAll('[data-filter-reset]').forEach((btn) => {
+		btn.addEventListener('click', reset);
+	});
+
+	applyFromUrl();
+	apply();
+</script>

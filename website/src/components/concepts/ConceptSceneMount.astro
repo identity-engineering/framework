@@ -4,7 +4,17 @@
  * Injects Vite React-refresh preamble before loading any .tsx (dev only).
  */
 interface Props {
-	scene: 'mass' | 'curvature' | 'rotation' | 'gravitation' | 'frequency' | 'damping' | 'emergence' | 'probes' | 'stem';
+	scene:
+		| 'space'
+		| 'mass'
+		| 'curvature'
+		| 'rotation'
+		| 'gravitation'
+		| 'frequency'
+		| 'damping'
+		| 'emergence'
+		| 'probes'
+		| 'stem';
 }
 
 const { scene } = Astro.props;
@@ -19,6 +29,7 @@ const { scene } = Astro.props;
 	import { ensureReactPreamble } from '../../lib/ensureReactPreamble';
 
 	const loaders = {
+		space: () => import('./SpaceScene.tsx'),
 		mass: () => import('./MassScene.tsx'),
 		curvature: () => import('./CurvatureScene.tsx'),
 		rotation: () => import('./RotationScene.tsx'),

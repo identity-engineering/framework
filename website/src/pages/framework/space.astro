@@ -1,8 +1,11 @@
 ---
 /**
- * Space — working definition of the foundational relational layer.
+ * Space - working definition of the foundational relational layer.
+ * Framed as the configuration space of an identity (physics analogy).
  * Hierarchy proposal: Space → Particles → Time → Mass.
  * Formal metric still open (Critical Gap #44).
+ * Keep inline tags on one line with outer spaces (Astro whitespace).
+ * Never break before <em>/<strong>/<a> after a word.
  */
 import Layout from '../../layouts/Layout.astro';
 import ConceptPageHero from '../../components/concepts/ConceptPageHero.astro';
@@ -25,7 +28,7 @@ const c = getConcept('space');
 		<section class="border-t border-white/10 px-6 py-16">
 			<div class="mx-auto max-w-3xl">
 				<div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-base leading-relaxed text-white/60">
-					<strong class="text-white/80">Status:</strong> Working definition. Space is entering the public Framework as the proposed foundational layer.
+					<strong class="text-white/80">Status:</strong> Working definition. Space is the proposed foundational layer of the framework, framed by analogy with the physical concept of configuration space.
 					Dimensionality and metric remain open work
 					(<a
 						href="https://github.com/identity-engineering/framework/issues/44"
@@ -40,12 +43,18 @@ const c = getConcept('space');
 
 		<section class="border-t border-white/10 px-6 py-24">
 			<div class="mx-auto max-w-3xl space-y-8 text-lg leading-relaxed text-white/55">
-				<div class="mb-2 text-sm uppercase tracking-[4px] text-white/40">Definition</div>
+				<div class="mb-2 text-sm uppercase tracking-[4px] text-white/40">Physics first</div>
 				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
-					The order of relative positions
+					Configuration space
 				</h2>
 				<p>
-					<strong class="text-white/80">Space</strong> is the order of possible relative positions: the relational arena in which fundamental degrees of freedom are born.
+					In classical mechanics the <strong class="text-white/80">configuration space</strong> of a system is the space of its possible instantaneous configurations.
+					Its dimension equals the number of degrees of freedom.
+					Constraints reduce the accessible region; forces and dynamics determine which configurations remain reachable from a given state.
+				</p>
+				<p>
+					Identity Engineering adopts this structure by analogy.
+					The configuration space of an identity is the relational arena of its degrees of freedom: relative positions, bindings, access and jurisdiction profiles.
 					In the relational tradition (<a
 						href="/foundations/leibniz-relational-space"
 						class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50"
@@ -53,25 +62,43 @@ const c = getConcept('space');
 					It is the system of relations, above all relative distances, that can hold between entities.
 				</p>
 				<p>
-					With Space the first freedoms appear: freedom with respect to position and relative distance.
+					With this arena the first freedoms appear: freedom with respect to position and relative distance.
 					Constraints and forces later reduce those freedoms and produce bound states.
-					But the freedom itself is born with Space.
-				</p>
-				<p>
-					This is why Space sits before Time in the proposed hierarchy.
-					At a single moment the Identity Stem is not yet a line. It is an arrangement of bound degrees of freedom.
-					Only motion through succession turns those dots into worldlines, and the bundle of worldlines into the Stem.
+					The freedom itself is born with the configuration space.
 				</p>
 			</div>
 		</section>
 
 		<section class="border-t border-white/10 bg-white/[0.02] px-6 py-24">
+			<div class="mx-auto max-w-3xl space-y-8 text-lg leading-relaxed text-white/55">
+				<div class="mb-2 text-sm uppercase tracking-[4px] text-white/40">Reachable region</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					What remains open under dynamics
+				</h2>
+				<p>
+					In physics and control theory the <strong class="text-white/80">reachable set</strong> is the set of configurations that can actually be reached from a given state under the available dynamics and controls.
+					Earlier drafts of this framework used the phrase "Possibility Space" for a closely related idea.
+				</p>
+				<p>
+					We now treat that idea as the reachable region of the identity's configuration space under the current Stem, Mass, constraints and Vision Gradient.
+					No second geometric object is required.
+					The arena is the configuration space; the open options are the reachable region inside it.
+				</p>
+				<p>
+					This is why Space sits before Time in the proposed hierarchy.
+					At a single moment the Identity Stem is not yet a line. It is an arrangement of bound degrees of freedom.
+					Only motion through succession turns those configurations into worldlines, and the bundle of worldlines into the Stem.
+				</p>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-24">
 			<div class="mx-auto max-w-3xl">
 				<div class="mb-6 text-sm uppercase tracking-[4px] text-white/40">Hierarchy</div>
 				<h2 class="mb-8 text-3xl font-bold text-white md:text-4xl">Space → Particles → Time → Mass</h2>
 				<ol class="space-y-6 text-lg text-white/55 list-decimal list-inside">
 					<li>
-						<strong class="text-white/85">Space:</strong> order of relative positions; birth of degrees of freedom.
+						<strong class="text-white/85">Space:</strong> configuration space; birth of degrees of freedom.
 					</li>
 					<li>
 						<strong class="text-white/85">Particles:</strong> bound configurations under Strong Binding and Charge (see <a href="/blog/particles-of-identity" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Particles of Identity</a>).
@@ -96,7 +123,7 @@ const c = getConcept('space');
 			</div>
 		</section>
 
-		<section class="border-t border-white/10 px-6 py-24">
+		<section class="border-t border-white/10 bg-white/[0.02] px-6 py-24">
 			<div class="mx-auto max-w-3xl">
 				<div class="mb-6 text-sm uppercase tracking-[4px] text-white/40">Engineering</div>
 				<h2 class="mb-8 text-3xl font-bold text-white md:text-4xl">What we work on</h2>
@@ -108,10 +135,13 @@ const c = getConcept('space');
 						<strong class="text-white/80">Relational arena:</strong> identity aspects exist in relation, not in an empty absolute container.
 					</li>
 					<li class="border-l border-white/15 pl-5">
-						<strong class="text-white/80">Binding readiness:</strong> Space is the condition for Particles. Without relative position, Strong Binding and Charge have nothing to act on.
+						<strong class="text-white/80">Binding readiness:</strong> configuration space is the condition for Particles. Without relative position, Strong Binding and Charge have nothing to act on.
 					</li>
 					<li class="border-l border-white/15 pl-5">
-						<strong class="text-white/80">Ownership link:</strong> Ownership as relative Access and Jurisdiction is a profile of degrees of freedom with respect to a configuration. Space is the geometric base of that profile.
+						<strong class="text-white/80">Ownership link:</strong> Ownership as relative Access and Jurisdiction is a profile of degrees of freedom with respect to a configuration. Configuration space is the geometric base of that profile.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Reachable region:</strong> which part of the configuration space remains open under current Stem, Mass, constraints and Vision Gradient.
 					</li>
 				</ul>
 
@@ -121,17 +151,18 @@ const c = getConcept('space');
 						<li>Which dimensions of my current arrangement still feel free to move?</li>
 						<li>Which relative distances are fixed by habit, jurisdiction, or fear?</li>
 						<li>Where is the configuration too rigid, or too diffuse to hold a Stem?</li>
+						<li>Which region of my configuration space is actually reachable under the forces I currently accept?</li>
 					</ul>
 				</div>
 			</div>
 		</section>
 
-		<section class="border-t border-white/10 bg-white/[0.02] px-6 py-24">
+		<section class="border-t border-white/10 px-6 py-24">
 			<div class="mx-auto max-w-3xl text-lg leading-relaxed text-white/55">
 				<p>
-					Space alone does not define identity. It is the arena.
+					Configuration space alone does not define identity. It is the arena.
 					Particles bind inside it. Time draws the Stem. Mass densifies stake around that motion.
-					Curvature then warps what looks near or far inside the possibility field that sits on this geometry.
+					Curvature then warps the effective geometry of the reachable region: what looks near or far, costly or cheap.
 				</p>
 				<p class="mt-6">
 					Open formal work:
@@ -140,13 +171,13 @@ const c = getConcept('space');
 						target="_blank"
 						rel="noopener noreferrer"
 						class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50"
-					>metric and dimensionality (#44)</a>,
+					>metric and dimensionality of configuration space (#44)</a>,
 					<a
 						href="https://github.com/identity-engineering/framework/issues/45"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50"
-					>Space vs Possibility Space (#45)</a>,
+					>coherence with earlier Possibility Space language (#45)</a>,
 					<a
 						href="https://github.com/identity-engineering/framework/issues/47"
 						target="_blank"

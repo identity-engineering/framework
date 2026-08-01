@@ -7,7 +7,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "deploy": "astro build && wrangler pages deploy dist --project-name identity-engineering --branch main",
+    "deploy": "cp -r functions dist/functions && astro build && wrangler pages deploy dist --project-name identity-engineering --branch main",
     "astro": "astro"
   },
   "dependencies": {

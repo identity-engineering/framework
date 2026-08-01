@@ -4,6 +4,7 @@ const pathname = Astro.url.pathname;
 /**
  * Exact match or nested path (e.g. /blog/slug, /framework/mass).
  * Foundations also owns /ontology (conceptual core of the foundations layer).
+ * OS public face lives at /method (URL stable; label is OS).
  */
 const isActive = (path: string) => {
   if (path === '/foundations') {
@@ -16,13 +17,22 @@ const isActive = (path: string) => {
       pathname.startsWith('/ontology/')
     );
   }
+  if (path === '/method') {
+    return (
+      pathname === '/method' ||
+      pathname === '/method/' ||
+      pathname === '/os' ||
+      pathname === '/os/' ||
+      pathname.startsWith('/skills/')
+    );
+  }
   return pathname === path || pathname === path + '/' || pathname.startsWith(path + '/');
 };
 
 const navItems = [
   { label: 'Foundations', href: '/foundations' },
   { label: 'Framework', href: '/framework' },
-  { label: 'Method', href: '/method' },
+  { label: 'OS', href: '/method' },
   { label: 'Gaps', href: '/critical-gaps' },
   { label: 'Big Questions', href: '/big-questions' },
   { label: 'Blog', href: '/blog' },
@@ -31,7 +41,6 @@ const navItems = [
 
 <header class="fixed top-0 left-0 right-0 z-50">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
-    <!-- Logo: official IE monogram (geometric I+E + trajectory swooshes) -->
     <a href="/" class="flex items-center gap-3 group shrink-0">
       <img
         src="/logo-dark.svg"
@@ -43,7 +52,6 @@ const navItems = [
       </span>
     </a>
 
-    <!-- Nav: slightly tighter on small screens so five items still fit -->
     <nav class="flex items-center gap-0.5 sm:gap-1 overflow-x-auto max-w-[min(100%,28rem)] sm:max-w-none">
       {navItems.map(item => (
         <a
@@ -61,6 +69,5 @@ const navItems = [
     </nav>
   </div>
 
-  <!-- Backdrop blur gradient -->
   <div class="absolute inset-0 -z-10 bg-gradient-to-b from-black/80 via-black/40 to-transparent backdrop-blur-sm pointer-events-none"></div>
 </header>

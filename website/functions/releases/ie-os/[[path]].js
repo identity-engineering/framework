@@ -16,7 +16,7 @@ export async function onRequest(context) {
 
   const headers = new Headers();
   headers.set('content-type', object.httpMetadata?.contentType || 'application/octet-stream');
-  headers.set('cache-control', 'public, max-age=3600');
+  headers.set('cache-control', 'public, max-age=31536000, immutable');
   headers.set('content-length', String(object.size));
 
   return new Response(object.body, { headers });

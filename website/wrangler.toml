@@ -1,7 +1,11 @@
 # Cloudflare Pages — project config for Wrangler CLI + CI
 name = "identity-engineering"
 pages_build_output_dir = "./dist"
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-08-01"
+
+[[r2_buckets]]
+binding = "IE_OS_RELEASES"
+bucket_name = "ie-os-releases"
 
 # Production branch when deploying via CI (override with --branch for previews)
 # Local/manual: npm run deploy

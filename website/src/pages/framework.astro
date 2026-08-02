@@ -4,11 +4,11 @@ import ConceptSceneMount from '../components/concepts/ConceptSceneMount.astro';
 import { concepts } from '../lib/concepts';
 
 /**
- * Official structure (Notion Core Concepts, 2026-07-18):
- * 1. Concepts of a Single Identity: Time, Mass, Curvature, Rotation
- * 2. Concepts of an Interactive Identity: Gravitation, Relativity, Frequency
- * 3. Concepts of a Collective Identity: Emergent Identity, Damping
- * Each concept links to a deep-dive page with full-viewport scroll animation.
+ * Official structure:
+ * 1. Concepts of a Single Identity
+ * 2. Concepts of an Interactive Identity
+ * 3. Concepts of a Collective Identity
+ * 4. Living Identity (operational layer: geometry metabolized through Interaction)
  */
 
 const single = concepts.filter((c) => c.layer === 'single');
@@ -26,7 +26,8 @@ const collective = concepts.filter((c) => c.layer === 'collective');
 				</h1>
 				<p class="text-xl md:text-2xl text-white/50 font-light max-w-2xl leading-relaxed">
 					A physics- and mathematics-inspired framework for consciously designing identity in the AI era.
-					From the geometry of a single identity, to forces between identities, to emergent collective identity.
+					From the geometry of a single identity, to forces between identities, to emergent collective identity:
+					and the operational layer in which that geometry lives.
 				</p>
 				<div class="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-4 max-w-2xl">
 					<p class="text-sm text-white/60 leading-relaxed">
@@ -177,6 +178,54 @@ const collective = concepts.filter((c) => c.layer === 'collective');
 			}
 		</section>
 
+		<section id="living" class="border-t border-white/10">
+			<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
+				<div class="text-sm uppercase tracking-[4px] text-white/40 mb-3">04</div>
+				<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
+					Living Identity
+				</h2>
+				<p class="text-base text-white/45 leading-relaxed max-w-2xl mb-4">
+					Operational layer under the geometry. How identity maintains a boundary, metabolizes Interaction into geometry,
+					and scales as a living form, without replacing Mass, Relativity, or Emergence.
+				</p>
+			</div>
+
+			<a
+				href="/framework/living-identity"
+				class="group block max-w-6xl mx-auto px-8 py-12 md:py-16 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 rounded-sm"
+				data-concept-section
+			>
+				<div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+					<div>
+						<div class="text-sm uppercase tracking-[4px] text-white/35 mb-3">Operational</div>
+						<h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white group-hover:text-white/85 transition">
+							Boundary · Metabolism · TIM · Organism
+							<span class="ml-2 inline-block text-white/30 transition group-hover:translate-x-1 group-hover:text-white/60">→</span>
+						</h3>
+						<p class="text-base text-white/55 leading-relaxed mb-4">
+							Life as IE criteria (boundary, metabolism, continuity, causal entropy under constraint).
+							TIM as practice-validated postulate. Biology as lens, not a third science floor replacing geometry.
+						</p>
+						<p class="text-sm text-white/40 leading-relaxed mb-5">
+							Open the full living-identity scaffold, honesty labels, and relation to Emergence.
+						</p>
+						<span class="text-sm text-white/50 group-hover:text-white transition border-b border-white/20 group-hover:border-white/50 pb-0.5">
+							Open Living Identity
+						</span>
+					</div>
+					<div class="relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f] transition group-hover:border-white/25 flex items-center justify-center">
+						<div class="text-center px-8">
+							<div class="text-sm uppercase tracking-[4px] text-white/30 mb-3">Layer 04</div>
+							<div class="text-2xl md:text-3xl font-bold text-white/80 tracking-tight">Living form</div>
+							<p class="mt-3 text-sm text-white/40 max-w-xs mx-auto leading-relaxed">
+								Geometry metabolized through Interaction
+							</p>
+						</div>
+					</div>
+				</div>
+			</a>
+		</section>
+
 		<section class="py-20 border-t border-white/10">
 			<div class="max-w-3xl mx-auto px-8 text-center">
 				<h2 class="text-3xl font-bold tracking-tight mb-4 text-white">Where the map ends</h2>
@@ -186,6 +235,7 @@ const collective = concepts.filter((c) => c.layer === 'collective');
 				<div class="flex flex-wrap gap-4 justify-center">
 					<a href="/big-questions" class="px-8 py-3.5 rounded-full bg-white text-black font-medium hover:bg-white/90 transition">Big Questions</a>
 					<a href="/framework/time" class="px-8 py-3.5 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">Start with Time</a>
+					<a href="/framework/living-identity" class="px-8 py-3.5 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">Living Identity</a>
 				</div>
 			</div>
 		</section>

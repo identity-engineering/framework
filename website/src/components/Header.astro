@@ -3,8 +3,8 @@ const pathname = Astro.url.pathname;
 
 /**
  * Exact match or nested path (e.g. /blog/slug, /framework/mass).
- * Foundations also owns /ontology (conceptual core of the foundations layer).
- * OS public face lives at /method (URL stable; label is OS).
+ * Foundations also owns /ontology.
+ * OS public face: /os (preferred) and /method (stable content URL).
  */
 const isActive = (path: string) => {
   if (path === '/foundations') {
@@ -17,12 +17,12 @@ const isActive = (path: string) => {
       pathname.startsWith('/ontology/')
     );
   }
-  if (path === '/method') {
+  if (path === '/os') {
     return (
-      pathname === '/method' ||
-      pathname === '/method/' ||
       pathname === '/os' ||
       pathname === '/os/' ||
+      pathname === '/method' ||
+      pathname === '/method/' ||
       pathname.startsWith('/skills/')
     );
   }
@@ -32,7 +32,7 @@ const isActive = (path: string) => {
 const navItems = [
   { label: 'Foundations', href: '/foundations' },
   { label: 'Framework', href: '/framework' },
-  { label: 'OS', href: '/method' },
+  { label: 'OS', href: '/os' },
   { label: 'Gaps', href: '/critical-gaps' },
   { label: 'Big Questions', href: '/big-questions' },
   { label: 'Blog', href: '/blog' },

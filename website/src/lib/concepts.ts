@@ -2,6 +2,9 @@
  * Official Framework structure (Notion Core Concepts, 2026-07-18),
  * extended with Space as working foundational layer (2026-07-25).
  * Single Identity → Interactive Identity → Collective Identity.
+ *
+ * Space language updated 2026-07-31: configuration space analogy
+ * (degrees of freedom arena + reachable region under dynamics).
  */
 export type ConceptScene =
 	| 'space'
@@ -53,7 +56,7 @@ export const concepts: ConceptMeta[] = [
 		tag: 'Foundational',
 		scene: 'space',
 		blurb:
-			'Relational order of relative positions. The arena in which degrees of freedom are born, before Time draws the Stem.',
+			'Configuration space of the identity: the relational arena of degrees of freedom, before Time draws the Stem.',
 		scrollHint: 'Scroll: dots appear; relative distances become visible.',
 	},
 	{
@@ -95,7 +98,7 @@ export const concepts: ConceptMeta[] = [
 		tag: 'Geometry',
 		scene: 'curvature',
 		blurb:
-			'How stem, mass, and coherent vision warp possibility space: what looks near, far, inevitable, or impossible.',
+			'How stem, mass, and coherent vision warp the reachable region of configuration space: what looks near, far, inevitable, or impossible.',
 		scrollHint: 'Scroll to deepen the well. Shape of distortion, not yet the pull of others.',
 	},
 	{

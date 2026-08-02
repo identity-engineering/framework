@@ -1,8 +1,12 @@
 ---
+/**
+ * Keep inline tags on one line with outer spaces (Astro whitespace).
+ * Never break before <em>/<strong>/<a> after a word.
+ * No em-dashes in public copy.
+ */
 import Layout from '../../layouts/Layout.astro';
 import ConceptPageHero from '../../components/concepts/ConceptPageHero.astro';
 import ConceptPager from '../../components/concepts/ConceptPager.astro';
-import GapsSection from '../../components/GapsSection.astro';
 import { getConcept } from '../../lib/concepts';
 
 const c = getConcept('emergent');
@@ -100,7 +104,7 @@ const c = getConcept('emergent');
 						<ul class="space-y-2 text-white/60">
 							<li>Stability (reduced external tension, shared damping)</li>
 							<li>Amplification of its own direction</li>
-							<li>Access to a higher possibility space</li>
+							<li>Access to an expanded reachable region of configuration space</li>
 						</ul>
 					</div>
 					<div class="rounded-2xl border border-white/10 bg-black/30 p-6">
@@ -153,14 +157,9 @@ const c = getConcept('emergent');
 						<a href="https://github.com/identity-engineering/framework/issues/60" class="text-white/80 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50" target="_blank" rel="noopener noreferrer">#60</a>,
 						<a href="https://github.com/identity-engineering/framework/issues/61" class="text-white/80 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50" target="_blank" rel="noopener noreferrer">#61</a>,
 						<a href="https://github.com/identity-engineering/framework/issues/62" class="text-white/80 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50" target="_blank" rel="noopener noreferrer">#62</a>.
+						The page-level Critical Gaps block is rendered automatically by the site layout.
 					</p>
 				</div>
-			</div>
-		</section>
-
-		<section class="border-t border-white/10 px-6 py-16">
-			<div class="mx-auto max-w-3xl">
-				<GapsSection page="emergent" />
 			</div>
 		</section>
 

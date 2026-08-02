@@ -1,8 +1,12 @@
 ---
+/**
+ * Keep inline tags on one line with outer spaces (Astro whitespace).
+ * Never break before <em>/<strong>/<a> after a word.
+ * No em-dashes in public copy.
+ */
 import Layout from '../../layouts/Layout.astro';
 import ConceptPageHero from '../../components/concepts/ConceptPageHero.astro';
 import ConceptPager from '../../components/concepts/ConceptPager.astro';
-import GapsSection from '../../components/GapsSection.astro';
 import { getConcept } from '../../lib/concepts';
 
 const c = getConcept('rotation');
@@ -128,12 +132,6 @@ const c = getConcept('rotation');
 						See <a href="/foundations/noether-symmetry-and-conservation" class="text-white/80 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Emmy Noether: Symmetry and Conservation Laws</a>.
 					</p>
 				</div>
-			</div>
-		</section>
-
-		<section class="border-t border-white/10 px-6 py-16">
-			<div class="mx-auto max-w-3xl">
-				<GapsSection page="rotation" />
 			</div>
 		</section>
 

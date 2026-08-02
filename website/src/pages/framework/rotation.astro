@@ -1,4 +1,9 @@
 ---
+/**
+ * Keep inline tags on one line with outer spaces (Astro whitespace).
+ * Never break before <em>/<strong>/<a> after a word.
+ * No em-dashes in public copy.
+ */
 import Layout from '../../layouts/Layout.astro';
 import ConceptPageHero from '../../components/concepts/ConceptPageHero.astro';
 import ConceptPager from '../../components/concepts/ConceptPager.astro';
@@ -61,13 +66,31 @@ const c = getConcept('rotation');
 						<strong class="text-white/80">Tangential force:</strong> habits that feed substance into the system without lateral thrashing.
 					</li>
 					<li class="border-l border-white/15 pl-5">
-						<strong class="text-white/80">Wobble:</strong> quality metric for how much the stem precesses under load.
+						<strong class="text-white/80">Wobble (working definition):</strong> the residual angular deviation of the instantaneous angular-momentum vector from the Identity Stem (the non-axial component that does not average to zero). Zero wobble would be pure rotation about the Stem. Finite wobble is energy and stability loss under load.
 					</li>
 				</ul>
 			</div>
 		</section>
 
 		<section class="border-t border-white/10 px-6 py-24">
+			<div class="mx-auto max-w-3xl space-y-8 text-lg leading-relaxed text-white/55">
+				<div class="mb-2 text-sm uppercase tracking-[4px] text-white/40">Wobble in practice</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					Perfect rotation never exists. Recognition is the work.
+				</h2>
+				<p>
+					In rigid-body physics the precise terms are precession (slow conical motion of the axis under torque) and nutation (the faster nodding or oscillation superimposed on it). "Wobble" is the engineering shorthand for the residual deviation that matters for stability.
+				</p>
+				<p>
+					Because perfect alignment never occurs in real systems, identity work is not the elimination of every deviation. It is the continuous recognition of wobble and the deliberate counter-steering that keeps it within a usable band: habits that raise coherent spin, removal of lateral thrash, and probes that make deviation visible before it grows under load.
+				</p>
+				<p>
+					This makes wobble a natural candidate for an operational metric. Relative wobble derived from trajectory logs and interaction signals can become a stability value in the Identity Engineering OS: lower residual deviation under comparable load means higher usable agency.
+				</p>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 bg-white/[0.02] px-6 py-24">
 			<div class="mx-auto max-w-3xl">
 				<div class="mb-6 text-sm uppercase tracking-[4px] text-white/40">Rotation and Tension</div>
 				<p class="text-lg text-white/55 mb-6">
@@ -87,7 +110,7 @@ const c = getConcept('rotation');
 			</div>
 		</section>
 
-		<section class="border-t border-white/10 bg-white/[0.02] px-6 py-24">
+		<section class="border-t border-white/10 px-6 py-24">
 			<div class="mx-auto max-w-3xl space-y-6 text-lg leading-relaxed text-white/55">
 				<p>
 					<strong class="text-white/80">Engineering work:</strong> Increase productive spin and reduce thrash.

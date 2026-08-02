@@ -13,6 +13,9 @@ export default defineConfig({
   ],
   devToolbar: { enabled: false },
   vite: {
+    build: {
+      chunkSizeWarningLimit: 900,
+    },
     ssr: {
       // Ensure R3F packages are processed correctly when touched by SSR tooling
       noExternal: ['@react-three/fiber', '@react-three/drei', 'three'],

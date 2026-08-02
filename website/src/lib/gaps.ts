@@ -45,6 +45,8 @@ interface GhIssue {
 	pull_request?: unknown;
 }
 
+let gapIssuesPromise: Promise<GapIssue[]> | undefined;
+
 function labelNames(labels: (GhLabel | string)[]): string[] {
 	return labels.map((l) => (typeof l === 'string' ? l : l.name));
 }
@@ -127,20 +129,26 @@ function normalizeIssue(raw: GhIssue): GapIssue | null {
 /**
  * Fetch all gap issues (open + closed). Sorted: open first, then priority, then number.
  */
-export async function fetchGapIssues(): Promise<GapIssue[]> {
+async function requestGapIssues(): Promise<GapIssue[]> {
 	const url =
 		`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/issues` +
 		`?state=all&labels=gap&per_page=100&sort=created&direction=asc`;
+	const token = import.meta.env.GITHUB_TOKEN || import.meta.env.GH_TOKEN;
+	const headers: Record<string, string> = {
+		Accept: 'application/vnd.github+json',
+		'User-Agent': 'identity-engineering-website',
+		'X-GitHub-Api-Version': '2022-11-28',
+	};
+	if (token) headers.Authorization = `Bearer ${token}`;
 
 	try {
 		const res = await fetch(url, {
-			headers: {
-				Accept: 'application/vnd.github+json',
-				'User-Agent': 'identity-engineering-website',
-			},
+			headers,
 		});
 		if (!res.ok) {
-			console.error(`[gaps] GitHub API ${res.status}`);
+			if (import.meta.env.GAPS_DEBUG === 'true') {
+				console.warn(`[gaps] GitHub API ${res.status}; using an empty fallback`);
+			}
 			return [];
 		}
 		const data = (await res.json()) as GhIssue[];
@@ -158,9 +166,14 @@ export async function fetchGapIssues(): Promise<GapIssue[]> {
 
 		return gaps;
 	} catch (e) {
-		console.error('[gaps] fetch failed', e);
+		if (import.meta.env.GAPS_DEBUG === 'true') console.warn('[gaps] fetch failed', e);
 		return [];
 	}
+}
+
+export function fetchGapIssues(): Promise<GapIssue[]> {
+	gapIssuesPromise ??= requestGapIssues();
+	return gapIssuesPromise;
 }
 
 export function gapsForPage(gaps: GapIssue[], pageSlug: string): GapIssue[] {

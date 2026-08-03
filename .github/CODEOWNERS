@@ -1,0 +1,10 @@
+# Security-sensitive repository controls are assigned to the maintainer.
+/.github/ @jonassiebler
+/.github/workflows/ @jonassiebler
+/.github/CODEOWNERS @jonassiebler
+/.github/dependabot.yml @jonassiebler
+/.github/SECURITY.md @jonassiebler
+
+# Website and deployment configuration affect production output.
+/website/ @jonassiebler
+/wrangler.toml @jonassiebler

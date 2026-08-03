@@ -22,11 +22,11 @@ import Layout from '../../layouts/Layout.astro';
 					<p class="text-sm text-white/65 leading-relaxed">
 						<strong class="text-white/80">Status:</strong> Working scaffold.
 						Not a claim of new natural-science laws. Cell biology is the primary biological reading.
-						Analogy, not isomorphism. Biology-lens Single concepts:
+						Analogy, not isomorphism. Biology-lens Single set:
 						<a href="/framework/gene" class="text-white/85 underline decoration-white/25 hover:decoration-white/50">Gene</a>,
 						<a href="/framework/boundary" class="text-white/85 underline decoration-white/25 hover:decoration-white/50">Boundary</a>,
-						<a href="/framework/cell" class="text-white/85 underline decoration-white/25 hover:decoration-white/50">Cell</a>
-						(Metabolism next).
+						<a href="/framework/cell" class="text-white/85 underline decoration-white/25 hover:decoration-white/50">Cell</a>,
+						<a href="/framework/metabolism" class="text-white/85 underline decoration-white/25 hover:decoration-white/50">Metabolism</a>.
 					</p>
 				</div>
 			</div>
@@ -34,33 +34,29 @@ import Layout from '../../layouts/Layout.astro';
 
 		<section class="px-8 py-16 border-b border-white/10">
 			<div class="max-w-3xl mx-auto space-y-6 text-white/60 leading-relaxed">
-				<h2 class="text-2xl font-semibold text-white">Biology lens (in progress)</h2>
+				<h2 class="text-2xl font-semibold text-white">Biology lens</h2>
 				<p>
 					The physics lens already has individual concept pages (Mass, Time / Stem, Relativity, and others).
-					The biology lens is being built with the same discipline: one concept at a time, science first.
+					The biology lens is built with the same discipline: one concept at a time, science first.
 				</p>
 				<p>
-					<strong class="text-white/85">Pedagogical order (Single):</strong>
+					<strong class="text-white/85">Single (complete for this set):</strong>
 					<a href="/framework/gene" class="text-white/90 underline decoration-white/25 hover:decoration-white/50">Gene</a>
 					→
-					<a href="/framework/boundary" class="text-white/90 underline decoration-white/50">Boundary</a>
+					<a href="/framework/boundary" class="text-white/90 underline decoration-white/25 hover:decoration-white/50">Boundary</a>
 					→
 					<a href="/framework/cell" class="text-white/90 underline decoration-white/25 hover:decoration-white/50">Cell</a>
-					→ Metabolism (next).
+					→
+					<a href="/framework/metabolism" class="text-white/90 underline decoration-white/25 hover:decoration-white/50">Metabolism</a>.
 				</p>
 				<ul class="space-y-3 text-white/65">
-					<li>
-						<strong class="text-white/85">Gene</strong> — heritable founding configuration passed to a new Identity. Not the Stem.
-					</li>
-					<li>
-						<strong class="text-white/85">Boundary</strong> — membrane condition: maintained interior under selective exchange.
-					</li>
-					<li>
-						<strong class="text-white/85">Cell</strong> — the living unit that integrates Gene and Boundary and exists as its own form.
-					</li>
+					<li><strong class="text-white/85">Gene</strong> — heritable founding configuration passed to a new Identity. Not the Stem.</li>
+					<li><strong class="text-white/85">Boundary</strong> — membrane condition: maintained interior under selective exchange.</li>
+					<li><strong class="text-white/85">Cell</strong> — the living unit that integrates Gene and Boundary and exists as its own form.</li>
+					<li><strong class="text-white/85">Metabolism</strong> — process of the Cell: sustain, transform, prepare exchange with other cells.</li>
 				</ul>
 				<p class="text-white/45">
-					Next: Metabolism (process of the Cell). Then Interactive candidates (Signal, Recognition, Coupling).
+					Next scale when we continue: Interactive (Signal, Recognition, Coupling), then Collective (Multicellularity, Specialization, Regulation).
 				</p>
 			</div>
 		</section>
@@ -130,11 +126,11 @@ import Layout from '../../layouts/Layout.astro';
 							</tr>
 							<tr>
 								<td class="p-3">Metabolism (transform input → maintain form)</td>
-															<td class="p-3">Process of the Cell; Interaction → Geometry Receipt (local); Tensor / Registry feed is ongoing OS work</td>
+															<td class="p-3"><a href="/framework/metabolism" class="text-white/85 underline decoration-white/25 hover:decoration-white/50">Metabolism</a>: process of the Cell; Interaction → Geometry Receipt (local); Tensor / Registry feed is ongoing OS work</td>
 							</tr>
 							<tr>
 								<td class="p-3">Signal molecules / transport across membrane</td>
-															<td class="p-3">Interaction Signal; tools, APIs, MCPs, scripts</td>
+															<td class="p-3">Interaction Signal; tools, APIs, MCPs, scripts (Interactive scale next)</td>
 							</tr>
 							<tr>
 								<td class="p-3">Internal processing without outbound signal</td>
@@ -191,7 +187,8 @@ import Layout from '../../layouts/Layout.astro';
 					<h3 class="text-xl font-semibold text-white mb-3">Interaction → geometry</h3>
 					<p class="text-white/60 leading-relaxed">
 						Continuous conversion of Interaction into relative geometry. Probes-as-Bridge, not a separate tool shelf.
-						Full biology-lens page comes next after Cell.
+						Full biology-lens page:
+						<a href="/framework/metabolism" class="text-white/85 underline decoration-white/25 hover:decoration-white/50">Metabolism</a>.
 					</p>
 				</article>
 
@@ -226,10 +223,11 @@ import Layout from '../../layouts/Layout.astro';
 					OS is the public, usable system that operationalizes the whole.
 				</p>
 				<div class="flex flex-wrap gap-4 justify-center">
-					<a href="/framework/gene" class="px-6 py-3 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">Gene</a>
-					<a href="/framework/boundary" class="px-6 py-3 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">Boundary</a>
-					<a href="/framework/cell" class="px-6 py-3 rounded-full bg-white text-black font-medium hover:bg-white/90 transition">Cell</a>
-					<a href="/framework" class="px-6 py-3 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">Framework</a>
+					<a href="/framework/gene" class="px-5 py-2.5 rounded-full border border-white/20 text-sm text-white/70 hover:bg-white/5 transition">Gene</a>
+					<a href="/framework/boundary" class="px-5 py-2.5 rounded-full border border-white/20 text-sm text-white/70 hover:bg-white/5 transition">Boundary</a>
+					<a href="/framework/cell" class="px-5 py-2.5 rounded-full border border-white/20 text-sm text-white/70 hover:bg-white/5 transition">Cell</a>
+					<a href="/framework/metabolism" class="px-5 py-2.5 rounded-full bg-white text-black text-sm font-medium hover:bg-white/90 transition">Metabolism</a>
+					<a href="/framework" class="px-5 py-2.5 rounded-full border border-white/20 text-sm text-white/70 hover:bg-white/5 transition">Framework</a>
 				</div>
 			</div>
 		</section>

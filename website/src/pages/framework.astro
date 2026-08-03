@@ -2,18 +2,21 @@
 import Layout from '../layouts/Layout.astro';
 import ConceptSceneMount from '../components/concepts/ConceptSceneMount.astro';
 import { concepts } from '../lib/concepts';
+import { biologyByLayer } from '../lib/biologyConcepts';
 
 /**
  * Official structure:
- * 1. Concepts of a Single Identity
- * 2. Concepts of an Interactive Identity
- * 3. Concepts of a Collective Identity
- * 4. Living Identity (operational layer: geometry metabolized through Interaction)
+ * Same three scales under two science lenses (Physics · Biology),
+ * plus Living Identity as operational scaffold.
  */
 
 const single = concepts.filter((c) => c.layer === 'single');
 const interactive = concepts.filter((c) => c.layer === 'interactive');
 const collective = concepts.filter((c) => c.layer === 'collective');
+
+const bioSingle = biologyByLayer('single');
+const bioInteractive = biologyByLayer('interactive');
+const bioCollective = biologyByLayer('collective');
 ---
 
 <Layout title="Framework | Identity Engineering">
@@ -25,168 +28,284 @@ const collective = concepts.filter((c) => c.layer === 'collective');
 					Identity Engineering
 				</h1>
 				<p class="text-xl md:text-2xl text-white/50 font-light max-w-2xl leading-relaxed">
-					A physics- and mathematics-inspired framework for consciously designing identity in the AI era.
-					From the geometry of a single identity, to forces between identities, to emergent collective identity:
-					and the operational layer in which that geometry lives.
+					A science-inspired framework for consciously designing identity in the AI era.
+					Three scales — Single, Interactive, Collective — under two lenses: physics geometry and living form.
 				</p>
 				<div class="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-4 max-w-2xl">
 					<p class="text-sm text-white/60 leading-relaxed">
 						This framework serves systems-thinking individuals and teams with enough decision latitude to make consequential identity choices.
-						It is not a universal model for every life context.
+						It is not a universal model for every life context. Analogy, not isomorphism.
 					</p>
+				</div>
+
+				{/* Lens switcher */}
+				<div class="mt-10 flex flex-wrap items-center gap-3" id="lens-switcher" role="tablist" aria-label="Science lens">
+					<span class="text-sm uppercase tracking-[3px] text-white/35 mr-2">Lens</span>
+					<button
+						type="button"
+						role="tab"
+						id="lens-physics"
+						aria-selected="true"
+						data-lens="physics"
+						class="lens-btn px-5 py-2.5 rounded-full text-sm font-medium transition bg-white text-black"
+					>
+						Physics
+					</button>
+					<button
+						type="button"
+						role="tab"
+						id="lens-biology"
+						aria-selected="false"
+						data-lens="biology"
+						class="lens-btn px-5 py-2.5 rounded-full text-sm font-medium transition border border-white/20 text-white/70 hover:bg-white/5"
+					>
+						Biology
+					</button>
 				</div>
 			</div>
 		</section>
 
+		{/* ========== PHYSICS LENS ========== */}
+		<div id="lens-panel-physics" data-lens-panel="physics">
+			<section id="single" class="border-t border-white/10">
+				<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
+					<div class="text-sm uppercase tracking-[4px] text-white/40 mb-3">01 · Physics</div>
+					<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
+						Concepts of a Single Identity
+					</h2>
+					<p class="text-base text-white/45 leading-relaxed max-w-2xl mb-4">
+						Internal geometry and dynamics of one identity: form, substance, warp, and stability.
+					</p>
+				</div>
 
-		<section id="single" class="border-t border-white/10">
-			<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
-				<div class="text-sm uppercase tracking-[4px] text-white/40 mb-3">01</div>
-				<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
-					Concepts of a Single Identity
-				</h2>
-				<p class="text-base text-white/45 leading-relaxed max-w-2xl mb-4">
-					Internal geometry and dynamics of one identity: form, substance, warp, and stability.
-					Click any concept for the deep dive and scroll-driven visualization.
-				</p>
-			</div>
+				{
+					single.map((c, i) => {
+						const reverse = i % 2 === 1;
+						return (
+							<a
+								href={c.href}
+								class="group block max-w-6xl mx-auto px-8 py-12 md:py-16 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 rounded-sm"
+								data-concept-section
+							><div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+									<div class:list={[reverse && 'order-1 md:order-2']}>
+										<div class="text-sm uppercase tracking-[4px] text-white/35 mb-3">{c.tag}</div>
+										<h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white group-hover:text-white/85 transition">
+											{c.title}
+											<span class="ml-2 inline-block text-white/30 transition group-hover:translate-x-1 group-hover:text-white/60">→</span>
+										</h3>
+										<p class="text-base text-white/55 leading-relaxed mb-4">{c.blurb}</p>
+										<p class="text-sm text-white/40 leading-relaxed mb-5">{c.scrollHint}</p>
+										<span class="text-sm text-white/50 group-hover:text-white transition border-b border-white/20 group-hover:border-white/50 pb-0.5">
+											Open concept
+										</span>
+									</div>
+									<div
+										class:list={[
+											'relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f] transition group-hover:border-white/25',
+											reverse && 'order-2 md:order-1',
+										]}
+									>
+										<ConceptSceneMount scene={c.scene} />
+									</div>
+								</div></a>
+						);
+					})
+				}
+			</section>
 
-			{
-				single.map((c, i) => {
-					const reverse = i % 2 === 1;
-					return (
-						<a
-							href={c.href}
-							class="group block max-w-6xl mx-auto px-8 py-12 md:py-16 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 rounded-sm"
-							data-concept-section
-						><div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
-								<div class:list={[reverse && 'order-1 md:order-2']}>
-									<div class="text-sm uppercase tracking-[4px] text-white/35 mb-3">{c.tag}</div>
-									<h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white group-hover:text-white/85 transition">
-										{c.title}
-										<span class="ml-2 inline-block text-white/30 transition group-hover:translate-x-1 group-hover:text-white/60">→</span>
-									</h3>
-									<p class="text-base text-white/55 leading-relaxed mb-4">{c.blurb}</p>
-									<p class="text-sm text-white/40 leading-relaxed mb-5">{c.scrollHint}</p>
-									<span class="text-sm text-white/50 group-hover:text-white transition border-b border-white/20 group-hover:border-white/50 pb-0.5">
-										Open concept
-									</span>
-								</div>
-								<div
-									class:list={[
-										'relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f] transition group-hover:border-white/25',
-										reverse && 'order-2 md:order-1',
-									]}
-								>
-									<ConceptSceneMount scene={c.scene} />
-								</div>
-							</div></a>
-					);
-				})
-			}
-		</section>
+			<section id="interactive" class="border-t border-white/10">
+				<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
+					<div class="text-sm uppercase tracking-[4px] text-white/40 mb-3">02 · Physics</div>
+					<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
+						Concepts of an Interactive Identity
+					</h2>
+					<p class="text-base text-white/45 leading-relaxed max-w-2xl">
+						Once a single geometry is strong enough, forces appear between identities.
+					</p>
+				</div>
 
-		<section id="interactive" class="border-t border-white/10">
-			<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
-				<div class="text-sm uppercase tracking-[4px] text-white/40 mb-3">02</div>
-				<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
-					Concepts of an Interactive Identity
-				</h2>
-				<p class="text-base text-white/45 leading-relaxed max-w-2xl">
-					Once a single geometry is strong enough, forces appear between identities.
-				</p>
-			</div>
+				{
+					interactive.map((c, i) => {
+						const reverse = i % 2 === 1;
+						return (
+							<a
+								href={c.href}
+								class="group block max-w-6xl mx-auto px-8 py-12 md:py-16 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 rounded-sm"
+								data-concept-section
+							><div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+									<div class:list={[reverse && 'order-1 md:order-2']}>
+										<div class="text-sm uppercase tracking-[4px] text-white/35 mb-3">{c.tag}</div>
+										<h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white group-hover:text-white/85 transition">
+											{c.title}
+											<span class="ml-2 inline-block text-white/30 transition group-hover:translate-x-1 group-hover:text-white/60">→</span>
+										</h3>
+										<p class="text-base text-white/55 leading-relaxed mb-4">{c.blurb}</p>
+										<p class="text-sm text-white/40 leading-relaxed mb-5">{c.scrollHint}</p>
+										<span class="text-sm text-white/50 group-hover:text-white transition border-b border-white/20 group-hover:border-white/50 pb-0.5">
+											Open concept
+										</span>
+									</div>
+									<div
+										class:list={[
+											'relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f] transition group-hover:border-white/25',
+											reverse && 'order-2 md:order-1',
+										]}
+									>
+										<ConceptSceneMount scene={c.scene} />
+									</div>
+								</div></a>
+						);
+					})
+				}
+			</section>
 
-			{
-				interactive.map((c, i) => {
-					const reverse = i % 2 === 1;
-					return (
-						<a
-							href={c.href}
-							class="group block max-w-6xl mx-auto px-8 py-12 md:py-16 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 rounded-sm"
-							data-concept-section
-						><div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
-								<div class:list={[reverse && 'order-1 md:order-2']}>
-									<div class="text-sm uppercase tracking-[4px] text-white/35 mb-3">{c.tag}</div>
-									<h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white group-hover:text-white/85 transition">
-										{c.title}
-										<span class="ml-2 inline-block text-white/30 transition group-hover:translate-x-1 group-hover:text-white/60">→</span>
-									</h3>
-									<p class="text-base text-white/55 leading-relaxed mb-4">{c.blurb}</p>
-									<p class="text-sm text-white/40 leading-relaxed mb-5">{c.scrollHint}</p>
-									<span class="text-sm text-white/50 group-hover:text-white transition border-b border-white/20 group-hover:border-white/50 pb-0.5">
-										Open concept
-									</span>
-								</div>
-								<div
-									class:list={[
-										'relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f] transition group-hover:border-white/25',
-										reverse && 'order-2 md:order-1',
-									]}
-								>
-									<ConceptSceneMount scene={c.scene} />
-								</div>
-							</div></a>
-					);
-				})
-			}
-		</section>
+			<section id="collective" class="border-t border-white/10">
+				<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
+					<div class="text-sm uppercase tracking-[4px] text-white/40 mb-3">03 · Physics</div>
+					<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
+						Concepts of a Collective Identity
+					</h2>
+					<p class="text-base text-white/45 leading-relaxed max-w-2xl">
+						When identities stay coupled long enough, a higher-order identity emerges with its own persistence and damping.
+					</p>
+				</div>
 
-		<section id="collective" class="border-t border-white/10">
-			<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
-				<div class="text-sm uppercase tracking-[4px] text-white/40 mb-3">03</div>
-				<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
-					Concepts of a Collective Identity
-				</h2>
-				<p class="text-base text-white/45 leading-relaxed max-w-2xl">
-					When identities stay coupled long enough, a higher-order identity emerges with its own persistence and damping.
-				</p>
-			</div>
+				{
+					collective.map((c, i) => {
+						const reverse = i % 2 === 1;
+						return (
+							<a
+								href={c.href}
+								class="group block max-w-6xl mx-auto px-8 py-12 md:py-16 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 rounded-sm"
+								data-concept-section
+							><div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+									<div class:list={[reverse && 'order-1 md:order-2']}>
+										<div class="text-sm uppercase tracking-[4px] text-white/35 mb-3">{c.tag}</div>
+										<h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white group-hover:text-white/85 transition">
+											{c.title}
+											<span class="ml-2 inline-block text-white/30 transition group-hover:translate-x-1 group-hover:text-white/60">→</span>
+										</h3>
+										<p class="text-base text-white/55 leading-relaxed mb-4">{c.blurb}</p>
+										<p class="text-sm text-white/40 leading-relaxed mb-5">{c.scrollHint}</p>
+										<span class="text-sm text-white/50 group-hover:text-white transition border-b border-white/20 group-hover:border-white/50 pb-0.5">
+											Open concept
+										</span>
+									</div>
+									<div
+										class:list={[
+											'relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f] transition group-hover:border-white/25',
+											reverse && 'order-2 md:order-1',
+										]}
+									>
+										<ConceptSceneMount scene={c.scene} />
+									</div>
+								</div></a>
+						);
+					})
+				}
+			</section>
+		</div>
 
-			{
-				collective.map((c, i) => {
-					const reverse = i % 2 === 1;
-					return (
-						<a
-							href={c.href}
-							class="group block max-w-6xl mx-auto px-8 py-12 md:py-16 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 rounded-sm"
-							data-concept-section
-						><div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
-								<div class:list={[reverse && 'order-1 md:order-2']}>
-									<div class="text-sm uppercase tracking-[4px] text-white/35 mb-3">{c.tag}</div>
-									<h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white group-hover:text-white/85 transition">
-										{c.title}
-										<span class="ml-2 inline-block text-white/30 transition group-hover:translate-x-1 group-hover:text-white/60">→</span>
-									</h3>
-									<p class="text-base text-white/55 leading-relaxed mb-4">{c.blurb}</p>
-									<p class="text-sm text-white/40 leading-relaxed mb-5">{c.scrollHint}</p>
-									<span class="text-sm text-white/50 group-hover:text-white transition border-b border-white/20 group-hover:border-white/50 pb-0.5">
-										Open concept
-									</span>
-								</div>
-								<div
-									class:list={[
-										'relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f] transition group-hover:border-white/25',
-										reverse && 'order-2 md:order-1',
-									]}
-								>
-									<ConceptSceneMount scene={c.scene} />
-								</div>
-							</div></a>
-					);
-				})
-			}
-		</section>
+		{/* ========== BIOLOGY LENS ========== */}
+		<div id="lens-panel-biology" data-lens-panel="biology" class="hidden">
+			<section class="border-t border-white/10">
+				<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
+					<div class="text-sm uppercase tracking-[4px] text-white/40 mb-3">01 · Biology</div>
+					<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
+						Single Identity as living form
+					</h2>
+					<p class="text-base text-white/45 leading-relaxed max-w-2xl mb-4">
+						Gene → Boundary → Cell → Metabolism. Founding core, membrane, living unit, and its process.
+					</p>
+				</div>
+				<div class="max-w-6xl mx-auto px-8 pb-16 grid sm:grid-cols-2 gap-4">
+					{
+						bioSingle.map((c) => (
+							<a
+								href={c.href}
+								class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/25 hover:bg-white/[0.04] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+							>
+								<div class="text-xs uppercase tracking-[3px] text-white/35 mb-2">{c.tag}</div>
+								<h3 class="text-xl font-bold text-white mb-2 group-hover:text-white/90 transition">
+									{c.title}
+									<span class="ml-1 text-white/30 group-hover:text-white/60 transition">→</span>
+								</h3>
+								<p class="text-sm text-white/50 leading-relaxed">{c.blurb}</p>
+							</a>
+						))
+					}
+				</div>
+			</section>
 
+			<section class="border-t border-white/10">
+				<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
+					<div class="text-sm uppercase tracking-[4px] text-white/40 mb-3">02 · Biology</div>
+					<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
+						Interactive Identity as living form
+					</h2>
+					<p class="text-base text-white/45 leading-relaxed max-w-2xl mb-4">
+						Signal → Recognition → Coupling. Exchange, discrimination, sustained link.
+					</p>
+				</div>
+				<div class="max-w-6xl mx-auto px-8 pb-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+					{
+						bioInteractive.map((c) => (
+							<a
+								href={c.href}
+								class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/25 hover:bg-white/[0.04] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+							>
+								<div class="text-xs uppercase tracking-[3px] text-white/35 mb-2">{c.tag}</div>
+								<h3 class="text-xl font-bold text-white mb-2 group-hover:text-white/90 transition">
+									{c.title}
+									<span class="ml-1 text-white/30 group-hover:text-white/60 transition">→</span>
+								</h3>
+								<p class="text-sm text-white/50 leading-relaxed">{c.blurb}</p>
+							</a>
+						))
+					}
+				</div>
+			</section>
+
+			<section class="border-t border-white/10">
+				<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
+					<div class="text-sm uppercase tracking-[4px] text-white/40 mb-3">03 · Biology</div>
+					<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
+						Collective Identity as living form
+					</h2>
+					<p class="text-base text-white/45 leading-relaxed max-w-2xl mb-4">
+						Multicellularity → Specialization → Regulation. Higher-order form, roles, multi-speed control.
+					</p>
+				</div>
+				<div class="max-w-6xl mx-auto px-8 pb-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+					{
+						bioCollective.map((c) => (
+							<a
+								href={c.href}
+								class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/25 hover:bg-white/[0.04] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+							>
+								<div class="text-xs uppercase tracking-[3px] text-white/35 mb-2">{c.tag}</div>
+								<h3 class="text-xl font-bold text-white mb-2 group-hover:text-white/90 transition">
+									{c.title}
+									<span class="ml-1 text-white/30 group-hover:text-white/60 transition">→</span>
+								</h3>
+								<p class="text-sm text-white/50 leading-relaxed">{c.blurb}</p>
+							</a>
+						))
+					}
+				</div>
+			</section>
+		</div>
+
+		{/* Living Identity — shared operational scaffold */}
 		<section id="living" class="border-t border-white/10">
 			<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
-				<div class="text-sm uppercase tracking-[4px] text-white/40 mb-3">04</div>
+				<div class="text-sm uppercase tracking-[4px] text-white/40 mb-3">Operational</div>
 				<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
 					Living Identity
 				</h2>
 				<p class="text-base text-white/45 leading-relaxed max-w-2xl mb-4">
-					Operational layer under the geometry. How identity maintains a boundary, metabolizes Interaction into geometry,
-					and scales as a living form, without replacing Mass, Relativity, or Emergence.
+					Scaffold under both lenses: how geometry is metabolized through Interaction.
+					Hub for the biology map and the relation to OS.
 				</p>
 			</div>
 
@@ -197,17 +316,14 @@ const collective = concepts.filter((c) => c.layer === 'collective');
 			>
 				<div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
 					<div>
-						<div class="text-sm uppercase tracking-[4px] text-white/35 mb-3">Operational</div>
+						<div class="text-sm uppercase tracking-[4px] text-white/35 mb-3">Hub</div>
 						<h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white group-hover:text-white/85 transition">
-							Boundary · Metabolism · TIM · Organism
+							Biology map · Life criteria · OS link
 							<span class="ml-2 inline-block text-white/30 transition group-hover:translate-x-1 group-hover:text-white/60">→</span>
 						</h3>
 						<p class="text-base text-white/55 leading-relaxed mb-4">
 							Life as IE criteria (boundary, metabolism, continuity, causal entropy under constraint).
-							TIM as practice-validated postulate. Biology as lens, not a third science floor replacing geometry.
-						</p>
-						<p class="text-sm text-white/40 leading-relaxed mb-5">
-							Open the full living-identity scaffold, honesty labels, and relation to Emergence.
+							Full index of biology-lens concepts and honesty labels.
 						</p>
 						<span class="text-sm text-white/50 group-hover:text-white transition border-b border-white/20 group-hover:border-white/50 pb-0.5">
 							Open Living Identity
@@ -215,7 +331,7 @@ const collective = concepts.filter((c) => c.layer === 'collective');
 					</div>
 					<div class="relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f] transition group-hover:border-white/25 flex items-center justify-center">
 						<div class="text-center px-8">
-							<div class="text-sm uppercase tracking-[4px] text-white/30 mb-3">Layer 04</div>
+							<div class="text-sm uppercase tracking-[4px] text-white/30 mb-3">Scaffold</div>
 							<div class="text-2xl md:text-3xl font-bold text-white/80 tracking-tight">Living form</div>
 							<p class="mt-3 text-sm text-white/40 max-w-xs mx-auto leading-relaxed">
 								Geometry metabolized through Interaction
@@ -235,9 +351,55 @@ const collective = concepts.filter((c) => c.layer === 'collective');
 				<div class="flex flex-wrap gap-4 justify-center">
 					<a href="/big-questions" class="px-8 py-3.5 rounded-full bg-white text-black font-medium hover:bg-white/90 transition">Big Questions</a>
 					<a href="/framework/time" class="px-8 py-3.5 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">Start with Time</a>
+					<a href="/framework/gene" class="px-8 py-3.5 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">Start with Gene</a>
 					<a href="/framework/living-identity" class="px-8 py-3.5 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">Living Identity</a>
 				</div>
 			</div>
 		</section>
 	</main>
+
+	<script>
+		function setLens(lens: string) {
+			const physics = document.getElementById('lens-panel-physics');
+			const biology = document.getElementById('lens-panel-biology');
+			const btns = document.querySelectorAll('.lens-btn');
+
+			if (physics && biology) {
+				physics.classList.toggle('hidden', lens !== 'physics');
+				biology.classList.toggle('hidden', lens !== 'biology');
+			}
+
+			btns.forEach((btn) => {
+				const active = btn.getAttribute('data-lens') === lens;
+				btn.setAttribute('aria-selected', active ? 'true' : 'false');
+				if (active) {
+					btn.classList.add('bg-white', 'text-black');
+					btn.classList.remove('border', 'border-white/20', 'text-white/70');
+				} else {
+					btn.classList.remove('bg-white', 'text-black');
+					btn.classList.add('border', 'border-white/20', 'text-white/70');
+				}
+			});
+
+			try {
+				localStorage.setItem('ie-framework-lens', lens);
+			} catch {
+				/* ignore */
+			}
+		}
+
+		document.querySelectorAll('.lens-btn').forEach((btn) => {
+			btn.addEventListener('click', () => {
+				const lens = btn.getAttribute('data-lens');
+				if (lens) setLens(lens);
+			});
+		});
+
+		try {
+			const saved = localStorage.getItem('ie-framework-lens');
+			if (saved === 'biology' || saved === 'physics') setLens(saved);
+		} catch {
+			/* ignore */
+		}
+	</script>
 </Layout>

@@ -4,9 +4,11 @@
  * Never break before <em>/<strong>/<a> after a word.
  */
 import Layout from '../../layouts/Layout.astro';
+
+const title = 'Identifying Opportunities as Higher-Order Liberation';
 ---
 
-<Layout title="Identifying Opportunities as Higher-Order Liberation | Identity Engineering">
+<Layout title={`${title} | Identity Engineering`}>
 	<main class="min-h-screen">
 		<section class="border-b border-white/10 px-6 pt-28 pb-16">
 			<div class="mx-auto max-w-3xl">
@@ -15,13 +17,13 @@ import Layout from '../../layouts/Layout.astro';
 				</a>
 				<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Blog · Proposal · Collective</div>
 				<h1 class="text-5xl font-bold tracking-tighter text-white md:text-6xl leading-[0.95]">
-					Identifying Opportunities as Higher-Order Liberation
+					{title}
 				</h1>
 				<p class="mt-6 text-xl font-light leading-relaxed text-white/50 md:text-2xl">
 					When competing high-Mass stems steal energy from each other, the resolution is not fewer identities. It is the identification of a new identity whose curvature liberates both. That act is the core of Identity Engineering on the collective layer.
 				</p>
 				<div class="mt-8 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-white/45">
-					<span>August 2026</span>
+					<time datetime="2026-08">August 2026</time>
 					<span aria-hidden="true">·</span>
 					<span>12 min read</span>
 					<span aria-hidden="true">·</span>

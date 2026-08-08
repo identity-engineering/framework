@@ -42,6 +42,7 @@ export const biologyConcepts: BiologyConceptMeta[] = [
 		tag: 'Membrane',
 		blurb:
 			'Membrane condition: maintained interior under selective exchange. Prerequisite of Cell.',
+		scene: 'boundary',
 	},
 	{
 		id: 'cell',

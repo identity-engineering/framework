@@ -7,6 +7,7 @@ interface Props {
 	scene:
 		| 'space'
 		| 'gene'
+		| 'boundary'
 		| 'mass'
 		| 'curvature'
 		| 'rotation'
@@ -32,6 +33,7 @@ const { scene } = Astro.props;
 	const loaders = {
 		space: () => import('./SpaceScene.tsx'),
 		gene: () => import('./GeneScene.tsx'),
+		boundary: () => import('./BoundaryScene.tsx'),
 		mass: () => import('./MassScene.tsx'),
 		curvature: () => import('./CurvatureScene.tsx'),
 		rotation: () => import('./RotationScene.tsx'),

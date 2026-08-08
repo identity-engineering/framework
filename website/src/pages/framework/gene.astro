@@ -7,21 +7,21 @@
  * No em-dashes in public copy.
  */
 import Layout from '../../layouts/Layout.astro';
+import ConceptPageHero from '../../components/concepts/ConceptPageHero.astro';
 ---
 
 <Layout title="Gene | Identity Engineering">
 	<main class="min-h-screen">
-		<section class="min-h-[50vh] flex flex-col justify-center pt-28 pb-16 border-b border-white/10">
-			<div class="max-w-3xl mx-auto px-8">
-				<div class="text-sm uppercase tracking-[4px] text-white/40 mb-6">
-					Biology lens · Single Identity
-				</div>
-				<h1 class="text-4xl md:text-6xl font-bold tracking-tighter leading-[0.95] mb-6 text-white">
-					Gene
-				</h1>
-				<p class="text-xl text-white/50 font-light leading-relaxed mb-6">
-					The heritable founding configuration of an Identity: the inner image of self that can be passed to a new Identity so that continuity of lineage and independence of the new form can both hold.
-				</p>
+		<ConceptPageHero
+			scene="gene"
+			tag="Genetics · Single Identity"
+			title="Gene"
+			lede="The heritable founding configuration of an Identity: the inner image of self that can be passed to a new Identity so that continuity of lineage and independence of the new form can both hold."
+			scrollHint="Scroll: a single founding pattern unfolds and turns as one double helix."
+		/>
+
+		<section class="border-t border-white/10 px-8 py-16">
+			<div class="mx-auto max-w-3xl">
 				<div class="rounded-2xl border border-amber-500/20 bg-amber-500/[0.04] p-4">
 					<p class="text-sm text-white/65 leading-relaxed">
 						<strong class="text-white/80">Status:</strong> Working concept under the biology lens. Primary science reading: genetics as the discipline of heritable information across generations of living forms. Analogy, not isomorphism. Gene is not the Identity Stem.

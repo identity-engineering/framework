@@ -8,6 +8,7 @@
  */
 export type ConceptScene =
 	| 'space'
+	| 'gene'
 	| 'stem'
 	| 'mass'
 	| 'curvature'

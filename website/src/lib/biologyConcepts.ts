@@ -3,6 +3,7 @@
  * Same three scales as physics: Single · Interactive · Collective.
  * Science-first names; pedagogical order within each scale.
  */
+import type { ConceptScene } from './concepts';
 
 export type BiologyLayer = 'single' | 'interactive' | 'collective';
 
@@ -15,6 +16,7 @@ export interface BiologyConceptMeta {
 	layerLabel: string;
 	tag: string;
 	blurb: string;
+	scene?: ConceptScene;
 }
 
 export const biologyConcepts: BiologyConceptMeta[] = [
@@ -28,6 +30,7 @@ export const biologyConcepts: BiologyConceptMeta[] = [
 		tag: 'Genetics',
 		blurb:
 			'Heritable founding configuration passed to a new Identity. Not the Identity Stem.',
+		scene: 'gene',
 	},
 	{
 		id: 'boundary',

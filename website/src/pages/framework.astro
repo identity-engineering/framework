@@ -46,6 +46,7 @@ const bioCollective = biologyByLayer('collective');
 						role="tab"
 						id="lens-physics"
 						aria-selected="true"
+						aria-controls="lens-panel-physics"
 						data-lens="physics"
 						class="lens-btn px-5 py-2.5 rounded-full text-sm font-medium transition bg-white text-black"
 					>
@@ -56,6 +57,7 @@ const bioCollective = biologyByLayer('collective');
 						role="tab"
 						id="lens-biology"
 						aria-selected="false"
+						aria-controls="lens-panel-biology"
 						data-lens="biology"
 						class="lens-btn px-5 py-2.5 rounded-full text-sm font-medium transition border border-white/20 text-white/70 hover:bg-white/5"
 					>
@@ -66,7 +68,7 @@ const bioCollective = biologyByLayer('collective');
 		</section>
 
 		{/* ========== PHYSICS LENS ========== */}
-		<div id="lens-panel-physics" data-lens-panel="physics">
+		<div id="lens-panel-physics" role="tabpanel" aria-labelledby="lens-physics" aria-hidden="false" tabindex="0" data-lens-panel="physics">
 			<section id="single" class="border-t border-white/10">
 				<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
 					<div class="text-sm uppercase tracking-[4px] text-white/40 mb-3">01 · Physics</div>
@@ -207,7 +209,7 @@ const bioCollective = biologyByLayer('collective');
 		</div>
 
 		{/* ========== BIOLOGY LENS ========== */}
-		<div id="lens-panel-biology" data-lens-panel="biology" class="hidden">
+		<div id="lens-panel-biology" role="tabpanel" aria-labelledby="lens-biology" aria-hidden="true" tabindex="-1" data-lens-panel="biology" class="hidden">
 			<section class="border-t border-white/10">
 				<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
 					<div class="text-sm uppercase tracking-[4px] text-white/40 mb-3">01 · Biology</div>
@@ -367,6 +369,10 @@ const bioCollective = biologyByLayer('collective');
 			if (physics && biology) {
 				physics.classList.toggle('hidden', lens !== 'physics');
 				biology.classList.toggle('hidden', lens !== 'biology');
+				physics.setAttribute('aria-hidden', lens === 'physics' ? 'false' : 'true');
+				biology.setAttribute('aria-hidden', lens === 'biology' ? 'false' : 'true');
+				physics.setAttribute('tabindex', lens === 'physics' ? '0' : '-1');
+				biology.setAttribute('tabindex', lens === 'biology' ? '0' : '-1');
 			}
 
 			btns.forEach((btn) => {

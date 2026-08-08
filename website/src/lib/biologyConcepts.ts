@@ -54,6 +54,7 @@ export const biologyConcepts: BiologyConceptMeta[] = [
 		tag: 'Living unit',
 		blurb:
 			'The living unit that integrates Gene and Boundary and exists as its own form.',
+		scene: 'cell',
 	},
 	{
 		id: 'metabolism',

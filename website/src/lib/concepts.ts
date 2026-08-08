@@ -10,6 +10,7 @@ export type ConceptScene =
 	| 'space'
 	| 'gene'
 	| 'boundary'
+	| 'cell'
 	| 'stem'
 	| 'mass'
 	| 'curvature'

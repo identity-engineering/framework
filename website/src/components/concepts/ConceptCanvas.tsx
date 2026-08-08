@@ -43,6 +43,10 @@ export default function ConceptCanvas({
         dpr={[1, 1.5]}
         frameloop="demand"
         style={{ width: '100%', height: '100%' }}
+        onCreated={({ gl }) => {
+          gl.domElement.style.width = '100%';
+          gl.domElement.style.height = '100%';
+        }}
         gl={{ alpha: true, powerPreference: 'high-performance', antialias: true }}
       >
         <color attach="background" args={[mono.bg]} />

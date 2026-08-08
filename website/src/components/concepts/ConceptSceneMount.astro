@@ -8,6 +8,7 @@ interface Props {
 		| 'space'
 		| 'gene'
 		| 'boundary'
+		| 'cell'
 		| 'mass'
 		| 'curvature'
 		| 'rotation'
@@ -34,6 +35,7 @@ const { scene } = Astro.props;
 		space: () => import('./SpaceScene.tsx'),
 		gene: () => import('./GeneScene.tsx'),
 		boundary: () => import('./BoundaryScene.tsx'),
+		cell: () => import('./CellScene.tsx'),
 		mass: () => import('./MassScene.tsx'),
 		curvature: () => import('./CurvatureScene.tsx'),
 		rotation: () => import('./RotationScene.tsx'),

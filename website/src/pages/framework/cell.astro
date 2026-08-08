@@ -7,22 +7,21 @@
  * No em-dashes in public copy.
  */
 import Layout from '../../layouts/Layout.astro';
+import ConceptPageHero from '../../components/concepts/ConceptPageHero.astro';
 ---
 
 <Layout title="Cell | Identity Engineering">
 	<main class="min-h-screen">
-		<section class="min-h-[50vh] flex flex-col justify-center pt-28 pb-16 border-b border-white/10">
-			<div class="max-w-3xl mx-auto px-8">
-				<div class="text-sm uppercase tracking-[4px] text-white/40 mb-6">
-					Biology lens · Single Identity
-				</div>
-				<h1 class="text-4xl md:text-6xl font-bold tracking-tighter leading-[0.95] mb-6 text-white">
-					Cell
-				</h1>
-				<p class="text-xl text-white/50 font-light leading-relaxed mb-6">
-					The living unit: a bounded form that carries a founding core and exists as its own Identity,
-					capable of continuity, change, and later exchange with other living units.
-				</p>
+		<ConceptPageHero
+			scene="cell"
+			tag="Living unit · Single Identity"
+			title="Cell"
+			lede="The living unit: a bounded form that carries a founding core, maintains an interior, and exists as its own Identity through continuity and change."
+			scrollHint="Scroll: a membrane gathers around a founding core and inner currents make the form present."
+		/>
+
+		<section class="border-t border-white/10 px-8 py-16">
+			<div class="mx-auto max-w-3xl">
 				<div class="rounded-2xl border border-amber-500/20 bg-amber-500/[0.04] p-4">
 					<p class="text-sm text-white/65 leading-relaxed">
 						<strong class="text-white/80">Status:</strong> Working concept under the biology lens.

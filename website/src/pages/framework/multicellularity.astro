@@ -8,6 +8,9 @@
  * No em-dashes in public copy.
  */
 import Layout from '../../layouts/Layout.astro';
+
+const osCreationJurisdiction =
+	'https://github.com/identity-engineering/os/blob/main/docs/identity-creation-jurisdiction.md';
 ---
 
 <Layout title="Multicellularity | Identity Engineering">
@@ -83,10 +86,18 @@ import Layout from '../../layouts/Layout.astro';
 					<li class="border-l border-white/15 pl-5">
 						In <a href="/os" class="text-white/80 underline decoration-white/25 hover:decoration-white/50">IE OS</a>, a Space as collective host is exactly this pattern:
 						member Identities keep Surfaces; the Space Identity carries membrane policy for the host.
+						<strong class="text-white/85">Known is not addressable:</strong> a member may be registered or discoverable in a parent Space without granting others the right to call its Surface. Nested policy and creation-time jurisdiction grants decide the difference.
 					</li>
 				</ul>
 				<p class="text-base text-white/50">
 					Biology reading: tissue and organism organization (integument of the whole, membranes of the cells). Application of Boundary at Collective scale, not a rename of Boundary.
+					OS contract:
+					<a
+						href={osCreationJurisdiction}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-white/80 underline decoration-white/25 hover:decoration-white/50"
+					>identity-creation-jurisdiction.md</a>.
 				</p>
 			</div>
 		</section>
@@ -175,6 +186,9 @@ import Layout from '../../layouts/Layout.astro';
 					</li>
 					<li class="border-l border-white/15 pl-5">
 						<strong class="text-white/85">Nest membranes explicitly:</strong> outer policy of the whole vs admission policy of each member.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/85">Keep discovery and addressability distinct:</strong> nested Spaces may know members without making them publicly callable.
 					</li>
 					<li class="border-l border-white/15 pl-5">
 						<strong class="text-white/85">Prepare specialization:</strong> once the whole exists, roles can differentiate without abandoning multicellular form.

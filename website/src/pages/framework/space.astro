@@ -4,6 +4,7 @@
  * Framed as the configuration space of an identity (physics analogy).
  * Hierarchy proposal: Space → Particles → Time → Mass.
  * Formal metric still open (Critical Gap #44).
+ * OS operationalizes the same Space (degrees of freedom + host membrane).
  * Keep inline tags on one line with outer spaces (Astro whitespace).
  * Never break before <em>/<strong>/<a> after a word.
  */
@@ -13,6 +14,8 @@ import ConceptPager from '../../components/concepts/ConceptPager.astro';
 import { getConcept } from '../../lib/concepts';
 
 const c = getConcept('space');
+const osSpaceModel = 'https://github.com/identity-engineering/os/blob/main/docs/space-model.md';
+const osAccountIdentity = 'https://github.com/identity-engineering/os/blob/main/docs/account-identity-model.md';
 ---
 
 <Layout title={`${c.title} | Identity Engineering`}>
@@ -37,6 +40,7 @@ const c = getConcept('space');
 						class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50"
 					>Critical Gap #44</a>).
 					Physics supplies structural analogies, not settled identity laws.
+					<strong class="text-white/80">One Space:</strong> IE OS installs and runs this same Space; open formal questions describe incomplete measurement of it, not a second ontology.
 				</div>
 			</div>
 		</section>
@@ -130,6 +134,52 @@ const c = getConcept('space');
 		</section>
 
 		<section class="border-t border-white/10 bg-white/[0.02] px-6 py-24">
+			<div class="mx-auto max-w-3xl space-y-8 text-lg leading-relaxed text-white/55">
+				<div class="mb-2 text-sm uppercase tracking-[4px] text-white/40">Operationalization</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					One Space in IE OS
+				</h2>
+				<p>
+					There are not two Spaces. Physics describes the <strong class="text-white/80">degrees of freedom</strong> of the arena.
+					Biology describes the <strong class="text-white/80">Boundary</strong> of the same living form (membrane, selective exchange).
+					<a href="/method" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Identity Engineering OS</a>
+					installs and runs that Space: a Space hosts Identities with concrete freedom profiles, membership, Surface, and membrane policy.
+				</p>
+				<p>
+					Natural science works the same way. Mechanics and membrane biology cut different aspects of one nature; they do not invent two natures.
+					Framework lenses cut different aspects of one Identity Space; OS is where those aspects become operable together.
+				</p>
+				<ul class="space-y-4 text-base text-white/60">
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Physics lens:</strong> Space as configuration of degrees of freedom (this page).
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Biology lens:</strong> Boundary as membrane of the form
+						(<a href="/framework/boundary" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Boundary</a>).
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">OS:</strong> Space as installable host of Identities; Registry stays observer-relative inside each Identity
+						(<a
+							href={osSpaceModel}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50"
+						>space-model.md</a>,
+						<a
+							href={osAccountIdentity}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50"
+						>account-identity-model.md</a>).
+					</li>
+				</ul>
+				<p class="text-base text-white/50">
+					Open metric and probe work (#44, #47) still matters. Incomplete formal description does not split Space into a "framework object" and a separate "OS object".
+				</p>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-24">
 			<div class="mx-auto max-w-3xl">
 				<div class="mb-6 text-sm uppercase tracking-[4px] text-white/40">Engineering</div>
 				<h2 class="mb-8 text-3xl font-bold text-white md:text-4xl">What we work on</h2>
@@ -148,6 +198,9 @@ const c = getConcept('space');
 					</li>
 					<li class="border-l border-white/15 pl-5">
 						<strong class="text-white/80">Reachable region:</strong> which part of the configuration space remains open under current Stem, Mass, constraints and Vision Gradient.
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/80">Installable Space:</strong> OS Space host, membership, and membrane policy as the operational face of this arena (see Operationalization above).
 					</li>
 				</ul>
 

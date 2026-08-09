@@ -5,8 +5,11 @@ import Layout from '../layouts/Layout.astro';
  * Public face of Identity Engineering OS.
  * Framework = geometry + living scaffold.
  * OS = usable system that operationalizes every layer.
+ * Space is one: physics (degrees of freedom) + biology (boundary) in one installable host.
  */
 const osRepo = 'https://github.com/identity-engineering/os';
+const osSpaceModel = 'https://github.com/identity-engineering/os/blob/main/docs/space-model.md';
+const osAccountIdentity = 'https://github.com/identity-engineering/os/blob/main/docs/account-identity-model.md';
 const skillCoachUrl = '/skills/identity-engineer';
 const skillContributorUrl = '/skills/identity-engineer-contributor';
 ---
@@ -49,6 +52,57 @@ const skillContributorUrl = '/skills/identity-engineer-contributor';
 					<strong class="text-white/85">OS</strong> is the installable system that turns that map into files, signals, receipts, and local runtime.
 					Every layer is operationalized, not only Living. Living is the lens that says how geometry is metabolized;
 					the OS is where all four layers become usable.
+				</p>
+			</div>
+		</section>
+
+		<section class="px-6 py-16 border-b border-white/10 bg-white/[0.02]">
+			<div class="mx-auto max-w-3xl space-y-6 text-white/60 leading-relaxed">
+				<h2 class="text-2xl font-semibold text-white">Operational units</h2>
+				<p>
+					These units are how OS names the geometry and membrane of the framework without inventing a second ontology.
+				</p>
+				<div class="space-y-4">
+					<article class="rounded-2xl border border-white/10 bg-black/20 p-5">
+						<div class="text-xs uppercase tracking-[3px] text-white/35 mb-2">Space</div>
+						<p class="text-white/65 leading-relaxed">
+							<strong class="text-white/90">One Space.</strong>
+							Physics: arena of degrees of freedom
+							(<a href="/framework/space" class="text-white/80 underline decoration-white/25 hover:decoration-white/50">Space</a>).
+							Biology: membrane and selective exchange
+							(<a href="/framework/boundary" class="text-white/80 underline decoration-white/25 hover:decoration-white/50">Boundary</a>).
+							OS: installable host of Identities with membership, Surface, and membrane policy.
+							A local Free install is a mini-Space; managed continuity is the same geometry under a hosted Space.
+						</p>
+					</article>
+					<article class="rounded-2xl border border-white/10 bg-black/20 p-5">
+						<div class="text-xs uppercase tracking-[3px] text-white/35 mb-2">Identity</div>
+						<p class="text-white/65 leading-relaxed">
+							Geometric unit: Stem, Registry, Mass, Surface, Public Card, signals.
+							Human, agent, idea, org, and runtime substrates share the same contracts.
+							Harnesses bind to an Identity; they are not anonymous account modes.
+						</p>
+					</article>
+					<article class="rounded-2xl border border-white/10 bg-black/20 p-5">
+						<div class="text-xs uppercase tracking-[3px] text-white/35 mb-2">Account ≠ Identity</div>
+						<p class="text-white/65 leading-relaxed">
+							An IE Account is auth and plan on the IE product. Geometry lives only on Identities.
+							Local Free geometry does not require an account.
+						</p>
+					</article>
+					<article class="rounded-2xl border border-white/10 bg-black/20 p-5">
+						<div class="text-xs uppercase tracking-[3px] text-white/35 mb-2">Registry</div>
+						<p class="text-white/65 leading-relaxed">
+							Always observer-relative: each Identity's perception of others.
+							Registry is not the Space host and not a shared team perception store.
+						</p>
+					</article>
+				</div>
+				<p class="text-sm text-white/45">
+					Open Core contracts:
+					<a href={osSpaceModel} target="_blank" rel="noopener noreferrer" class="text-white/70 underline decoration-white/25 hover:decoration-white/50">space-model.md</a>
+					·
+					<a href={osAccountIdentity} target="_blank" rel="noopener noreferrer" class="text-white/70 underline decoration-white/25 hover:decoration-white/50">account-identity-model.md</a>
 				</p>
 			</div>
 		</section>
@@ -144,6 +198,7 @@ cd os
 					<li>Not a Think isolation runtime: protected inward work is substrate-provided.</li>
 					<li>Not therapy, diagnosis, or a claim of physical law.</li>
 					<li>Not a replacement for the geometric Core Concepts: OS implements them.</li>
+					<li>Not a second Space ontology: OS Space is the framework Space made installable.</li>
 				</ul>
 			</div>
 		</section>

@@ -11,6 +11,8 @@
 import Layout from '../../layouts/Layout.astro';
 
 const osSpaceModel = 'https://github.com/identity-engineering/os/blob/main/docs/space-model.md';
+const osCreationJurisdiction =
+	'https://github.com/identity-engineering/os/blob/main/docs/identity-creation-jurisdiction.md';
 ---
 
 <Layout title="Boundary | Identity Engineering">
@@ -95,15 +97,23 @@ const osSpaceModel = 'https://github.com/identity-engineering/os/blob/main/docs/
 				<p>
 					<a href="/os" class="text-white/80 underline decoration-white/25 hover:decoration-white/50">IE OS</a>
 					implements both cuts in one installable Space: membership and freedom profiles for Identities, plus export, inbound, Surface policy, and grants as membrane work.
-					See the Open Core
+					<strong class="text-white/85">Known is not addressable by default:</strong> registration or discovery in a parent Space does not imply that others may call the Identity's Surface. Visibility and reachability are grant- and membrane-scoped.
+				</p>
+				<p class="text-base text-white/50">
+					Open Core:
 					<a
 						href={osSpaceModel}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="text-white/80 underline decoration-white/25 hover:decoration-white/50"
-					>space-model</a>.
-				</p>
-				<p class="text-base text-white/50">
+					>space-model</a>
+					·
+					<a
+						href={osCreationJurisdiction}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-white/80 underline decoration-white/25 hover:decoration-white/50"
+					>identity-creation-jurisdiction</a>.
 					Registry remains observer-relative inside each Identity. Boundary is not a shared team perception store.
 				</p>
 			</div>
@@ -119,7 +129,7 @@ const osSpaceModel = 'https://github.com/identity-engineering/os/blob/main/docs/
 					</li>
 					<li class="border-l border-white/15 pl-5">
 						<strong class="text-white/85">Jurisdiction edge:</strong> where Ownership and access decisions become meaningful.
-						What may enter, what may leave, what is only observed from outside.
+						What may enter, what may leave, what is only observed from outside, and whether the Identity is merely known or fully addressable on its Surface.
 					</li>
 					<li class="border-l border-white/15 pl-5">
 						<strong class="text-white/85">Prerequisite of Cell:</strong> Gene names what can be passed to found a new form.
@@ -204,6 +214,9 @@ const osSpaceModel = 'https://github.com/identity-engineering/os/blob/main/docs/
 				<ul class="space-y-5 text-lg">
 					<li class="border-l border-white/15 pl-5">
 						<strong class="text-white/85">Name the edge:</strong> where does this Identity end, and who decides what crosses?
+					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/85">Separate known from addressable:</strong> discovery in a Space is not the same as Surface reachability. Visibility caps are part of membrane work.
 					</li>
 					<li class="border-l border-white/15 pl-5">
 						<strong class="text-white/85">Prefer selective permeability over total walls:</strong> Interaction must remain possible or the form cannot metabolize reality.

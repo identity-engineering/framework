@@ -1,0 +1,289 @@
+---
+/**
+ * Account ≠ Identity — positioning essay.
+ * Separates product auth/plan from geometric unit. Prevents silent account-root power.
+ * Keep inline tags on one line with outer spaces (Astro whitespace).
+ * No em-dashes in public copy.
+ */
+import Layout from '../../layouts/Layout.astro';
+
+const osAccountIdentity =
+	'https://github.com/identity-engineering/os/blob/main/docs/account-identity-model.md';
+---
+
+<Layout title="Account ≠ Identity | Identity Engineering">
+	<main class="min-h-screen">
+		<section class="border-b border-white/10 px-6 pt-28 pb-16">
+			<div class="mx-auto max-w-3xl">
+				<a href="/blog" class="mb-6 inline-block text-sm text-white/40 transition hover:text-white/70">
+					← Blog
+				</a>
+				<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Blog · Positioning</div>
+				<h1 class="text-5xl font-bold tracking-tighter text-white md:text-6xl leading-[0.95]">
+					Account ≠ Identity
+				</h1>
+				<p class="mt-6 text-xl font-light leading-relaxed text-white/50 md:text-2xl">
+					An IE Account is auth and plan on the product.
+					Geometry lives only on Identities.
+					Harnesses bind to an Identity, never to an anonymous account mode.
+				</p>
+				<div class="mt-8 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-white/45">
+					<span>August 2026</span>
+					<span aria-hidden="true">·</span>
+					<span>10 min read</span>
+					<span aria-hidden="true">·</span>
+					<span>Positioning · Surface · Jurisdiction</span>
+				</div>
+			</div>
+		</section>
+
+		<section class="px-6 py-16">
+			<div class="mx-auto max-w-3xl space-y-6 text-lg leading-relaxed text-white/55">
+				<p>
+					Product language drifts easily toward "one account ≈ one Identity ≈ one installation".
+					That collapse is costly.
+					It hides who has geometry, who may write, and who is the actor on every mutation.
+				</p>
+				<p>
+					This essay locks the separation that the OS already treats as architecture contract.
+					It is positioning, not a new Core Concept.
+					It exists so Surface bindings, MCP sessions, and multi-substrate agents cannot be misread as account modes.
+				</p>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 bg-white/[0.015] px-6 py-16">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-3 text-xs uppercase tracking-[3px] text-white/40">01 · Four Distinct Layers</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					Account, Identity, Space, Harness
+				</h2>
+				<div class="mt-8 space-y-6 text-lg leading-relaxed text-white/55">
+					<div class="rounded-2xl border border-white/10 bg-black/30 p-6 space-y-4">
+						<p>
+							<strong class="text-cyan-300/90">IE Account</strong>: auth and billing/plan on the IE product (managed path only).
+						</p>
+						<p>
+							<strong class="text-violet-300/90">Identity</strong>: geometric unit. Stem, Registry, Mass, Surface, Public Card, signals.
+						</p>
+						<p>
+							<strong class="text-emerald-300/90">Space</strong>: membrane host. Membership, Surface hosting, jurisdiction policy.
+							See <a href="/blog/one-space-degrees-of-freedom-and-membrane" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">One Space</a>.
+						</p>
+						<p>
+							<strong class="text-amber-300/90">Harness / Runtime / Agent</strong>: substrate of an Identity, not a mode of the human owner.
+						</p>
+					</div>
+					<p>
+						One account may hold many Identities, independent of substrate.
+						A human Identity, an agent Identity, an idea Identity, and a cloud-runtime Identity are the same kind of geometric object.
+						They differ in substrate and in the jurisdiction relations between them, not in whether a Surface may write.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-16">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-3 text-xs uppercase tracking-[3px] text-white/40">02 · Why the Collapse Fails</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					Silent Root Power
+				</h2>
+				<div class="mt-8 space-y-6 text-lg leading-relaxed text-white/55">
+					<p>
+						If account and Identity are treated as one, several failures follow at once:
+					</p>
+					<ul class="space-y-3">
+						<li class="flex gap-3">
+							<span class="text-white/40">→</span>
+							<span>An agent session is silently elevated to the human Identity.</span>
+						</li>
+						<li class="flex gap-3">
+							<span class="text-white/40">→</span>
+							<span>MCP or CLI mutations lose an explicit actor.</span>
+						</li>
+						<li class="flex gap-3">
+							<span class="text-white/40">→</span>
+							<span>Cross-Identity writes look like product features instead of grants.</span>
+						</li>
+						<li class="flex gap-3">
+							<span class="text-white/40">→</span>
+							<span>Local Free geometry appears to require an account.</span>
+						</li>
+					</ul>
+					<p>
+						Under multi-substrate symmetry, agents, ideas, and runtimes are Identities.
+						Each harness that acts for long enough deserves its own local geometry, its own Registry perspective, and its own Public Card.
+						The human who holds the account creates those Identities and decides their jurisdiction.
+						That decision is not "MCP is read-only".
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 bg-white/[0.015] px-6 py-16">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-3 text-xs uppercase tracking-[3px] text-white/40">03 · Binding Rule</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					Harnesses Bind to Identity
+				</h2>
+				<div class="mt-8 space-y-6 text-lg leading-relaxed text-white/55">
+					<p>
+						A harness (desktop CLI process, mobile app, chat-agent session, cloud worker) binds to <strong class="text-white/90">one Identity at a time</strong>.
+						Switching Identity is an explicit context switch, never a silent elevation to account-root.
+					</p>
+					<p>
+						Surface and MCP bindings always write as the Identity under which the session is authenticated.
+						Scope is jurisdiction over that Identity (and any explicit grants to others), not a global read/write flag on the account.
+					</p>
+					<p>
+						Every mutation carries <code class="text-white/80">actor_identity_id</code>.
+						There is no implicit "the account did this".
+						UI, CLI, and MCP sessions that act as the human Identity record the human Identity as actor.
+						Agent sessions record the agent Identity.
+						Audit and Mature history stay geometrically honest.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-16">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-3 text-xs uppercase tracking-[3px] text-white/40">04 · Jurisdiction, Not Read vs Write</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					Self-Write Is Full; Cross-Write Is Grant-Scoped
+				</h2>
+				<div class="mt-8 space-y-6 text-lg leading-relaxed text-white/55">
+					<p>
+						When authenticated as Identity I:
+					</p>
+					<ul class="space-y-3">
+						<li class="flex gap-3">
+							<span class="text-white/40">→</span>
+							<span>Read and write I's own geometry (Stem, Registry, Mature, policy of I) is allowed.</span>
+						</li>
+						<li class="flex gap-3">
+							<span class="text-white/40">→</span>
+							<span>Mutate Identity J under the same account or Space only with an explicit grant.</span>
+						</li>
+						<li class="flex gap-3">
+							<span class="text-white/40">→</span>
+							<span>Account-level ops (billing, plan, delete account) stay on the account holder role.</span>
+						</li>
+					</ul>
+					<p>
+						Self-write is full.
+						Cross-Identity write is a grant question, not an MCP capability question.
+						Cross-Space visibility is a membrane question.
+						Creation-time default grants (see
+						<a href="/blog/creation-as-first-access-agreement" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Creation as First Access Agreement</a>)
+						give the creator an initial transferable package; ordinary Parent power remains Child-revocable.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 bg-white/[0.015] px-6 py-16">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-3 text-xs uppercase tracking-[3px] text-white/40">05 · Local Free Remains First-Class</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					No Mandatory Account
+				</h2>
+				<div class="mt-8 space-y-6 text-lg leading-relaxed text-white/55">
+					<p>
+						Local Free ships one local Identity per installation as a valid mini-Space:
+						no account required, full Ownership of the files, Surface and Mature on that single Identity.
+					</p>
+					<p>
+						Multi-Identity and multi-Space are the same model at larger cardinality.
+						The contract does not invent a second meaning of Identity when N greater than 1 lands.
+						Managed continuity is optional continuity of the same geometry, not a change of geometric contracts by subscription tier.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-16">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-3 text-xs uppercase tracking-[3px] text-white/40">06 · Explicit Non-Goals</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					What This Separation Refuses
+				</h2>
+				<div class="mt-8 space-y-4 text-lg leading-relaxed text-white/55">
+					<ul class="space-y-3">
+						<li class="flex gap-3"><span class="text-white/40">→</span><span>Replacing local Free with a mandatory account</span></li>
+						<li class="flex gap-3"><span class="text-white/40">→</span><span>Making every agent automatically the human Identity</span></li>
+						<li class="flex gap-3"><span class="text-white/40">→</span><span>Silent cross-Identity Mature or policy writes</span></li>
+						<li class="flex gap-3"><span class="text-white/40">→</span><span>Treating subscription tier as a change of geometric contracts</span></li>
+						<li class="flex gap-3"><span class="text-white/40">→</span><span>Requiring a global shared Registry across Spaces</span></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 bg-white/[0.015] px-6 py-16">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-3 text-xs uppercase tracking-[3px] text-white/40">Status</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					Positioning, Already Operational
+				</h2>
+				<div class="mt-8 space-y-6 text-lg leading-relaxed text-white/55">
+					<p>
+						This essay makes public a separation that is already locked in the OS architecture contract.
+						It does not introduce a new geometric primitive.
+						It prevents product language from collapsing who pays, who has geometry, where membrane sits, and where the process runs.
+					</p>
+					<p class="text-base text-white/50">
+						Open Core:
+						<a
+							href={osAccountIdentity}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50"
+						>account-identity-model.md</a>.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-16">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-3 text-xs uppercase tracking-[3px] text-white/40">Next levers</div>
+				<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">
+					Where the work continues
+				</h2>
+				<div class="mt-8 space-y-6 text-lg leading-relaxed text-white/55">
+					<ul class="space-y-3">
+						<li class="flex gap-3">
+							<span class="text-white/40">→</span>
+							<span><a href="/blog/one-space-degrees-of-freedom-and-membrane" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">One Space</a>: membrane host of Identities</span>
+						</li>
+						<li class="flex gap-3">
+							<span class="text-white/40">→</span>
+							<span><a href="/blog/creation-as-first-access-agreement" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Creation as First Access Agreement</a>: lineage and default grants</span>
+						</li>
+						<li class="flex gap-3">
+							<span class="text-white/40">→</span>
+							<span><a href="/blog/ownership-as-relative-jurisdiction" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">Ownership as Relative Jurisdiction</a>: Access and Jurisdiction as degrees of freedom</span>
+						</li>
+						<li class="flex gap-3">
+							<span class="text-white/40">→</span>
+							<span><a href="/os" class="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white/50">OS</a>: Identity creation, Surface binding, local Free</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-t border-white/10 px-6 py-14">
+			<div class="mx-auto flex max-w-3xl flex-col gap-4 text-sm sm:flex-row sm:items-center sm:justify-between">
+				<a href="/blog" class="text-white/50 transition hover:text-white/80">← All posts</a>
+				<div class="flex flex-wrap gap-x-6 gap-y-2">
+					<a href="/os" class="text-white/50 underline decoration-white/20 underline-offset-4 transition hover:text-white/80 hover:decoration-white/40">OS</a>
+					<a href="/blog/one-space-degrees-of-freedom-and-membrane" class="text-white/50 underline decoration-white/20 underline-offset-4 transition hover:text-white/80 hover:decoration-white/40">One Space</a>
+					<a href="/blog/creation-as-first-access-agreement" class="text-white/50 underline decoration-white/20 underline-offset-4 transition hover:text-white/80 hover:decoration-white/40">Creation</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>

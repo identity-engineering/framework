@@ -11,6 +11,8 @@ import Layout from '../layouts/Layout.astro';
 const osRepo = 'https://github.com/identity-engineering/os';
 const osSpaceModel = 'https://github.com/identity-engineering/os/blob/main/docs/space-model.md';
 const osAccountIdentity = 'https://github.com/identity-engineering/os/blob/main/docs/account-identity-model.md';
+const osCreationJurisdiction =
+	'https://github.com/identity-engineering/os/blob/main/docs/identity-creation-jurisdiction.md';
 const skillCoachUrl = '/skills/identity-engineer';
 const skillContributorUrl = '/skills/identity-engineer-contributor';
 ---
@@ -87,6 +89,16 @@ const skillContributorUrl = '/skills/identity-engineer-contributor';
 						</p>
 					</article>
 					<article class="rounded-2xl border border-white/10 bg-black/20 p-5">
+						<div class="text-xs uppercase tracking-[3px] text-white/35 mb-2">Identity creation</div>
+						<p class="text-white/65 leading-relaxed">
+							Creating an Identity records factual lineage and issues a default jurisdiction package: transferable grants for policy, visibility, Surface, and grant admin.
+							Ordinary Parent grants are revocable by the Child. A narrow residual emergency lever (freeze, quarantine, visibility re-evaluation) remains for the creator line; it is audited and is not full admin over the Child Stem.
+							<strong class="text-white/90">Known is not addressable by default:</strong> registration in a Space does not imply Surface reachability.
+							Biology-lens reading:
+							<a href="/framework/gene" class="text-white/80 underline decoration-white/25 hover:decoration-white/50">Gene</a>.
+						</p>
+					</article>
+					<article class="rounded-2xl border border-white/10 bg-black/20 p-5">
 						<div class="text-xs uppercase tracking-[3px] text-white/35 mb-2">Account ≠ Identity</div>
 						<p class="text-white/65 leading-relaxed">
 							An IE Account is auth and plan on the IE product. Geometry lives only on Identities.
@@ -106,6 +118,8 @@ const skillContributorUrl = '/skills/identity-engineer-contributor';
 					<a href={osSpaceModel} target="_blank" rel="noopener noreferrer" class="text-white/70 underline decoration-white/25 hover:decoration-white/50">space-model.md</a>
 					·
 					<a href={osAccountIdentity} target="_blank" rel="noopener noreferrer" class="text-white/70 underline decoration-white/25 hover:decoration-white/50">account-identity-model.md</a>
+					·
+					<a href={osCreationJurisdiction} target="_blank" rel="noopener noreferrer" class="text-white/70 underline decoration-white/25 hover:decoration-white/50">identity-creation-jurisdiction.md</a>
 				</p>
 			</div>
 		</section>

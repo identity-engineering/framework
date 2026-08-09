@@ -3,10 +3,13 @@
  * Boundary — second biology-lens concept (Single Identity scale).
  * Science-first reading: plasma membrane / selective permeability.
  * Pedagogical order: Gene → Boundary → Cell.
+ * Same Space as physics configuration space; Boundary is the membrane aspect.
  * Keep inline tags on one line with outer spaces (Astro whitespace).
  * No em-dashes in public copy.
  */
 import Layout from '../../layouts/Layout.astro';
+
+const osSpaceModel = 'https://github.com/identity-engineering/os/blob/main/docs/space-model.md';
 ---
 
 <Layout title="Boundary | Identity Engineering">
@@ -57,6 +60,33 @@ import Layout from '../../layouts/Layout.astro';
 		</section>
 
 		<section class="px-8 py-16 border-b border-white/10 bg-white/[0.02]">
+			<div class="max-w-3xl mx-auto space-y-6 text-white/60 leading-relaxed">
+				<div class="text-sm uppercase tracking-[4px] text-white/40">Same Space, next lens</div>
+				<h2 class="text-2xl font-bold text-white">Boundary does not replace Space</h2>
+				<p>
+					<a href="/framework/space" class="text-white/80 underline decoration-white/25 hover:decoration-white/50">Space</a>
+					(physics lens) names the arena of <strong class="text-white/85">degrees of freedom</strong>.
+					Boundary (biology lens) names the <strong class="text-white/85">membrane</strong> of the form that lives in that arena.
+					They are not two hosts and not two ontologies. They are two scientific cuts of one Space.
+				</p>
+				<p>
+					<a href="/method" class="text-white/80 underline decoration-white/25 hover:decoration-white/50">IE OS</a>
+					implements both cuts in one installable Space: membership and freedom profiles for Identities, plus export, inbound, Surface policy, and grants as membrane work.
+					See the Open Core
+					<a
+						href={osSpaceModel}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-white/80 underline decoration-white/25 hover:decoration-white/50"
+					>space-model</a>.
+				</p>
+				<p class="text-base text-white/50">
+					Registry remains observer-relative inside each Identity. Boundary is not a shared team perception store.
+				</p>
+			</div>
+		</section>
+
+		<section class="px-8 py-16 border-b border-white/10">
 			<div class="max-w-3xl mx-auto space-y-8">
 				<div class="text-sm uppercase tracking-[4px] text-white/40">What Boundary is</div>
 				<ul class="space-y-5 text-lg text-white/60 leading-relaxed">
@@ -79,7 +109,7 @@ import Layout from '../../layouts/Layout.astro';
 			</div>
 		</section>
 
-		<section class="px-8 py-16 border-b border-white/10">
+		<section class="px-8 py-16 border-b border-white/10 bg-white/[0.02]">
 			<div class="max-w-3xl mx-auto space-y-8">
 				<div class="text-sm uppercase tracking-[4px] text-white/40">What Boundary is not</div>
 				<ul class="space-y-5 text-lg text-white/60 leading-relaxed">
@@ -107,11 +137,15 @@ import Layout from '../../layouts/Layout.astro';
 						<strong class="text-white/85">Not a claim that persons are lipid bilayers.</strong>
 						Membrane biology is the science reading. The framework mapping is structural: selective interior, maintained edge, controlled exchange.
 					</li>
+					<li class="border-l border-rose-400/30 pl-5">
+						<strong class="text-white/85">Not a second Space.</strong>
+						Boundary is the membrane aspect of Space, not a parallel geometric host.
+					</li>
 				</ul>
 			</div>
 		</section>
 
-		<section class="px-8 py-16 border-b border-white/10 bg-white/[0.02]">
+		<section class="px-8 py-16 border-b border-white/10">
 			<div class="max-w-3xl mx-auto space-y-6 text-white/60 leading-relaxed">
 				<div class="text-sm uppercase tracking-[4px] text-white/40">Order in the biology lens</div>
 				<h2 class="text-2xl font-bold text-white">Gene → Boundary → Cell</h2>
@@ -136,7 +170,7 @@ import Layout from '../../layouts/Layout.astro';
 			</div>
 		</section>
 
-		<section class="px-8 py-16 border-b border-white/10">
+		<section class="px-8 py-16 border-b border-white/10 bg-white/[0.02]">
 			<div class="max-w-3xl mx-auto space-y-6 text-white/60 leading-relaxed">
 				<div class="text-sm uppercase tracking-[4px] text-white/40">Engineering</div>
 				<h2 class="text-2xl font-bold text-white">What we work on</h2>
@@ -153,6 +187,9 @@ import Layout from '../../layouts/Layout.astro';
 					<li class="border-l border-white/15 pl-5">
 						<strong class="text-white/85">Do not confuse Boundary with Stem:</strong> protecting the edge is not the same as living the full trajectory.
 					</li>
+					<li class="border-l border-white/15 pl-5">
+						<strong class="text-white/85">Hold Space and Boundary together:</strong> freedom without membrane dissolves; membrane without freedom freezes the form.
+					</li>
 				</ul>
 			</div>
 		</section>
@@ -168,8 +205,10 @@ import Layout from '../../layouts/Layout.astro';
 					</p>
 				</div>
 				<div class="flex flex-wrap gap-4 pt-4">
+					<a href="/framework/space" class="px-6 py-3 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">Space</a>
 					<a href="/framework/gene" class="px-6 py-3 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">Gene</a>
 					<a href="/framework/living-identity" class="px-6 py-3 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">Living Identity</a>
+					<a href="/method" class="px-6 py-3 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">OS</a>
 					<a href="/framework" class="px-6 py-3 rounded-full bg-white text-black font-medium hover:bg-white/90 transition">Framework</a>
 				</div>
 			</div>

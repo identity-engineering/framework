@@ -4,7 +4,7 @@ const pathname = Astro.url.pathname;
 /**
  * Exact match or nested path (e.g. /blog/slug, /framework/mass).
  * Foundations also owns /ontology.
- * OS public face: /os (preferred) and /method (stable content URL).
+ * OS public face: /os only (/method is a legacy redirect).
  */
 const isActive = (path: string) => {
   if (path === '/foundations') {

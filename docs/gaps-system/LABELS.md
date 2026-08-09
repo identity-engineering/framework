@@ -44,7 +44,8 @@ Slug = unique path leaf (or hub name). Website mapping: `resolveGapsPageSlug()` 
 | `page:foundations` | `/foundations` (hub only) |
 | `page:locke-personal-identity` | `/foundations/locke-personal-identity` (example leaf) |
 | `page:ontology` | `/ontology` |
-| `page:method` | `/method` |
+| `page:os` | `/os` (canonical OS public face) |
+| `page:method` | legacy alias for `/method` → redirects to `/os`; prefer `page:os` on new issues |
 | `page:blog` | `/blog` |
 | `page:particles-of-identity` | `/blog/particles-of-identity` |
 | `page:ownership-as-relative-jurisdiction` | `/blog/ownership-as-relative-jurisdiction` |

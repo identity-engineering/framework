@@ -1,4 +1,224 @@
 ---
-/** Canonical public OS face is shared with /method content. */
-return Astro.redirect('/method', 301);
+import Layout from '../layouts/Layout.astro';
+
+/**
+ * Canonical public face of Identity Engineering OS.
+ * Framework = geometry + living scaffold.
+ * OS = usable system that operationalizes every layer.
+ * Space is one: physics (degrees of freedom) + biology (boundary) in one installable host.
+ * /method redirects here for legacy URLs.
+ */
+const osRepo = 'https://github.com/identity-engineering/os';
+const osSpaceModel = 'https://github.com/identity-engineering/os/blob/main/docs/space-model.md';
+const osAccountIdentity = 'https://github.com/identity-engineering/os/blob/main/docs/account-identity-model.md';
+const skillCoachUrl = '/skills/identity-engineer';
+const skillContributorUrl = '/skills/identity-engineer-contributor';
 ---
+
+<Layout title="OS | Identity Engineering">
+	<main class="min-h-screen">
+		<section class="border-b border-white/10 px-6 pt-28 pb-16">
+			<div class="mx-auto max-w-3xl">
+				<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">OS</div>
+				<h1 class="text-5xl font-bold tracking-tighter text-white md:text-6xl leading-[0.95]">
+					Install the framework as a living system.
+				</h1>
+				<p class="mt-6 max-w-2xl text-xl font-light leading-relaxed text-white/50">
+					Identity Engineering OS is the practical, file-based runtime of the framework.
+					Not a separate product shelf: the place where Single, Interactive, Collective, and Living layers become operable artifacts.
+				</p>
+				<div class="mt-8 flex flex-wrap gap-3">
+					<a
+						href={osRepo}
+						class="px-6 py-3 rounded-full bg-white text-black font-medium hover:bg-white/90 transition"
+						target="_blank"
+						rel="noopener noreferrer"
+					>Open OS repository →</a>
+					<a
+						href="/framework"
+						class="px-6 py-3 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition"
+					>Framework map</a>
+				</div>
+			</div>
+		</section>
+
+		<section class="px-6 py-16 border-b border-white/10">
+			<div class="mx-auto max-w-3xl space-y-6 text-white/60 leading-relaxed">
+				<h2 class="text-2xl font-semibold text-white">Framework and OS</h2>
+				<p>
+					<strong class="text-white/85">Framework</strong> holds the conceptual map:
+					geometry (Single · Interactive · Collective) and the operational scaffold of Living Identity.
+				</p>
+				<p>
+					<strong class="text-white/85">OS</strong> is the installable system that turns that map into files, signals, receipts, and local runtime.
+					Every layer is operationalized, not only Living. Living is the lens that says how geometry is metabolized;
+					the OS is where all four layers become usable.
+				</p>
+			</div>
+		</section>
+
+		<section class="px-6 py-16 border-b border-white/10 bg-white/[0.02]">
+			<div class="mx-auto max-w-3xl space-y-6 text-white/60 leading-relaxed">
+				<h2 class="text-2xl font-semibold text-white">Operational units</h2>
+				<p>
+					These units are how OS names the geometry and membrane of the framework without inventing a second ontology.
+				</p>
+				<div class="space-y-4">
+					<article class="rounded-2xl border border-white/10 bg-black/20 p-5">
+						<div class="text-xs uppercase tracking-[3px] text-white/35 mb-2">Space</div>
+						<p class="text-white/65 leading-relaxed">
+							<strong class="text-white/90">One Space.</strong>
+							Physics: arena of degrees of freedom
+							(<a href="/framework/space" class="text-white/80 underline decoration-white/25 hover:decoration-white/50">Space</a>).
+							Biology: membrane and selective exchange
+							(<a href="/framework/boundary" class="text-white/80 underline decoration-white/25 hover:decoration-white/50">Boundary</a>).
+							OS: installable host of Identities with membership, Surface, and membrane policy.
+							A local Free install is a mini-Space; managed continuity is the same geometry under a hosted Space.
+							When the Space is an emergent collective Identity, its outer membrane is that Identity's Boundary; members keep theirs under
+							<a href="/framework/multicellularity" class="text-white/80 underline decoration-white/25 hover:decoration-white/50">Multicellularity</a>.
+						</p>
+					</article>
+					<article class="rounded-2xl border border-white/10 bg-black/20 p-5">
+						<div class="text-xs uppercase tracking-[3px] text-white/35 mb-2">Identity</div>
+						<p class="text-white/65 leading-relaxed">
+							Geometric unit: Stem, Registry, Mass, Surface, Public Card, signals.
+							Human, agent, idea, org, and runtime substrates share the same contracts.
+							Harnesses bind to an Identity; they are not anonymous account modes.
+						</p>
+					</article>
+					<article class="rounded-2xl border border-white/10 bg-black/20 p-5">
+						<div class="text-xs uppercase tracking-[3px] text-white/35 mb-2">Account ≠ Identity</div>
+						<p class="text-white/65 leading-relaxed">
+							An IE Account is auth and plan on the IE product. Geometry lives only on Identities.
+							Local Free geometry does not require an account.
+						</p>
+					</article>
+					<article class="rounded-2xl border border-white/10 bg-black/20 p-5">
+						<div class="text-xs uppercase tracking-[3px] text-white/35 mb-2">Registry</div>
+						<p class="text-white/65 leading-relaxed">
+							Always observer-relative: each Identity's perception of others.
+							Registry is not the Space host and not a shared team perception store.
+						</p>
+					</article>
+				</div>
+				<p class="text-sm text-white/45">
+					Open Core contracts:
+					<a href={osSpaceModel} target="_blank" rel="noopener noreferrer" class="text-white/70 underline decoration-white/25 hover:decoration-white/50">space-model.md</a>
+					·
+					<a href={osAccountIdentity} target="_blank" rel="noopener noreferrer" class="text-white/70 underline decoration-white/25 hover:decoration-white/50">account-identity-model.md</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="px-6 py-16 border-b border-white/10">
+			<div class="mx-auto max-w-3xl">
+				<h2 class="text-2xl font-semibold text-white mb-8">How the layers land in the OS</h2>
+				<div class="space-y-6">
+					<article class="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
+						<div class="text-xs uppercase tracking-[3px] text-white/35 mb-2">01 · Single</div>
+						<p class="text-white/65 leading-relaxed">
+							<strong class="text-white/90">Stem, Mass, Curvature, Rotation</strong> → local Stem files, Metric Stem, Registry self-perception,
+							Header / local entry as always-on State Differential + Vision Gradient.
+						</p>
+					</article>
+					<article class="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
+						<div class="text-xs uppercase tracking-[3px] text-white/35 mb-2">02 · Interactive</div>
+						<p class="text-white/65 leading-relaxed">
+							<strong class="text-white/90">Gravitation, Relativity, Frequency</strong> → Interaction Signal, foreign-estimate zone,
+							bidirectional estimate requests, consent policy at the Surface.
+						</p>
+					</article>
+					<article class="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
+						<div class="text-xs uppercase tracking-[3px] text-white/35 mb-2">03 · Collective</div>
+						<p class="text-white/65 leading-relaxed">
+							<strong class="text-white/90">Emergence, Multicellularity, Damping</strong> → multi-identity coupling over Signals and shared consented context;
+							collective contracts grow on the same Surface standard (not a separate social platform).
+							A Space as collective form has its own Boundary; member Identities keep theirs.
+						</p>
+					</article>
+					<article class="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
+						<div class="text-xs uppercase tracking-[3px] text-white/35 mb-2">04 · Living</div>
+						<p class="text-white/65 leading-relaxed">
+							<strong class="text-white/90">Boundary, Metabolism, TIM, Organism</strong> → Surface as membrane; Geometry Receipt by default after a non-rejected Interact apply;
+							<strong class="text-white/90">Think</strong> as phase label (substrate plan-mode / private memory / prompts, no IE CLI);
+							<strong class="text-white/90">Interact</strong> as tools, APIs, MCPs, signals, deterministic scripts;
+							<strong class="text-white/90">Mature</strong> as directed self-evolve (<code class="text-white/80">ie mature</code> → Geometry Receipt, optional ownership_move record only).
+							Cell-biology lens on the form without importing organism agents.
+						</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="px-6 py-16 border-b border-white/10">
+			<div class="mx-auto max-w-3xl space-y-6 text-white/60 leading-relaxed">
+				<h2 class="text-2xl font-semibold text-white">Core runtime loop</h2>
+				<p>
+					Under Relativity every act is Interaction. The OS default path:
+				</p>
+				<ol class="list-decimal list-inside space-y-3 text-white/70">
+					<li><strong class="text-white/90">Interact</strong>: Interaction Signal or tool path crosses the Surface; policy gates the foreign-estimate zone.</li>
+					<li><strong class="text-white/90">Geometry Receipt</strong> is extracted by default after a non-rejected Interact apply: relative mass proxies, tension components, continuity hints.</li>
+					<li><strong class="text-white/90">Mature</strong> (optional, deliberate): <code class="text-white/80">ie mature</code> records directed causal integration of the own Trajectory as a self Geometry Receipt; ownership_move stays on the receipt until Ownership design applies it.</li>
+					<li>Receipts live under the local registry. Continuous write-back into live Tensor, Tension, and Registry alloys is the next OS heartbeat (not automatic yet).</li>
+				</ol>
+				<p class="text-white/50">
+					Think is not a separate runtime step in the OS: it is the inward, non-emitting phase provided by the substrate and named under Relativity.
+					That is Probes-as-Bridge in practice: measurement and potential reshape in one process.
+				</p>
+			</div>
+		</section>
+
+		<section class="px-6 py-16 border-b border-white/10">
+			<div class="mx-auto max-w-3xl space-y-6 text-white/60 leading-relaxed">
+				<h2 class="text-2xl font-semibold text-white">Get it running</h2>
+				<p>
+					Personal-first, local-first. Clone the OS, initialize a registry, apply signals, run Mature when the Trajectory needs a directed record.
+					Public release packages (brew / versioned installs under the org domain) are on the roadmap.
+				</p>
+				<pre class="overflow-x-auto rounded-2xl border border-white/10 bg-black/40 p-4 text-sm text-white/80 leading-relaxed"><code># Conceptual path (see OS repo README for current commands)
+git clone https://github.com/identity-engineering/os.git
+cd os
+# ie init · ie signal apply · ie mature · registry under templates/personal/</code></pre>
+				<p class="text-sm text-white/45">
+					Exact CLI flags and release channels evolve in the OS repo. This page is the public orientation;
+					the repository is the source of truth for install steps.
+				</p>
+				<a
+					href={osRepo}
+					class="inline-flex items-center gap-2 text-white/80 hover:text-white border-b border-white/25 hover:border-white/50 pb-0.5 transition"
+					target="_blank"
+					rel="noopener noreferrer"
+				>identity-engineering/os on GitHub →</a>
+			</div>
+		</section>
+
+		<section class="px-6 py-16 border-b border-white/10">
+			<div class="mx-auto max-w-3xl space-y-4 text-white/55 leading-relaxed">
+				<h2 class="text-2xl font-semibold text-white mb-4">What this is not</h2>
+				<ul class="list-disc list-inside space-y-2">
+					<li>Not a global social network or attention platform.</li>
+					<li>Not a full organism-agent suite (sensory / immunity / … modules stay out until Framework-derived).</li>
+					<li>Not a Think isolation runtime: protected inward work is substrate-provided.</li>
+					<li>Not therapy, diagnosis, or a claim of physical law.</li>
+					<li>Not a replacement for the geometric Core Concepts: OS implements them.</li>
+					<li>Not a second Space ontology: OS Space is the framework Space made installable.</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="px-6 py-16">
+			<div class="mx-auto max-w-3xl">
+				<h2 class="text-xl font-semibold text-white mb-3">Optional: agent skills</h2>
+				<p class="text-white/50 leading-relaxed mb-6">
+					Dialogue skills for coaching and contribution quality remain available.
+					They are helpers around the framework, not the OS itself.
+				</p>
+				<div class="flex flex-wrap gap-3">
+					<a href={skillCoachUrl} class="px-5 py-2.5 rounded-full border border-white/15 text-sm text-white/70 hover:bg-white/5 transition">Identity Engineer skill</a>
+					<a href={skillContributorUrl} class="px-5 py-2.5 rounded-full border border-white/15 text-sm text-white/70 hover:bg-white/5 transition">Contributor skill</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>

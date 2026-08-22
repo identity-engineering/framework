@@ -3,10 +3,11 @@ import Layout from '../layouts/Layout.astro';
 import ConceptSceneMount from '../components/concepts/ConceptSceneMount.astro';
 import { concepts } from '../lib/concepts';
 import { biologyByLayer } from '../lib/biologyConcepts';
+import { economicsByLayer } from '../lib/economicsConcepts';
 
 /**
  * Official structure:
- * Same three scales under two science lenses (Physics · Biology),
+ * Same three scales under three science lenses (Physics · Biology · Economics),
  * plus Living Identity as operational scaffold.
  */
 
@@ -17,6 +18,10 @@ const collective = concepts.filter((c) => c.layer === 'collective');
 const bioSingle = biologyByLayer('single');
 const bioInteractive = biologyByLayer('interactive');
 const bioCollective = biologyByLayer('collective');
+
+const econSingle = economicsByLayer('single');
+const econInteractive = economicsByLayer('interactive');
+const econCollective = economicsByLayer('collective');
 ---
 
 <Layout title="Framework | Identity Engineering">
@@ -29,7 +34,7 @@ const bioCollective = biologyByLayer('collective');
 				</h1>
 				<p class="text-xl md:text-2xl text-white/50 font-light max-w-2xl leading-relaxed">
 					A science-inspired framework for consciously designing identity in the AI era.
-					Three scales — Single, Interactive, Collective — under two lenses: physics geometry and living form.
+					Three scales - Single, Interactive, Collective - under three lenses: physics geometry, living form, and economics.
 				</p>
 				<div class="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-4 max-w-2xl">
 					<p class="text-sm text-white/60 leading-relaxed">
@@ -62,6 +67,17 @@ const bioCollective = biologyByLayer('collective');
 						class="lens-btn px-5 py-2.5 rounded-full text-sm font-medium transition border border-white/20 text-white/70 hover:bg-white/5"
 					>
 						Biology
+					</button>
+					<button
+						type="button"
+						role="tab"
+						id="lens-economics"
+						aria-selected="false"
+						aria-controls="lens-panel-economics"
+						data-lens="economics"
+						class="lens-btn px-5 py-2.5 rounded-full text-sm font-medium transition border border-white/20 text-white/70 hover:bg-white/5"
+					>
+						Economics
 					</button>
 				</div>
 			</div>
@@ -298,6 +314,96 @@ const bioCollective = biologyByLayer('collective');
 			</section>
 		</div>
 
+		{/* ========== ECONOMICS LENS ========== */}
+		<div id="lens-panel-economics" role="tabpanel" aria-labelledby="lens-economics" aria-hidden="true" tabindex="-1" data-lens-panel="economics" class="hidden">
+			<section class="border-t border-white/10">
+				<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
+					<div class="text-sm uppercase tracking-[4px] text-white/40 mb-3">01 · Economics</div>
+					<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
+						Single Identity as economic subject
+					</h2>
+					<p class="text-base text-white/45 leading-relaxed max-w-2xl mb-4">
+						Ownership → Scarcity → Preference → Opportunity. Jurisdiction, constraint, valuation, and cost of own action.
+					</p>
+				</div>
+				<div class="max-w-6xl mx-auto px-8 pb-16 grid sm:grid-cols-2 gap-4">
+					{
+						econSingle.map((c) => (
+							<a
+								href={c.href}
+								class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/25 hover:bg-white/[0.04] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+							>
+								<div class="text-xs uppercase tracking-[3px] text-white/35 mb-2">{c.tag}</div>
+								<h3 class="text-xl font-bold text-white mb-2 group-hover:text-white/90 transition">
+									{c.title}
+									<span class="ml-1 text-white/30 group-hover:text-white/60 transition">→</span>
+								</h3>
+								<p class="text-sm text-white/50 leading-relaxed">{c.blurb}</p>
+							</a>
+						))
+					}
+				</div>
+			</section>
+
+			<section class="border-t border-white/10">
+				<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
+					<div class="text-sm uppercase tracking-[4px] text-white/40 mb-3">02 · Economics</div>
+					<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
+						Interactive Identity as exchange
+					</h2>
+					<p class="text-base text-white/45 leading-relaxed max-w-2xl mb-4">
+						Exchange → Price. Consented transfer and relative signals of specialization advantage.
+					</p>
+				</div>
+				<div class="max-w-6xl mx-auto px-8 pb-16 grid sm:grid-cols-2 gap-4">
+					{
+						econInteractive.map((c) => (
+							<a
+								href={c.href}
+								class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/25 hover:bg-white/[0.04] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+							>
+								<div class="text-xs uppercase tracking-[3px] text-white/35 mb-2">{c.tag}</div>
+								<h3 class="text-xl font-bold text-white mb-2 group-hover:text-white/90 transition">
+									{c.title}
+									<span class="ml-1 text-white/30 group-hover:text-white/60 transition">→</span>
+								</h3>
+								<p class="text-sm text-white/50 leading-relaxed">{c.blurb}</p>
+							</a>
+						))
+					}
+				</div>
+			</section>
+
+			<section class="border-t border-white/10">
+				<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
+					<div class="text-sm uppercase tracking-[4px] text-white/40 mb-3">03 · Economics</div>
+					<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
+						Collective Identity as market
+					</h2>
+					<p class="text-base text-white/45 leading-relaxed max-w-2xl mb-4">
+						Market → Competition → Specialization. Allocation field, pressure, and division of labor.
+					</p>
+				</div>
+				<div class="max-w-6xl mx-auto px-8 pb-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+					{
+						econCollective.map((c) => (
+							<a
+								href={c.href}
+								class="group block rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-white/25 hover:bg-white/[0.04] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+							>
+								<div class="text-xs uppercase tracking-[3px] text-white/35 mb-2">{c.tag}</div>
+								<h3 class="text-xl font-bold text-white mb-2 group-hover:text-white/90 transition">
+									{c.title}
+									<span class="ml-1 text-white/30 group-hover:text-white/60 transition">→</span>
+								</h3>
+								<p class="text-sm text-white/50 leading-relaxed">{c.blurb}</p>
+							</a>
+						))
+					}
+				</div>
+			</section>
+		</div>
+
 		{/* Living Identity — shared operational scaffold */}
 		<section id="living" class="border-t border-white/10">
 			<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
@@ -306,7 +412,7 @@ const bioCollective = biologyByLayer('collective');
 					Living Identity
 				</h2>
 				<p class="text-base text-white/45 leading-relaxed max-w-2xl mb-4">
-					Scaffold under both lenses: how geometry is metabolized through Interaction.
+					Scaffold under all lenses: how geometry is metabolized through Interaction.
 					Hub for the biology map and the relation to OS.
 				</p>
 			</div>
@@ -354,6 +460,7 @@ const bioCollective = biologyByLayer('collective');
 					<a href="/big-questions" class="px-8 py-3.5 rounded-full bg-white text-black font-medium hover:bg-white/90 transition">Big Questions</a>
 					<a href="/framework/time" class="px-8 py-3.5 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">Start with Time</a>
 					<a href="/framework/gene" class="px-8 py-3.5 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">Start with Gene</a>
+					<a href="/framework/ownership" class="px-8 py-3.5 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">Start with Ownership</a>
 					<a href="/framework/living-identity" class="px-8 py-3.5 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">Living Identity</a>
 				</div>
 			</div>
@@ -364,15 +471,19 @@ const bioCollective = biologyByLayer('collective');
 		function setLens(lens: string) {
 			const physics = document.getElementById('lens-panel-physics');
 			const biology = document.getElementById('lens-panel-biology');
+			const economics = document.getElementById('lens-panel-economics');
 			const btns = document.querySelectorAll('.lens-btn');
 
-			if (physics && biology) {
+			if (physics && biology && economics) {
 				physics.classList.toggle('hidden', lens !== 'physics');
 				biology.classList.toggle('hidden', lens !== 'biology');
+				economics.classList.toggle('hidden', lens !== 'economics');
 				physics.setAttribute('aria-hidden', lens === 'physics' ? 'false' : 'true');
 				biology.setAttribute('aria-hidden', lens === 'biology' ? 'false' : 'true');
+				economics.setAttribute('aria-hidden', lens === 'economics' ? 'false' : 'true');
 				physics.setAttribute('tabindex', lens === 'physics' ? '0' : '-1');
 				biology.setAttribute('tabindex', lens === 'biology' ? '0' : '-1');
+				economics.setAttribute('tabindex', lens === 'economics' ? '0' : '-1');
 			}
 
 			btns.forEach((btn) => {
@@ -403,7 +514,7 @@ const bioCollective = biologyByLayer('collective');
 
 		try {
 			const saved = localStorage.getItem('ie-framework-lens');
-			if (saved === 'biology' || saved === 'physics') setLens(saved);
+			if (saved === 'biology' || saved === 'physics' || saved === 'economics') setLens(saved);
 		} catch {
 			/* ignore */
 		}

@@ -1,8 +1,9 @@
 /**
  * Economics-lens Core Concepts (2026-08-22).
  * Same three scales as Physics and Biology: Single · Interactive · Collective.
- * Working definitions grounded in ownership, scarcity, exchange and market emergence.
- * Analogy, not isomorphism. Proposal framing until validated as Core Concept law.
+ * Single order: Scarcity → Ownership → Preference → Opportunity.
+ * Scarcity is relative finitude weighted by Mass; Ownership clarifies whose scarcity.
+ * Analogy, not isomorphism.
  */
 
 export type EconomicsLayer = 'single' | 'interactive' | 'collective';
@@ -20,17 +21,6 @@ export interface EconomicsConceptMeta {
 
 export const economicsConcepts: EconomicsConceptMeta[] = [
 	{
-		id: 'ownership',
-		slug: 'ownership',
-		href: '/framework/ownership',
-		title: 'Ownership',
-		layer: 'single',
-		layerLabel: 'Single Identity',
-		tag: 'Jurisdiction',
-		blurb:
-			'Jurisdiction over own resources (compute, context, time, capability). Makes the Identity an economic subject.',
-	},
-	{
 		id: 'scarcity',
 		slug: 'scarcity',
 		href: '/framework/scarcity',
@@ -39,7 +29,18 @@ export const economicsConcepts: EconomicsConceptMeta[] = [
 		layerLabel: 'Single Identity',
 		tag: 'Constraint',
 		blurb:
-			'Finite own resources force prioritization. Allocation under scarcity shapes the Vision Gradient.',
+			'Relative finitude of degrees of freedom and causal options, weighted by Mass. What makes allocation and value possible.',
+	},
+	{
+		id: 'ownership',
+		slug: 'ownership',
+		href: '/framework/ownership',
+		title: 'Ownership',
+		layer: 'single',
+		layerLabel: 'Single Identity',
+		tag: 'Jurisdiction',
+		blurb:
+			'Relative jurisdiction that clarifies whose scarcity. Makes the Identity an economic subject under constraint.',
 	},
 	{
 		id: 'preference',
@@ -50,7 +51,7 @@ export const economicsConcepts: EconomicsConceptMeta[] = [
 		layerLabel: 'Single Identity',
 		tag: 'Valuation',
 		blurb:
-			'What the Identity values and is willing to spend own resources on. Expression of the Vision Gradient.',
+			'What the Identity values and is willing to allocate under scarcity. Expression of the Vision Gradient.',
 	},
 	{
 		id: 'opportunity',
@@ -61,7 +62,7 @@ export const economicsConcepts: EconomicsConceptMeta[] = [
 		layerLabel: 'Single Identity',
 		tag: 'Cost',
 		blurb:
-			'Opportunity cost of every own action. What is forgone when own tokens or context are used for one path instead of another.',
+			'Opportunity cost of every allocation under scarcity. What is forgone when degrees of freedom are committed to one path.',
 	},
 	{
 		id: 'exchange',
@@ -105,7 +106,7 @@ export const economicsConcepts: EconomicsConceptMeta[] = [
 		layerLabel: 'Collective Identity',
 		tag: 'Pressure',
 		blurb:
-			'Emergent pressure when multiple Identities contest the same limited resources, attention or allocations.',
+			'Emergent pressure when multiple Identities contest the same limited degrees of freedom, attention or allocations.',
 	},
 	{
 		id: 'specialization-econ',

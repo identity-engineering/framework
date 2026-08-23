@@ -1,0 +1,204 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const osRepo = 'https://github.com/identity-engineering/os';
+const osSpaceModel = 'https://github.com/identity-engineering/os/blob/main/docs/space-model.md';
+const osOpenCore = 'https://github.com/identity-engineering/os/blob/main/docs/open-core.md';
+const osRuntime = 'https://github.com/identity-engineering/os/blob/main/docs/surface-runtime-local.md';
+const osCycle = 'https://github.com/identity-engineering/os/blob/main/docs/probe-cycle.md';
+const managedUrl = 'https://home.identity-engineering.org';
+const managedSignupUrl = `${managedUrl}/login?mode=sign-up`;
+---
+
+<Layout title="Self-hosted Spaces | Identity Engineering OS">
+	<main class="min-h-screen">
+		<section class="border-b border-white/10 px-6 pt-28 pb-16">
+			<div class="mx-auto grid max-w-5xl gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:items-end">
+				<div>
+					<div class="mb-4 text-sm uppercase tracking-[4px] text-cyan-300/70">OS / self-hosted Spaces</div>
+					<h1 class="max-w-4xl text-5xl font-bold leading-[0.95] tracking-tighter text-white md:text-7xl">
+						Build a Space you own.
+					</h1>
+					<p class="mt-6 max-w-3xl text-xl font-light leading-relaxed text-white/55">
+						Managed is the hosted way to start. This is the deeper OS path: create an Identity
+						Engineering Space, choose where it runs, and host it yourself.
+					</p>
+					<div class="mt-8 flex flex-wrap gap-3">
+						<a
+							href={managedSignupUrl}
+							class="rounded-full bg-white px-6 py-3 font-medium text-black transition hover:bg-white/90"
+						>Start in Managed</a>
+						<a
+							href={osRepo}
+							class="rounded-full border border-cyan-300/40 px-6 py-3 font-medium text-cyan-100 transition hover:bg-cyan-300/10"
+							target="_blank"
+							rel="noopener noreferrer"
+						>Open the OS repository</a>
+						<a
+							href="/os"
+							class="rounded-full border border-white/20 px-6 py-3 text-white/70 transition hover:bg-white/5"
+						>Back to Managed overview</a>
+					</div>
+				</div>
+				<aside class="border-l border-cyan-300/30 pl-6 text-sm leading-relaxed text-white/50">
+					<div class="mb-3 text-xs uppercase tracking-[3px] text-white/35">The deeper path</div>
+					<p>
+						A Space is the operational home for an Identity. Self-hosting means you control
+						the runtime, storage, and boundary instead of using Managed as the host.
+					</p>
+					<a href={osSpaceModel} class="mt-5 inline-block text-white/80 underline decoration-white/25 underline-offset-4 hover:decoration-white/50" target="_blank" rel="noopener noreferrer">
+						Read the Space model ->
+					</a>
+				</aside>
+			</div>
+		</section>
+
+		<section class="border-b border-white/10 px-6 py-16">
+			<div class="mx-auto max-w-5xl">
+				<div class="mb-10 max-w-3xl">
+					<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Self-hosted / the idea</div>
+					<h2 class="text-3xl font-semibold tracking-tight text-white md:text-4xl">A Space is more than a place to store data.</h2>
+					<p class="mt-5 text-lg leading-relaxed text-white/55">
+						It is the boundary in which an Identity can retain continuity, receive signals,
+						and decide what becomes part of its trajectory. Hosting your own Space gives you
+						control over that operational boundary.
+					</p>
+				</div>
+				<div class="grid gap-x-8 gap-y-10 md:grid-cols-3">
+					<article class="border-t border-cyan-300/30 pt-5">
+						<div class="mb-2 text-xs uppercase tracking-[3px] text-cyan-300/60">01 / Runtime</div>
+						<h3 class="text-xl font-semibold text-white">Run the operating layer</h3>
+						<p class="mt-3 leading-relaxed text-white/50">
+							The public OS gives a Space a small, explicit runtime instead of hiding its
+							state and behavior behind an opaque service.
+						</p>
+					</article>
+					<article class="border-t border-cyan-300/30 pt-5">
+						<div class="mb-2 text-xs uppercase tracking-[3px] text-cyan-300/60">02 / Ownership</div>
+						<h3 class="text-xl font-semibold text-white">Choose where the Space lives</h3>
+						<p class="mt-3 leading-relaxed text-white/50">
+							The storage location, deployment boundary, and access policy remain decisions
+							that belong to the Space owner.
+						</p>
+					</article>
+					<article class="border-t border-cyan-300/30 pt-5">
+						<div class="mb-2 text-xs uppercase tracking-[3px] text-cyan-300/60">03 / Continuity</div>
+						<h3 class="text-xl font-semibold text-white">Keep the geometry recognizable</h3>
+						<p class="mt-3 leading-relaxed text-white/50">
+							Signals, Registry continuity, Geometry Receipts, and Mature records make change
+							traceable without turning the Identity into an account.
+						</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-b border-white/10 bg-white/[0.02] px-6 py-16">
+			<div class="mx-auto max-w-5xl">
+				<div class="mb-10 max-w-3xl">
+					<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Open Core / current shape</div>
+					<h2 class="text-3xl font-semibold tracking-tight text-white md:text-4xl">Small enough to understand. Real enough to run.</h2>
+					<p class="mt-5 text-lg leading-relaxed text-white/55">
+						The self-hosted runtime is intentionally narrow. It focuses on the parts that make
+						a Space operational and leaves the larger conceptual framework open for exploration.
+					</p>
+				</div>
+				<div class="grid gap-6 md:grid-cols-2">
+					<article class="rounded-2xl border border-white/10 bg-black/20 p-6">
+						<div class="mb-3 text-xs uppercase tracking-[3px] text-white/35">SQLite-first state</div>
+						<h3 class="text-2xl font-semibold text-white">One transactional core</h3>
+						<p class="mt-4 leading-relaxed text-white/55">
+							Mutable runtime state lives in SQLite. The result is a compact Space that can be
+							inspected, backed up, and moved according to the owner's decisions.
+						</p>
+					</article>
+					<article class="rounded-2xl border border-white/10 bg-black/20 p-6">
+						<div class="mb-3 text-xs uppercase tracking-[3px] text-white/35">Surface Runtime</div>
+						<h3 class="text-2xl font-semibold text-white">Interaction becomes evidence</h3>
+						<p class="mt-4 leading-relaxed text-white/55">
+							Signals cross a policy-controlled Surface and produce foreign estimates, Registry
+							continuity, and Geometry Receipts through the Interact hook.
+						</p>
+					</article>
+					<article class="rounded-2xl border border-white/10 bg-black/20 p-6">
+						<div class="mb-3 text-xs uppercase tracking-[3px] text-white/35">Probe cycle</div>
+						<h3 class="text-2xl font-semibold text-white">Think · Interact · Mature</h3>
+						<p class="mt-4 leading-relaxed text-white/55">
+							Think is protected inward work. Interact is the emitting tool, API, MCP, or signal
+							path. Mature is a deliberate, source-backed continuity record.
+						</p>
+					</article>
+					<article class="rounded-2xl border border-white/10 bg-black/20 p-6">
+						<div class="mb-3 text-xs uppercase tracking-[3px] text-white/35">Identity contracts</div>
+						<h3 class="text-2xl font-semibold text-white">Stem, Registry, Mass, Surface</h3>
+						<p class="mt-4 leading-relaxed text-white/55">
+							The runtime gives an Identity a stable Stem, observer-relative Registry, emergent
+							Mass signals, and an explicit membrane for ownership and visibility.
+						</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-b border-white/10 px-6 py-16">
+			<div class="mx-auto max-w-5xl">
+				<div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+					<div>
+						<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Managed / self-hosted</div>
+						<h2 class="text-3xl font-semibold tracking-tight text-white md:text-4xl">One model, different hosting choices.</h2>
+					</div>
+					<div class="space-y-5 text-lg leading-relaxed text-white/55">
+						<p>
+							Managed is the easiest way to begin: the hosted Space, account access, Identity
+							consent, continuity, and MCP surface are already assembled.
+						</p>
+						<p>
+							Self-hosting is the deeper path for people who want to create their own Space,
+							choose its infrastructure, and carry responsibility for its operation. The two
+							paths share the same distinction: Account is not Identity.
+						</p>
+						<a href="/os" class="inline-flex rounded-full border border-white/20 px-6 py-3 text-sm font-medium text-white/80 transition hover:bg-white/5">
+							Return to the Managed-first OS page ->
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-b border-white/10 px-6 py-16">
+			<div class="mx-auto max-w-5xl">
+				<div class="mb-8 max-w-3xl">
+					<div class="mb-4 text-sm uppercase tracking-[4px] text-white/40">Read the implementation</div>
+					<h2 class="text-3xl font-semibold tracking-tight text-white md:text-4xl">The repository is the source of truth.</h2>
+					<p class="mt-5 text-lg leading-relaxed text-white/55">
+						Commands, schemas, and deployment details evolve with the public OS repository.
+						Use these documents when you are ready to move from the Space idea into the
+						self-hosted runtime.
+					</p>
+				</div>
+				<div class="flex flex-wrap gap-x-5 gap-y-3 text-sm text-white/55">
+					<a href={osOpenCore} class="underline decoration-white/25 underline-offset-4 hover:text-white hover:decoration-white/50" target="_blank" rel="noopener noreferrer">open-core.md</a>
+					<a href={osSpaceModel} class="underline decoration-white/25 underline-offset-4 hover:text-white hover:decoration-white/50" target="_blank" rel="noopener noreferrer">space-model.md</a>
+					<a href={osRuntime} class="underline decoration-white/25 underline-offset-4 hover:text-white hover:decoration-white/50" target="_blank" rel="noopener noreferrer">surface-runtime-local.md</a>
+					<a href={osCycle} class="underline decoration-white/25 underline-offset-4 hover:text-white hover:decoration-white/50" target="_blank" rel="noopener noreferrer">probe-cycle.md</a>
+					<a href={osRepo} class="underline decoration-white/25 underline-offset-4 hover:text-white hover:decoration-white/50" target="_blank" rel="noopener noreferrer">GitHub repository</a>
+				</div>
+			</div>
+		</section>
+
+		<section class="px-6 py-20">
+			<div class="mx-auto max-w-3xl text-center">
+				<div class="mb-4 text-sm uppercase tracking-[4px] text-cyan-300/65">Choose the depth</div>
+				<h2 class="text-4xl font-semibold tracking-tight text-white md:text-5xl">Start hosted. Go deeper when you need to.</h2>
+				<p class="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/55">
+					Managed gives you a working Space now. Self-hosting gives you a Space you create,
+					own, and operate yourself.
+				</p>
+				<div class="mt-8 flex flex-wrap justify-center gap-3">
+					<a href={managedSignupUrl} class="rounded-full bg-white px-6 py-3 font-medium text-black transition hover:bg-white/90">Create Managed Space</a>
+					<a href={osRepo} class="rounded-full border border-white/20 px-6 py-3 text-white/75 transition hover:bg-white/5" target="_blank" rel="noopener noreferrer">Open OS repository</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>

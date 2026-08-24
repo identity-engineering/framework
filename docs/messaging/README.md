@@ -1,8 +1,9 @@
 # Identity-Native Messaging Layer
 
-**Status:** Phase 2 – Data Model (in progress)  
+**Status:** Phase 3 – Local skeleton (in progress in OS)  
 **Related Gap:** [#102](https://github.com/identity-engineering/framework/issues/102)  
-**OS Tracking:** [identity-engineering/os#107](https://github.com/identity-engineering/os/issues/107)
+**OS Tracking:** [identity-engineering/os#107](https://github.com/identity-engineering/os/issues/107)  
+**OS Branch:** `feature/identity-native-messaging-phase3`
 
 This directory holds the conceptual and data-model specifications for the Identity-Native Messaging Layer.
 
@@ -40,5 +41,5 @@ Biology concepts used by this layer:
 ## Phase status
 
 - **Phase 1** (Conceptual Primitives) – complete
-- **Phase 2** (Data Model & Protocol Extension) – in progress (schemas v0.1 drafted)
-- **Phase 3** (Local Messaging Service) – next
+- **Phase 2** (Data Model & Protocol Extension) – schemas v0.1 drafted
+- **Phase 3** (Local Messaging Service) – skeleton in OS (`runtime/messaging.py`, `ie messaging …`)

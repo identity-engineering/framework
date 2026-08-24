@@ -1,6 +1,6 @@
 # Identity-Native Messaging Layer
 
-**Status:** Phase 1 – Conceptual Primitives (in progress)  
+**Status:** Phase 2 – Data Model (in progress)  
 **Related Gap:** [#102](https://github.com/identity-engineering/framework/issues/102)  
 **OS Tracking:** [identity-engineering/os#107](https://github.com/identity-engineering/os/issues/107)
 
@@ -19,12 +19,15 @@ Biology concepts used by this layer:
 
 ## Documents
 
-| File | Content |
-|------|---------|
-| [01-identity-card.md](./01-identity-card.md) | Identity Card (extension of A2A Agent Card) |
-| [02-message-model.md](./02-message-model.md) | Signal / Payload, Envelope, Addressing, Receipts |
-| [03-decision-and-metabolization.md](./03-decision-and-metabolization.md) | Decision layers, Operating Cycle hooks, Metabolism |
-| [04-biology-operationalization.md](./04-biology-operationalization.md) | Biology lens concepts operationalized for messaging |
+| File | Content | Phase |
+|------|---------|-------|
+| [01-identity-card.md](./01-identity-card.md) | Identity Card concept | 1 |
+| [02-message-model.md](./02-message-model.md) | Signal / Payload, Envelope, Addressing | 1 |
+| [03-decision-and-metabolization.md](./03-decision-and-metabolization.md) | Decision layers, Metabolism | 1 |
+| [04-biology-operationalization.md](./04-biology-operationalization.md) | Biology lens operationalized | 1 |
+| [05-open-questions.md](./05-open-questions.md) | Open questions → **Accepted** | 1 |
+| [06-identity-card-schema.md](./06-identity-card-schema.md) | Identity Card JSON Schema v0.1 | 2 |
+| [07-message-envelope-schema.md](./07-message-envelope-schema.md) | Envelope + Payload + Receipt Schema v0.1 | 2 |
 
 ## Design Principles (binding for all phases)
 
@@ -34,6 +37,8 @@ Biology concepts used by this layer:
 4. **Causal Entropic Forces** – No message may silently reduce the future freedom of any participating Identity.
 5. **Feature-branch + explicit approval** – Nothing merges to `main` without explicit user approval.
 
-## Current Phase Goal
+## Phase status
 
-Produce the minimal set of primitives so that Phase 2 (Data Model & Protocol Extension) and Phase 3 (Local Messaging Service) can start with a stable conceptual foundation.
+- **Phase 1** (Conceptual Primitives) – complete
+- **Phase 2** (Data Model & Protocol Extension) – in progress (schemas v0.1 drafted)
+- **Phase 3** (Local Messaging Service) – next

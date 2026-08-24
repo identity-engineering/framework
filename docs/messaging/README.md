@@ -6,6 +6,18 @@
 
 This directory holds the conceptual and data-model specifications for the Identity-Native Messaging Layer.
 
+## Framework alignment (current)
+
+- Three scales: **Single · Interactive · Collective**
+- Two lenses: **Physics** (geometry) and **Biology** (living form)
+- **Living Identity** = operational scaffold under both lenses (metabolizes geometry through Interaction; hub to OS)
+
+Biology concepts used by this layer:
+
+- Interactive: Signal → Recognition → Coupling
+- Single: Metabolism (information pathway)
+- Collective: Multicellularity → Specialization → Regulation
+
 ## Documents
 
 | File | Content |
@@ -13,7 +25,7 @@ This directory holds the conceptual and data-model specifications for the Identi
 | [01-identity-card.md](./01-identity-card.md) | Identity Card (extension of A2A Agent Card) |
 | [02-message-model.md](./02-message-model.md) | Signal / Payload, Envelope, Addressing, Receipts |
 | [03-decision-and-metabolization.md](./03-decision-and-metabolization.md) | Decision layers, Operating Cycle hooks, Metabolism |
-| [04-living-operationalization.md](./04-living-operationalization.md) | Metabolism + Multicellularity made operational |
+| [04-living-operationalization.md](./04-living-operationalization.md) | Biology lens + Living scaffold operationalized for messaging |
 
 ## Design Principles (binding for all phases)
 

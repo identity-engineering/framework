@@ -8,9 +8,8 @@ This directory holds the conceptual and data-model specifications for the Identi
 
 ## Framework alignment (current)
 
-- Three scales: **Single · Interactive · Collective**
-- Two lenses: **Physics** (geometry) and **Biology** (living form)
-- **Living Identity** = operational scaffold under both lenses (metabolizes geometry through Interaction; hub to OS)
+- **Three scales only:** Single · Interactive · Collective
+- **Two lenses:** Physics (geometry) and Biology (living form)
 
 Biology concepts used by this layer:
 
@@ -25,7 +24,7 @@ Biology concepts used by this layer:
 | [01-identity-card.md](./01-identity-card.md) | Identity Card (extension of A2A Agent Card) |
 | [02-message-model.md](./02-message-model.md) | Signal / Payload, Envelope, Addressing, Receipts |
 | [03-decision-and-metabolization.md](./03-decision-and-metabolization.md) | Decision layers, Operating Cycle hooks, Metabolism |
-| [04-living-operationalization.md](./04-living-operationalization.md) | Biology lens + Living scaffold operationalized for messaging |
+| [04-biology-operationalization.md](./04-biology-operationalization.md) | Biology lens concepts operationalized for messaging |
 
 ## Design Principles (binding for all phases)
 

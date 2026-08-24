@@ -24,16 +24,16 @@ Any message that cannot be justified under at least one of these is suspect and 
 
 If any layer fails, the message stops. Only a Recognition or Delivery Receipt (with reason) is returned.
 
-## Metabolization (Biology Single process, executed via Living scaffold)
+## Metabolization (Biology Single)
 
-Once accepted, a message may trigger the receiver’s **Operating Cycle** (Living Identity scaffold):
+Once accepted, a message may trigger metabolization in the receiving Identity:
 
 - Update State Differential (past → present)
 - Adjust Vision Gradient (present → future) if the content is relevant
 - Possibly change local Mass or Curvature (only with explicit consent or high-trust Coupling)
 - Emit a Metabolization Receipt back to the sender (optional)
 
-Metabolization is the concrete operationalization of the Biology-lens **Metabolism** concept (Single scale) for information. It is executed inside the Living Identity operational scaffold that links both lenses to the OS.
+Metabolization is the concrete operationalization of the Biology-lens **Metabolism** concept (Single scale) for information. It is the process by which Interaction becomes relative geometry inside the receiving Identity.
 
 ## Feedback Loops
 
@@ -44,5 +44,5 @@ Metabolization is the concrete operationalization of the Biology-lens **Metaboli
 ## Open questions
 
 - Exact metrics for “future freedom impact”
-- How much of the Operating Cycle is exposed vs internal
+- How much of the metabolization process is exposed vs internal
 - Default policies for hybrid human+agent Identities

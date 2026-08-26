@@ -6,8 +6,8 @@ import { biologyByLayer } from '../lib/biologyConcepts';
 
 /**
  * Official structure:
- * Same three scales under two science lenses (Physics · Biology),
- * plus Living Identity as operational scaffold.
+ * Same three scales under two science lenses (Physics, Biology).
+ * Living Identity is not a fourth layer. Operational use lives on /os.
  */
 
 const single = concepts.filter((c) => c.layer === 'single');
@@ -29,7 +29,7 @@ const bioCollective = biologyByLayer('collective');
 				</h1>
 				<p class="text-xl md:text-2xl text-white/50 font-light max-w-2xl leading-relaxed">
 					A science-inspired framework for consciously designing identity in the AI era.
-					Three scales — Single, Interactive, Collective — under two lenses: physics geometry and living form.
+					Three scales only: Single, Interactive, Collective. Two lenses: physics geometry and living form.
 				</p>
 				<div class="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-4 max-w-2xl">
 					<p class="text-sm text-white/60 leading-relaxed">
@@ -298,63 +298,18 @@ const bioCollective = biologyByLayer('collective');
 			</section>
 		</div>
 
-		{/* Living Identity — shared operational scaffold */}
-		<section id="living" class="border-t border-white/10">
-			<div class="max-w-6xl mx-auto px-8 pt-20 pb-8">
-				<div class="text-sm uppercase tracking-[4px] text-white/40 mb-3">Operational</div>
-				<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
-					Living Identity
-				</h2>
-				<p class="text-base text-white/45 leading-relaxed max-w-2xl mb-4">
-					Scaffold under both lenses: how geometry is metabolized through Interaction.
-					Hub for the biology map and the relation to OS.
-				</p>
-			</div>
-
-			<a
-				href="/framework/living-identity"
-				class="group block max-w-6xl mx-auto px-8 py-12 md:py-16 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 rounded-sm"
-				data-concept-section
-			>
-				<div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
-					<div>
-						<div class="text-sm uppercase tracking-[4px] text-white/35 mb-3">Hub</div>
-						<h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white group-hover:text-white/85 transition">
-							Biology map · Life criteria · OS link
-							<span class="ml-2 inline-block text-white/30 transition group-hover:translate-x-1 group-hover:text-white/60">→</span>
-						</h3>
-						<p class="text-base text-white/55 leading-relaxed mb-4">
-							Life as IE criteria (boundary, metabolism, continuity, causal entropy under constraint).
-							Full index of biology-lens concepts and honesty labels.
-						</p>
-						<span class="text-sm text-white/50 group-hover:text-white transition border-b border-white/20 group-hover:border-white/50 pb-0.5">
-							Open Living Identity
-						</span>
-					</div>
-					<div class="relative h-[240px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f] transition group-hover:border-white/25 flex items-center justify-center">
-						<div class="text-center px-8">
-							<div class="text-sm uppercase tracking-[4px] text-white/30 mb-3">Scaffold</div>
-							<div class="text-2xl md:text-3xl font-bold text-white/80 tracking-tight">Living form</div>
-							<p class="mt-3 text-sm text-white/40 max-w-xs mx-auto leading-relaxed">
-								Geometry metabolized through Interaction
-							</p>
-						</div>
-					</div>
-				</div>
-			</a>
-		</section>
-
 		<section class="py-20 border-t border-white/10">
 			<div class="max-w-3xl mx-auto px-8 text-center">
 				<h2 class="text-3xl font-bold tracking-tight mb-4 text-white">Where the map ends</h2>
 				<p class="text-lg text-white/50 mb-10 max-w-xl mx-auto">
 					Human-scale identity is the foundation. Frontier domains remain open on purpose.
+					Use lives on the OS, not as a fourth scale.
 				</p>
 				<div class="flex flex-wrap gap-4 justify-center">
 					<a href="/big-questions" class="px-8 py-3.5 rounded-full bg-white text-black font-medium hover:bg-white/90 transition">Big Questions</a>
 					<a href="/framework/time" class="px-8 py-3.5 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">Start with Time</a>
 					<a href="/framework/gene" class="px-8 py-3.5 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">Start with Gene</a>
-					<a href="/framework/living-identity" class="px-8 py-3.5 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">Living Identity</a>
+					<a href="/os" class="px-8 py-3.5 rounded-full border border-white/20 text-white/70 hover:bg-white/5 transition">OS</a>
 				</div>
 			</div>
 		</section>
